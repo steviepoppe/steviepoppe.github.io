@@ -61,10 +61,12 @@
 max-width:950px;
 }
 
-.nav > li > a{
+/*.nav > li > a{
 padding-top: 15px;
 padding-bottom: 15px;
-}
+}*/
+
+.navbar-nav{margin: 0;}
 
 /* Responsive */
 
