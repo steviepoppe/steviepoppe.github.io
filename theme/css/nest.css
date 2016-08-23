@@ -44,8 +44,8 @@
 }
 
 .head-container{
-    padding-right: 15px;
-    padding-left: 15px;
+/*    padding-right: 15px;
+    padding-left: 15px;*/
     margin-right: auto;
     margin-left: auto;
     display: table;
@@ -1079,7 +1079,30 @@ p.toc_title{
     float: right;
 }
 */
+
+.row {
+margin:0px;
+}
+
+.master{
+  height:140px;
+}
+
+
+  .navbar-collapse, .head-container {
+    padding: 0px;
+  }
+  .head-container {
+    padding: 0px;
+  }
+
 @media (min-width: 768px) {
+
+  .navbar-collapse, .head-container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
 .aboutme-container {
     width: 850px;
 }
@@ -1099,6 +1122,12 @@ p.toc_title{
 
 
 @media (min-width: 992px) {
+
+  .navbar-collapse, .head-container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
  .aboutme-container {
     width: 1000px;
 }
