@@ -62,15 +62,8 @@ max-width:950px;
 }
 
 
-
-@media (max-width: 844px) {
-#steviesmenubar{
-max-width:950px;
-}
-}
-
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 844px) {
   .socialnav{
 display: none;
   }
