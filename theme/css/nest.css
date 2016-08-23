@@ -57,17 +57,16 @@
   width: 100%;
 }
 
-#steviesmenubar{
+.navbar{
 max-width:950px;
 }
 
 
 /* Responsive */
-@media (max-width: 844px) {
+
   .socialnav{
 display: none;
   }
-}
 
 @media (min-width: 768px) {
   .container {
@@ -85,8 +84,6 @@ display: none;
 
   .socialnav{
     display: block;
-    
-    /*display: none;*/
   }
 }
 
