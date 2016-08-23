@@ -55,6 +55,7 @@
 
 .master, .footer{
   width: 100%;
+  max-width:950px;
 }
 
 /* Responsive */
