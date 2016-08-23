@@ -64,9 +64,9 @@ max-width:950px;
 
 /* Responsive */
 
-.navbar-nav li{
-  display: inline-block;
-  float: left;
+.nav > li{
+  display: inline-block; !important
+  float: left; !important
 }
 
 @media (min-width: 768px) {
@@ -89,7 +89,7 @@ max-width:950px;
 #steviesmenubar{
   font-size: 90%;
 }
-  .socialnav{
+  .social{
     display: block;visibility: visible;
   }
 }
@@ -115,7 +115,7 @@ max-width:950px;
   font-size: 100%;
 }
 
-  .socialnav{
+  .social{
     display: block; !important
     visibility: visible; !important
   }
