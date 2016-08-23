@@ -78,8 +78,11 @@ display: none;
     height: auto;
 }
 
-.head-container, .master, .footer{
+.master, .footer{
     min-width: 850px;
+  }
+  .head-container{
+    width: 850px;
   }
 
   .socialnav{
@@ -97,9 +100,13 @@ display: none;
     height: auto;
 }
 
-.head-container, .master, .footer{
+.master, .footer{
     min-width: 950px;
   }
+  .head-container{
+    width: 950px;
+  }
+
   .socialnav{
     display: block;
   }
