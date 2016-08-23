@@ -61,10 +61,10 @@
 max-width:950px;
 }
 
-/*.nav > li > a{
+.nav > li > a{
 padding-top: 15px;
 padding-bottom: 15px;
-}*/
+}
 
 .navbar-nav{margin: 0;}
 
@@ -842,87 +842,6 @@ footer{
 
 }
 
-
-
-/*sidebar*/
-
-.aboutme-main-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-size: 100% 100%;
-    z-index: 0;
-    opacity: 0.1;
-}
-
-.aboutme-main-wrapper
-{
-    position: relative;
-}
-
-.aboutme-container
-{
-    width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.row::after, .row::before {content: '';display: block;clear: both;height: 0;}
-
-.containermain
-{
-    width: 60%;
-    float: left;
-    padding-right: 15px;
-    padding-left: 15px;
-}
-
-.containerright
-{
-    width: 38%;
-    float: right;
-}
-
-.aboutmecontent {
-    background-color: #fff;
-    padding-bottom: 20px;
-    border-left: 1px solid rgba(0,0,0,0.1);
-    border-right: 1px solid rgba(0,0,0,0.1);
-    text-align: justify;
-    background-color: #fcfcfa;
-    border: solid 1px #e2e0d8;
-    margin-bottom: 30px;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.11);
-    padding-right: 15px;
-    padding-left: 15px;
-}
-
-.aboutmecontent h1, .aboutmecontent h2 {
-    text-align:center;
-    text-transform: uppercase;
-}
-
-.containerright hr {
-    margin-top: 0px;
-    margin-bottom: 20px;
-    border: 0;
-    border-top: 1px solid rgba(2, 87, 183, 0.53);
-}
-
-.profile{
-    border: 1px solid #999;
-    border-radius: 50%;
-    margin-right: auto;
-    margin-left: auto;
-    display: table;
-    margin-bottom: 20px;
-}
-
-
-
-
 #searchform { 
     float: right; 
     margin-right: -20px;
@@ -1075,4 +994,111 @@ p.toc_title{
 
 .toc li ul > li:before {
   content: counters(item, ".") " ";
+}
+
+
+
+
+
+
+
+
+/*sidebar*/
+
+.aboutme-main-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-size: 100% 100%;
+    z-index: 0;
+    opacity: 0.1;
+}
+
+.aboutme-main-wrapper
+{
+    position: relative;
+}
+
+.row::after, .row::before {content: '';display: block;clear: both;height: 0;}
+
+
+
+.aboutmecontent {
+    background-color: #fff;
+    padding-bottom: 20px;
+    border-left: 1px solid rgba(0,0,0,0.1);
+    border-right: 1px solid rgba(0,0,0,0.1);
+    text-align: justify;
+    background-color: #fcfcfa;
+    border: solid 1px #e2e0d8;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.11);
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.aboutmecontent h1, .aboutmecontent h2 {
+    text-align:center;
+    text-transform: uppercase;
+}
+
+.containerright hr {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid rgba(2, 87, 183, 0.53);
+}
+
+.profile{
+    border: 1px solid #999;
+    border-radius: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    display: table;
+    margin-bottom: 20px;
+}
+
+.aboutme-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+@media (min-width: 768px) {
+.aboutme-container {
+    width: 850px;
+}
+
+.containermain{
+  width: 60%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.containerright {
+    width: 38%;
+    float: right;
+}
+}
+
+
+@media (min-width: 992px) {
+ .aboutme-container {
+    width: 1000px;
+}
+
+.containermain{
+  width: 60%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.containerright {
+    width: 38%;
+    float: right;
+}
 }
