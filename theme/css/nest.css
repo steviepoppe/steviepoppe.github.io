@@ -81,10 +81,13 @@ display: none;
 .master, .footer{
     min-width: 850px;
   }
-  .head-container{
+  .head-container, #footercontent{
     width: 850px;
   }
 
+#steviesmenubar{
+  font-size: 90%;
+}
   .socialnav{
     display: block;
   }
@@ -103,9 +106,13 @@ display: none;
 .master, .footer{
     min-width: 950px;
   }
-  .head-container{
+  .head-container, #footercontent{
     width: 950px;
   }
+
+  #steviesmenubar{
+  font-size: 100%;
+}
 
   .socialnav{
     display: block;
@@ -113,6 +120,12 @@ display: none;
     #searchform{
     display: block;
   }
+}
+
+#footercontent{
+ width: 850px; 
+ margin-right: auto; 
+ margin-left: auto;
 }
 
 /*
