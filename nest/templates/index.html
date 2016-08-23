@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}{{ NEST_INDEX_HEAD_TITLE }} {% if articles_page.has_previous() %}- page {{ articles_page.number }} {% endif %}- {{ super() }}{% endblock title %}
+{% block description %}{{ SITENAME }}, {{ SITESUBTITLE }}{% endblock description %}
+
+
+    {% block content %}
+    {% if DEFAULT_PAGINATION %}    
+
+    <div class="archive-container">
+      {% for article in articles_page.object_list %}
+      <div class="container content archive blog">
+        <dl class="dl-horizontal">
+         {% if article.image is defined %}
+         <a href="{{ SITEURL }}/{{ article.url }}" class="image featured"><img src="{{ SITEURL }}/images/{{ article.image }}" alt=""/></a>
+         {% endif %}
+         <dt><h5>{{article.locale_date}}</h5>
+          {% if article.tags and article.tags[0]|trim|count > 0 %}
+          <h5 style="text-align: left; margin-left: 24px;"><a href="{{ SITEURL }}/blog/tags/">Tags</a></h5>
+          <ul style="text-align: left;">
+            {% for tag in article.tags|sort %}
+            <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </dt>
+        <dd>            
+
+          <h1 class="post-title">{% if article.pin %}<i class="icon-pushpin"></i>{% endif %}
+            <a href="/{{ article.url }}" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
+          </h1>
+          <hr class="archive-hr"/>
+          <div class="post-content">
+            {% if article.has_summary %} 
+            {{ article.summary|striptags }} 
+            {% else %} 
+            {{ article.content|striptags|truncate(SUMMARY_MAX_LENGTH) }}
+            {% endif %}
+            <a href="{{ SITEURL }}/{{ article.url }}"><br/>Continue →</a>
+          </div>
+
+        </dd>
+      </dl>
+    </div>
+    {% endfor %}
+  </div>
+
+
+  {% include 'pagination.html' %}
+  {% else %}
+  <div class="archive-container">
+    <div class="container content archive">
+      <h2><a href="{{ SITEURL }}/">{{ NEST_INDEX_CONTENT_TITLE }}</a></h2>
+      <dl class="dl-horizontal">
+        {% for article in articles %}
+        <dt>{{ article.locale_date}}</dt>
+        <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
+        {% endfor %}
+      </dl>
+    </div>
+  </div>
+  {% endif %}
+  {% endblock content %}
