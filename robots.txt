@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://steviepoppe.github.io/sitemap.xml
