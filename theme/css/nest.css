@@ -52,13 +52,11 @@
 }
 
 .master{
+  width: 100%;
   min-width: 950px;
 }
-.master{
-  min-width: 950px;
-}
-
 .footer{
+  width: 100%;
     min-width: 950px;
 }
 /* Responsive */
