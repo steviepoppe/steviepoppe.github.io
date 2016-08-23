@@ -123,6 +123,7 @@ display: none;
 }
 
 #footercontent{
+  width: 100%;
  margin-right: auto; 
  margin-left: auto;
 }
