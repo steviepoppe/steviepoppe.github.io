@@ -1035,13 +1035,13 @@ p.toc_title{
     margin-bottom: 0px;
 }
 
-.aboutmecontent ul{
+.containerright ul{
     padding-left: 0px;
     margin-bottom: 10px;
     list-style-type: none; text-align: center;
 }
 
-.aboutmecontent li::before { content: "\2022 " }
+.containerright li::before { content: "\2022 " }
 
 #useful-links{
     text-align: left;
