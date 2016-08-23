@@ -89,7 +89,7 @@ display: none;
   font-size: 90%;
 }
   .socialnav{
-    display: block;
+    display: block;visibility: visible;
   }
 }
 
@@ -116,9 +116,7 @@ display: none;
 
   .socialnav{
     display: block;
-  }
-    #searchform{
-    display: block;
+    visibility: visible;
   }
 }
 
