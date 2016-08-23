@@ -58,6 +58,12 @@
 }
 
 /* Responsive */
+@media (max-width: 768px) {
+    #searchform{
+    display: block;
+  }
+}
+
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -89,6 +95,12 @@
 
 .head-container, .master, .footer{
     min-width: 950px;
+  }
+  .social{
+    display: block;
+  }
+    #searchform{
+    display: block;
   }
 }
 
