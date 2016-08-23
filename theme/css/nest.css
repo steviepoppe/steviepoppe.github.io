@@ -51,7 +51,7 @@
     width: 950px;
 }
 /* Responsive */
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
   .container {
     width: 750px;
 }
@@ -59,8 +59,15 @@
 .container-main img{
     max-width:700px;
     height: auto;
+}*/
+
+  .container {
+    width: 750px;
 }
 
+.container-main img{
+    max-width:700px;
+    height: auto;
 }
 
 @media (min-width: 992px) {

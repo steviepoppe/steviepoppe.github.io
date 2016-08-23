@@ -379,7 +379,7 @@ http://www.tipue.com/search
                                         if (set.showURL)
                                         {
                                              var s_u = found[i].url.toLowerCase();
-                                             if(s_u.indexOf('http://') == 0)
+                                             if(s_u.indexOf('https://') == 0)
                                              {
                                                   s_u = s_u.slice(7);
                                              }                                             
