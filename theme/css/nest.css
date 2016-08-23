@@ -64,9 +64,10 @@ max-width:950px;
 
 /* Responsive */
 
-  .socialnav{
-display: none;
-  }
+.navbar-nav li{
+  display: inline-block;
+  float: left;
+}
 
 @media (min-width: 768px) {
   .container {
@@ -115,8 +116,8 @@ display: none;
 }
 
   .socialnav{
-    display: block;
-    visibility: visible;
+    display: block; !important
+    visibility: visible; !important
   }
 }
 
