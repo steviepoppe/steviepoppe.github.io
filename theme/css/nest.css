@@ -1024,7 +1024,6 @@ p.toc_title{
 .row::after, .row::before {content: '';display: block;clear: both;height: 0;}
 
 
-
 .aboutmecontent {
     background-color: #fff;
     padding-bottom: 20px;
@@ -1066,17 +1065,30 @@ p.toc_title{
     margin-right: auto;
 }
 
+/*.containermain
+{
+    width: 60%;
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px;
+}
 
-
+.containerright
+{
+    width: 38%;
+    float: right;
+}
+*/
 @media (min-width: 768px) {
 .aboutme-container {
     width: 850px;
 }
 
 .containermain{
-  width: 60%;
+    width: 60%;
     padding-right: 15px;
     padding-left: 15px;
+    float: left;
 }
 
 .containerright {
@@ -1092,9 +1104,10 @@ p.toc_title{
 }
 
 .containermain{
-  width: 60%;
+    width: 60%;
     padding-right: 15px;
     padding-left: 15px;
+    float: left;
 }
 
 .containerright {
