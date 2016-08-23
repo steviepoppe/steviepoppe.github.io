@@ -61,7 +61,7 @@
 max-width:950px;
 }
 
-.navbar-nav > li > a{
+.nav > li > a{
 padding-top: 15px;
 padding-bottom: 15px;
 }
@@ -72,6 +72,7 @@ padding-bottom: 15px;
   width: auto;
 border-top: 0;
 }
+
 .nav > li{
   display: inline-block; !important
   float: left; !important
