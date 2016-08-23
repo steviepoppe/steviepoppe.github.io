@@ -78,7 +78,7 @@
     min-width: 850px;
   }
 
-  .social{
+  .socialnav{
     display: none;
   }
 }
@@ -96,7 +96,7 @@
 .head-container, .master, .footer{
     min-width: 950px;
   }
-  .social{
+  .socialnav{
     display: block;
   }
     #searchform{
