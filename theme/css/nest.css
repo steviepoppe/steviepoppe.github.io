@@ -55,13 +55,24 @@
 
 .master, .footer{
   width: 100%;
-  max-width:950px;
+}
+
+#steviesmenubar{
+max-width:950px;
+}
+
+
+
+@media (max-width: 844px) {
+#steviesmenubar{
+max-width:950px;
+}
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    #searchform{
-    display: block;
+  .socialnav{
+display: none;
   }
 }
 
@@ -81,6 +92,7 @@
 
   .socialnav{
     display: block;
+    
     /*display: none;*/
   }
 }
@@ -920,6 +932,7 @@ footer{
 {
     margin: 0;
     float: left;
+    padding-left: 0px;
 }
 
 .socialnav > li 
