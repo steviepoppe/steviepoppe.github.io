@@ -50,6 +50,17 @@
     display: table;
     width: 950px;
 }
+
+.master{
+  min-width: 950px;
+}
+.master{
+  min-width: 950px;
+}
+
+.footer{
+    min-width: 950px;
+}
 /* Responsive */
 /*@media (min-width: 768px) {
   .container {
@@ -971,7 +982,10 @@ p.toc_title{
 .aboutmecontent ul{
     padding-left: 0px;
     margin-bottom: 10px;
+    list-style-type: none; text-align: center;
 }
+
+.aboutmecontent li::before { content: "\2022 " }
 
 #useful-links{
     text-align: left;
