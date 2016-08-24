@@ -80,11 +80,29 @@ border-top: 0;
   float: left; !important
 }
 
+
+  nav.toc{
+    margin-left: auto;
+margin-right: auto;
+  }
+.page-header{
+  height: 80px;
+}
+
 @media (min-width: 768px) {
   .container {
     width: 750px;
 }
 
+  nav.toc{
+float:right;
+margin-right: 0;
+margin-left: 25px;
+  }
+  
+.page-header{
+  height: 100%;
+}
 .container-main img{
     max-width:700px;
     height: auto;
@@ -106,10 +124,19 @@ border-top: 0;
 }
 
 @media (min-width: 992px) {
+
+  nav.toc{
+float:right;
+margin-right: 0;
+margin-left: 25px;
+  }
+
   .container {
     width: 850px;
 }
-
+.page-header{
+  height: 100%;
+}
 .container-main img{
     max-width:800px;
     height: auto;
@@ -931,11 +958,11 @@ ul.tagcloud .list-group-item <span>.badge {
 nav.toc{
     height: 100%;
     max-width:250px;
-    float: right;
     width: auto;
     margin-top: 10px;
+/*    float: right;
     margin-right: 0px;
-    margin-left: 25px;
+    margin-left: 25px;*/
     clear: both;
     padding: 10px;
     border: 1px solid #eaeaea;
