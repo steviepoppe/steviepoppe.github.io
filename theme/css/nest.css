@@ -99,7 +99,7 @@ float:right;
 margin-right: 0;
 margin-left: 25px;
   }
-  
+
 .page-header{
   height: 100%;
 }
@@ -960,6 +960,7 @@ nav.toc{
     max-width:250px;
     width: auto;
     margin-top: 10px;
+    margin-bottom: 10px;
 /*    float: right;
     margin-right: 0px;
     margin-left: 25px;*/
