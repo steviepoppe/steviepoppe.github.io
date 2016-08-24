@@ -8,17 +8,6 @@
  @import url(https://fonts.googleapis.com/css?family=Quicksand);
  @import url(https://fonts.googleapis.com/css?family=Poiret+One);
 
- .blog dd{
-  border-left: 1px solid rgba(231, 225, 225, 0.68);
-  margin-left: 155px;
-  padding-left: 10px;
-  bottom: -10px;
-  position: relative;
-}
-
- .blog dl
-{margin-top: -20px;}
-
 .blog dt{
     font-size: 12px;
     font-weight: 400;
@@ -26,7 +15,21 @@
     width: 140px;
     margin-top: 15px;
     float:left;
+    padding-top: 5px;
 }
+
+.blog dt ul{
+text-align: center;
+}
+
+.blog dt li{
+display: inline-block;
+}
+
+
+ .blog dl
+{margin-top: -20px;}
+
 
  .category dd{
   border-left: 1px solid rgba(231, 225, 225, 0.68);
@@ -111,6 +114,20 @@ height: 60px;
 
 
 @media (min-width: 768px) {
+
+ .blog dd{
+  border-left: 1px solid rgba(231, 225, 225, 0.68);
+  margin-left: 155px;
+  padding-left: 10px;
+  bottom: -10px;
+  position: relative;
+}
+.blog dt{
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 15px;
+    padding-top: 0px;
+}
 
 .category dd{
   margin-left: 155px;
