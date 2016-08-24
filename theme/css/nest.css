@@ -53,7 +53,7 @@
 }
 
 
-.master, .footer{
+.master, .footer, #footercontent{
   width: 100%;
 }
 
@@ -99,7 +99,26 @@ padding-left: 5px;
 padding-right: 5px;
 }
 
+.master h1{
+margin-top: 20px;
+margin-bottom: 5px;
+}
+
+.avatar-container{
+  width: 60px;
+height: 60px;
+}
 @media (min-width: 768px) {
+
+.avatar-container{
+  width: 80px;
+height: 80px;
+}
+.master h1{
+margin-top: 20px;
+margin-bottom: 10px;
+}
+
   .container {
     width: 750px;
 }
@@ -175,7 +194,6 @@ margin-left: 25px;
 }
 
 #footercontent{
-  width: 100%;
  margin-right: auto; 
  margin-left: auto;
 }
