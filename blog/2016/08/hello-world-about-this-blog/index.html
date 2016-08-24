@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...">
-  <meta name="keywords" content="Comics, Essays, Manga">
+  <meta name="description" content="I’ve been thinking on maintaining a blog for a while now and had already stacked up a pile of writings ready to post. A long summer break allowed me enough free time to sit down and get started on ...">
+  <meta name="keywords" content="blog, github, pelican">
   <link rel="icon" href="https://steviepoppe.github.io/favicon.ico">
 
   <link rel="shortcut icon" type="image/png" href="https://steviepoppe.github.io/images/icons/favicon.png">
   <link rel="shortcut icon" type="image/x-icon" href="https://steviepoppe.github.io/favicon.ico">
 
-  <title>Stranger than fiction: the curious tale of Tomorrow's Joe's Ikki Kajiwara - Onoreto</title>
+  <title>Hello World - About this Blog - Onoreto</title>
 
 
 
@@ -23,7 +23,7 @@
   <link href="https://steviepoppe.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
   <link href="https://steviepoppe.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
   <link href="https://steviepoppe.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
-  <link href="https://steviepoppe.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
+  <link href="https://steviepoppe.github.io/feeds/technical.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
   <!-- /RSS Feeds -->
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -141,25 +141,50 @@
             <!-- Content -->
             <div id="main">
     <div class="container content padding-40">
-    <div class="container header-wrapper nobanner">
-        <hr/>
+    <div class="container header-wrapper banner" style="background: linear-gradient(rgba(6, 6, 6, 0.61), rgba(0, 0, 0, 0.46)), url('https://steviepoppe.github.io/images/pic02.jpg'); background-position: center; background-size: cover;">
         <div class="row">
               <div class="col-lg-12">
                   <div class="header-content center">
-                      <h1 class="header-title">Stranger than fiction: the curious tale of Tomorrow's Joe's Ikki Kajiwara</h1>
-                      <p class="header-date">do 22 augustus 2013, in category <a href="https://steviepoppe.github.io/blog/category/blog/">Blog</a></p>
+                      <h1 class="header-title">Hello World - About this Blog</h1>
+                      <p class="header-date">di 23 augustus 2016, in category <a href="https://steviepoppe.github.io/blog/category/technical/">Technical</a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
                       <p class="pull-right header-tags">
                           <span class="icon-tags" aria-hidden="true"></span>
-<a href="https://steviepoppe.github.io/blog/tags/comics/">Comics</a>, <a href="https://steviepoppe.github.io/blog/tags/essays/">Essays</a>, <a href="https://steviepoppe.github.io/blog/tags/manga/">Manga</a>                      </p>
+<a href="https://steviepoppe.github.io/blog/tags/blog/">blog</a>, <a href="https://steviepoppe.github.io/blog/tags/github/">github</a>, <a href="https://steviepoppe.github.io/blog/tags/pelican/">pelican</a>                      </p>
                   </div>
               </div>
         </div>
     </div>
     <div class="container-main">
-        <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.”
-Available in English, courtesy to Hox Translations</p>
+<h1 style="text-align: center;">Hello World - About this Blog</h1>
+        <p>I’ve been thinking on maintaining a blog for a while now and had already stacked up a pile of writings ready to post. A long summer break allowed me enough free time to sit down and get started on the technicalities; a process a bit more complicated as initially expected. This blog serves not as a tutorial on making one with Pelican (the internet is abound with those, I’ve linked some below), but as a brief log on my thought process during creation.</p>
+<p>From the outset I tried to steer away from heavy management systems such as Drupal or WordPress. They’re easy to work with and take a lot of work of your hands, but a serverside database means too heavy a load for what’s basically a smallscale personal blog, and several unnecessary security risks on top.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> The tech-hipster in me opted for a DIY approach with full control over both content and design. Static blog framework wise there are several popular options, but as I’m more accustomed to the Python programming language through other applications, I ended up choosing for <a href="http://blog.getpelican.com/">Pelican</a> over the more widespread Ruby-based <a href="http://jekyllrb.com/">Jekyll</a>. An added value of managing my blogs clientside and delivering small sized static pages is the ease of finding an appropriate host (I host my pages on <a href="https://pages.github.com/">GitHub Pages</a> while serving larger files through Dropbox) and a seamless integration in my Markdown<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>-based writing workflow.</p>
+<p>The initial set-up is relatively simple, as installation and basic generation is done through command line, and content written in Markdown, AsciiDoc or reStructuredText<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> gets served as stand-alone pages or articles. There’s a wide choice of <a href="http://www.pelicanthemes.com/">existing templates</a>, but further customization requires some working knowledge on webdesign as well as, preferably, on basic programming concepts (Pelican templates are created using the python-based <a href="http://jinja.pocoo.org/">Jinja2</a>, allowing for template logic and inheritance). Needless to say, hosting on GitHub Pages requires knowledge of Git, but that’s really not a skill learned in vain as the concept of version control applies well to writing important papers too.</p>
+<p>Getting acquainted with these tools can be time consuming. Luckily there are plenty of tutorials out there, as well as hundreds of working examples hosted on GitHub available as reference (the backbone of my template is a heavily modified <a href="https://github.com/kdeldycke/plumage">Plumage</a> theme). I prefer a minimalistic layout easy on the eye, and steered clear of unnecessary clutter, but with the advent of visual blogging<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup> I figured I’d integrate <em>some</em> graphical elements, such as article banners, after all: visual content engages the reader more easily. One easily overlooked design problem is ensuring responsive pages for the ever increasing internet access through smartphones, but with Twitter’s bootstrap framework this comes pretty naturally. Finally, implementing additional features is pretty easy too. There’s a wide range of existing <a href="https://github.com/getpelican/pelican-plugins">plugins</a> for features like searching, gzip cacheing for better performance, minifying assets, table of contents and comments (using the third-party <a href="https://disqus.com/">Disqus</a> blog hosting service). </p>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>http://guizishanren.com/guide-to-set-up-github-page-and-pelican/</li>
+<li>bla</li>
+<li>bla</li>
+</ul>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>Burnett, Brett. 2015. “Why Did We Migrate from Drupal to Jekyll?” Text. The BHW Group. november 16–. https://thebhwgroup.com/blog/jekyll-drupal-wordpress <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:2">
+<p>O’Nolan, John. 2015. “The Ultimate Guide to Writing &amp; Publishing with Markdown”. Ghost. maart 0. https://blog.ghost.org/markdown/ <a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn:3">
+<p>All three are open, lightweight markup languages with a heavy focus on readability through seperation of content and layout layers. <a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+<li id="fn:4">
+<p>Fanguy, Will. 2016. “The Amazing Evolution of Visual Storytelling: Blogging, Instagram, Snapchat, and the Future”. Business 2 Community. Geraadpleegd augustus 24. http://www.business2community.com/trends-news/amazing-evolution-visual-storytelling-blogging-instagram-snapchat-future-01557833 <a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">↩</a></p>
+</li>
+</ol>
+</div>
     <hr/>
         </div>
 
@@ -167,8 +192,8 @@ Available in English, courtesy to Hox Translations</p>
         <div id="disqus_thread"></div>
             <script type="text/javascript">
                 var disqus_shortname = 'steviepoppe';
-                var disqus_identifier = 'blog/2013/08/stranger-than-fiction-the-curious-tale-of-tomorrows-joes-ikki-kajiwara/';
-                var disqus_url = 'https://steviepoppe.github.io/blog/2013/08/stranger-than-fiction-the-curious-tale-of-tomorrows-joes-ikki-kajiwara/';
+                var disqus_identifier = 'blog/2016/08/hello-world-about-this-blog/';
+                var disqus_url = 'https://steviepoppe.github.io/blog/2016/08/hello-world-about-this-blog/';
                 (function() {
                     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
@@ -177,14 +202,6 @@ Available in English, courtesy to Hox Translations</p>
             </script>
         <noscript>Please enable JavaScript to view the comments.</noscript>
     </div>
-                <hr />
-        <div class="category">
-            <h2>Related posts</h2>
-            <dl class="dl-horizontal">
-                <dt>do 22 augustus 2013</dt>
-                <dd><a href="https://steviepoppe.github.io/blog/2013/08/tintin-and-the-evil-villain-mitsuhirato/">Tintin and the evil villain Mitsuhirato</a></dd>
-            </dl>
-            </div>
         <hr />
     </div>
             </div>
