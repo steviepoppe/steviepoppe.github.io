@@ -17,6 +17,8 @@
 }
 
 .blog dt ul{
+padding-left: 0;
+list-style-type: none;
 text-align: center;
 }
 
@@ -24,8 +26,7 @@ text-align: center;
 display: inline-block;
 }
 
-
- .blog dl
+ .blog dt dl
 {margin-top: -20px;}
 
 
@@ -112,7 +113,11 @@ height: 60px;
 
 
 @media (min-width: 768px) {
-
+.blog dt li{
+display: list-item;}
+.blog dt li::before {
+    content: "\2022 ";
+}
  .blog dd{
   border-left: 1px solid rgba(231, 225, 225, 0.68);
   margin-left: 155px;
