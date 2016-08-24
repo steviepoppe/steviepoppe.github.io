@@ -20,6 +20,7 @@ text-align: center;
 .blog dt ul{
 padding-left: 0;
 list-style-type: none;
+text-align:right;
 }
 
 .blog dt li{
@@ -125,6 +126,7 @@ height: 60px;
 }*/
 
 .blog dt ul{
+  text-align:left;
   list-style-type: disc;
 }
 .blog dt li{
