@@ -11,7 +11,7 @@
   <link rel="shortcut icon" type="image/png" href="https://steviepoppe.github.io/images/icons/favicon.png">
   <link rel="shortcut icon" type="image/x-icon" href="https://steviepoppe.github.io/favicon.ico">
 
-  <title>Hello World - About this Blog - Onoreto</title>
+  <title>Hello World - About This Blog - Onoreto</title>
 
 
 
@@ -146,7 +146,7 @@
         <div class="row">
               <div class="col-lg-12">
                   <div class="header-content center">
-                      <h1 class="header-title">Hello World - About this Blog</h1>
+                      <h1 class="header-title">Hello World - About This Blog</h1>
                       <p class="header-date">di 23 augustus 2016, in category <a href="https://steviepoppe.github.io/blog/category/technical/">Technical</a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
@@ -158,15 +158,34 @@
         </div>
     </div>
     <div class="container-main">
+            <nav class="toc">
+            <p class="toc_title">Table of Contents</p>
+            <div class="toc">
+<ul>
+<li><a href="#deciding">Deciding</a></li>
+<li><a href="#set-up">Set-up</a></li>
+<li><a href="#development">Development</a></li>
+<li><a href="#hosting">Hosting</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#further-reading">Further reading</a></li>
+</ul>
+</div>
+            </nav>
         <p>I’ve been thinking on maintaining a blog for a while now and had already stacked up a pile of writings ready to post. A long summer break allowed me enough free time to sit down and get started on the technicalities; a process a bit more complicated as initially expected. This blog serves not as a tutorial on making one with Pelican (there’s plenty of those as it is), but as a brief log on my thought process during creation.</p>
+
+<h1 id="deciding">Deciding</h1>
 <p>From the outset I tried to steer away from heavy management systems such as <strong>Drupal</strong> or <strong>WordPress</strong>. They’re easy to work with and take a lot of work of your hands, but a serverside database means too heavy a load for what’s basically a smallscale personal blog, and several unnecessary security risks on top<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. The tech-hipster in me opted for a DIY approach with full control over both content and design. Static blog framework wise there are several popular options, but as I’m more accustomed to the <em>Python</em> programming language through other applications, I ended up choosing for <strong><a href="http://blog.getpelican.com/">Pelican</a></strong> over the more widespread <em>Ruby</em>-based <strong><a href="http://jekyllrb.com/">Jekyll</a></strong>. An added value of managing my blogs clientside and delivering small sized static pages is the ease of finding an appropriate host (I host my pages on <strong><a href="https://pages.github.com/">GitHub Pages</a></strong> while serving larger files through Dropbox) and a seamless integration in my <em>Markdown</em>-based writing workflow<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>.</p>
+<h1 id="set-up">Set-up</h1>
 <p>The initial set-up is relatively simple, as installation and basic generation is done through command line, and content written in <em>Markdown</em>, <em>AsciiDoc</em> or <em>reStructuredText</em><sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> gets served as stand-alone pages or articles. There’s a wide choice of <a href="http://www.pelicanthemes.com/">existing templates</a>, but further customization requires some working knowledge on webdesign as well as, preferably, on basic programming concepts (Pelican templates are created using the python-based <strong><a href="http://jinja.pocoo.org/">Jinja2</a></strong>, allowing for template logic and inheritance). Needless to say, hosting on GitHub Pages requires knowledge of <strong>Git</strong>, but that’s really not a skill learned in vain as the concept of version control applies well to writing important papers too.</p>
+<h1 id="development">Development</h1>
 <p>Getting acquainted with these tools can be time consuming. Luckily there are plenty of tutorials out there, as well as hundreds of working examples hosted on GitHub available as reference (the backbone of my template is a heavily modified <em><a href="https://github.com/kdeldycke/plumage">Plumage</a></em> theme). I prefer a minimalistic layout easy on the eye, and steered clear of unnecessary clutter, but with the advent of visual blogging<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup> I figured I’d integrate <em>some</em> graphical elements, such as article banners, after all: visual content engages the reader more easily. One easily overlooked design problem is ensuring responsive pages for the ever increasing internet access through smartphones, but with Twitter’s <strong>Bootstrap</strong> framework this comes pretty naturally. Finally, implementing additional features is pretty easy too. There’s a wide range of existing <a href="https://github.com/getpelican/pelican-plugins">plugins</a> for features like searching, gzip cacheing for better performance, minifying assets, table of contents and comments (using the third-party <strong><a href="https://disqus.com/">Disqus</a></strong> blog hosting service). </p>
+<h1 id="hosting">Hosting</h1>
 <p>Part on GitHub Pages and git here</p>
 <p>(some visual elements here)</p>
+<h1 id="conclusion">Conclusion</h1>
 <p>Conclusion: -&gt; aims of this blog and this particular blogpost (no real use lol)</p>
 <p>Here’s several decent tutorials on setting up Pelican and hosting on GitHub Pages. If anyone’s interested on more information on setting things up, feel free to leave a comment.</p>
-<h2 id="further-reading">Further reading</h2>
+<h1 id="further-reading">Further reading</h1>
 <ul>
 <li>http://guizishanren.com/guide-to-set-up-github-page-and-pelican/</li>
 <li>Links here</li>
