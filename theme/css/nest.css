@@ -30,6 +30,12 @@ display: inline-block;
 {margin-top: -20px;}
 
 
+.tagtitle{
+  margin-left: 24px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
  .category dd{
   border-left: 1px solid rgba(231, 225, 225, 0.68);
   padding-left: 10px;
@@ -113,6 +119,11 @@ height: 60px;
 
 
 @media (min-width: 768px) {
+
+.tagtitle{
+  margin-left: 24px;
+}
+
 .blog dt li{
 display: list-item;}
 .blog dt li::before {
