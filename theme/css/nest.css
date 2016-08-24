@@ -30,17 +30,17 @@
 
  .category dd{
   border-left: 1px solid rgba(231, 225, 225, 0.68);
-  margin-left: 155px;
   padding-left: 10px;
-  bottom: -13px;
+/*  margin-left: 155px;
+  bottom: -13px;*/
   position: relative;
 }
 
 .category dt{
     font-size: 12px;
     font-weight: 400;
-    width: 140px;
-    margin-top: 15px;
+/*    width: 140px;
+*/    margin-top: 15px;
 }
 
 .head-container{
@@ -95,8 +95,8 @@ margin-right: auto;
 }
 
 .nav > li > a {
-padding-left: 5px;
-padding-right: 5px;
+padding-left: 10px;
+padding-right: 3px;
 }
 
 .master h1{
@@ -108,7 +108,18 @@ margin-bottom: 5px;
   width: 60px;
 height: 60px;
 }
+
+
 @media (min-width: 768px) {
+
+.category dd{
+  margin-left: 155px;
+bottom: -13px;
+}
+
+.category dt {
+    width: 140px;
+}
 
 .avatar-container{
   width: 80px;
@@ -821,12 +832,10 @@ footer{
     text-align: center;
 }
 
-/* Card flip inspired by http://learn.shayhowe.com/advanced-html-css/transitions-animations */
-/* Possible alternative: use https://github.com/mintchaos/flippant.js */
 .page-header .avatar-container {
   z-index: 10;
-  width: 80px;
-  height: 80px;
+/*  width: 80px;
+  height: 80px;*/
   margin: 0 20px;
   position: relative;
   -webkit-perspective: 600;
