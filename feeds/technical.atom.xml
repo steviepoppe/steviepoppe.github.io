@@ -17,18 +17,19 @@
 &lt;p&gt;While further customization requires &lt;em&gt;some&lt;/em&gt; technical experience (or at least the proper mindset), I believe the base set-up is easy enough for anyone to learn and allows for more control over your own content and a smoother workflow as you would have relying on big CMS systems. Any extra skills learned will definitely come in use as digital publishing, webdesign and working with Git or other forms of version control become more and more basic skills anyone should possess. In retrospect, Jekyll appears to be an easier option for beginners with it’s widespread usage, but both Jekyll and Pelican achieve the same thing, so this is personal choice really. I’ll end up writing a full step-by-step beginner’s guide on setting up Pelican and hosting on GitHub Pages eventually, but for now I’ll post several decent tutorials below.&lt;/p&gt;
 &lt;h1 id="further-reading"&gt;Further reading&lt;/h1&gt;
 &lt;ul&gt;
-&lt;li&gt;http://guizishanren.com/guide-to-set-up-github-page-and-pelican/&lt;/li&gt;
-&lt;li&gt;Links here&lt;/li&gt;
-&lt;li&gt;Links here&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://arunrocks.com/moving-blogs-to-pelican/"&gt;http://arunrocks.com/moving-blogs-to-pelican/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://cyrille.rossant.net/pelican-github/"&gt;http://cyrille.rossant.net/pelican-github/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://duncanlock.net/blog/2013/05/17/how-i-built-this-website-using-pelican-part-1-setup/"&gt;http://duncanlock.net/blog/2013/05/17/how-i-built-this-website-using-pelican-part-1-setup/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://guizishanren.com/guide-to-set-up-github-page-and-pelican/"&gt;http://guizishanren.com/guide-to-set-up-github-page-and-pelican/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="footnote"&gt;
 &lt;hr/&gt;
 &lt;ol&gt;
 &lt;li id="fn:1"&gt;
-&lt;p&gt;Burnett, Brett. 2015. “Why Did We Migrate from Drupal to Jekyll?” Text. The BHW Group. https://thebhwgroup.com/blog/jekyll-drupal-wordpress &lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Burnett, Brett. 2015. “Why Did We Migrate from Drupal to Jekyll?” Text. The BHW Group. &lt;a href="https://thebhwgroup.com/blog/jekyll-drupal-wordpress"&gt;https://thebhwgroup.com/blog/jekyll-drupal-wordpress&lt;/a&gt; &lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id="fn:2"&gt;
-&lt;p&gt;O’Nolan, John. 2015. “The Ultimate Guide to Writing &amp;amp; Publishing with Markdown”. Ghost. https://blog.ghost.org/markdown/ &lt;a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;O’Nolan, John. 2015. “The Ultimate Guide to Writing &amp;amp; Publishing with Markdown”. Ghost. &lt;a href="https://blog.ghost.org/markdown/"&gt;https://blog.ghost.org/markdown/&lt;/a&gt; &lt;a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id="fn:3"&gt;
 &lt;p&gt;All three are open, lightweight markup languages with a heavy focus on readability through seperation of content and layout layers. &lt;a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
@@ -37,7 +38,7 @@
 &lt;p&gt;Fanguy, Will. 2016. “The Amazing Evolution of Visual Storytelling: Blogging, Instagram, Snapchat, and the Future”. Business 2 Community. &lt;a href="http://www.business2community.com/trends-news/amazing-evolution-visual-storytelling-blogging-instagram-snapchat-future-01557833"&gt;http://www.business2community.com/trends-news/amazing-evolution-visual-storytelling-blogging-instagram-snapchat-future-01557833&lt;/a&gt; &lt;a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id="fn:5"&gt;
-&lt;p&gt;‘&lt;em&gt;the amount of mobile traffic now accounts for more than half of total internet traffic&lt;/em&gt;‘ “Cisco Visual Networking Index: Global Mobile Data Traffic Forecast Update, 2015–2020 White Paper”. 2016. Cisco. [http://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/mobile-white-paper-c11-520862.html] &lt;a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;‘&lt;em&gt;the amount of mobile traffic now accounts for more than half of total internet traffic&lt;/em&gt;‘ “Cisco Visual Networking Index: Global Mobile Data Traffic Forecast Update, 2015–2020 White Paper”. 2016. Cisco. &lt;a href="http://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/mobile-white-paper-c11-520862.html"&gt;http://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/mobile-white-paper-c11-520862.html&lt;/a&gt; &lt;a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;</summary><category term="pelican"></category><category term="blog"></category><category term="github"></category></entry></feed>
