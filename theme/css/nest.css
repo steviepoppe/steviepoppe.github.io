@@ -346,18 +346,17 @@ a.more{
 
 /* Hier normaal code */
 pre {
-  background: #f8f7fa;
-  padding: 34px;
-  font-size: 16px;
-  line-height: 24px;
-  font-family: Consolas, monaco, monospace;
-  border-radius: 0px;
-  color: #4b505a;
-  margin: 34px 0;
-  font-weight: 700; 
-}
+color: #c7254e;
+background-color: #f9f2f4;
+border-radius: 4px;
+word-wrap: break-word;
+border-radius: 10px;
+border: solid 1px #f3d5e7;
+padding: 10px 10px 10px 10px;
+margin: 10px 10px 10px 10px;
+font-size: 11px;
 
-pre {
+
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
   white-space: -pre-wrap;      /* Opera 4-6 */
@@ -365,22 +364,8 @@ pre {
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
-code {
-  font-family: Consolas, monaco, monospace;
-  color: #c7254e;
-  background-color: #f9f2f4;
-  border-radius: 4px;
-  word-wrap: break-word;
-  border-radius: 10px;
-  border: solid 1px #f3d5e7;
-  padding: 10px 10px 10px 10px;
-  margin: 10px 10px 10px 10px;
-  font-size: 11px;
-}
 
-code { padding: 3px 6px; }
-
-.linenos pre{
+/*.linenos pre{
 	border:none;
 	margin-top:20px;
 	margin-bottom:20px;
@@ -409,6 +394,7 @@ code { padding: 3px 6px; }
   font-family: Consolas, monaco, monospace;
   color: #fff;
 }
+*/
 
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
@@ -1246,4 +1232,8 @@ nav.toc{
     width: 38%;
     float: right;
   }
+}
+
+pre {
+  padding: 10px;
 }
