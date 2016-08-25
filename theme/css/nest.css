@@ -451,8 +451,6 @@ h2 {
     text-transform: uppercase;
     transition: all 0.2s ease-out;
   }
-
-
   .header-nav .nav a:hover{
     color:#fff;
     font-weight:600;
@@ -463,7 +461,7 @@ h2 {
     /*color:#fff;*/
     color:#fff;
     font-weight:600;
-  background-color: #e7e7e7; 
+    background-color: rgba(0,0,0,0.2);
   }
   .header-logo {
     font-size:15px;
@@ -1237,4 +1235,14 @@ nav.toc{
 
 pre {
   padding: 10px;
+}
+
+  .nav > li > a:hover{    
+  background-color: #e7e7e7; 
+  }
+
+  .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #333;
+    background-color: transparent;
+    background-color: #e7e7e7;
 }
