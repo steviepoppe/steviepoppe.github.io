@@ -456,6 +456,7 @@ h2 {
     font-weight:600;
     opacity: 1;
     background-color: rgba(0,0,0,0.2);
+    background-color: #e7e7e7;
   }
   .header-nav .nav .active{
     /*color:#fff;*/
