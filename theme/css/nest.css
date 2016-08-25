@@ -451,6 +451,9 @@ h2 {
     text-transform: uppercase;
     transition: all 0.2s ease-out;
   }
+  .navbar-nav a:hover{    
+  background-color: #e7e7e7; 
+  }
   .header-nav .nav a:hover{
     color:#fff;
     font-weight:600;
@@ -461,7 +464,7 @@ h2 {
     /*color:#fff;*/
     color:#fff;
     font-weight:600;
-    background-color: rgba(0,0,0,0.2);
+  background-color: #e7e7e7; 
   }
   .header-logo {
     font-size:15px;
@@ -986,7 +989,6 @@ transition: all .3s ease-in-out;
 
 .socialnav > li > a:focus, .socialnav > li > a:hover {
   text-decoration: none;
-  background-color: #e7e7e7; 
   color: #555;
 }
 
