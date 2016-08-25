@@ -220,7 +220,7 @@ nav.toc{
     #steviesmenubar{
       font-size: 90%;
     }
-    .socialnav, #searchid{
+    .socialnav, #searchform{
       display: block;
       visibility: visible;
     }
