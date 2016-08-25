@@ -12,10 +12,10 @@
   font-size: 10px;
   display: inline-block;
   font-weight: 400;
-  line-height: inherit;
+line-height: inherit;
   margin-top: 15px;
-  padding-top: 0px;
-  width: 100%;
+      padding-top: 0px;
+      width: 100%;
 /*    padding-top: 5px;
 text-align: center;*/
 }
@@ -132,13 +132,13 @@ nav.toc{
     height: 180px;
   }
 
-  .datetitle{
-    font-size: 14px;
-  }
+.datetitle{
+  font-size: 14px;
+}
   .tagtitle{
     margin-left: -24px;
     font-weight: normal;
-    font-size: 14px;
+  font-size: 14px;
   }
 
   .blog dt li{
@@ -346,15 +346,15 @@ a.more{
 
 /* Hier normaal code */
 pre {
-  color: #c7254e;
-  background-color: #f9f2f4;
-  border-radius: 4px;
-  word-wrap: break-word;
-  border-radius: 10px;
-  border: solid 1px #f3d5e7;
-  padding: 10px 10px 10px 10px;
-  margin: 10px 10px 10px 10px;
-  font-size: 11px;
+color: #c7254e;
+background-color: #f9f2f4;
+border-radius: 4px;
+word-wrap: break-word;
+border-radius: 10px;
+border: solid 1px #f3d5e7;
+padding: 10px 10px 10px 10px;
+margin: 10px 10px 10px 10px;
+font-size: 11px;
 
 
   white-space: pre-wrap;
@@ -986,6 +986,7 @@ transition: all .3s ease-in-out;
 
 .socialnav > li > a:focus, .socialnav > li > a:hover {
   text-decoration: none;
+  background-color: #eee;    
   color: #555;
 }
 
@@ -1236,10 +1237,6 @@ nav.toc{
 pre {
   padding: 10px;
 }
-
-  .nav > li > a:hover{    
-  background-color: #e7e7e7; 
-  }
 
   .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     color: #333;
