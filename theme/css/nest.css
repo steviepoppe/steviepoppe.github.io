@@ -451,9 +451,11 @@ h2 {
     text-transform: uppercase;
     transition: all 0.2s ease-out;
   }
-  .nav > li > a:hover{    
-  background-color: #e7e7e7; 
-  }
+
+  .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #e7e7e7;
+}
+
   .header-nav .nav a:hover{
     color:#fff;
     font-weight:600;
