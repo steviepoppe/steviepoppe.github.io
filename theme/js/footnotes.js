@@ -30,16 +30,11 @@ var Footnotes = {
         var el = document.getElementById(id);
         div.html($(el).html());
         
-        div.css({
-            position:'absolute',
-            width:'250px',
-            opacity:0.9
-        });
         $(document.body).append(div);
 
         var left = position.left;
-        if(left + 270  > $(window).width() + $(window).scrollLeft())
-            left = $(window).width() - 270 + $(window).scrollLeft();
+        if(left + (div.width() + 20)  > $(window).width() + $(window).scrollLeft())
+            left = $(window).width() - (div.width() + 20) + $(window).scrollLeft();
         var top = position.top+20;
         if(top + div.height() > $(window).height() + $(window).scrollTop())
             top = position.top - div.height() - 15;
