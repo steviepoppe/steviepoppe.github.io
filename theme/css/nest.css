@@ -1280,6 +1280,7 @@ width: 300px;
 @media (min-width: 768px) {
   sup.popup_footnote span {
     top: 10px;
+    transform: translate(-50%, 0);
     position:absolute; 
     width: 250px;
 }
