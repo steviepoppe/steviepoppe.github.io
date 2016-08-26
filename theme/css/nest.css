@@ -1248,9 +1248,9 @@ pre {
 }
 
 sup.popup_footnote span {   
-  min-width: 150px;
-   width: 50vw;
-   text-align: justify;
+    min-width: 150px;
+    width: 50vw;
+    text-align: justify;
     position:fixed; 
     z-index:10;
     display:none; 
@@ -1259,9 +1259,9 @@ sup.popup_footnote span {
     opacity:0.9;
     border-radius:4px;
     box-shadow: 5px 5px 8px #D4D4D4;
-    top: 10px;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%,-50%);
 }
 
 sup.popup_footnote:hover span{
@@ -1272,18 +1272,17 @@ sup.popup_footnote:hover span{
   }
 
 
-
-
 @media (min-width: 992px) {
 sup.popup_footnote span {
 width: 300px;
 }
 }
 
-
 @media (min-width: 768px) {
   sup.popup_footnote span {
     top: 10px;
+    left: 50%;
+    transform: translate(-50%, 0);
     position:absolute; 
     width: 250px;
 }
