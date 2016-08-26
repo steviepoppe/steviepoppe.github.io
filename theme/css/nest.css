@@ -1248,6 +1248,7 @@ pre {
 }
 
 sup.popup_footnote span {
+  max-width: 100vh;
  text-align: justify;
     position:absolute; 
     z-index:10;
@@ -1257,8 +1258,9 @@ sup.popup_footnote span {
     opacity:0.9;
     border-radius:4px;
     box-shadow: 5px 5px 8px #D4D4D4;
-  top: -20px;
-left: -20px;
+  top: 10px;
+left: 50%;
+transform: translate(-50%, 0);
 }
 
 sup.popup_footnote:hover span{
@@ -1270,7 +1272,7 @@ sup.popup_footnote:hover span{
 
 
 
-
+/*
 @media (min-width: 992px) {
 sup.popup_footnote span {
 width: 300px;
@@ -1283,3 +1285,4 @@ width: 300px;
 width: 250px;
 }
 }
+*/
