@@ -279,6 +279,8 @@ body {
   margin:0;
   padding:0;
   height:100%;
+  hyphens: auto;
+word-wrap: break-word;
 }
 
 /* Default styling */
