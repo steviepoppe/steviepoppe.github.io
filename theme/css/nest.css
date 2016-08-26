@@ -1265,3 +1265,19 @@ sup.popup_footnote:hover span{
     border: 1px solid #eaeaea;
     background-color: #fffcfc;
   }
+
+
+
+
+@media (min-width: 992px) {
+sup.popup_footnote span {
+width: 300px;
+}
+}
+
+
+@media (min-width: 768px) {
+  sup.popup_footnote span {
+width: 250px;
+}
+}
