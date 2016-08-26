@@ -1249,7 +1249,6 @@ pre {
 
 sup.popup_footnote span {
     max-width: 100%;
-    min-width: 50px;
     text-align: justify;
     position:absolute; 
     z-index:10;
