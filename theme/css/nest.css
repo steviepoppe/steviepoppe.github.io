@@ -1248,10 +1248,10 @@ pre {
 }
 
 sup.popup_footnote span {   
-  width: 100%; //fallback
+  width: 100%;
    width: 100vw;
  text-align: justify;
-    position:absolute; 
+    position:fixed; 
     z-index:10;
     display:none; 
     padding: 5px;
@@ -1260,6 +1260,8 @@ sup.popup_footnote span {
     border-radius:4px;
     box-shadow: 5px 5px 8px #D4D4D4;
   top: 10px;
+left: 50%;
+transform: translate(-50%, 0);
 }
 
 sup.popup_footnote:hover span{
@@ -1282,7 +1284,5 @@ width: 300px;
 @media (min-width: 768px) {
   sup.popup_footnote span {
 width: 250px;
-left: 50%;
-transform: translate(-50%, 0);
 }
 }
