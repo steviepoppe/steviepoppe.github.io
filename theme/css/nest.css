@@ -1296,7 +1296,7 @@ width: 300px;
 
 
 
-a {
+a, .footnote {
     /* These are technically the same, but use both */
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -1312,6 +1312,9 @@ a {
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
+
+  overflow: hidden;
+  white-space: pre-wrap;
 }
 
 /*.social-icons-footer li i {
