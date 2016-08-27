@@ -126,6 +126,11 @@ nav.toc{
   height: 150px;
 }
 
+    .rssonly{
+      display: block;
+      visibility: visible;
+    }
+
 @media (min-width: 768px) {
 
   .image.featured {
@@ -220,7 +225,7 @@ nav.toc{
     #steviesmenubar{
       font-size: 90%;
     }
-    .socialnav, #searchform{
+    .socialonly, #searchform{
       display: block;
       visibility: visible;
     }
