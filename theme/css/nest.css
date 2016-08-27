@@ -279,8 +279,6 @@ body {
   margin:0;
   padding:0;
   height:100%;
-  hyphens: auto;
-word-wrap: break-word;
 }
 
 /* Default styling */
@@ -1238,6 +1236,7 @@ nav.toc{
 
 pre {
   padding: 10px;
+  max-height: 400px;
 }
 
   .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
@@ -1245,6 +1244,12 @@ pre {
     background-color: transparent;
     background-color: #e7e7e7;
     transition: all .2s ease-out;
+}
+
+#footnote
+{  
+  hyphens: auto;
+word-wrap: break-word;
 }
 
 #footnotediv 
