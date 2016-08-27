@@ -1313,3 +1313,18 @@ a {
   -webkit-hyphens: auto;
   hyphens: auto;
 }
+
+/*.social-icons-footer li i {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    margin: 0 9px 0 3px;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 16px;
+    font-size: 16px;
+}*/
