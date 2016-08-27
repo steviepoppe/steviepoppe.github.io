@@ -33,8 +33,8 @@ var Footnotes = {
         $(document.body).append(div);
 
         var left = position.left;
-        if(left + (div.width() + 20)  > $(window).width() + $(window).scrollLeft())
-            left = $(window).width() - (div.width() + 20) + $(window).scrollLeft();
+        if(left + (div.width() + 20)  > $(window).width())
+            left = $(window).width() - (div.width() + 20);
         var top = position.top+20;
         if(top + div.height() > $(window).height() + $(window).scrollTop())
             top = position.top - div.height() - 15;

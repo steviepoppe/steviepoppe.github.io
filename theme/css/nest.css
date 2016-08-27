@@ -1266,8 +1266,7 @@ pre {
 
 @media (min-width: 768px) {
 #footnotediv {
-max-width: 400px; !important
-}
+max-width: 400px;
 }
 
 /*
