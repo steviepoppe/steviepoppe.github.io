@@ -1312,9 +1312,7 @@ a, .footnote {
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
-
   overflow: hidden;
-  white-space: pre-wrap;
 }
 
 /*.social-icons-footer li i {
