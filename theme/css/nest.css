@@ -343,10 +343,14 @@ a.more{
 
 /* Syntax Highlighting */
 
-
+code{
+  color: #C10000;
+background-color: #f9f2f4;
+white-space: pre-wrap;
+}
 /* Hier normaal code */
 pre {
-color: #c7254e;
+color: #C10000;
 background-color: #f9f2f4;
 border-radius: 4px;
 word-wrap: break-word;
@@ -1267,6 +1271,10 @@ word-wrap: break-word;
     max-width: 200px;
     width: 80%;
     width: 80vw;
+}
+
+#footnotediv p {
+    margin: 0px;
 }
 
 @media (min-width: 768px) {
