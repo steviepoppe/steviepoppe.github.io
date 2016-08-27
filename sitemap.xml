@@ -2,25 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://steviepoppe.github.io/blog/2016/08/pelican-plugin-css-only-footnote-pop-up/</loc>
+    <loc>http://steviepoppe.net/blog/2016/08/pelican-plugin-css-only-footnote-pop-up/</loc>
     <priority>0.8</priority>
   </url>
 
 <!--     <url>
-    <loc>https://steviepoppe.github.io/blog/2016/08/hello-world-about-this-blog/</loc>
+    <loc>http://steviepoppe.net/blog/2016/08/hello-world-about-this-blog/</loc>
     <priority>0.8</priority>
   </url>
 
 <!--    -->
 
   <url>
-    <loc>https://steviepoppe.github.io/about/</loc>
+    <loc>http://steviepoppe.net/about/</loc>
     <priority>1.0</priority>
   </url>
 
 <!--    -->
   <url>
-    <loc>https://steviepoppe.github.io/resources/</loc>
+    <loc>http://steviepoppe.net/resources/</loc>
     <priority>1.0</priority>
   </url>
 
