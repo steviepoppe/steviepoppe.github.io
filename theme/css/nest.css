@@ -1308,8 +1308,7 @@ a, .footnote, #further-reading {
   -webkit-hyphens: auto;
   hyphens: auto;
   overflow: hidden;  
-  white-space: nowrap;
-  width: 100%;                   
+  white-space: nowrap;     
   overflow: hidden; 
   text-overflow: ellipsis;
 }
