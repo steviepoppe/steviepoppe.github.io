@@ -1296,7 +1296,7 @@ width: 300px;
 
 
 
-a, .footnote {
+a, #footnote {
     /* These are technically the same, but use both */
   overflow-wrap: break-word;
   word-wrap: break-word;
