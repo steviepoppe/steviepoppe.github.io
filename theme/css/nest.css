@@ -1211,11 +1211,11 @@ pre {
   transition: all .2s ease-out;
 }
 
-#footnote
+/*#footnote
 {  
   hyphens: auto;
   word-wrap: break-word;
-}
+}*/
 
 #footnotediv 
 {
@@ -1232,6 +1232,7 @@ pre {
   max-width: 200px;
   width: 80%;
   width: 80vw;
+  display:none;
 }
 
 #footnotediv p {
@@ -1241,6 +1242,7 @@ pre {
 @media (min-width: 768px) {
   #footnotediv {
     max-width: 400px;
+    display:inherit;
   }
 
 /*
@@ -1287,3 +1289,22 @@ width: 300px;
 }*/
 
 
+
+
+a {
+    /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
