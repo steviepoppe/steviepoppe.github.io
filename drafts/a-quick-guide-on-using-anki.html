@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="text/javascript">
+    var host = "steviepoppe.net";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+</script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Those who know me might accuse me of preaching the memorisation tool Anki as the best thing that’s ever happened to studying, and they wouldn’t be that far of. Over the past year I’ve extensively ...">
+  <meta name="keywords" content="Anki, Japanese set-up, Tutorial">
+  <link rel="icon" href="https://steviepoppe.net/favicon.ico">
+
+  <link rel="shortcut icon" type="image/png" href="https://steviepoppe.net/images/icons/favicon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="https://steviepoppe.net/favicon.ico">
+
+  <title>A Quick Guide on Using Anki - Onoreto</title>
+<link rel="canonical" href="https://steviepoppe.net/drafts/a-quick-guide-on-using-anki.html">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>
+
+  <!-- Stylesheets -->
+  <link href="https://steviepoppe.net/theme/css/all.min.css" rel="stylesheet">
+  <!-- /Stylesheets -->
+
+  <!-- RSS Feeds -->
+  <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
+  <link href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
+  <link href="http://localhost:8000/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
+  <link href="http://localhost:8000/feeds/technical.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
+  <link href="http://localhost:8000/feeds/technical.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
+  <!-- /RSS Feeds -->
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <![endif]-->
+
+          <!-- Google Analytics -->
+          <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-82857115-1', 'auto');
+            ga('send', 'pageview');
+          </script>
+          <!-- /Google Analytics -->
+
+<!-- https://developers.google.com/custom-search/docs/structured_data?hl=es&csw=1#microformats -->
+<!--
+<PageMap>
+<DataObject type="document">
+    <Attribute name="title">A Quick Guide on Using Anki</Attribute>
+    <Attribute name="author">Stevie Poppe</Attribute>
+    <Attribute name="description">Those who know me might accuse me of preaching the memorisation tool Anki as the best thing that’s ever happened to studying, and they wouldn’t be that far of. Over the past year I’ve extensively integrated this software in my studies, with remarkable results in both productivity and academic grades. There are however, some pitfalls for the casual user to take heed of, and getting the full benefit of your time requires cultivating a proper mindset. As I talk extensively about Anki - and it’s usage in various situations - on this site, I decided on writing my own short guide on setting up and using Anki. Anyone with an interest in studying Japanese will surely already have heard of Anki. It’s covered extensively on all the major learning resources online, and the canonical self learner’s beginner path seems to be Heisig’s Kanji method, Tae Kim’s online Grammar Guide and Core 6K, all three through using Anki. Surely, language acquisition remains it’s primary function, but lately, the software’s also become an integrated routine for medical students and finding it’s way in various other branches. This whole post sounds like I’m paid to advertise Anki. Except the software’s free and open source, and if you don’t like syncing your anki progress over Anki’s servers, you can just as well set up your own. What is Anki? Why is Anki?! How is Anki?!? Pretty good, thank you. You’d have guessed it by now: Anki is an extremely customizable application designed for memorisation, available for free on nearly all the major platforms as well as being accessable online. Being able to study on the road (I commute by train, taking me approximately 2.5u every day) and syncing your progress at home is a major boon on using your time practically. There are plenty of studies on methods for efficient learning, and most put the popular late-night cramming, extensive marking and rereading of texts at the top bottom. On the other hand, active recall testing (actively trying to come up with the answer to a question) and spaced learning (spreading information absorbtion over long periods) are always placed at the very top. Anki is an application that achieves both through the means of timed flashcards. The concept is simple: the front of the card asks you a question and the backside displays the answer. After showing the answer, you decide whether you got it wrong or right, and to what degree. This determines when you’ll be confronted by this card again. The Guide Setting up Technicalities here: download, install, account, syncing Your first set! How to download an existing set Creating your own cards Basic set and card creation Creating your own cards… Efficiently! Card templates, layouting, etc Structuring Data “But Stevie”, I hear you ask, “how do I study less structured information with Anki?“ Good question. This involves some thinking on your part: what is it that you’d like to reproduce? What information would you like ...</Attribute>
+    <Attribute name="page_count">1</Attribute>
+    <Attribute name="rating">5</Attribute>
+    <Attribute name="last_update">2013-08-25T16:08:00+02:00</Attribute>
+</DataObject>
+<DataObject type="metatags">
+    <Attribute name="category" value="Technical"/>
+        <Attribute name="category" value="Anki"/>
+        <Attribute name="category" value="Tutorial"/>
+        <Attribute name="category" value="Japanese set-up"/>
+</DataObject>
+-->
+
+   
+
+        </head>
+
+        <body style="background-repeat: repeat; background-position: top left; background-attachment: scroll; background-image: url('https://steviepoppe.net/images/asanoha-400px.png');">
+          <div id="wrapper">
+            <!-- Header -->
+            <div class="master">
+              <div class="head-container">
+
+                <div class="page-header">
+                  <a href="https://steviepoppe.net" class="avatar-container pull-left">
+                    <div class="avatar">
+                      <div class="side"><img src="https://steviepoppe.net/images/logo2.png" class="img-responsive"/></div>
+                    </div>
+                  </a>
+                  <h1 style="font-size: 28px; letter-spacing: 1px;"><a href="https://steviepoppe.net">Onoreto</a> <small>@Stevie Poppe</small></h1>
+                </div>
+
+                <nav class="navbar navbar-default">
+
+                  <!-- Hamburger menu for mobile -->
+<!--                   <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <i class="fa fa-ellipsis-v fa-lg"></i>
+                    </button>
+                    <a class="navbar-brand" href="https://steviepoppe.net" title="@Stevie Poppe">Onoreto</a>
+                  </div> -->
+
+                  <!-- Menus and search forms -->
+                  <div class="navbar-collapse" id="steviesmenubar">
+                    <div style="float: left;">
+                      <ul class="nav navbar-nav">
+<li >
+                          <a href="/">Blog</a>
+                        </li>
+<li >
+                          <a href="/blog/category/">Categories</a>
+                        </li>
+<li >
+                          <a href="https://steviepoppe.net/about/">About</a>
+                        </li>
+<li >
+                          <a href="https://steviepoppe.net/resources/">Resources</a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="social">
+                      <ul class="socialnav socialonly social-icons-footer collapse">
+
+                        <li>
+                          <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                            <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                          </a><span class="screen-reader">Twitter</span>
+                        </li>
+                        <li>
+                          <a href="https://be.linkedin.com/in/stevie-poppe-9048b395" title="Linkedin">
+                            <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                          </a><span class="screen-reader">Linkedin</span>
+                        </li>
+                        <li>
+                          <a href="https://www.instagram.com/stevie.poppe/" title="Instagram">
+                            <i class="icon-instagram" style="font-size: 10px !important;"></i>
+                          </a><span class="screen-reader">Instagram</span>
+                        </li>
+                        <li>
+                          <a href="https://www.goodreads.com/user/show/35676792-stevie-poppe" title="Goodreads">
+                            <i class="icon-goodreads" style="font-size: 10px !important;"></i>
+                          </a><span class="screen-reader">Goodreads</span>
+                        </li>
+                      </ul>
+                      <ul class="socialnav rssonly social-icons-footer">
+                        <li>
+                          <a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">
+                            <i class="icon-rss" style="font-size: 10px !important;">
+                            </i>
+                          </a>
+                        </li>
+                      </ul>
+                      <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" > 
+                        <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input"></form>
+
+                      </div>
+
+
+                    </div>
+
+                  </nav>
+
+                </div>
+              </div>
+              <!-- /Header -->
+
+
+              <!-- Content -->
+              <div id="main">
+    <div class="container content padding-40">
+    <div class="container header-wrapper nobanner">
+        <hr/>
+        <div class="row">
+              <div class="col-lg-12">
+                  <div class="header-content center">
+                      <h1 class="header-title">A Quick Guide on Using Anki</h1>
+                      <p class="header-date">zo 25 augustus 2013, in category <a href="https://steviepoppe.net/blog/category/technical/">Technical</a></p>
+                      <div class="header-underline"></div>
+                      <div class="clearfix"></div>
+                      <p class="pull-right header-tags">
+                          <span class="icon-tags" aria-hidden="true"></span>
+<a href="https://steviepoppe.net/blog/tags/anki/">Anki</a>, <a href="https://steviepoppe.net/blog/tags/japanese-set-up/">Japanese set-up</a>, <a href="https://steviepoppe.net/blog/tags/tutorial/">Tutorial</a>                      </p>
+                  </div>
+              </div>
+        </div>
+    </div>
+    <div class="container-main">
+            <nav class="toc">
+            <p class="toc_title">Table of Contents</p>
+            <div class="toc">
+<ul>
+<li><a href="#what-is-anki-why-is-anki-how-is-anki">What is Anki? Why is Anki?! How is Anki?!?</a></li>
+<li><a href="#the-guide">The Guide</a><ul>
+<li><a href="#setting-up">Setting up</a></li>
+<li><a href="#your-first-set">Your first set!</a></li>
+<li><a href="#creating-your-own-cards">Creating your own cards</a><ul>
+<li><a href="#creating-your-own-cards-efficiently">Creating your own cards… Efficiently!</a></li>
+</ul>
+</li>
+<li><a href="#structuring-data">Structuring Data</a></li>
+<li><a href="#spaced-learning">Spaced Learning</a></li>
+</ul>
+</li>
+<li><a href="#wait-there-is-more">Wait! There is more!</a></li>
+<li><a href="#further-reading">Further reading</a></li>
+</ul>
+</div>
+            </nav>
+        
+<!-- PELICAN_BEGIN_SUMMARY -->
+<p>Those who know me might accuse me of preaching the memorisation tool Anki as the best thing that’s ever happened to studying, and they wouldn’t be <em>that</em> far of. Over the past year I’ve extensively integrated this software in my studies, with remarkable results in both productivity and academic grades. There are however, some pitfalls for the casual user to take heed of, and getting the full benefit of your time requires cultivating a proper mindset. As I talk extensively about Anki - and it’s usage in various situations - on this site, I decided on writing my own short guide on setting up and using Anki.</p>
+<!-- PELICAN_END_SUMMARY -->
+<p>Anyone with an interest in studying Japanese will surely already have heard of Anki. It’s covered extensively on all the major learning resources online, and the canonical self learner’s beginner path seems to be Heisig’s Kanji method, Tae Kim’s online Grammar Guide and Core 6K, all three through using Anki. Surely, language acquisition remains it’s primary function, but lately, the software’s also become an integrated routine for medical students and finding it’s way in various other branches. This whole post sounds like I’m paid to advertise Anki. Except the software’s free<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> and open source, and if you don’t like syncing your anki progress over Anki’s servers, you can just as well set up your own.</p>
+<h1 id="what-is-anki-why-is-anki-how-is-anki"><em>What</em> is Anki? <em>Why</em> is Anki?! <em>How</em> is Anki?!?</h1>
+<blockquote>
+<p><em>Pretty good, thank you.</em></p>
+</blockquote>
+<p>You’d have guessed it by now: Anki is an extremely customizable application designed for memorisation, available for free on nearly all the major platforms as well as being accessable online. Being able to study on the road (I commute by train, taking me approximately 2.5u every day) and syncing your progress at home is a major boon on using your time practically.</p>
+<p>There are plenty of studies on methods for efficient learning, and most put the popular late-night cramming, extensive marking and rereading of texts at the top bottom.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">3</a></sup> On the other hand, <em>active recall testing</em> (actively trying to come up with the answer to a question) and <em>spaced learning</em> (spreading information absorbtion over long periods) are always placed at the very top. Anki is an application that achieves both through the means of timed flashcards. The concept is simple: the front of the card asks you a question and the backside displays the answer. After showing the answer, you decide whether you got it wrong or right, and to what degree. This determines when you’ll be confronted by this card again.</p>
+<h1 id="the-guide">The Guide</h1>
+<h2 id="setting-up">Setting up</h2>
+<p>Technicalities here: download, install, account, syncing</p>
+<h2 id="your-first-set">Your first set!</h2>
+<p>How to download an existing set </p>
+<h2 id="creating-your-own-cards">Creating your own cards</h2>
+<p>Basic set and card creation</p>
+<h3 id="creating-your-own-cards-efficiently">Creating your own cards… <em>Efficiently</em>!</h3>
+<p>Card templates, layouting, etc</p>
+<h2 id="structuring-data">Structuring Data</h2>
+<ul>
+<li>“<em>But Stevie</em>”, I hear you ask, “<em>how do I study less structured information with Anki?</em>“</li>
+</ul>
+<p>Good question. This involves some thinking on your part: what is it that you’d like to reproduce? What information would you like to memorise? Think creatively on your course and in what different ways you could structure it in bitesized pieces to feed your ankiset.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">2</a></sup> Courses are designed with a certain logic in mind, after all. You could start of by making subsets on each of the big chapters of your textbook, or create the answer to potential questions first, mark the big . This processing is an important step in grasping the big picture and is the reason why I’m reluctant to share some of my own sets that don’t involve the need for just rote memorisation.</p>
+<p>My studying process usually goes as follows aanvullen</p>
+<ul>
+<li>Analyse </li>
+<li>Devide</li>
+<li>blabla</li>
+<li>Study my set</li>
+</ul>
+<h2 id="spaced-learning">Spaced Learning</h2>
+<ul>
+<li>“<em>Stevie! If I’m a college student studying one, or several, language(s) alongside other theoretical classes (and I most likely am since I’m reading this blog), won’t this mean I get to repeat hundreds to thousands of cards every single day?!</em>“</li>
+</ul>
+<p>Yes. Yes it does mean that.</p>
+<p>Think of it this way. Either way you’ll have to study. Language acquisition comes with it’s sacrifices: you can’t just stop studying for a few weeks and expect to come out unharmed. Building up an internal dictionary containing tens of thousands of words you recognize on sight or produce actively, utilizing grammatical structures on the spot (often under severe pressure), or comprehending speech at real-time; all of these require an effort not just to memorise but to maintain as well. Same goes for any other class, you can’t cram your way through University. What this method offers is a way of structuring your data and studying efficiently: paradoxically by studying <em>more</em> you’ll actually <em>save</em> time, as there’s no need to repeat what you already know. If you’ve  the data you need to know will be served (roughly) the moment you’re about to forget it.</p>
+<ul>
+<li>“<em>Even if I’m on a holiday? This makes me very sad! :( I’ll just pretend this method of studying is not for me and dismiss anki forever!</em>“</li>
+</ul>
+<p>Sadly, this does mean maintaining your cards even when you’d prefer spending your day in a different way. There’s no pause button to put your cards on hold, so if you fail to go through them several days in row, you’ll have piled up all those lost days and take forever to get through them again.</p>
+<p>Of course, once the set has finished it’s purpose (usually preparing for an exam), you could just as well delete it. It does feel as a waste (after all, what’s the point of studying in the first place?), but sadly it’s just unsustainable to maintain <em>everything</em>, all of this deep knowledge, till the end of times. Another approach here would be to suspend the detail cards and just stick on the broad outlines. <em>The choice lies in your own hands!</em>™
+I spent about a month on a road trip in the USA this summer; unforgettable memories aside I <em>did</em> maintain my Ankisets the whole time. I removed all of my non-Japanese sets and maintained the bare necessities of vocab and kanji, which meant about an hour of studying each day.</p>
+<p><strong>Fear not though! For there are some further optimalisations to be done here!</strong></p>
+<p>Write about changing review date intervals here</p>
+<h1 id="wait-there-is-more">Wait! There is more!</h1>
+<p>Anki API, plugins, using rikaichan (topic for other blog)</p>
+<h1 id="further-reading">Further reading</h1>
+<p>Some good resources on Anki here</p>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>Except if you’re on iPhone, but if you’re able to afford Apple products that shouldn’t be much of a problem. Aside from donations that’s the only income the developers get anyway, and it’s license is peanuts compared to buying any triple A videogame on current-gen consoles. <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:3">
+<p>The danger in this is learning information loose from it’s context. Be sure to structure your ankiset accordingly as well to remain aware of the big picture. <a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn:2">
+<p>sources <a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+    <hr/>
+        </div>
+
+        <hr />
+    </div>
+              </div>
+              <!-- /Content --> 
+
+              <!-- Footer -->
+              <footer id="footer" class="footer gradient-2">
+                <div id="footercontent">
+                  &copy; Stevie Poppe 2016
+                  <div>
+                    <ul class="footer-nav">                    
+                      <span style="font-weight: bold;">Sitemap:</span>
+                      <li>
+                        <a href="https://steviepoppe.net/" class="footer-nav-middle-a">Home</a></li>
+                      <li>
+                        <a href="https://steviepoppe.net/blog/archives/" class="footer-nav-middle-a">Archives</a></li>
+                      <li>
+                        <a href="https://steviepoppe.net/blog/tags/" class="">Tagcloud</a></li>
+                      </ul>
+                    </div>
+                    <div style="margin-top: -95px; margin-right:15px; float: right;">
+                      <h5><a id="backtotop" href="#">Back to top ↑</a></h5>
+                    </div>
+
+
+<!--               <div class="container footer-container ">
+                <div class="row">
+                  <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                    <div class="footer-title">Sitemap</div>
+                    <ul class="list-unstyled">
+                      <li><a href="https://steviepoppe.net/">Home</a></li>
+                      <li><a href="https://steviepoppe.net/blog/archives/">Archives</a></li>
+                      <li><a href="https://steviepoppe.net/blog/tags/">Tagcloud</a></li>
+                      <li><a href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"></a></li>
+                      <li><a href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"></a></li>
+                    </ul>
+                  </div>
+
+
+                  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    <div class="pull-right text-right" style="float: left;">
+                      <small><em>Proudly powered by <a href="http://docs.getpelican.com/" target="_blank">pelican</a></em></small><br/>
+                      <small><em>Theme and code by <a href="https://github.com/molivier" target="_blank">molivier</a></em></small><br/>
+                      <small>&copy; Stevie Poppe 2016</small>
+                    </div>                  
+                    <div id="back_up"  style="float: right;">                
+                  <a href="#" class="back_up" title="Back to the top"><i>↑</i></a>
+                </div>
+                  </div>                
+
+                </div>
+
+              </div> -->
+            </footer>
+            <!-- /Footer -->
+          </div>
+        </body>
+        </html>
