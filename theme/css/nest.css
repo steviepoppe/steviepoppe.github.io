@@ -580,10 +580,12 @@ h2 {
 
     .right{
       float: right;
+      margin-left: 15px;
     }
 
     .left{
       float: left;
+      margin-right: 15px;
     }
 
     .content.highlight pre {
@@ -1321,3 +1323,44 @@ a, .footnote, #further-reading {
     line-height: 16px;
     font-size: 16px;
 }*/
+
+.video{
+  margin-right: auto;
+margin-left: auto;
+  text-align: center;
+  width: 55%;
+  height: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+video{
+  width: 100%;
+height: 100%;
+border: 1px solid #f3f3f3;
+border-radius: 10px;
+box-shadow: 0 1px 2px rgba(0,0,0,0.44);
+}
+
+.youtube-4x3 {
+  padding-bottom: 75%;  /* inverse of 4:3 aspect ratio */
+}
+.youtube-16x9 {
+  padding-bottom: 56.25%;  /* inverse of 16:9 aspect ratio */
+}
+.youtube-4x3,
+.youtube-16x9 {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+.youtube-4x3 iframe,
+.youtube-16x9 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+}
