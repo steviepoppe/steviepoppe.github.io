@@ -4,8 +4,8 @@
   <script type="text/javascript">
     var host = "steviepoppe.net";
     if ((host == window.location.host) && (window.location.protocol != "https:"))
-        window.location.protocol = "https";
-</script>
+      window.location.protocol = "https";
+  </script>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +20,7 @@
   <title>Tags - Onoreto</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>
-
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.js"></script>
   <!-- Stylesheets -->
   <link href="https://steviepoppe.net/theme/css/all.min.css" rel="stylesheet">
   <!-- /Stylesheets -->
@@ -96,86 +96,92 @@
                   <div class="navbar-collapse" id="steviesmenubar">
                     <div style="float: left;">
                       <ul class="nav navbar-nav">
-<li >
+<!--                         <li >
                           <a href="/">Blog</a>
-                        </li>
-<li >
+                        </li> -->
+
+                        <li >
+                        <a  href="/">Blog </a>
+                      </li>
+
+
+<!--                         <li >
                           <a href="/blog/category/">Categories</a>
-                        </li>
+                        </li> -->
+
+                        <li  id="dropdown" >
+                        <a  class="dropdown-toggle" data-target="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="/blog/category/">Categories                        <span class="caret"></span>
+ </a>
+                        <ul class="dropdown-menu" id="menu1" aria-labelledby="drop4"> 
+                          <li><a href="https://steviepoppe.net/category/personal">Personal</a></li> 
+                          <li><a href="https://steviepoppe.net/category/studies">Studies</a></li> 
+                          <li><a href="https://steviepoppe.net/category/technical">Technical</a></li> 
+                        </ul> 
+                      </li>
+
+
 <li >
-                          <a href="https://steviepoppe.net/about/">About</a>
-                        </li>
+                        <a href="https://steviepoppe.net/about/">About</a>
+                      </li>
 <li >
-                          <a href="https://steviepoppe.net/resources/">Resources</a>
-                        </li>
-                      </ul>
+                        <a href="https://steviepoppe.net/resources/">Resources</a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="social">
+                    <ul class="socialnav socialonly social-icons-footer collapse">
+
+                      <li>
+                        <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                          <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                        </a><span class="screen-reader">Twitter</span>
+                      </li>
+                      <li>
+                        <a href="https://be.linkedin.com/in/stevie-poppe-9048b395" title="Linkedin">
+                          <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                        </a><span class="screen-reader">Linkedin</span>
+                      </li>
+                      <li>
+                        <a href="https://www.instagram.com/stevie.poppe/" title="Instagram">
+                          <i class="icon-instagram" style="font-size: 10px !important;"></i>
+                        </a><span class="screen-reader">Instagram</span>
+                      </li>
+                      <li>
+                        <a href="https://www.goodreads.com/user/show/35676792-stevie-poppe" title="Goodreads">
+                          <i class="icon-goodreads" style="font-size: 10px !important;"></i>
+                        </a><span class="screen-reader">Goodreads</span>
+                      </li>
+                    </ul>
+                    <ul class="socialnav rssonly social-icons-footer">
+                      <li>
+                        <a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">
+                          <i class="icon-rss" style="font-size: 10px !important;">
+                          </i>
+                        </a>
+                      </li>
+                    </ul>
+                    <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" > 
+                      <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input"></form>
+
                     </div>
 
-                    <div class="social">
-                      <ul class="socialnav socialonly social-icons-footer collapse">
 
-                        <li>
-                          <a href="https://twitter.com/PoppeStevie" title="Twitter">
-                            <i class="icon-twitter" style="font-size: 10px !important;"></i>
-                          </a><span class="screen-reader">Twitter</span>
-                        </li>
-                        <li>
-                          <a href="https://be.linkedin.com/in/stevie-poppe-9048b395" title="Linkedin">
-                            <i class="icon-linkedin" style="font-size: 10px !important;"></i>
-                          </a><span class="screen-reader">Linkedin</span>
-                        </li>
-                        <li>
-                          <a href="https://www.instagram.com/stevie.poppe/" title="Instagram">
-                            <i class="icon-instagram" style="font-size: 10px !important;"></i>
-                          </a><span class="screen-reader">Instagram</span>
-                        </li>
-                        <li>
-                          <a href="https://www.goodreads.com/user/show/35676792-stevie-poppe" title="Goodreads">
-                            <i class="icon-goodreads" style="font-size: 10px !important;"></i>
-                          </a><span class="screen-reader">Goodreads</span>
-                        </li>
-                      </ul>
-                      <ul class="socialnav rssonly social-icons-footer">
-                        <li>
-                          <a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">
-                            <i class="icon-rss" style="font-size: 10px !important;">
-                            </i>
-                          </a>
-                        </li>
-                      </ul>
-                      <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" > 
-                        <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input"></form>
+                  </div>
 
-                      </div>
+                </nav>
 
-
-                    </div>
-
-                  </nav>
-
-                </div>
               </div>
-              <!-- /Header -->
+            </div>
+            <!-- /Header -->
 
 
-              <!-- Content -->
-              <div id="main">
+            <!-- Content -->
+            <div id="main">
     <div class="archive-container">
         <div class="container content archive category" style="text-align: center;">
             <h1>Tagcloud</h1>
             <ul class="tagcloud">
-        <li class="tag-4">
-            <a href="https://steviepoppe.net/blog/tags/footnotes/">
-            Footnotes
-                    <span class="badge">1</span>
-            </a>
-        </li>
-        <li class="tag-4">
-            <a href="https://steviepoppe.net/blog/tags/kuleuven/">
-            KULeuven
-                    <span class="badge">1</span>
-            </a>
-        </li>
         <li class="tag-4">
             <a href="https://steviepoppe.net/blog/tags/markdown/">
             Markdown
@@ -183,14 +189,8 @@
             </a>
         </li>
         <li class="tag-4">
-            <a href="https://steviepoppe.net/blog/tags/python/">
-            Python
-                    <span class="badge">1</span>
-            </a>
-        </li>
-        <li class="tag-4">
-            <a href="https://steviepoppe.net/blog/tags/video/">
-            Video
+            <a href="https://steviepoppe.net/blog/tags/kuleuven/">
+            KULeuven
                     <span class="badge">1</span>
             </a>
         </li>
@@ -201,8 +201,20 @@
             </a>
         </li>
         <li class="tag-4">
+            <a href="https://steviepoppe.net/blog/tags/blog/">
+            blog
+                    <span class="badge">1</span>
+            </a>
+        </li>
+        <li class="tag-4">
             <a href="https://steviepoppe.net/blog/tags/github/">
             github
+                    <span class="badge">1</span>
+            </a>
+        </li>
+        <li class="tag-4">
+            <a href="https://steviepoppe.net/blog/tags/footnotes/">
+            Footnotes
                     <span class="badge">1</span>
             </a>
         </li>
@@ -213,35 +225,43 @@
             </a>
         </li>
         <li class="tag-4">
-            <a href="https://steviepoppe.net/blog/tags/blog/">
-            blog
+            <a href="https://steviepoppe.net/blog/tags/video/">
+            Video
+                    <span class="badge">1</span>
+            </a>
+        </li>
+        <li class="tag-4">
+            <a href="https://steviepoppe.net/blog/tags/python/">
+            Python
                     <span class="badge">1</span>
             </a>
         </li>
 </ul>
         </div>
     </div>
-              </div>
-              <!-- /Content --> 
+            </div>
+            <!-- /Content --> 
 
-              <!-- Footer -->
-              <footer id="footer" class="footer gradient-2">
-                <div id="footercontent">
-                  &copy; Stevie Poppe 2016
-                  <div>
-                    <ul class="footer-nav">                    
-                      <span style="font-weight: bold;">Sitemap:</span>
-                      <li>
-                        <a href="https://steviepoppe.net/" class="footer-nav-middle-a">Home</a></li>
-                      <li>
-                        <a href="https://steviepoppe.net/blog/archives/" class="footer-nav-middle-a">Archives</a></li>
-                      <li>
-                        <a href="https://steviepoppe.net/blog/tags/" class="">Tagcloud</a></li>
-                      </ul>
-                    </div>
-                    <div style="margin-top: -95px; margin-right:15px; float: right;">
-                      <h5><a id="backtotop" href="#">Back to top ↑</a></h5>
-                    </div>
+            <!-- Footer -->
+            <footer id="footer" class="footer gradient-2">
+              <div id="footercontent">
+                &copy; Stevie Poppe 2016
+                <div>
+                  <ul class="footer-nav">                    
+<!--                     <span style="font-weight: bold;">Sitemap:</span>
+ -->                                        <li class=" footer-nav-middle ">
+                      <a href="https://steviepoppe.net/" class="footer-nav-middle-a footer-nav-first-a">Home</a></li>
+                    <li class=" footer-nav-middle ">
+                      <a href="https://steviepoppe.net/blog/archives/" class="footer-nav-middle-a ">Archives</a></li>
+                    <li class=" footer-nav-middle ">
+                      <a href="https://steviepoppe.net/blog/category/" class="footer-nav-middle-a ">Categories</a></li>
+                    <li class=" footer-nav-last ">
+                      <a href="https://steviepoppe.net/blog/tags/" class="footer-nav-middle-a ">Tagcloud</a></li>
+                    </ul>
+                  </div>
+                  <div style="margin-top: -95px; margin-right:15px; float: right;">
+                    <h5><a id="backtotop" href="#">Back to top ↑</a></h5>
+                  </div>
 
 
 <!--               <div class="container footer-container ">
@@ -251,6 +271,7 @@
                     <ul class="list-unstyled">
                       <li><a href="https://steviepoppe.net/">Home</a></li>
                       <li><a href="https://steviepoppe.net/blog/archives/">Archives</a></li>
+                      <li><a href="https://steviepoppe.net/blog/category/">Categories</a></li>
                       <li><a href="https://steviepoppe.net/blog/tags/">Tagcloud</a></li>
                       <li><a href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"></a></li>
                       <li><a href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"></a></li>

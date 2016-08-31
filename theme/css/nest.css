@@ -123,18 +123,22 @@ nav.toc{
 }
 
 .image.featured {
-  height: 150px;
+  height: 120px;
 }
 
-    .rssonly{
-      display: block;
-      visibility: visible;
-    }
+.rssonly{
+  display: block;
+  visibility: visible;
+}
+
+.container-main img{
+  margin: 5px;
+}
 
 @media (min-width: 768px) {
 
   .image.featured {
-    height: 180px;
+    height: 150px;
   }
 
   .datetitle{
@@ -234,7 +238,7 @@ nav.toc{
   @media (min-width: 992px) {
 
     .image.featured {
-      height: 200px;
+      height: 180px;
     }
 
     .container {
@@ -264,9 +268,6 @@ nav.toc{
    margin-left: auto;
  }
 
- .container-main img{
-  border-radius: 10px;
-}
 
 /*@media (min-width: 1200px) {
   .container {
@@ -561,8 +562,8 @@ h2 {
     margin-bottom: 45px;
     }*/
 
-    .container-main img{
-      margin: 5px;
+    .border{
+
       border: 1px solid rgb(243, 243, 243);
       border-radius: 10px;
       box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.44);
@@ -581,11 +582,15 @@ h2 {
     .right{
       float: right;
       margin-left: 15px;
+    max-width: 25%;
+    margin-right: 10px;
     }
 
     .left{
       float: left;
-      margin-right: 15px;
+      margin-right: 15px;    
+      margin-left: 10px;
+    max-width: 25%;
     }
 
     .content.highlight pre {
@@ -690,8 +695,7 @@ h2 {
 
   .image.featured {
     left: 15px;
-    top: 1.75em;
-    margin: -90px 0 20px -30px;
+    margin: 0px 0px 0px -30px;
     position: relative;
     width: auto;
     display: block;
@@ -707,8 +711,6 @@ h2 {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 45px;
-  margin-bottom: 45px;
 }
 
 .image.featured img:hover, .image.featured img:active{ 
@@ -773,6 +775,8 @@ footer{
 }
 .footer a{
   color: #fff;
+  padding-right: 2px;
+padding-left: 2px;
 }
 .footer-nav{
   text-align: center; 
@@ -783,10 +787,34 @@ footer{
   display: inline-block;
 }
 
+.footer-nav-middle::before, .footer-nav-last::before{
+background-color: #555;
+content: " ";
+display: inline-block;
+height: 10px;
+width: 1px;
+}
+
+.footer-nav-last::after{
+background-color: #555;
+content: " ";
+display: inline-block;
+height: 10px;
+margin-left: 5px;
+width: 1px;
+}
+
+
+
+/*.footer-nav-first-a{
+  border-left: 1px solid rgba(231, 225, 225, 0.68);
+  padding-left: 5px;
+}
+
 .footer-nav-middle-a{
   border-right: 1px solid rgba(231, 225, 225, 0.68);
   padding-right: 5px;
-}
+}*/
 
 #wrapper {
   min-height:100%;
@@ -1132,15 +1160,15 @@ nav.toc{
     margin-right: auto;
   }
 
-.footnotescontent{
-  background-color: rgb(252, 252, 250);
-  border: 1px solid rgb(226, 224, 216);
-  text-align: justify;
-  margin-bottom: 30px;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.11);
-  padding-right: 15px;
-  padding-left: 15px;
-}
+  .footnotescontent{
+    background-color: rgb(252, 252, 250);
+    border: 1px solid rgb(226, 224, 216);
+    text-align: justify;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.11);
+    padding-right: 15px;
+    padding-left: 15px;
+  }
 /*.containermain
 {
     width: 60%;
@@ -1191,8 +1219,8 @@ nav.toc{
   }
 
   .footnotescontent{
-  margin-left: 15px;
-}
+    margin-left: 15px;
+  }
 }
 
 
@@ -1219,35 +1247,35 @@ pre {
 {  
   hyphens: auto;
   word-wrap: break-word;
-}*/
+  }*/
 
-#footnotediv 
-{
-  text-align: justify;
-  color:#111;
-  border: 1px solid #eaeaea;
-  background-color: #fffcfc;
-  padding: 5px;
-  line-height:16px;
-  border-radius:4px;
-  box-shadow: 5px 5px 8px #D4D4D4;
-  position:absolute;
-  opacity:0.9;
-  max-width: 200px;
-  width: 80%;
-  width: 80vw;
-  display:none;
-}
-
-#footnotediv p {
-  margin: 0px;
-}
-
-@media (min-width: 768px) {
-  #footnotediv {
-    max-width: 400px;
-    display:inherit;
+  #footnotediv 
+  {
+    text-align: justify;
+    color:#111;
+    border: 1px solid #eaeaea;
+    background-color: #fffcfc;
+    padding: 5px;
+    line-height:16px;
+    border-radius:4px;
+    box-shadow: 5px 5px 8px #D4D4D4;
+    position:absolute;
+    opacity:0.9;
+    max-width: 200px;
+    width: 80%;
+    width: 80vw;
+    display:none;
   }
+
+  #footnotediv p {
+    margin: 0px;
+  }
+
+  @media (min-width: 768px) {
+    #footnotediv {
+      max-width: 400px;
+      display:inherit;
+    }
 
 /*
 sup.popup_footnote span {   
@@ -1299,7 +1327,7 @@ a, .footnote, #further-reading {
   overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-word-break: break-all;
-/*  word-break: break-all;*/  
+  /*  word-break: break-all;*/  
   word-break: break-word;
   -ms-hyphens: auto;
   -moz-hyphens: auto;
@@ -1322,45 +1350,44 @@ a, .footnote, #further-reading {
     text-transform: none;
     line-height: 16px;
     font-size: 16px;
-}*/
+    }*/
 
-.video{
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
-  width: 55%;
-  height: 100%;
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
+    .video{
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+      width: 55%;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
 
-video{
-  width: 100%;
-height: 100%;
-border: 1px solid #f3f3f3;
-border-radius: 10px;
-box-shadow: 0 1px 2px rgba(0,0,0,0.44);
-}
+    video{
+      width: 100%;
+      height: 100%;
+      border: 1px solid #f3f3f3;
+      border-radius: 10px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.44);
+    }
 
-.youtube-4x3 {
-  padding-bottom: 75%;  /* inverse of 4:3 aspect ratio */
-}
-.youtube-16x9 {
-  padding-bottom: 56.25%;  /* inverse of 16:9 aspect ratio */
-}
-.youtube-4x3,
-.youtube-16x9 {
-  position: relative;
-  height: 0;
-  overflow: hidden;
-}
-.youtube-4x3 iframe,
-.youtube-16x9 iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  border: 0;
-}
+    .youtube-4x3 {
+      padding-bottom: 75%;  /* inverse of 4:3 aspect ratio */
+    }
+    .youtube-16x9 {
+      padding-bottom: 56.25%;  /* inverse of 16:9 aspect ratio */
+    }
+    .youtube-4x3,
+    .youtube-16x9 {
+      position: relative;
+      height: 0;
+      overflow: hidden;
+    }
+    .youtube-4x3 iframe,
+    .youtube-16x9 iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      border: 0;
+    }
