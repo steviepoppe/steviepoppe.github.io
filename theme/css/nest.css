@@ -12,7 +12,7 @@
       margin-right: auto;
       margin-left: auto;
       text-align: center;
-      width: 55%;
+      width: 85%;
       margin-top: 15px;
       margin-bottom: 15px;
     }
@@ -47,7 +47,7 @@
       margin: 0;
       border: 0;
     }
-    
+
  .blog dt{
   font-size: 10px;
   display: inline-block;
@@ -177,7 +177,22 @@ height: 100%;
 border-radius: 10px;
 }
 
+.navbar-nav .open .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 @media (min-width: 768px) {
+
+    .video{
+      width: 55%;
+    }
 
   .image.featured {
     height: 150px;
