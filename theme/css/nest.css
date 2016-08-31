@@ -132,7 +132,8 @@ nav.toc{
 }
 
 .container-main img{
-  margin: 5px;
+width: 100%;
+height: 100%;
 }
 
 @media (min-width: 768px) {
