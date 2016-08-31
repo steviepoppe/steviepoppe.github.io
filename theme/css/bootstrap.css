@@ -5527,7 +5527,8 @@ button.close {
 .modal-footer:before,
 .modal-footer:after {
   display: table;
-  content: " ";
+/*  content: " ";
+*/
 }
 .clearfix:after,
 .dl-horizontal dd:after,

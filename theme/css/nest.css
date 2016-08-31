@@ -177,7 +177,7 @@ height: 100%;
 border-radius: 10px;
 }
 
-.navbar-nav .open .dropdown-menu {
+/*.navbar-nav .open .dropdown-menu {
     position: static;
     float: none;
     width: auto;
@@ -186,7 +186,7 @@ border-radius: 10px;
     border: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
-}
+}*/
 
 @media (min-width: 768px) {
 
@@ -1333,6 +1333,7 @@ pre {
       max-width: 400px;
       display:inherit;
     }
+  }
 
 /*
 sup.popup_footnote span {   
