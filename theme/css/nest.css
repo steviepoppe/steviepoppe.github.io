@@ -86,6 +86,9 @@ text-align: center;*/
   font-size: 12px;
 }
 
+.category dl{
+  margin-bottom: 20px;
+}
 .category dd{
   border-left: 1px solid rgba(231, 225, 225, 0.68);
   padding-left: 10px;
@@ -98,7 +101,7 @@ position: relative;
   font-size: 12px;
   font-weight: 400;
 /*    width: 140px;
-*/    margin-top: 15px;
+    margin-top: 15px;*/
 }
 
 .head-container{
@@ -240,8 +243,8 @@ border-radius: 10px;
 
     .category dd{
       margin-left: 155px;
-      bottom: -13px;
-    }
+/*      bottom: -13px;
+*/    }
 
     .category dt {
       width: 140px;
