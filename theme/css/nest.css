@@ -17,6 +17,42 @@
   margin-bottom: 15px;
 }
 
+    body {
+      counter-reset: h1counter;
+    }
+    .container-main h1 {
+        counter-reset: h2counter;
+    }
+    .container-main h1::before {
+      content: counter(h1counter) ".\0000a0\0000a0";
+      counter-increment: h1counter;
+      counter-reset: h2counter;
+    }
+    .container-main h1.nocount::before {
+      content: none;
+      counter-increment: none;
+    }
+    .container-main h2 {
+      counter-reset: h3counter;
+    }
+    .container-main h2::before {
+      content: counter(h1counter) "." counter(h2counter) ".\0000a0\0000a0\0000a0";
+      counter-increment: h2counter;
+      counter-reset: h3counter;
+    }
+    .container-main h2.nocount::before {
+      content: none;
+      counter-increment: none;
+    }
+    .container-main h3::before {
+      content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0\0000a0";
+      counter-increment: h3counter;
+    }
+    .container-main h3.nocount::before {
+      content: none;
+      counter-increment: none;
+    }
+
 video{
   width: 100%;
   height: 100%;
@@ -195,10 +231,11 @@ nav.toc{
 
     @media (max-width: 1200px) {
       .banner{
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-}
+        margin-right: -15px;
+        margin-left: -15px;
+      }
+    }
+
     @media (min-width: 768px) {
 
       .video{
@@ -657,8 +694,8 @@ h2 {
 
     .center{
       text-align: center;
-      margin-bottom: 5px;
-      margin-top: 5px;
+margin-bottom: 15px;
+margin-top: 15px;
     }
 
     .centerdiv{
@@ -672,8 +709,8 @@ h2 {
       margin-left: 15px;
       max-width: 25%;
       margin-right: 10px;
-      margin-bottom: 5px;
-      margin-top: 5px;
+      margin-bottom: 15px;
+margin-top: 15px;
     }
 
     .left{
@@ -681,8 +718,8 @@ h2 {
       margin-right: 15px;    
       margin-left: 10px;
       max-width: 25%;
-      margin-bottom: 5px;
-      margin-top: 5px;
+margin-bottom: 15px;
+margin-top: 15px;
     }
 
     .content.highlight pre {
@@ -1444,65 +1481,3 @@ a, .footnote, #further-reading {
     line-height: 16px;
     font-size: 16px;
     }*/
-
-    .note {
-      position: relative;
-      width: 30%;
-      padding: 1em 1.5em;
-      margin: 2em auto;
-      color: #fff;
-      background: #97C02F;
-    }
-
-    .note::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      border-width: 0 16px 16px 0;
-      border-style: solid;
-      border-color: #fff #fff #658E15 #658E15;
-      background: #658E15;
-      display: block;
-      width: 0;
-      -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
-      -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
-      box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
-    }
-
-
-    body {
-      counter-reset: h1counter;
-    }
-/*    .container-main h1 {
-        counter-reset: h2counter;
-    }
-    */
-    .container-main h1:before {
-      content: counter(h1counter) ".\0000a0";
-      counter-increment: h1counter;
-      counter-reset: h2counter;
-    }
-    .container-main h1.nocount:before {
-      content: none;
-      counter-increment: none;
-    }
-    
-    .container-main h2:before {
-      content: counter(h1counter) "." counter(h2counter) ".\0000a0";
-      counter-increment: h2counter;
-      counter-reset: h3counter;
-    }
-    .container-main h2.nocount:before {
-      content: none;
-      counter-increment: none;
-    }
-
-    .container-main h3:before {
-      content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) ".\0000a0";
-      counter-increment: h3counter;
-    }
-    .container-main h3.nocount:before {
-      content: none;
-      counter-increment: none;
-    }
