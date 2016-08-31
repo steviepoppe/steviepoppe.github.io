@@ -194,7 +194,7 @@ nav.toc{
     }*/
 
     @media (max-width: 1200px) {
-      .header-wrapper{
+      .banner{
     margin-right: -15px;
     margin-left: -15px;
   }
@@ -342,9 +342,9 @@ nav.toc{
       max-width:900px;
       height: auto;
     }
-    .header-wrapper, .image.featured {
-      margin-right: -25px; !important
-      margin-left: -25px; !important
+    .banner, .image.featured {
+      margin-right: -25px;
+      margin-left: -25px;
     }
 
   }
