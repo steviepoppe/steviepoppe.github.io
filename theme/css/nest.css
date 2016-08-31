@@ -87,7 +87,7 @@ text-align: center;*/
 }
 
 .category dl{
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 .category dd{
   border-left: 1px solid rgba(231, 225, 225, 0.68);
@@ -623,7 +623,6 @@ h2 {
     }*/
 
     .border{
-
       border: 1px solid rgb(243, 243, 243);
       border-radius: 10px;
       box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.44);
@@ -631,6 +630,8 @@ h2 {
 
     .center{
       text-align: center;
+      padding-bottom: 5px;
+      padding-top: 5px;
     }
 
     .centerdiv{
@@ -644,6 +645,8 @@ h2 {
       margin-left: 15px;
     max-width: 25%;
     margin-right: 10px;
+    padding-bottom: 5px;
+padding-top: 5px;
     }
 
     .left{
@@ -651,6 +654,8 @@ h2 {
       margin-right: 15px;    
       margin-left: 10px;
     max-width: 25%;
+    padding-bottom: 5px;
+padding-top: 5px;
     }
 
     .content.highlight pre {
