@@ -11,7 +11,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="So you want to: read a Japanese novel and don’t end up crying yourself to sleep realizing you know nothing, Jon Snow? learn Japanese by watching anime, but like, for real? create beautiful Anki ...">
-  <meta name="keywords" content="Anki, set-up, Tutorial">
+  <meta name="keywords" content="Anki, Japanese, Rikaisama, set-up, Tutorial">
   <link rel="icon" href="https://steviepoppe.net/favicon.ico">
 
   <link rel="shortcut icon" type="image/png" href="https://steviepoppe.net/images/icons/favicon.png">
@@ -30,8 +30,8 @@
   <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
   <link href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
   <link href="http://localhost:8000/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
-  <link href="http://localhost:8000/feeds/technical.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
-  <link href="http://localhost:8000/feeds/technical.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
+  <link href="http://localhost:8000/feeds/technical-studies.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
+  <link href="http://localhost:8000/feeds/technical-studies.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
   <!-- /RSS Feeds -->
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -58,15 +58,17 @@
 <DataObject type="document">
     <Attribute name="title">A Quick Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</Attribute>
     <Attribute name="author">Stevie Poppe</Attribute>
-    <Attribute name="description">So you want to: read a Japanese novel and don’t end up crying yourself to sleep realizing you know nothing, Jon Snow? learn Japanese by watching anime, but like, for real? create beautiful Anki sets filled with handpicked vocabulary AND crystal-clear audio without spending days of mindnumbing copypasting? Welcome to the lovely world of Integrated Anki & Rikaisama! We’ve already established Rikaichan/kun as an incredibly helpful tool for reading Japanese texts online, yet one thing seemed missing still: a seemless integration with Anki for efficient vocabulary mining. A recent extension of the original Rikaichan, aptly named Rikaisama (it’s a pun!), adds several new features including communication with the Anki API and J-Pod101’s audiofiles. Concretely, this means audio playback of tens of thousands of words and expressions as well as easy integration of new vocab into Anki. This blog serves as a brief tutorial on setting up this environment as well as demonstrating some useful appliances. Anki templates Rikaisama Download site Set-up plugin Dictionaries NL kul Posibilities Internet This goes without saying. If you’re a relatively new learner, NHK provides simplified news articles and videos at NHK Easy News. I used these a lot near the end of my first year studying, and it’s a neat way to stay up to date as well. Jnovel 「言い方がまちがってるわ。ウィン、ガー・デイアム レヴィ・オーサ。『ガー』と長一くきれいに言わなくちゃ」 I’ve used this method while reading The Girl Who Leapt Through Time during our book-reading sessions and just last week, as a kind of summer project, worked my way through a digital copy of the first Harry Potter this way (quite a high difficulty gap but I know the original by heart so that helped heaps context-wise). Anime A really cool concept recently released is Animelon’s multi-layer subtitled anime streaming web-app, akin to the Erin’s Challenge video’s (except with arguably way more interesting content: as of date there are over 60 series hosted, mostly all big names ranging from more recent hits as SAO and Attack on Titan to classics as Fullmetal Alchemist: Brotherhood and Clannad). If I were to recommend one to start with, I’d definitely pick Clannad. The high-school setting means relatively easy and casual vocabulary (as opposed to, for example, SAO’s highly technical and fantasy-related vocab you’ll barely encounter in real life), while the voice acting’s pacing is calm enough to pick up as relative beginner, and devoid of difficult accents. Check out their video demonstration below to see the various possibilities. https://www.youtube.com/watch?v=XYR3_Yb9gBo What bothers me a bit is the legality of it all. They’re currently keeping this site up as proof-of-concept in search of potential buyers but meanwhile they’re hosting full series in HD quality under de header of “educational purposes only”. I hope they survive, since this service is golden, really. Gaming This one’s a bit tricky still. The new web-possibilities since the implementation of the latest HTML-standard, HTML5, have given rise to a broad range of games running ...</Attribute>
+    <Attribute name="description">So you want to: read a Japanese novel and don’t end up crying yourself to sleep realizing you know nothing, Jon Snow? learn Japanese by watching anime, but like, for real? create beautiful Anki sets filled with handpicked vocabulary AND crystal-clear audio without spending days of mindnumbing copypasting? Welcome to the lovely world of Integrated Anki & Rikaisama! We’ve already established Rikaichan/kun as an incredibly helpful tool for reading Japanese texts online, yet one thing seemed missing still: a seemless integration with Anki for efficient vocabulary mining. A recent extension of the original Rikaichan, aptly named Rikaisama (it’s a pun!), adds several new features including communication with the Anki API and J-Pod101’s audiofiles. Concretely, this means audio playback of tens of thousands of words and expressions as well as easy integration of new vocab into Anki. This blog serves as a brief tutorial on setting up this environment as well as demonstrating some useful appliances. Anki templates Rikaisama Download site Set-up plugin Dictionaries NL kul Posibilities Internet This one goes without saying as that’s pretty much the prime objective of this tutorial. If you’re a relatively new learner, NHK provides simplified news articles and videos at NHK Easy News. I used these a lot near the end of my first year studying, and it’s a neat way to stay up to date as well. Jnovel 「言い方がまちがってるわ。ウィン、ガー・デイアム レヴィ・オーサ。『ガー』と長一くきれいに言わなくちゃ」 JNovelFormatter JNovelFormatter is a neat little tool that converts japanese literature in *.txt format into clean parsed HTML files. Layout is fairly customizable, although I think the original settings are easy on the eye as-is (I like dark backgrounds when reading for hours at a time, makes me feel less like I’m gazing straight into a lightbulb). End of sentence dots get turned into bookmarkable anchors so you won’t lose track of your progress. I highly recommend this method! I’ve used this approach while reading The Girl Who Leapt Through Time (時をかける少女) during our 読書クラブ’s book-reading sessions and just last week, as a kind of summer project, worked my way through the first Harry Potter (a surprisingly high difficulty but I know the original by heart so that helped heaps context-wise). As for resources, there’s plenty to be found online. Light novels are commonly uploaded in text format and probably a good starting point for the more advanced learner. I’ve heard Zero no Tsukaima and Kino no Tabi are relatively easy reads, for example. Aozora http://www.aozora.gr.jp/, pretty much the Japanese Gutenberg project, freely hosts tons of public-domain books online. Check out Natsume Sōseki’s classic Botchan as example. Their literary standards are a bit higher as the typical light novel so it’s quite an adjustment, but great for those who’re looking for easy-to-find, legally obtainable literature. Anime A really cool concept recently released is Animelon’s multi-layer subtitled anime streaming web-app, akin to the Erin’s Challenge video’s (except with arguably way more interesting content ...</Attribute>
     <Attribute name="page_count">1</Attribute>
     <Attribute name="rating">5</Attribute>
     <Attribute name="last_update">2016-09-03T00:00:00+02:00</Attribute>
 </DataObject>
 <DataObject type="metatags">
-    <Attribute name="category" value="Technical"/>
+    <Attribute name="category" value="Technical, Studies"/>
         <Attribute name="category" value="Anki"/>
+        <Attribute name="category" value="Rikaisama"/>
         <Attribute name="category" value="Tutorial"/>
+        <Attribute name="category" value="Japanese"/>
         <Attribute name="category" value="set-up"/>
 </DataObject>
 -->
@@ -175,12 +177,12 @@
               <div class="col-lg-12">
                   <div class="header-content center">
                       <h1 class="header-title nocount">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</h1>
-                      <p class="header-date">za 03 september 2016, in category <a href="https://steviepoppe.net/blog/category/technical/">Technical</a></p>
+                      <p class="header-date">za 03 september 2016, in category <a href="https://steviepoppe.net/blog/category/technical-studies/">Technical, studies</a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
                       <p class="pull-right header-tags">
                           <span class="icon-tags" aria-hidden="true"></span>
-<a href="https://steviepoppe.net/blog/tags/anki/">Anki</a>, <a href="https://steviepoppe.net/blog/tags/set-up/">set-up</a>, <a href="https://steviepoppe.net/blog/tags/tutorial/">Tutorial</a>                      </p>
+<a href="https://steviepoppe.net/blog/tags/anki/">Anki</a>, <a href="https://steviepoppe.net/blog/tags/japanese/">Japanese</a>, <a href="https://steviepoppe.net/blog/tags/rikaisama/">Rikaisama</a>, <a href="https://steviepoppe.net/blog/tags/set-up/">set-up</a>, <a href="https://steviepoppe.net/blog/tags/tutorial/">Tutorial</a>                      </p>
                   </div>
               </div>
         </div>
@@ -201,12 +203,17 @@
 </li>
 <li><a href="#posibilities">Posibilities</a><ul>
 <li><a href="#internet">Internet</a></li>
-<li><a href="#jnovel">Jnovel</a></li>
+<li><a href="#jnovel">Jnovel</a><ul>
+<li><a href="#jnovelformatter">JNovelFormatter</a></li>
+<li><a href="#aozora">Aozora</a></li>
+</ul>
+</li>
 <li><a href="#anime">Anime</a></li>
 <li><a href="#gaming">Gaming</a></li>
 </ul>
 </li>
 <li><a href="#my-plug-in">My Plug-in</a></li>
+<li><a href="#wait-there-is-more">Wait! There is more!</a></li>
 <li><a href="#further-reading">Further reading</a></li>
 </ul>
 </div>
@@ -234,33 +241,48 @@
 <p>NL kul</p>
 <h1 id="posibilities">Posibilities</h1>
 <h2 id="internet">Internet</h2>
-<p>This goes without saying. If you’re a relatively new learner, NHK provides simplified news articles and videos at <a href="http://www3.nhk.or.jp/news/easy/">NHK Easy News</a>. I used these a lot near the end of my first year studying, and it’s a neat way to stay up to date as well.</p>
+<p>This one goes without saying as that’s pretty much the prime objective of this tutorial. If you’re a relatively new learner, NHK provides simplified news articles and videos at <a href="http://www3.nhk.or.jp/news/easy/">NHK Easy News</a>. I used these a lot near the end of my first year studying, and it’s a neat way to stay up to date as well.</p>
 <h2 id="jnovel">Jnovel</h2>
 <blockquote>
 <p>「言い方がまちがってるわ。ウィン、ガー・デイアム　レヴィ・オーサ。『ガー』と長一くきれいに言わなくちゃ」<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></p>
 </blockquote>
-<p>I’ve used this method while reading The Girl Who Leapt Through Time during our book-reading sessions and just last week, as a kind of summer project, worked my way through a digital copy of the first Harry Potter this way (quite a high difficulty gap but I know the original by heart so that helped heaps context-wise).</p>
+<h3 id="jnovelformatter">JNovelFormatter</h3>
+<p><a href="http://forum.koohii.com/post-113458.html">JNovelFormatter</a> is a neat little tool that converts japanese literature in *.txt format into clean parsed HTML files. Layout is fairly customizable, although I think the original settings are easy on the eye as-is (I like dark backgrounds when reading for hours at a time, makes me feel less like I’m gazing straight into a lightbulb). End of sentence dots get turned into bookmarkable anchors so you won’t lose track of your progress.</p>
+<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-jnovel.jpg" style="width: 380px; height: auto; max-width: 100%;"/></p>
+<p>I highly recommend this method! I’ve used this approach while reading <em>The Girl Who Leapt Through Time</em> (時をかける少女) during our 読書クラブ’s book-reading sessions and just last week, as a kind of summer project, worked my way through the first <em>Harry Potter</em> (a surprisingly high difficulty but I know the original by heart so that helped heaps context-wise).</p>
+<p>As for resources, there’s plenty to be found online. Light novels are commonly uploaded in text format and probably a good starting point for the more advanced learner.<sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup> I’ve heard Zero no Tsukaima and Kino no Tabi are relatively easy reads, for example.</p>
+<h3 id="aozora">Aozora</h3>
+<p><a href="Aozora">http://www.aozora.gr.jp/</a>, pretty much the Japanese Gutenberg project, freely hosts tons of public-domain books online.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup> Check out Natsume Sōseki’s classic Botchan as <a href="http://www.aozora.gr.jp/cards/000148/files/752_14964.html">example</a>. Their literary standards are a bit higher as the typical light novel so it’s quite an adjustment, but great for those who’re looking for easy-to-find, legally obtainable literature.</p>
 <h2 id="anime">Anime</h2>
 <p>A really cool concept recently released is Animelon’s multi-layer subtitled anime streaming web-app, akin to the <a href="https://www.erin.ne.jp/en/">Erin’s Challenge</a> video’s (except with arguably way more interesting content: as of date there are over 60 series hosted, mostly all big names ranging from more recent hits as SAO and Attack on Titan to classics as Fullmetal Alchemist: Brotherhood and Clannad).</p>
-<p>If I were to recommend one to start with, I’d definitely pick Clannad.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> The high-school setting means relatively easy and casual vocabulary (as opposed to, for example, SAO’s highly technical and fantasy-related vocab you’ll barely encounter in real life), while the voice acting’s pacing is calm enough to pick up as relative beginner, and devoid of difficult accents. </p>
-<p>Check out their video demonstration below to see the various possibilities.</p>
-<p>https://www.youtube.com/watch?v=XYR3_Yb9gBo</p>
+<p>If I were to recommend one to start with, I’d definitely pick Clannad.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> The high-school setting means relatively easy and casual vocabulary (as opposed to, for example, SAO’s highly technical and fantasy-related vocab you’ll barely ever encounter in real life), while the voice acting’s pacing is calm enough to pick up as relative beginner, and devoid of difficult accents. </p>
+<p>Check out their video demonstration below to see the various possibilities:</p>
+<iframe allowfullscreen="" frameborder="0" height="270" src="https://www.youtube.com/embed/XYR3_Yb9gBo?feature=oembed" width="480"></iframe>
 <p>What bothers me a bit is the legality of it all. They’re currently keeping this site up as proof-of-concept in search of potential buyers but meanwhile they’re hosting full series in HD quality under de header of “educational purposes only”. I hope they survive, since this service is golden, really.</p>
 <h2 id="gaming">Gaming</h2>
 <p>This one’s a bit tricky still. The new web-possibilities since the implementation of the latest HTML-standard, HTML5, have given rise to a broad range of games running natively in your browser without the need of additional clutter such as Adobe Flash. Especially visual novels, a big thing in Japan, would be most suitable for our purpose, considering the large amounts of text. Except so far the online playable ones I’ve found were either already translated into English, or else of the early ’90s abandonware eroge kind, so not what I was looking for (you’ll easily find that online if that’s your cup of tea).</p>
-<p>Another option is to set up your gaming environment in such a way it enables you to use these features. There’s an active community of technically capable Japanese learners at Reddit and Koohii who came up with such a thing. I’ve yet to try this myself, and honestly, it’s a bit bloated, but if you’re dying to play visual novels and learn Japanese at the same time, this’ll do the trick:</p>
+<p>Another option is to set up your gaming environment in such a way it enables you to use these features. There’s an active community of technically capable Japanese learners at <a href="https://www.reddit.com/r/visualnovels/wiki/vnhooking">Reddit</a> and <a href="http://forum.koohii.com/thread-10386.html">Koohii</a> who came up with such a thing. I’ve yet to try this myself, and honestly, it’s a bit bloated, but if you’re dying to play visual novels and learn Japanese at the same time, this’ll do the trick:</p>
 <ol>
 <li>Get <a href="http://sakuradite.com/wiki/en/vnr">Visual Novel Reader</a>: it appears to be a mask to be run over an already installed visual novel, using OCR to capture Japanese text, parse it, and run it through some dictionaries (<a href="http://sakuradite.com/wiki/en/VNR/Tutorial">Tutorial</a>).</li>
-<li>Use the <a href="https://addons.mozilla.org/nl/firefox/addon/furigana-inserter/">Firgana Inserter</a> Firefox Plug-in to automatically copy-paste dialogue from your clipboard to an empty Firefox screen.</li>
+<li>Use the <a href="https://addons.mozilla.org/nl/firefox/addon/furigana-inserter/">Firgana Inserter</a> Firefox Plug-in to automatically copy-paste dialogue from your clipboard, obtained dynamically through OCR by above means, to an empty Firefox screen.</li>
 </ol>
 <p>If you’re running Firefox and your game side to side you’ll be able to max up your VN ankisets in no time, just like this guy!</p>
-<p>https://youtu.be/7djqr-RG26s</p>
-<p>Sources: <a href="https://www.reddit.com/r/visualnovels/wiki/vnhooking">https://www.reddit.com/r/visualnovels/wiki/vnhooking</a> and  <a href="http://forum.koohii.com/thread-10386.html">http://forum.koohii.com/thread-10386.html</a></p>
+<iframe allowfullscreen="" frameborder="0" height="270" src="https://www.youtube.com/embed/7djqr-RG26s?feature=oembed" width="480"></iframe>
 <h1 id="my-plug-in">My Plug-in</h1>
-<p>If there’s one downside to this method, it’s that audio will be added to your cards regardless if there’s actually an audio file in existence. More concretely, your audio-fields will have a reference to a non-existent file. Now, one solution is to, whenever you come across such a card during your anki-time, manually delete </p>
-<p>But if your sets contain thousands of cards it’s easier to do this automatically.</p>
+<p>If there’s one downside to this method, it’s that audio will be added to your cards regardless if there’s actually an audio file in existence. More concretely, your audio-fields will have a reference to a non-existent file. Now, one solution is to, whenever you come across such a card during your anki-time, manually delete the audio entry and occasionally clearing all “empty” card notes by selecting <strong>Tools</strong> → <strong>Empty Cards</strong>.</p>
+<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-removesound.jpg" style="width: 232px; height: auto; max-width: 100%;"/></p>
+<p>But! If your sets contain thousands of cards, it’s easier to do this automatically, don’t you think. I’ve written a small python plug-in that compares your set’s audio entries with the audio files in your anki library and deletes empty notes. I’ve added the plug-in to my <a href="https://steviepoppe.net/resources/">resources</a>, if you’re interested. HAHA NEE NOG NI GEDAAN (maar da komt nog)</p>
+<h1 id="wait-there-is-more">Wait! There is more!</h1>
+<p>The main goal of this post was to introduce a less known, but highly useful, Anki functionality by linking Rikaisama’s excellent pop-up dictionary with Anki’s API, as well as show several possible appliances. If you’ve any further questions, feel free to check out the other articles in this series on Anki, or to leave a comment below.</p>
+<ul>
+<li><a href="#"> A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a> (<em>coming soon</em>)</li>
+<li><a href="#">Using Anki’s API to contextualize your vocab cards with example sentences</a> (<em>coming soon</em>)</li>
+<li><a href="#">Estimating a text’s difficulty based on your Anki’s vocab set</a> (<em>coming soon</em>)</li>
+</ul>
 <h1 id="further-reading">Further reading</h1>
-<p>idk?</p>
+<ul>
+<li><a href="http://www.nihongonobaka.com/learn-japanese-through-video-games/">Learn Japanese Through Videogames</a>: speaking of videogames, you could also look up videogame scripts (セリフ集) and vocab-mine from those. This guy wrote a decent blog on that. The recent Phoenix Wright spin-off, Dai Gyakuten Saiban, has yet to be confirmed to receive a western release, so I’ll have to brush up my court of law vocab this way before playing. </li>
+</ul>
 <div class="footnote">
 <hr/>
 <ol>
@@ -273,11 +295,25 @@
 <li id="fn:3">
 <p>If you’re watching Clannad: After Story afterwards, keep tissues at hand. <a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
+<li id="fn:4">
+<p>According to Wikipedia, they host over 10.000 works including both out-of-copyright or made freely available by the authors. Read more: <a href="https://en.wikipedia.org/wiki/Aozora_Bunko">https://en.wikipedia.org/wiki/Aozora_Bunko</a> <a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">↩</a></p>
+</li>
+<li id="fn:5">
+<p>I’ll refrain from linking here as that’s legally gray territory. <a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text">↩</a></p>
+</li>
 </ol>
 </div>
     <hr/>
         </div>
 
+                <hr />
+        <div class="category">
+            <h2>Related posts</h2>
+            <dl class="dl-horizontal">
+                <dt>zo 28 augustus 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
+            </dl>
+            </div>
         <hr />
     </div>
                 </div>

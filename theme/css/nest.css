@@ -61,6 +61,19 @@ video{
   box-shadow: 0 1px 2px rgba(0,0,0,0.44);
 }
 
+.container-main iframe{
+  margin-left: auto;
+margin-right: auto;
+position: relative;
+display: block;  
+border: 1px solid #f3f3f3;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.44);
+margin-bottom: 15px;
+margin-top: 15px;
+max-width: 100%;
+}
+
 .youtube-4x3 {
   padding-bottom: 75%;  /* inverse of 4:3 aspect ratio */
 }
