@@ -397,6 +397,11 @@ nav.toc{
       margin-left: -25px;
     }
 
+      .image.featured {
+    margin-right: -25px;
+    margin-left: -25px;
+  }
+
   }
 
   #footercontent{
@@ -707,9 +712,13 @@ h2 {
 
     .center{
       text-align: center;
+    }
+
+    .center img{
 margin-bottom: 15px;
 margin-top: 15px;
     }
+
 
     .centerdiv{
       margin-left: auto;
@@ -836,8 +845,8 @@ margin-top: 15px;
   }
 
   .image.featured {
-    margin-right: -25px;
-    margin-left: -25px;
+    margin-right: -15px;
+    margin-left: -15px;
     position: relative;
     width: auto;
     display: block;
