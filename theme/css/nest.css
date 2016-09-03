@@ -156,6 +156,7 @@ width:100%;
   width: 100%;
   left: 0;
   height: 50px;
+  z-index: 99;
   border-left: 0;
   border-right: 0;
   border-radius: 0;
@@ -199,6 +200,7 @@ nav.toc{
 .avatar-container{
   width: 60px;
   height: 60px;
+  z-index: 98;
 }
 
 .image.featured {
