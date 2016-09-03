@@ -1,4 +1,4 @@
-/*/*!
+/*/*/*!
  * Nest v1.0.0 (http://www.molivier.com)
  * Copyright 2015 Matthieu OLIVIER
  * Licensed under Apache V2 (https://github.com/molivier/nest/blob/master/LICENSE)
@@ -168,7 +168,8 @@ width:100%;
 }
 
 .navbar{
-  max-width:950px;
+/*  max-width:950px;*/  
+  max-width:100%;
 }
 
 .nav > li > a{
@@ -183,6 +184,9 @@ width:100%;
 #steviesmenubar{
   width: auto;
   border-top: 0;
+  max-width: 1050px;
+margin-left: auto;
+margin-right: auto;
 }
 
 .nav > li{
@@ -423,6 +427,22 @@ nav.toc{
     }
 
   }
+
+  #nav.affix {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+}
+
+#nav > .navbar-inner {
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+}
 
   #footercontent{
    margin-right: auto; 
@@ -1499,3 +1519,4 @@ a, .footnote, #further-reading {
     line-height: 16px;
     font-size: 16px;
     }*/
+*/

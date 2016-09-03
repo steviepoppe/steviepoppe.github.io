@@ -10,7 +10,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Earlier this year I, alongside several other second year Japanology students, participated in a small “tell an interesting story” speech contest through our university. Earlier this week we were ...">
+  <meta name="description" content="Earlier this year I, alongside several other second year Japanology students, participated in a small “tell an interesting story” speech contest through our university. This week we were informed ...">
   <meta name="keywords" content="Japanese, KULeuven, Video">
   <link rel="icon" href="https://steviepoppe.net/favicon.ico">
 
@@ -58,7 +58,7 @@
 <DataObject type="document">
     <Attribute name="title">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</Attribute>
     <Attribute name="author">Stevie Poppe</Attribute>
-    <Attribute name="description">Earlier this year I, alongside several other second year Japanology students, participated in a small “tell an interesting story” speech contest through our university. Earlier this week we were informed the videorecordings of these had been uploaded on the contest’s website and were available for all to watch. My story is a classic “awkward Japanese language mix-up” anecdote on a visit to a Japanese elementary school in Brussels, which I’ll touch upon in this post, along embedding the video. (日本の方、あまりよくないんですけど、もしよかったら見てみてくださいね！)</Attribute>
+    <Attribute name="description">Earlier this year I, alongside several other second year Japanology students, participated in a small “tell an interesting story” speech contest through our university. This week we were informed the videorecordings of these had been uploaded on the contest’s website and were available for all to watch. My story is a classic “awkward Japanese language mix-up” anecdote on a visit to a Japanese elementary school in Brussels, which I’ll touch upon in this post, along embedding the video. (日本の方、あまりよくないんですけど、もしよかったら見てみてくださいね！)</Attribute>
     <Attribute name="page_count">1</Attribute>
     <Attribute name="rating">5</Attribute>
     <Attribute name="last_update">2016-08-28T00:00:00+02:00</Attribute>
@@ -90,7 +90,8 @@
                   <h1 style="font-size: 28px; letter-spacing: 1px;"><a href="https://steviepoppe.net">Onoreto</a> <small>@Stevie Poppe</small></h1>
                 </div>
 
-                <nav class="navbar navbar-default">
+<div id="nav-wrapper">
+                <nav class="navbar navbar-default" id="nav">
 
                   <!-- Hamburger menu for mobile -->
 <!--                   <div class="navbar-header">
@@ -160,7 +161,7 @@
                       </div>
 
                     </nav>
-
+</div>
                   </div>
                 </div>
                 <!-- /Header -->
@@ -187,7 +188,7 @@
     <div class="container-main">
 <h1 style="text-align: center;" class="nocount">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</h1>
         
-<p>Earlier this year I, alongside several other second year Japanology students, participated in a small “tell an interesting story” speech contest through our university. Earlier this week we were informed the videorecordings of these had been uploaded on the contest’s website and were available for all to watch<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. My story is a classic “awkward Japanese language mix-up” anecdote on a visit to a Japanese elementary school in Brussels, which I’ll touch upon in this post, along embedding the video. (日本の方、あまりよくないんですけど、もしよかったら見てみてくださいね！)</p>
+<p>Earlier this year I, alongside several other second year Japanology students, participated in a small “tell an interesting story” speech contest through our university. This week we were informed the videorecordings of these had been uploaded on the contest’s website and were available for all to watch<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. My story is a classic “awkward Japanese language mix-up” anecdote on a visit to a Japanese elementary school in Brussels, which I’ll touch upon in this post, along embedding the video. (日本の方、あまりよくないんですけど、もしよかったら見てみてくださいね！)</p>
 
 <h1 id="the-video">The Video</h1>
 <script src="http://vjs.zencdn.net/4.0/video.js"></script>
@@ -304,5 +305,15 @@
             </footer>
             <!-- /Footer -->
           </div>
+
+          <script>
+$(function() {
+    $('#nav-wrapper').height($("#nav").height());
+    
+    $('#nav').affix({
+        offset: { top: $('#nav').offset().top }
+    });
+});
+</script>
         </body>
         </html>

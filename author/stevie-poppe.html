@@ -81,7 +81,8 @@
                   <h1 style="font-size: 28px; letter-spacing: 1px;"><a href="https://steviepoppe.net">Onoreto</a> <small>@Stevie Poppe</small></h1>
                 </div>
 
-                <nav class="navbar navbar-default">
+<div id="nav-wrapper">
+                <nav class="navbar navbar-default" id="nav">
 
                   <!-- Hamburger menu for mobile -->
 <!--                   <div class="navbar-header">
@@ -151,7 +152,7 @@
                       </div>
 
                     </nav>
-
+</div>
                   </div>
                 </div>
                 <!-- /Header -->
@@ -181,7 +182,7 @@
           <hr class="archive-hr"/>
           <div class="post-content">
  
-            Earlier this year I, alongside several other second year Japanology students, participated in a small “tell an interesting story” speech contest through our university. Earlier this week we were informed the videorecordings of these had been uploaded on the contest’s website and were available for all to watch. My story is a classic “awkward Japanese language mix-up” anecdote on a visit to a Japanese elementary school in Brussels, which I’ll touch upon in this post, along embedding the video. (日本の方、あまりよくないんですけど、もしよかったら見てみてくださいね！) 
+            Earlier this year I, alongside several other second year Japanology students, participated in a small “tell an interesting story” speech contest through our university. This week we were informed the videorecordings of these had been uploaded on the contest’s website and were available for all to watch. My story is a classic “awkward Japanese language mix-up” anecdote on a visit to a Japanese elementary school in Brussels, which I’ll touch upon in this post, along embedding the video. (日本の方、あまりよくないんですけど、もしよかったら見てみてくださいね！) 
             <a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/"><br/>Continue →</a>
           </div>
 
@@ -300,5 +301,15 @@
             </footer>
             <!-- /Footer -->
           </div>
+
+          <script>
+$(function() {
+    $('#nav-wrapper').height($("#nav").height());
+    
+    $('#nav').affix({
+        offset: { top: $('#nav').offset().top }
+    });
+});
+</script>
         </body>
         </html>

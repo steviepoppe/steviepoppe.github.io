@@ -90,7 +90,8 @@
                   <h1 style="font-size: 28px; letter-spacing: 1px;"><a href="https://steviepoppe.net">Onoreto</a> <small>@Stevie Poppe</small></h1>
                 </div>
 
-                <nav class="navbar navbar-default">
+<div id="nav-wrapper">
+                <nav class="navbar navbar-default" id="nav">
 
                   <!-- Hamburger menu for mobile -->
 <!--                   <div class="navbar-header">
@@ -160,7 +161,7 @@
                       </div>
 
                     </nav>
-
+</div>
                   </div>
                 </div>
                 <!-- /Header -->
@@ -266,5 +267,15 @@ Ikki Kajiwara</p>
             </footer>
             <!-- /Footer -->
           </div>
+
+          <script>
+$(function() {
+    $('#nav-wrapper').height($("#nav").height());
+    
+    $('#nav').affix({
+        offset: { top: $('#nav').offset().top }
+    });
+});
+</script>
         </body>
         </html>
