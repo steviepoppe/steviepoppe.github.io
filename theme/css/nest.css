@@ -281,6 +281,10 @@ nav.toc{
 
 @media (min-width: 768px) {
 
+#nav.affix #smallicon {
+    margin-right: 15px;
+}
+
   .video{
     width: 55%;
   }
