@@ -37,6 +37,20 @@
   counter-increment: none;
 }
 
+.toclink, .toclink:hover, .toclink:active{
+  color: rgb(18, 72, 119);
+  text-decoration: none;
+}
+
+
+ruby {
+    font-family: "Hiragino Mincho Pro", "Yu Mincho", "Source Han Sans Japanese", "NotoSansCJK", "Meiryo", serif;
+}
+
+ruby rt {
+    font-size: 10px;
+}
+
 div[data-pullquote]:before, span[data-pullquote]:before {
   content: attr(data-pullquote);
   display: block;
@@ -53,7 +67,6 @@ div[data-pullquote]:before, span[data-pullquote]:before {
   padding-bottom: 0;
   padding-left: 20px;
   font-size: 15px;
-
 }
 
 .video{

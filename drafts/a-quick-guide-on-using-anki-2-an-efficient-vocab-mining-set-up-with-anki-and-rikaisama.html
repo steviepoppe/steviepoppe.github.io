@@ -17,7 +17,7 @@
   <link rel="shortcut icon" type="image/png" href="https://steviepoppe.net/images/icons/favicon.png">
   <link rel="shortcut icon" type="image/x-icon" href="https://steviepoppe.net/favicon.ico">
 
-  <title>A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama - Onoreto</title>
+  <title>A Quick Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama - Onoreto</title>
 <link rel="canonical" href="https://steviepoppe.net/drafts/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama.html">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
@@ -172,8 +172,7 @@
                 <!-- Content -->
                 <div id="main">
     <div class="container content padding-40">
-    <div class="container header-wrapper nobanner">
-        <hr/>
+    <div class="container header-wrapper banner" style="background: linear-gradient(rgba(6, 6, 6, 0.61), rgba(0, 0, 0, 0.46)), url('https://steviepoppe.net/images/anki_header.jpg'); background-position: center; background-size: cover;">
         <div class="row">
               <div class="col-lg-12">
                   <div class="header-content center">
@@ -189,6 +188,8 @@
         </div>
     </div>
     <div class="container-main">
+<!--         <h1 style="text-align: center;" class="nocount">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</h1>
+ -->
             <nav class="toc">
             <p class="toc_title">Table of Contents</p>
             <div class="toc">
@@ -205,7 +206,7 @@
 </li>
 <li><a href="#appliances">Appliances</a><ul>
 <li><a href="#internet">Internet</a></li>
-<li><a href="#jnovel">Jnovel</a><ul>
+<li><a href="#novels">novels</a><ul>
 <li><a href="#jnovelformatter">JNovelFormatter</a></li>
 <li><a href="#aozora">Aozora</a></li>
 </ul>
@@ -235,45 +236,45 @@
 <!-- PELICAN_BEGIN_SUMMARY -->
 <p><strong>Rikaichan</strong>, and it’s Chrome variant <strong>Rikaikun</strong>, have already been widely established as incredibly helpful tools for reading Japanese online. Nevertheless, one major function remained missing still: a seamless integration with Anki for efficient vocabulary mining. A recent extension of the original Rikaichan, aptly named <strong>Rikaisama</strong> (it’s a <em>pun</em>!), adds several new features including communication with the Anki API, <em>Sanseido Web Dictionary</em>‘s J-J dictionary definitions, access to <em>J-Pod101</em>‘s<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> audiofiles, and several more.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6" rel="footnote">6</a></sup> Concretely, this means audio playback of tens of thousands of words and expressions as well as easy integration of new vocab into Anki. Despite these incredibly useful features, Rikaisama remains fairly unknown and unblogged about. To counter that, this blog serves as a brief tutorial on setting up a Rikaisama/Anki environment as well as demonstrating some useful real-life appliances.</p>
 <!-- PELICAN_END_SUMMARY -->
-<h1 id="rikaisama">Rikaisama</h1>
-<h2 id="download">Download</h2>
+<h1 id="rikaisama"><a class="toclink" href="#rikaisama">Rikaisama</a></h1>
+<h2 id="download"><a class="toclink" href="#download">Download</a></h2>
 <p>Like Rikaichan, Rikaisama is a Firefox plugin, available for download on their <a href="https://sourceforge.net/projects/rikaisama/files/">sourceforge download page</a> (free, of course). If you’re an avid Chrome supporter, this one might be worth switching for.</p>
 <p class="right"><img alt="right" src="https://steviepoppe.net/images/anki/rikaisama.png" style="width: 76px; height: auto; max-width: 100%;"/></p>
 <p>After installation you’ll have two new buttons at your disposal, either already visible at the top-right of your menubar, or in firefox’ toolbar.</p>
 <p>The left one activates Rikaisama. I just leave it permanently open. The right one switches the Rikaisama lookupbar. I don’t use this one often so I hide it in the toolbox myself, but for now we’ll need it to access Rikaisama’s settings. Open the toolbar and click the right-most icon to open those (after we’re done, click the leftmost icon to deactivate the toolbar).</p>
 <p class="center"><img alt="center" src="https://steviepoppe.net/images/anki/rikaisamatool.png" style="width: 305px; height: auto; max-width: 100%;"/></p>
 <p>Rikaisama’s base settings are pretty self-explanatory, and I’ve left most of them to their default values. For our purpose, the Clipboard &amp; Save and Anki tabs will be the most relevant.</p>
-<h2 id="set-up">Set-up</h2>
+<h2 id="set-up"><a class="toclink" href="#set-up">Set-up</a></h2>
 <p><a href="http://rikaisama.sourceforge.net/">Rikaisama’s homepage</a> contains a simple, if what rather crude, set-up guide covering the basics of linking Rikaisama with Anki. I’ve found some to be somewhat aversed by all the field/token mapping talk, so I’ll try to simplify things a bit.</p>
-<h3 id="anki">Anki</h3>
+<h3 id="anki"><a class="toclink" href="#anki">Anki</a></h3>
 <p>First, Anki will need an additional add-on as well in order to allow real-time import. It’s ‘available’ at Ankiweb’s <a href="https://ankiweb.net/shared/info/2512410601">plug-in page</a>, although actual installation is done in-app. Open Anki on your desktop, go to <strong>Tools</strong> &gt; <strong>Add-ons</strong> &gt; <strong>Browse &amp; Install</strong>, and copypaste <strong>2512410601</strong> in the pop-up dialogue.</p>
 <p>For Rikaisama to recognize which Anki set to </p>
-<h3 id="mapping">Mapping</h3>
-<h3 id="dictionaries">Dictionaries</h3>
+<h3 id="mapping"><a class="toclink" href="#mapping">Mapping</a></h3>
+<h3 id="dictionaries"><a class="toclink" href="#dictionaries">Dictionaries</a></h3>
 <p>A final step in case you haven’t used Rikaichan before, is to install some dictionaries files, available at <a href="http://www.polarcloud.com/getrcx/">Rikaichan’s homepage</a>. I personally use the <strong>Japanese - Dutch</strong>,<sup id="fnref:9"><a class="footnote-ref" href="#fn:9" rel="footnote">9</a></sup> <strong>Japanese English</strong> and <strong>Japanese Names</strong> dictionaries, and sort them in those order in Rikaisama’s configuration.</p>
 <p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/rikaisamadict.jpg" style="width: 500px; height: auto; max-width: 100%;"/></p>
-<h1 id="appliances">Appliances</h1>
-<h2 id="internet">Internet</h2>
+<h1 id="appliances"><a class="toclink" href="#appliances">Appliances</a></h1>
+<h2 id="internet"><a class="toclink" href="#internet">Internet</a></h2>
 <p>This one goes without saying as that’s pretty much the prime objective of this tutorial. If you’re a relatively new learner, NHK provides simplified news articles and videos at <a href="http://www3.nhk.or.jp/news/easy/">NHK Easy News</a>. I used these a lot near the end of my first year studying, and it’s a neat way to stay up to date with what’s going in Japan, or more generally in the world, as well (it’s rather awkward if you don’t, as Japanologist or student in cultural or social sciences).</p>
-<h2 id="jnovel">Jnovel</h2>
+<h2 id="novels"><a class="toclink" href="#novels">novels</a></h2>
 <blockquote>
 <p>「言い方がまちがってるわ。ウィン、ガー・デイアム　レヴィ・オーサ。『ガー』と長一くきれいに言わなくちゃ」<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></p>
 </blockquote>
-<h3 id="jnovelformatter">JNovelFormatter</h3>
+<h3 id="jnovelformatter"><a class="toclink" href="#jnovelformatter">JNovelFormatter</a></h3>
 <p><a href="http://forum.koohii.com/post-113458.html">JNovelFormatter</a> is a neat little tool, by the developer of Rikaisama<sup id="fnref:7"><a class="footnote-ref" href="#fn:7" rel="footnote">7</a></sup> that converts japanese literature in .txt format into clean parsed HTML files. Layout is fairly customizable, although I think the original settings are easy on the eye as-is (I like dark backgrounds when reading for hours at a time, makes me feel less like I’m gazing straight into a lightbulb). End of sentence dots get turned into bookmarkable anchors so you won’t lose track of your progress.</p>
 <p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-jnovel.jpg" style="width: 380px; height: auto; max-width: 100%;"/></p>
 <p>I highly recommend this method! I’ve used this approach while reading <em>The Girl Who Leapt Through Time</em> (時をかける少女) during our 読書クラブ’s book-reading sessions and just last week, as a kind of summer project, worked my way through the first <em>Harry Potter</em> (a surprisingly high difficulty but I know the original by heart so that helped heaps context-wise).</p>
 <p>As for resources, there’s plenty to be found online. Light novels are commonly uploaded in text format and probably a good starting point for the more advanced learner.<sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup> I’ve heard <em>Zero no Tsukaima</em> (ゼロの使い魔) and <em>Kino no Tabi</em> (キノの旅) are relatively easy reads, for example.<sup id="fnref:10"><a class="footnote-ref" href="#fn:10" rel="footnote">10</a></sup></p>
-<h3 id="aozora">Aozora</h3>
+<h3 id="aozora"><a class="toclink" href="#aozora">Aozora</a></h3>
 <p><a href="Aozora">http://www.aozora.gr.jp/</a>, pretty much the Japanese Gutenberg project, freely hosts tons of public-domain books online.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup> Check out Natsume Sōseki’s classic Botchan as <a href="http://www.aozora.gr.jp/cards/000148/files/752_14964.html">example</a>. Their literary standards are a bit higher as the typical light novel so it’s quite an adjustment, but great for those who’re looking for easy-to-find, legally obtainable literature.</p>
 <p>Tip: audiobooks (nee aparte blog)</p>
-<h2 id="anime">Anime</h2>
+<h2 id="anime"><a class="toclink" href="#anime">Anime</a></h2>
 <p>A really cool concept recently released is Animelon’s multi-layer subtitled anime streaming web-app, akin to the <a href="https://www.erin.ne.jp/en/">Erin’s Challenge</a> video’s (except with arguably way more interesting content: as of date there are over 60 series hosted, mostly all big names ranging from more recent hits as SAO and Attack on Titan to classics as Fullmetal Alchemist: Brotherhood and Clannad).</p>
 <p>If I were to recommend one to start with, I’d definitely pick Clannad.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> The high-school setting means relatively easy and casual vocabulary (as opposed to, for example, SAO’s highly technical and fantasy-related vocab you’ll barely ever encounter in real life), while the voice acting’s pacing is calm enough to pick up as relative beginner, and devoid of difficult accents. </p>
 <p>Check out their video demonstration below to see the various possibilities:</p>
 <iframe allowfullscreen="" frameborder="0" height="270" src="https://www.youtube.com/embed/XYR3_Yb9gBo?feature=oembed" width="480"></iframe>
 <p>What bothers me a bit is the legality of it all. They’re currently keeping this site up as proof-of-concept in search of potential buyers but meanwhile they’re hosting full series in HD quality “for educational purposes only”. I’m not complaining but I hope they survive, since this service is golden, really.</p>
-<h2 id="gaming">Gaming</h2>
+<h2 id="gaming"><a class="toclink" href="#gaming">Gaming</a></h2>
 <p>This one’s a bit tricky still. The new web-possibilities since the implementation of the latest HTML-standard, HTML5, have given rise to a broad range of games running natively in your browser without the need of additional clutter such as Adobe Flash. Especially visual novels, a big thing in Japan, would be most suitable for our purpose, considering the large amounts of text. Except so far the online playable ones I’ve found were either already translated into English, or else of the early ’90s abandonware eroge kind, so not what I was looking for (you’ll easily find that online if that’s your cup of tea).</p>
 <p>Another option is to set up your gaming environment in such a way it enables you to use these features. There’s an active community of technically capable Japanese learners at <a href="https://www.reddit.com/r/visualnovels/wiki/vnhooking">Reddit</a> and <a href="http://forum.koohii.com/thread-10386.html">Koohii</a> who came up with such a thing. I’ve yet to try this myself, and honestly, it’s a bit bloated, but if you’re dying to play visual novels and learn Japanese at the same time, this’ll do the trick:</p>
 <ol>
@@ -282,20 +283,20 @@
 </ol>
 <p>If you’re running Firefox and your game side by side you’ll be able to max up your visual novel ankisets in no time, just like this guy!</p>
 <iframe allowfullscreen="" frameborder="0" height="270" src="https://www.youtube.com/embed/7djqr-RG26s?feature=oembed" width="480"></iframe>
-<h1 id="my-plug-in">My Plug-in</h1>
+<h1 id="my-plug-in"><a class="toclink" href="#my-plug-in">My Plug-in</a></h1>
 <p>If there’s one downside to this method, it’s that audio will be added to your cards regardless if there’s actually an audio file in existence. More concretely, your audio-fields will have a reference to a non-existent file. Now, one solution is to, whenever you come across such a card during your anki-time, manually delete the audio entry and occasionally clearing all “empty” card notes by selecting <strong>Tools</strong> → <strong>Empty Cards</strong>.</p>
 <p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-removesound.jpg" style="width: 232px; height: auto; max-width: 100%;"/></p>
 <p>But! If your sets contain thousands of cards, it’s easier to do this automatically, don’t you think. I’ve written a small python plug-in that compares your set’s audio entries with the audio files in your anki library and deletes empty notes. I’ve added the plug-in to my <a href="https://steviepoppe.net/resources/">resources</a>, if you’re interested. HAHA NEE NOG NI GEDAAN (maar da komt nog - <em>ooit</em>)</p>
-<h2 id="audio-alternatives">Audio alternatives</h2>
+<h2 id="audio-alternatives"><a class="toclink" href="#audio-alternatives">Audio alternatives</a></h2>
 <p>http://learnjapaneseonline.info/2014/10/14/kikitori-japanese-listening-the-dolly-sentences-method-technical-how-to-do-it/</p>
-<h1 id="wait-there-is-more">Wait! There is more!</h1>
+<h1 id="wait-there-is-more"><a class="toclink" href="#wait-there-is-more">Wait! There is more!</a></h1>
 <p>The main goal of this post was to introduce a less known, but highly useful, Anki functionality by linking Rikaisama’s excellent<sup id="fnref:8"><a class="footnote-ref" href="#fn:8" rel="footnote">8</a></sup> pop-up dictionary with Anki’s API, as well as show several possible appliances. If you’ve any further questions, feel free to check out the other articles in this series on Anki, or to leave a comment below.</p>
 <ul>
 <li><a href="#"> A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a> (<em>coming soon</em>)</li>
 <li><a href="#">Using Anki’s API to contextualize your vocab cards with example sentences</a> (<em>coming soon</em>)</li>
 <li><a href="#">Estimating a text’s difficulty based on your Anki’s vocab set</a> (<em>coming soon</em>)</li>
 </ul>
-<h1 id="further-reading">Further reading</h1>
+<h1 id="further-reading"><a class="toclink" href="#further-reading">Further reading</a></h1>
 <ul>
 <li><a href="http://www.nihongonobaka.com/learn-japanese-through-video-games/">Learn Japanese Through Videogames</a>: speaking of videogames, you could also look up videogame scripts (セリフ集) and vocab-mine from those. This guy wrote a decent blog on that. The recent Phoenix Wright spin-off, Dai Gyakuten Saiban, has yet to be confirmed to receive a western release, so I’ll have to brush up my court of law vocab this way before playing. </li>
 </ul>
