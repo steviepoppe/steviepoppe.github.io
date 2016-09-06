@@ -51,8 +51,9 @@ body {
   font-size: 95%;
 }
 
-ruby rt {
+[lang="ja"] ruby rt {
   font-size: 10px;
+  margin-bottom: -7px;
 }
 
 div[data-pullquote]:before, span[data-pullquote]:before {
