@@ -11,7 +11,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Due my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the rest ...">
-  <meta name="keywords" content="fonts, japanese, jekyll, markdown, pelican, tutorial">
+  <meta name="keywords" content="fonts, Japanese, markdown, pelican, python">
   <link rel="icon" href="https://steviepoppe.net/favicon.ico">
 
   <link rel="shortcut icon" type="image/png" href="https://steviepoppe.net/images/icons/favicon.png">
@@ -65,11 +65,10 @@
 </DataObject>
 <DataObject type="metatags">
     <Attribute name="category" value="technical"/>
-        <Attribute name="category" value="tutorial"/>
+        <Attribute name="category" value="python"/>
         <Attribute name="category" value="pelican"/>
         <Attribute name="category" value="markdown"/>
-        <Attribute name="category" value="jekyll"/>
-        <Attribute name="category" value="japanese"/>
+        <Attribute name="category" value="Japanese"/>
         <Attribute name="category" value="fonts"/>
 </DataObject>
 -->
@@ -184,7 +183,7 @@
                       <div class="clearfix"></div>
                       <p class="pull-right header-tags">
                           <span class="icon-tags" aria-hidden="true"></span>
-<a href="https://steviepoppe.net/blog/tags/fonts/">fonts</a>, <a href="https://steviepoppe.net/blog/tags/japanese/">japanese</a>, <a href="https://steviepoppe.net/blog/tags/jekyll/">jekyll</a>, <a href="https://steviepoppe.net/blog/tags/markdown/">markdown</a>, <a href="https://steviepoppe.net/blog/tags/pelican/">pelican</a>, <a href="https://steviepoppe.net/blog/tags/tutorial/">tutorial</a>                      </p>
+<a href="https://steviepoppe.net/blog/tags/fonts/">fonts</a>, <a href="https://steviepoppe.net/blog/tags/japanese/">Japanese</a>, <a href="https://steviepoppe.net/blog/tags/markdown/">markdown</a>, <a href="https://steviepoppe.net/blog/tags/pelican/">pelican</a>, <a href="https://steviepoppe.net/blog/tags/python/">python</a>                      </p>
                   </div>
               </div>
         </div>
@@ -197,10 +196,8 @@
 <ul>
 <li><a href="#download">Download</a></li>
 <li><a href="#installation">Installation</a></li>
-<li><a href="#usage">Usage</a><ul>
+<li><a href="#usage">Usage</a></li>
 <li><a href="#styling">Styling</a></li>
-</ul>
-</li>
 <li><a href="#further-reading">Further reading</a></li>
 </ul>
 </div>
@@ -222,15 +219,12 @@
 <div class="codehilite"><pre><span></span>    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">lang</span><span class="o">=</span><span class="s">"ja"</span><span class="p">&gt;</span>読書クラブ<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </pre></div>
 <p><strong>Example</strong>: just compare <span lang="ja"><ruby><rb>読</rb><rp>(</rp><rt>どく</rt><rp>)</rp></ruby><ruby><rb>書</rb><rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>クラブ</span><sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> to <ruby><rb>読</rb><rp>(</rp><rt>どく</rt><rp>)</rp></ruby><ruby><rb>書</rb><rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>クラブ.</p>
-<h2 id="styling"><a class="toclink" href="#styling">Styling</a></h2>
-<p>Using the CSS below will ensure max compatibility as these fonts are widespread across all platforms.</p>
-<div class="codehilite"><pre><span></span>    <span class="o">[</span><span class="nt">lang</span><span class="o">=</span><span class="s2">"ja"</span><span class="o">]</span> <span class="p">{</span>
-      <span class="nb">font-family</span><span class="o">:</span> <span class="s2">"メイリオ"</span><span class="o">,</span><span class="s2">"Meiryo"</span><span class="o">,</span><span class="s2">"ヒラギノ角ゴ Pro W3"</span><span class="o">,</span>
-      <span class="s2">"Hiragino Kaku Gothic Pro"</span><span class="o">,</span><span class="s2">"ＭＳ Ｐゴシック"</span><span class="o">,</span><span class="s2">"MS PGothic"</span><span class="o">,</span><span class="n">Sans</span><span class="o">-</span><span class="n">Serif</span><span class="p">;</span>
-    <span class="p">}</span>
-</pre></div>
-<p>Although it’s a bit of a risk performance-wise, I’m quite a fan of Google’s free webfonts.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> Due the complexity of the Japanese character-set, development on these have been slow<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup>, but <a href="https://en.wikipedia.org/wiki/Noto_fonts">Google’s Noto Font</a> is getting quite performant and with its support of near 7000 characters should pose no problem for most webprojects.</p>
-<div class="codehilite"><pre><span></span>    <span class="o">[</span><span class="nt">lang</span><span class="o">=</span><span class="s2">"ja"</span><span class="o">]</span> <span class="p">{</span>
+<h1 id="styling"><a class="toclink" href="#styling">Styling</a></h1>
+<p>Although it’s a bit of a risk performance-wise, I’m quite a fan of Google’s free webfonts.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> Due the complexity of the Japanese character-set, development on these have been slow<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup>, but <a href="https://en.wikipedia.org/wiki/Noto_fonts">Google’s Noto Font</a> is getting quite performant and with the Japanese font set supporting near 7000 characters, it should pose no problem for most webprojects. Since it works better, typography-wise, with the rest of my fonts, I use this one over fonts as Meiryo that’re more widespread across all platforms.</p>
+<p>Using the CSS below still ensures max compatibility as fallback if the page can’t connect to Google’s font API.</p>
+<div class="codehilite"><pre><span></span><span class="k">@import</span> <span class="nt">url</span><span class="o">(</span><span class="nt">https</span><span class="o">://</span><span class="nt">fonts</span><span class="nc">.googleapis.com</span><span class="o">/</span><span class="nt">earlyaccess</span><span class="o">/</span><span class="nt">notosansjapanese</span><span class="nc">.css</span><span class="o">)</span><span class="p">;</span>
+
+    <span class="o">[</span><span class="nt">lang</span><span class="o">=</span><span class="s2">"ja"</span><span class="o">]</span> <span class="p">{</span>
       <span class="nb">font-family</span><span class="o">:</span> <span class="s2">"Noto Sans Japanese"</span><span class="o">,</span> <span class="s2">"メイリオ"</span><span class="o">,</span><span class="s2">"Meiryo"</span><span class="o">,</span><span class="s2">"ヒラギノ角ゴ Pro W3"</span><span class="o">,</span>
       <span class="s2">"Hiragino Kaku Gothic Pro"</span><span class="o">,</span><span class="s2">"ＭＳ Ｐゴシック"</span><span class="o">,</span><span class="s2">"MS PGothic"</span><span class="o">,</span><span class="n">Sans</span><span class="o">-</span><span class="n">Serif</span><span class="p">;</span>
       <span class="nb">font-weight</span><span class="o">:</span> <span class="m">100</span><span class="p">;</span>
@@ -246,13 +240,13 @@
 <hr/>
 <ol>
 <li id="fn:1">
-<p>This is less so on mobile devices. Most Windows web browsers default to MS Gothic, lacking anti-aliasing found in newer fonts as Meiryo, and require some manual adjustments to fix this. For maximal compatibility, I prefer to do this in-site. <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+<p>This is less so on mobile devices. Most Windows web browsers default to <strong>MS Gothic</strong>, lacking anti-aliasing found in newer fonts as <strong>Meiryo</strong>, and require some manual adjustments. For maximal compatibility, I prefer to do this in-site. An easy fix, if no further customization is wished, could just be adding this to the css of your body: <code>font-family: Arial, Helvetica, Meiryo,sans-serif;</code> <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
 </li>
 <li id="fn:2">
 <p>For furigana support I use an existing MD extension available at <a href="https://github.com/djfun/furigana_markdown">https://github.com/djfun/furigana_markdown</a>. <a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">↩</a></p>
 </li>
 <li id="fn:3">
-<p>I use <a href="https://fonts.google.com/specimen/Quicksand">Quicksand</a> and <a href="https://fonts.google.com/specimen/Poiret+One">Poirot One</a> for all my latin-based text. <a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
+<p>I use <a href="https://fonts.google.com/specimen/Quicksand"><strong>Quicksand</strong></a> and <a href="https://fonts.google.com/specimen/Poiret+One"><strong>Poirot One</strong></a> for all my latin-based text. <a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
 <li id="fn:4">
 <p>Adobe’s competing, subscription-based Typekit apparently offers a wider range of Japanese webfonts for anyone interested: <a href="https://typekit.com/fonts?script=japanese">https://typekit.com/fonts?script=japanese</a>. <a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">↩</a></p>
@@ -282,10 +276,10 @@
             <dl class="dl-horizontal">
                 <dt>do 25 augustus 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/08/pelican-plugin-css-only-footnote-pop-up/">Pelican Plugin: CSS-only footnote pop-up</a></dd>
-                <dt>zo 28 augustus 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
                 <dt>di 23 augustus 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/08/hello-world-about-this-blog/">Hello World - About This Blog</a></dd>
+                <dt>zo 28 augustus 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
             </dl>
             </div>
         <hr />
