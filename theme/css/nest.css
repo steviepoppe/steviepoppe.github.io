@@ -1,7 +1,9 @@
- @import url(https://fonts.googleapis.com/css?family=Quicksand);
- @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+ 
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
 
- body {
+body {
   counter-reset: h1counter;
 }
 .container-main h1 {
@@ -44,11 +46,13 @@
 
 
 [lang="ja"] {
-    font-family: "Hiragino Mincho Pro", "Yu Mincho", "Source Han Sans Japanese", "NotoSansCJK", "Meiryo", serif;
+  font-family: "Hiragino Mincho Pro", "Yu Mincho", "Source Han Sans Japanese", "NotoSansCJK", "Meiryo", serif;
+  font-family: 'Noto Sans Japanese', sans-serif; 
+font-weight: 100;
 }
 
 ruby rt {
-    font-size: 10px;
+  font-size: 10px;
 }
 
 div[data-pullquote]:before, span[data-pullquote]:before {
