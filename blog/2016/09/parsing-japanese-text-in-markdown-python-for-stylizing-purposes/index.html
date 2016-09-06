@@ -215,13 +215,13 @@
 <p>Using a simple regular expression <code>(\{\{)(.+?)(\}\})</code>, the extension treats double {} brackets as span tags with <code>a lang="ja"</code> attribute. </p>
 <div class="codehilite"><pre><span></span><span class="x">    </span><span class="cp">{{</span><span class="err">読書クラブ</span><span class="cp">}}</span><span class="x"></span>
 </pre></div>
-<p>thus outputs:</p>
+<p>will output</p>
 <div class="codehilite"><pre><span></span>    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">lang</span><span class="o">=</span><span class="s">"ja"</span><span class="p">&gt;</span>読書クラブ<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </pre></div>
-<p><strong>Example</strong>: just compare <span style="font-size: 130%;"><span lang="ja"><ruby><rb>読</rb><rp>(</rp><rt>どく</rt><rp>)</rp></ruby><ruby><rb>書</rb><rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>クラブ</span></span>to <span style="font-size: 135%;"><ruby><rb>読</rb><rp>(</rp><rt>どく</rt><rp>)</rp></ruby><ruby><rb>書</rb><rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>クラブ</span> (Meiryo) to <span style='font-size: 130%; font-family: "MS Gothic";'><ruby><rb>読</rb><rp>(</rp><rt>どく</rt><rp>)</rp></ruby><ruby><rb>書</rb><rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>クラブ</span> (MS Gothic default).<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></p>
+<p><strong>Example</strong>: just compare <span style="font-size: 135%;"><span lang="ja"><ruby><rb>読</rb><rp>(</rp><rt>どく</rt><rp>)</rp></ruby><ruby><rb>書</rb><rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>クラブ</span></span>to <span style="font-size: 130%;"><ruby><rb>読</rb><rp>(</rp><rt>どく</rt><rp>)</rp></ruby><ruby><rb>書</rb><rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>クラブ</span> (Meiryo) to <span style='font-size: 130%; font-family: "MS Gothic";'><ruby><rb>読</rb><rp>(</rp><rt>どく</rt><rp>)</rp></ruby><ruby><rb>書</rb><rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>クラブ</span> (MS Gothic default).<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></p>
 <h1 id="styling"><a class="toclink" href="#styling">Styling</a></h1>
 <p>Although it’s a bit of a risk performance-wise, I’m quite a fan of Google’s free webfonts.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> Due the complexity of the Japanese character-set, development on these have been slow<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup>, but <a href="https://en.wikipedia.org/wiki/Noto_fonts">Google’s Noto Font</a> is getting quite performant and with the Japanese font set supporting near 7000 characters, it should pose no problem for most webprojects. Since it works better, typography-wise, with the rest of my fonts, I use this one over fonts as Meiryo that’re more widespread across all platforms.</p>
-<p>Using the CSS below still ensures max compatibility as fallback if the page can’t connect to Google’s font API.</p>
+<p>Using the CSS below, I ensure max compatibility by using Meiryo and others as fallback if the page can’t connect to Google’s font API.</p>
 <div class="codehilite"><pre><span></span><span class="k">@import</span> <span class="nt">url</span><span class="o">(</span><span class="nt">https</span><span class="o">://</span><span class="nt">fonts</span><span class="nc">.googleapis.com</span><span class="o">/</span><span class="nt">earlyaccess</span><span class="o">/</span><span class="nt">notosansjapanese</span><span class="nc">.css</span><span class="o">)</span><span class="p">;</span>
 
     <span class="o">[</span><span class="nt">lang</span><span class="o">=</span><span class="s2">"ja"</span><span class="o">]</span> <span class="p">{</span>
@@ -246,7 +246,7 @@
 <p>For furigana support I use an existing MD extension available at <a href="https://github.com/djfun/furigana_markdown">https://github.com/djfun/furigana_markdown</a>. <a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">↩</a></p>
 </li>
 <li id="fn:3">
-<p>I use <a href="https://fonts.google.com/specimen/Quicksand"><strong>Quicksand</strong></a> and <a href="https://fonts.google.com/specimen/Poiret+One"><strong>Poirot One</strong></a> for all my latin-based text on this page, for example. <a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
+<p>I use <a href="https://fonts.google.com/specimen/Quicksand">Quicksand</a> and <a href="https://fonts.google.com/specimen/Poiret+One">Poirot One</a> for all my latin-based text on this page, for example. <a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
 <li id="fn:4">
 <p>Adobe’s competing, subscription-based Typekit apparently offers a wider range of Japanese webfonts for anyone interested: <a href="https://typekit.com/fonts?script=japanese">https://typekit.com/fonts?script=japanese</a>. <a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">↩</a></p>
