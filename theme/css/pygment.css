@@ -1,6 +1,6 @@
 .codehilite .hll { background-color: #49483e }
 .codehilite .c { color: #75715e } /* Comment */
-.codehilite .err { color: #960050; background-color: #1e0010 } /* Error */
+.codehilite .err { color: #960050; } /* Error */
 .codehilite .k { color: #3bd0ed } /* Keyword */
 .codehilite .l { color: #ae81ff } /* Literal */
 .codehilite .n { color: #C10000 } /* Name */
