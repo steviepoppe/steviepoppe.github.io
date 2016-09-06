@@ -10,7 +10,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Due my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the rest ...">
+  <meta name="description" content="Due to my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the ...">
   <meta name="keywords" content="fonts, Japanese, markdown, pelican, python">
   <link rel="icon" href="https://steviepoppe.net/favicon.ico">
 
@@ -58,7 +58,7 @@
 <DataObject type="document">
     <Attribute name="title">Parsing Japanese Text in Markdown-Python for Stylizing Purposes</Attribute>
     <Attribute name="author">Stevie Poppe</Attribute>
-    <Attribute name="description">Due my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the rest of my design. To stylize Japanese text, I wrote a small Markdown-Python extension for use in static blog generators as Jekyll and Pelican (or pretty much anything that utilizes Markdown-Python to parse Markdown in HTML) and embed such text in a span with the language attribute set to Japanese, for easy styling in CSS.</Attribute>
+    <Attribute name="description">Due to my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the rest of my design. To stylize Japanese text, I wrote a small Markdown-Python extension for use in static blog generators as Jekyll and Pelican (or pretty much anything that utilizes Markdown-Python to parse Markdown in HTML) and embed such text in a span with the language attribute set to Japanese, for easy styling in CSS.</Attribute>
     <Attribute name="page_count">1</Attribute>
     <Attribute name="rating">5</Attribute>
     <Attribute name="last_update">2016-09-06T00:00:00+02:00</Attribute>
@@ -203,7 +203,7 @@
 </div>
             </nav>
         
-<p>Due my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the rest of my design.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> To stylize Japanese text, I wrote a small Markdown-Python extension for use in static blog generators as Jekyll and Pelican (or pretty much anything that utilizes Markdown-Python to parse Markdown in HTML) and embed such text in a span with the language attribute set to Japanese, for easy styling in CSS.</p>
+<p>Due to my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the rest of my design.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> To stylize Japanese text, I wrote a small Markdown-Python extension for use in static blog generators as Jekyll and Pelican (or pretty much anything that utilizes Markdown-Python to parse Markdown in HTML) and embed such text in a span with the language attribute set to Japanese, for easy styling in CSS.</p>
 <h1 id="download"><a class="toclink" href="#download">Download</a></h1>
 <p>I’ve added the extension on it’s <a href="https://github.com/steviepoppe/lang_ja_span_markdown">own repository</a> on my github for anyone interested, but as it serves it’s purpose for me as-is I have no further interest in maintaining it.</p>
 <h1 id="installation"><a class="toclink" href="#installation">Installation</a></h1>
@@ -218,7 +218,7 @@
 <p>thus outputs:</p>
 <div class="codehilite"><pre><span></span>    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">lang</span><span class="o">=</span><span class="s">"ja"</span><span class="p">&gt;</span>読書クラブ<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </pre></div>
-<p><strong>Example</strong>: just compare <span lang="ja"><ruby><rb>読</rb><rp>(</rp><rt>どく</rt><rp>)</rp></ruby><ruby><rb>書</rb><rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>クラブ</span><sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> to <ruby><rb>読</rb><rp>(</rp><rt>どく</rt><rp>)</rp></ruby><ruby><rb>書</rb><rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>クラブ.</p>
+<p><strong>Example</strong>: just compare <span lang="ja"><ruby><rb>読</rb><rp>(</rp><rt>どく</rt><rp>)</rp></ruby><ruby><rb>書</rb><rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>クラブ</span><sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> to <ruby><rb>読</rb><rp>(</rp><rt>どく</rt><rp>)</rp></ruby><ruby><rb>書</rb><rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>クラブ (Meiryo) to <span style='font-family: "MS Gothic";'><ruby><rb>読</rb><rp>(</rp><rt>どく</rt><rp>)</rp></ruby><ruby><rb>書</rb><rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>クラブ</span> (MS Gothic default).</p>
 <h1 id="styling"><a class="toclink" href="#styling">Styling</a></h1>
 <p>Although it’s a bit of a risk performance-wise, I’m quite a fan of Google’s free webfonts.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> Due the complexity of the Japanese character-set, development on these have been slow<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup>, but <a href="https://en.wikipedia.org/wiki/Noto_fonts">Google’s Noto Font</a> is getting quite performant and with the Japanese font set supporting near 7000 characters, it should pose no problem for most webprojects. Since it works better, typography-wise, with the rest of my fonts, I use this one over fonts as Meiryo that’re more widespread across all platforms.</p>
 <p>Using the CSS below still ensures max compatibility as fallback if the page can’t connect to Google’s font API.</p>
@@ -240,13 +240,13 @@
 <hr/>
 <ol>
 <li id="fn:1">
-<p>This is less so on mobile devices. Most Windows web browsers default to <strong>MS Gothic</strong>, lacking anti-aliasing found in newer fonts as <strong>Meiryo</strong>, and require some manual adjustments. For maximal compatibility, I prefer to do this in-site. An easy fix, if no further customization is wished, could just be adding this to the css of your body: <code>font-family: Arial, Helvetica, Meiryo,sans-serif;</code> <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+<p>This is less so on mobile devices. Most Windows web browsers default to MS Gothic, lacking anti-aliasing found in newer fonts as Meiryo, and require some manual adjustments. For maximal compatibility, I prefer to do this in-site. If no further customization is necessary, just adding Meiryo as fallback font in the page’s font-family is sufficient, eg. <code>font-family: Arial, Helvetica, Meiryo,sans-serif;</code>. <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
 </li>
 <li id="fn:2">
 <p>For furigana support I use an existing MD extension available at <a href="https://github.com/djfun/furigana_markdown">https://github.com/djfun/furigana_markdown</a>. <a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">↩</a></p>
 </li>
 <li id="fn:3">
-<p>I use <a href="https://fonts.google.com/specimen/Quicksand"><strong>Quicksand</strong></a> and <a href="https://fonts.google.com/specimen/Poiret+One"><strong>Poirot One</strong></a> for all my latin-based text. <a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
+<p>I use <a href="https://fonts.google.com/specimen/Quicksand"><strong>Quicksand</strong></a> and <a href="https://fonts.google.com/specimen/Poiret+One"><strong>Poirot One</strong></a> for all my latin-based text on this page, for example. <a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
 <li id="fn:4">
 <p>Adobe’s competing, subscription-based Typekit apparently offers a wider range of Japanese webfonts for anyone interested: <a href="https://typekit.com/fonts?script=japanese">https://typekit.com/fonts?script=japanese</a>. <a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">↩</a></p>
