@@ -195,10 +195,9 @@
             <p class="toc_title">Table of Contents</p>
             <div class="toc">
 <ul>
-<li><a href="#langja-span-extension-for-markdown-python">lang=”ja” span extension for Markdown-Python</a><ul>
 <li><a href="#download">Download</a></li>
 <li><a href="#installation">Installation</a></li>
-<li><a href="#usage">Usage</a></li>
+<li><a href="#usage">Usage</a><ul>
 <li><a href="#styling">Styling</a></li>
 </ul>
 </li>
@@ -208,17 +207,14 @@
             </nav>
         
 <p>Due my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the rest of my design.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> To stylize Japanese text, I wrote a small Markdown-Python extension for use in static blog generators as Jekyll and Pelican (or pretty much anything that utilizes Markdown-Python to parse Markdown in HTML) and embed such text in a span with the language attribute set to Japanese, for easy styling in CSS.</p>
-<h1 id="langja-span-extension-for-markdown-python"><a class="toclink" href="#langja-span-extension-for-markdown-python">lang=”ja” span extension for Markdown-Python</a></h1>
-<p>A small Python-Markdown extension for embedding Japanese content in multilingual markdown files into stylizable span tags. This is useful when you’re writing multilingual pages utilizing Japanese and would like more styling control.</p>
-<p><img alt="comparison" src="https://raw.githubusercontent.com/arocks/markdown-pullquote/master/side-by-side.png"/> </p>
-<h2 id="download"><a class="toclink" href="#download">Download</a></h2>
+<h1 id="download"><a class="toclink" href="#download">Download</a></h1>
 <p>I’ve added the extension on it’s <a href="https://github.com/steviepoppe/lang_ja_span_markdown">own repository</a> on my github for anyone interested, but as it serves it’s purpose for me as-is I have no further interest in maintaining it.</p>
-<h2 id="installation"><a class="toclink" href="#installation">Installation</a></h2>
+<h1 id="installation"><a class="toclink" href="#installation">Installation</a></h1>
 <p>Copy the <code>japanese.py</code> script into your python-markdown extension directory.</p>
 <p>If you’re using <a href="http://docs.getpelican.com/en/latest/">Pelican</a> as static site generator, open your project’s <code>pelicanconf.py</code> and add <code>'japanese'</code> to the <code>MD_EXTENSIONS</code> list:</p>
 <div class="codehilite"><pre><span></span>    <span class="n">MD_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'japanese'</span><span class="p">]</span>
 </pre></div>
-<h2 id="usage"><a class="toclink" href="#usage">Usage</a></h2>
+<h1 id="usage"><a class="toclink" href="#usage">Usage</a></h1>
 <p>Using a simple regular expression <code>(\{\{)(.+?)(\}\})</code>, the extension treats double {} brackets as span tags with <code>a lang="ja"</code> attribute. </p>
 <div class="codehilite"><pre><span></span><span class="x">    </span><span class="cp">{{</span><span class="err">読書クラブ</span><span class="cp">}}</span><span class="x"></span>
 </pre></div>
@@ -229,12 +225,14 @@
 <h2 id="styling"><a class="toclink" href="#styling">Styling</a></h2>
 <p>Using the CSS below will ensure max compatibility as these fonts are widespread across all platforms.</p>
 <div class="codehilite"><pre><span></span>    <span class="o">[</span><span class="nt">lang</span><span class="o">=</span><span class="s2">"ja"</span><span class="o">]</span> <span class="p">{</span>
-      <span class="nb">font-family</span><span class="o">:</span> <span class="s2">"メイリオ"</span><span class="o">,</span><span class="s2">"Meiryo"</span><span class="o">,</span><span class="s2">"ヒラギノ角ゴ Pro W3"</span><span class="o">,</span><span class="s2">"Hiragino Kaku Gothic Pro"</span><span class="o">,</span><span class="s2">"ＭＳ Ｐゴシック"</span><span class="o">,</span><span class="s2">"MS PGothic"</span><span class="o">,</span><span class="n">Sans</span><span class="o">-</span><span class="n">Serif</span><span class="p">;</span>
+      <span class="nb">font-family</span><span class="o">:</span> <span class="s2">"メイリオ"</span><span class="o">,</span><span class="s2">"Meiryo"</span><span class="o">,</span><span class="s2">"ヒラギノ角ゴ Pro W3"</span><span class="o">,</span>
+      <span class="s2">"Hiragino Kaku Gothic Pro"</span><span class="o">,</span><span class="s2">"ＭＳ Ｐゴシック"</span><span class="o">,</span><span class="s2">"MS PGothic"</span><span class="o">,</span><span class="n">Sans</span><span class="o">-</span><span class="n">Serif</span><span class="p">;</span>
     <span class="p">}</span>
 </pre></div>
 <p>Although it’s a bit of a risk performance-wise, I’m quite a fan of Google’s free webfonts.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> Due the complexity of the Japanese character-set, development on these have been slow<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup>, but <a href="https://en.wikipedia.org/wiki/Noto_fonts">Google’s Noto Font</a> is getting quite performant and with its support of near 7000 characters should pose no problem for most webprojects.</p>
 <div class="codehilite"><pre><span></span>    <span class="o">[</span><span class="nt">lang</span><span class="o">=</span><span class="s2">"ja"</span><span class="o">]</span> <span class="p">{</span>
-      <span class="nb">font-family</span><span class="o">:</span> <span class="s2">"Noto Sans Japanese"</span><span class="o">,</span> <span class="s2">"メイリオ"</span><span class="o">,</span><span class="s2">"Meiryo"</span><span class="o">,</span><span class="s2">"ヒラギノ角ゴ Pro W3"</span><span class="o">,</span><span class="s2">"Hiragino Kaku Gothic Pro"</span><span class="o">,</span><span class="s2">"ＭＳ Ｐゴシック"</span><span class="o">,</span><span class="s2">"MS PGothic"</span><span class="o">,</span><span class="n">Sans</span><span class="o">-</span><span class="n">Serif</span><span class="p">;</span>
+      <span class="nb">font-family</span><span class="o">:</span> <span class="s2">"Noto Sans Japanese"</span><span class="o">,</span> <span class="s2">"メイリオ"</span><span class="o">,</span><span class="s2">"Meiryo"</span><span class="o">,</span><span class="s2">"ヒラギノ角ゴ Pro W3"</span><span class="o">,</span>
+      <span class="s2">"Hiragino Kaku Gothic Pro"</span><span class="o">,</span><span class="s2">"ＭＳ Ｐゴシック"</span><span class="o">,</span><span class="s2">"MS PGothic"</span><span class="o">,</span><span class="n">Sans</span><span class="o">-</span><span class="n">Serif</span><span class="p">;</span>
       <span class="nb">font-weight</span><span class="o">:</span> <span class="m">100</span><span class="p">;</span>
       <span class="nb">font-size</span><span class="o">:</span> <span class="m">90%</span><span class="p">;</span>
     <span class="p">}</span>
@@ -284,10 +282,10 @@
             <dl class="dl-horizontal">
                 <dt>do 25 augustus 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/08/pelican-plugin-css-only-footnote-pop-up/">Pelican Plugin: CSS-only footnote pop-up</a></dd>
-                <dt>di 23 augustus 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/08/hello-world-about-this-blog/">Hello World - About This Blog</a></dd>
                 <dt>zo 28 augustus 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
+                <dt>di 23 augustus 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/08/hello-world-about-this-blog/">Hello World - About This Blog</a></dd>
             </dl>
             </div>
         <hr />
