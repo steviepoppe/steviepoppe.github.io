@@ -3,4 +3,4 @@ Disallow: /drafts/
 Disallow: /blog/category/
 Disallow: /blog/tags/
 Disallow: /search.html
-Sitemap: https://steviepoppe.github.io/sitemap.xml
+Sitemap: https://steviepoppe.net/sitemap.xml
