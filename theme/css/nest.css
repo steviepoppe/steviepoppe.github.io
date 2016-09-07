@@ -222,6 +222,10 @@ width:100%;
   display: none;  !important
 }
 
+#nav.affix .rssonly{
+  display: none; 
+}
+
 #nav.affix #smallicon {
   height: 17px;
   vertical-align: sub;
@@ -331,6 +335,10 @@ nav.toc{
 }
 
 @media (min-width: 768px) {
+
+#nav.affix .rssonly{
+  display: initial;
+}
 
   #nav.affix #smallicon {
     margin-right: 15px;
