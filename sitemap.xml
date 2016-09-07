@@ -2,38 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
+    <loc>https://steviepoppe.net</loc>
+    <priority>1.0</priority>
+      <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
     <loc>https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/</loc>
-    <priority>0.8</priority>
+    <priority>0.5</priority>
   </url>
-
-<!--     <url>
+  <url>
     <loc>https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/</loc>
-    <priority>0.8</priority>
+    <priority>0.5</priority>
   </url>
-
-<!--     <url>
+  <url>
     <loc>https://steviepoppe.net/blog/2016/08/pelican-plugin-css-only-footnote-pop-up/</loc>
-    <priority>0.8</priority>
+    <priority>0.5</priority>
   </url>
-
-<!--     <url>
+  <url>
     <loc>https://steviepoppe.net/blog/2016/08/hello-world-about-this-blog/</loc>
-    <priority>0.8</priority>
+    <priority>0.5</priority>
   </url>
-
-<!--    -->
 
   <url>
     <loc>https://steviepoppe.net/about/</loc>
-    <priority>1.0</priority>
+    <priority>0.8</priority>
   </url>
-
-<!--    -->
   <url>
     <loc>https://steviepoppe.net/resources/</loc>
-    <priority>1.0</priority>
+    <priority>0.8</priority>
   </url>
 
-<!--    -->
 
 </urlset>
