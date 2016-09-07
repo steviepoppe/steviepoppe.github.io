@@ -1,7 +1,4 @@
- 
-@import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
-
-body {
+ body {
   counter-reset: h1counter;
 }
 .container-main h1 {
