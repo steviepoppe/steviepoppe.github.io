@@ -124,6 +124,8 @@ video{
 
 .blog dt li{
   display: inline-block;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 .blog dl
@@ -441,9 +443,26 @@ nav.toc{
       display: block;
       visibility: visible;
     }
+
+    #nav.affix #searchform{
+      width:50%;
+      padding-left: 0px;
+    }
+
+    #nav.affix .rssonly {
+    margin-right: -30px;
+}
   }
 
   @media (min-width: 992px) {
+    #nav.affix .rssonly {
+    margin-right: -30px;
+    margin-right: inherit;
+}
+    #nav.affix #searchform{
+      width:initial;
+      padding-left: 15px;
+    }
 
     .icon-menu{
       display: initial;  
