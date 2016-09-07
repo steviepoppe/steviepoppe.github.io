@@ -42,6 +42,9 @@ body {
   text-decoration: none;
 }
 
+.icon-menu{
+display:none;
+}
 
 [lang="ja"] {
   font-family: "Noto Sans Japanese", "メイリオ","Meiryo",arial,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"ＭＳ Ｐゴシック","MS PGothic",Sans-Serif;
@@ -205,9 +208,23 @@ width:100%;
   display: none;
 }
 
+.icon-menu{  
+  margin-right: 5px;
+  opacity: 0.65;
+  display: none;  
+}
+
+#nav.affix .icon-menu{
+  display: initial;  
+}
+
+#nav.affix .icon-home{
+  display: none;  !important
+}
+
 #nav.affix #smallicon {
   height: 17px;
-  vertical-align: middle;
+  vertical-align: sub;
   border-radius: 5px;
   border: 1px solid white;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
@@ -391,7 +408,7 @@ nav.toc{
 
     .nav > li > a {
       padding-left: 15px;
-      padding-right: 15px;
+      padding-right: 10px;
     }
 
     nav.toc{
@@ -423,6 +440,10 @@ nav.toc{
 
   @media (min-width: 992px) {
 
+    .icon-menu{
+      display: initial;  
+    }
+
     .image.featured {
       height: 180px;
     }
@@ -437,10 +458,10 @@ nav.toc{
     }
 
     .master, .footer{
-      min-width: 950px;
+      min-width: 1050px;
     }
     .head-container, #footercontent{
-      width: 950px;
+      width: 1050px;
     }
 
     #steviesmenubar{
