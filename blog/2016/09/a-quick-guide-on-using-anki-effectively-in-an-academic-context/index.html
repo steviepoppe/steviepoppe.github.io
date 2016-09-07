@@ -233,9 +233,8 @@
 <p><strong>What</strong></p>
 <p>Originally a <strong>sonno joi</strong> movement member before foreign studies. On return, warned Japan against Shimonoseki passage war. Set up a cabinet and tax system, became prime minister and set up <strong>Meiji Constitution</strong>. Also important for the removal of several Unequal Treaties.</p>
 </blockquote>
-<p>It’s a good practice to properly tag your cards as well. You can add multiple tags, separating them with spaces. This allows for quick sorting in Anki’s card browser.</p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-firstcard.jpg" style="width: 350px; height: auto; max-width: 100%;"/></p>
-<p>Now finish up by clicking <strong>add</strong>. Congrats, keep this up and you’ll breeze through your exams!</p>
+<p class="right border"><img alt="right border" src="https://steviepoppe.net/images/anki/anki-firstcard.jpg" style="width: 350px; height: auto; max-width: 100%;"/></p>
+<p>It’s a good practice to properly tag your cards as well. You can add multiple tags, separating them with spaces. This allows for quick sorting in Anki’s card browser. You’ll end up with something like the screenshot to the right. Now finish up by clicking <strong>add</strong>. Congrats, keep this up and you’ll breeze through your exams!</p>
 <h3 id="creating-your-own-cards-efficiently"><a class="toclink" href="#creating-your-own-cards-efficiently">Creating your own cards… <em>Efficiently</em>!</a></h3>
 <p>Our first ‘efficient’ card will be one on a tipping point in recent Japanese history: the <strong>Meiji Restoration</strong> in <strong>1868</strong>. We’ll create a new note type that generates two cards, and finally, alter the basic template to allow furigana displayal on touch. This one’s meant to get a feeling on Anki’s diverse extension options. You’ll end up with these cards:</p>
 <p class="center border center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-meiji1.jpg" style="width: 250px; height: auto; max-width: 100%;"/>
@@ -275,14 +274,13 @@
 <p>Now click on the <code>+</code> button in the upper-right corner to add a new card. Name it <code>EventName</code>. This time you’ll edit the templates of the front and back to question you on the event’s date along the details.</p>
 <p>That’s pretty much it, but I’d like to show one more useful feature. This one might be less relevant for those not studying Japanese, but honestly it’s a neat one to keep in mind when designing your cards (I occasionally use it outside language-learning as well): remember those kanji up there? They had furigana<sup id="fnref:6"><a class="footnote-ref" href="#fn:6" rel="footnote">6</a></sup> on top. We’d probably want this in our cards as well. Luck goes it setting this up is extremely simple and support comes out-of-the-box: just add <code>furigana:</code> in front of your field variable, eg. <code>{{furigana:Detail}}</code>. </p>
 <p>Actually, to accomodate Japanese learners, we’ll take away the crutches of kana reading aids and let it display only on touch. Add the CSS below in your note’s style. This hides all furigana (or rather, ruby annotations) by default and displays them upon touch or hover.</p>
+<p class="right border"><img alt="right border" src="https://steviepoppe.net/images/anki/anki-secondcard.jpg" style="width: 327px; height: auto; max-width: 100%;"/></p>
 <div class="codehilite"><pre><span></span><span class="nt">ruby</span> <span class="nt">rt</span> <span class="p">{</span> <span class="nb">visibility</span><span class="o">:</span> <span class="nb">hidden</span><span class="p">;</span> <span class="p">}</span>
 <span class="nt">ruby</span><span class="nd">:hover</span> <span class="nt">rt</span> <span class="p">{</span> <span class="nb">visibility</span><span class="o">:</span> <span class="nb">visible</span><span class="p">;</span> <span class="p">}</span>
 </pre></div>
-<p>Now, add the furigana, contained in square brackets, next to their respective words: eg. <code>一世一元[いっせいいちげん], 廃藩置県[はいはんちけん], 士農工商[しのうこうしょう], 富国強兵[ふこくきょうへい]</code>. </p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-secondcard.jpg" style="width: 327px; height: auto; max-width: 100%;"/></p>
-<p>Let’s wrap things up by clicking add.</p>
+<p>Now, add the furigana, contained in square brackets, next to their respective words: eg. <code>一世一元[いっせいいちげん], 廃藩置県[はいはんちけん], 士農工商[しのうこうしょう], 富国強兵[ふこくきょうへい]</code>. When done, you’ll have something like the screenshot to right. Let’s wrap things up by clicking <strong>add</strong>.</p>
 <hr/>
-<p class="right border"><img alt="right border" src="https://steviepoppe.net/images/anki/anki-decksettings.jpg" style="width: 419px; height: auto; max-width: 100%;"/></p>
+<p class="left border"><img alt="left border" src="https://steviepoppe.net/images/anki/anki-decksettings.jpg" style="width: 419px; height: auto; max-width: 100%;"/></p>
 <p>Now that you’ve created your first set(s) and a couple of cards, I <strong>highly recommend</strong> changing the studying settings tied to your sets as well. Out of the box, Anki will add 20 new cards and allow only 100 repetitions a day. This is highly inefficient. We’ll want to remove the top barrier and be in control of the amount of new cards we study.</p>
 <p>Open your main deck’s settings by clicking the icon to the right and selecting settings. Don’t worry, these settings pertain all sets fixed to this “option group”, so you won’t have to do this manually for all your new sets. Edit these three elements:</p>
 <ul>
@@ -410,10 +408,10 @@ I spent about a month on a road trip in the USA this summer; unforgettable memor
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
-                <dt>zo 28 augustus 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
                 <dt>di 06 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
+                <dt>zo 28 augustus 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
             </dl>
             </div>
         <hr />
