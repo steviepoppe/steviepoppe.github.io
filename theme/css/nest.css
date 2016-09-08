@@ -333,6 +333,10 @@ nav.toc{
   opacity: 0.9;
 }
 
+.container{
+  padding-right: 50px;
+padding-left: 50px;
+}
 @media (max-width: 1200px) {
   .banner{
     margin-right: -15px;
@@ -501,7 +505,7 @@ nav.toc{
 
   }
 
-  @media (min-width: 1200px) {
+/*  @media (min-width: 1200px) {
 
     .container {
       width: 950px;
@@ -518,7 +522,7 @@ nav.toc{
       margin-left: -25px;
     }
 
-  }
+  }*/
 
 
   #footercontent{
@@ -720,8 +724,12 @@ h2 {
     min-height: 360px;
   }
   .header-wrapper{
-    padding-left: 40px;
-    padding-right: 40px;
+/*    padding-left: 40px;
+    padding-right: 40px;*/
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: -50px;
+margin-right: -50px;
   }
 
   .banner .header-content {
@@ -756,7 +764,6 @@ h2 {
     line-height: 24px;
     color: #fff;
     font-weight: 300;
-    text-align: justify;
   }
   .header-subtitle-homepage {
     text-align: center;
@@ -806,7 +813,6 @@ h2 {
  }
 
  .content{
-  text-align: justify;
   background-color: #fcfcfa;
   border: solid 1px #e2e0d8;
   margin-bottom: 30px;
@@ -1372,7 +1378,6 @@ nav.toc{
     padding-bottom: 20px;
     border-left: 1px solid rgba(0,0,0,0.1);
     border-right: 1px solid rgba(0,0,0,0.1);
-    text-align: justify;
     background-color: #fcfcfa;
     border: solid 1px #e2e0d8;
     margin-bottom: 15px;
@@ -1411,7 +1416,6 @@ nav.toc{
   .footnotescontent{
     background-color: rgb(252, 252, 250);
     border: 1px solid rgb(226, 224, 216);
-    text-align: justify;
     margin-bottom: 30px;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.11);
     padding-right: 15px;
@@ -1499,7 +1503,6 @@ pre {
 
   #footnotediv 
   {
-    text-align: justify;
     color:#111;
     border: 1px solid #eaeaea;
     background-color: #fffcfc;
@@ -1572,7 +1575,7 @@ width: 300px;
 
 
 
-a, .footnote, #further-reading {
+.footnote, #further-reading {
   overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-word-break: break-all;
