@@ -79,8 +79,14 @@ div[data-pullquote]:before, span[data-pullquote]:before {
   width: 85%;
   margin-top: 15px;
   margin-bottom: 15px;
+  overflow: hidden;
 }
 
+#pelican-installation{
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 video{
   width: 100%;
