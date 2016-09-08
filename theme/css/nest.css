@@ -82,7 +82,7 @@ div[data-pullquote]:before, span[data-pullquote]:before {
   overflow: hidden;
 }
 
-#pelican-installation{
+#pelican-installation, .video-js {
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
