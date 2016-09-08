@@ -1,6 +1,11 @@
  body {
   counter-reset: h1counter;
 }
+
+.container-main{
+  margin-top: 20px;
+}
+
 .container-main h1 {
   counter-reset: h2counter;
 }
@@ -309,8 +314,8 @@ nav.toc{
     }*/
 
     .image.featured {
-      margin-right: -15px;
-      margin-left: -15px;
+      margin-right: -50px;
+      margin-left: -50px;
       position: relative;
       width: auto;
       display: block;
@@ -802,7 +807,7 @@ margin-right: -50px;
 
   .header-wrapper{
     margin-top: -40px;
-    margin-bottom: 20px;
+/*    margin-bottom: 20px;*/
     width: auto;
     position: relative;
     display: block;
