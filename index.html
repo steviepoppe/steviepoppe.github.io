@@ -154,8 +154,6 @@
   .index-content-container .post-content{
     margin-bottom: 10px;
     margin-top: 10px;
-    border-left: 1px solid rgba(231,225,225,0.68);
-    padding-left: 10px;
   }
 
   .banner-index-content .datetitle{
@@ -166,10 +164,25 @@
 
   .header-content, .banner .header-content{
     padding-top: 1px;
-    padding-right: 25px;
     padding-bottom: 0px;
-    padding-left: 25px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
+
+
+@media (min-width: 768px) {  
+  .header-content, .banner .header-content{
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+    .index-content-container .post-content{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-left: 1px solid rgba(231,225,225,0.68);
+    padding-left: 10px;
+  }
+}
+
   .post-title, .post-title a{
     font-size: 32px;
     font-weight: 700;
