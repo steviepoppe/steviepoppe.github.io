@@ -56,7 +56,7 @@ display:none;
 
 [lang="ja"] ruby rt {
   font-size: 8px;
-  margin-bottom: -7px;
+  margin-bottom: -5px;
 }
 
 div[data-pullquote]:before, span[data-pullquote]:before {
@@ -338,10 +338,11 @@ nav.toc{
   opacity: 0.9;
 }
 
-.container{
-  padding-right: 50px;
-padding-left: 50px;
-}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
 @media (max-width: 1200px) {
   .banner{
     margin-right: -15px;
@@ -350,6 +351,11 @@ padding-left: 50px;
 }
 
 @media (min-width: 768px) {
+
+.container{
+  padding-right: 50px;
+padding-left: 50px;
+}
 
 #nav.affix .rssonly{
   display: initial;

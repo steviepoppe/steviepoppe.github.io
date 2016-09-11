@@ -19,8 +19,8 @@
   <meta name="robots" content="NOODP">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Due to my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the ...">
-  <meta name="keywords" content="fonts, Japanese, markdown, pelican, python">
+  <meta name="description" content="To get acquainted with Anki’s API I wrote a small python plug-in If there’s one downside to this method, it’s that an audio reference will be added to your cards regardless if there’s an existant ...">
+  <meta name="keywords" content="anki, plug-in, python, rikaisama">
   <meta name="author" content="Stevie Poppe">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -160,7 +160,7 @@
                       <div class="clearfix"></div>
                       <p class="pull-right header-tags">
                           <span class="icon-tags" aria-hidden="true"></span>
-<a href="https://steviepoppe.net/blog/tags/fonts/">fonts</a>, <a href="https://steviepoppe.net/blog/tags/japanese/">Japanese</a>, <a href="https://steviepoppe.net/blog/tags/markdown/">markdown</a>, <a href="https://steviepoppe.net/blog/tags/pelican/">pelican</a>, <a href="https://steviepoppe.net/blog/tags/python/">python</a>                      </p>
+<a href="https://steviepoppe.net/blog/tags/anki/">anki</a>, <a href="https://steviepoppe.net/blog/tags/plug-in/">plug-in</a>, <a href="https://steviepoppe.net/blog/tags/python/">python</a>, <a href="https://steviepoppe.net/blog/tags/rikaisama/">rikaisama</a>                      </p>
                   </div>
               </div>
         </div>
@@ -171,8 +171,8 @@
             <p class="toc_title">Table of Contents</p>
             <div class="toc">
 <ul>
-<li><a href="#download">Download</a></li>
 <li><a href="#installation">Installation</a></li>
+<li><a href="#_1"></a></li>
 <li><a href="#usage">Usage</a></li>
 <li><a href="#styling">Styling</a></li>
 <li><a href="#further-reading">Further reading</a></li>
@@ -181,11 +181,17 @@
             </nav>
         
 <!-- PELICAN_BEGIN_SUMMARY -->
-<p>Due to my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the rest of my design.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> To target specifically Japanese text, I wrote a small Markdown-Python extension for use in static blog generators as Jekyll and Pelican (or pretty much anything that utilizes Markdown-Python to parse Markdown in HTML) and embed such text in a span with the language attribute set to Japanese. The added, and probably more important bonus, aside from styling and semantic reasons, is that this method counters the negative effects of <a href="https://en.wikipedia.org/wiki/Han_unification">Han unification</a> in so-called CJK-languages.</p>
+<p>To get acquainted with Anki’s API I wrote a small python plug-in </p>
 <!-- PELICAN_END_SUMMARY -->
-<h1 id="download"><a class="toclink" href="#download">Download</a></h1>
-<p>I’ve added the extension on it’s <a href="https://github.com/steviepoppe/lang_ja_span_markdown">own repository</a> on my github for anyone interested, but as it serves it’s purpose for me as-is I have no further interest in maintaining it at the moment.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></p>
+<p>If there’s one downside to this method, it’s that an audio reference will be added to your cards regardless if there’s an existant audio recording online. This is especially the case with lesser known words or idoms: while reading Harry Potter I’ve added a few hundred of such cards. Now, one solution is to, whenever you come across such a card during your anki-time, manually delete the audio entry in your card’s Audio field and occasionally clearing all “empty” card notes by selecting <strong>Tools</strong> → <strong>Empty Cards</strong>.</p>
+<blockquote>
+<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-removesound.jpg" style="width: 232px; height: auto; max-width: 100%;"/></p>
+</blockquote>
+<p>To automatize this process however, I’ve written a small python plug-in to remove all references to non-existant audio files.</p>
 <h1 id="installation"><a class="toclink" href="#installation">Installation</a></h1>
+<p>Install it by clicking <strong>Tools</strong> → <strong>Add-ons</strong>  → <strong>Browse &amp; Install</strong> and copy-pasting <code>1328067109</code> there (you’ll have to restart Anki afterwards). To use, just click <strong>Tools</strong> → <strong>Remove Absent Audio References</strong>. Next, click <strong>Tools</strong> → <strong>Empty Cards</strong> to remove all the empty oral-recognition cards.</p>
+<p>The plug-in is <a href="https://ankiweb.net/shared/info/1328067109">hosted</a> on Anki’s Plug-in repository as well as on it’s <a href="https://github.com/steviepoppe/anki_plugin_remove_missing_audio_references">own github repository</a> for anyone interested, but as it serves it’s purpose for me as-is I have no further interest in maintaining it at the moment.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></p>
+<h1 id="_1"><a class="toclink" href="#_1"></a></h1>
 <p>Copy the <code>japanese.py</code> script into your python-markdown extension directory.</p>
 <p>If you’re using <a href="http://docs.getpelican.com/en/latest/">Pelican</a> as static site generator, open your project’s <code>pelicanconf.py</code> and add <code>'japanese'</code> to the <code>MD_EXTENSIONS</code> list:</p>
 <div class="codehilite"><pre><span></span>    <span class="n">MD_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'japanese'</span><span class="p">]</span>
@@ -248,16 +254,14 @@
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
-                <dt>di 06 september 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
-                <dt>do 25 augustus 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/08/pelican-plugin-css-only-footnote-pop-up/">Pelican Plugin: CSS-only footnote pop-up</a></dd>
                 <dt>do 08 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
-                <dt>di 23 augustus 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/08/hello-world-about-this-blog/">Hello World - About This Blog</a></dd>
+                <dt>di 06 september 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
                 <dt>wo 07 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
+                <dt>do 25 augustus 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/08/pelican-plugin-css-only-footnote-pop-up/">Pelican Plugin: CSS-only footnote pop-up</a></dd>
             </dl>
             </div>
         <hr />
