@@ -220,9 +220,9 @@
 <p class="center"><img alt="center" src="https://steviepoppe.net/images/anki/rikaisamatool.png" style="width: 305px; height: auto; max-width: 100%;"/></p>
 <p>Rikaisama’s base settings are pretty self-explanatory, and I’ve left most of them to their default values. For our purpose, the Clipboard &amp; Save and Anki tabs will be the most relevant.</p>
 <h2 id="set-up"><a class="toclink" href="#set-up">Set-up</a></h2>
-<p><a href="http://rikaisama.sourceforge.net/">Rikaisama’s homepage</a> contains a simple, if what rather crude, set-up guide covering the basics of linking Rikaisama with Anki. I’ve found some to be somewhat aversed by all the field/token mapping talk, so I’ll try to simplify things a bit.</p>
+<p><a href="http://rikaisama.sourceforge.net/">Rikaisama’s homepage</a> contains a simple, if what rather crude, set-up guide covering the basics of linking Rikaisama with Anki. I’ve found some to be somewhat aversed by all the field/token mapping talk, so I’ll try to simplify things a bit. This guide might still look a bit complicated, as I try to explain <em>why</em> we’re doing things, but it’s actually pretty easy to set-up and if you’d rather get straight to the point, just ignore the reasoning parts (or skip to the <a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/#usage">1.2.4. Usage</a> part to download a premade ankiset with matching notetype).</p>
 <h3 id="anki"><a class="toclink" href="#anki">Anki</a></h3>
-<p>First, Anki will need an additional add-on as well in order to allow real-time import. It’s ‘available’ at Ankiweb’s <a href="https://ankiweb.net/shared/info/2512410601">plug-in page</a>, although actual installation is done in-app. Open Anki on your desktop, go to <strong>Tools</strong> &gt; <strong>Add-ons</strong> &gt; <strong>Browse &amp; Install</strong>, and copypaste <strong>2512410601</strong> in the pop-up dialogue.</p>
+<p>First, Anki will need an additional add-on as well in order to allow real-time import. It’s ‘available’ at Ankiweb’s <a href="https://ankiweb.net/shared/info/2512410601">plug-in page</a>, although actual installation is done in-app. Open Anki on your desktop, go to <strong>Tools</strong> → <strong>Add-ons</strong> → <strong>Browse &amp; Install</strong>, and copypaste <strong>2512410601</strong> in the pop-up dialogue.</p>
 <p>Now, we’ll create a new set to contain your Rikaisama-powered cards, a new note-type with fields corresponding to the info you’d like out of rikaisama, and finally a few card-types to test us on on visual recognition, on oral recognition, and on production.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> Start by creating a new set, eg. <code>rikai-vocab</code><sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup>. On Windows, press <code>CTRL-SHIFT-N</code>, or click <strong>Tools</strong> → <strong>Manage Note Types</strong>, to enter the notetype management screen. Click <strong>add</strong>, then <strong>ok</strong> on the next screen, to create a new note type. Call it <code>Rikai</code> (do note my excellent graphical skills as seen in the screenshot below ( ͡° ͜ʖ ͡°) )!</p>
 <p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-notetypes-s.jpg" style="width: 400px; height: auto; max-width: 100%;"/></p>
 <p>Next, select the new Rikai note-type and click <strong>Fields</strong>. We’ll rename the current front and backside as <code>Expression</code> and <code>Meaning</code>, and add two new Fields <code>Audio</code> and <code>Notes</code> (this one could be used for personal notes or example sentences). If you’re interested in pitch accents, add a fifth field <code>Pitch</code>. Next, close this screen and click on <strong>Cards</strong>. We’ll manage the different cards this note generates as well as it’s make-up.</p>
@@ -230,7 +230,7 @@
 <div class="codehilite"><pre><span></span><span class="nt">ruby</span> <span class="nt">rt</span> <span class="p">{</span> <span class="nb">visibility</span><span class="o">:</span> <span class="nb">hidden</span><span class="p">;</span> <span class="p">}</span>
 <span class="nt">ruby</span><span class="nd">:hover</span> <span class="nt">rt</span> <span class="p">{</span> <span class="nb">visibility</span><span class="o">:</span> <span class="nb">visible</span><span class="p">;</span> <span class="p">}</span>
 </pre></div>
-<p>Next, click the <code>+</code> button twice to create two more card-templates. Next, rename (by clicking <strong>More</strong> → <strong>Rename</strong>) <strong>Card 1</strong>, <strong>Card 2</strong> and <strong>Card 3</strong> respectively as <code>Recognition</code>, <code>Production</code>, and <code>Audio</code>.</p>
+<p>Next, click the <code>+</code> button twice to create two more card-templates. Next, rename (by clicking <strong>More</strong> → <strong>Rename</strong>) templates <strong>Card 1</strong>, <strong>Card 2</strong> and <strong>Card 3</strong> respectively as <code>Recognition</code>, <code>Production</code>, and <code>Audio</code>.</p>
 <p>Finally, let’s wrap up our Anki set-up by creating the actual card’s templates. Each card will question you on one field (the Japanese expression, the English translation and the Audio) and show the answer on the backside along with audio and any potential notes, if present. Your card’s templates should look as follows:</p>
 <p><strong>Recognition</strong></p>
 <ul>
@@ -304,8 +304,7 @@
 <hr/>
 <p>If you added a fifth field <strong>Pitch</strong>, add <code>&lt;br&gt;&lt;br&gt;{{Pitch}}</code> to the back templates of those cards.</p>
 <h3 id="mapping"><a class="toclink" href="#mapping">Mapping</a></h3>
-<p>Now we’ll enter our Rikaisama settings and ensure our newly created note-type’s fields match the ones in Rikaisama’s anki settings.</p>
-<p>(This needs some further explaining. Coming soon, pinkiepromise :D)</p>
+<p>Now we’ll enter our Rikaisama settings on Firefox and ensure our newly created note-type’s fields match the ones in Rikaisama’s anki settings. You’ll have to make some adjustments in both the <strong>Anki</strong> and <strong>Clipboard &amp; Save</strong> tabs, as documented below:</p>
 <hr/>
 <p><strong>Anki tab</strong></p>
 <ul>
@@ -326,6 +325,7 @@
 </li>
 </ul>
 <p>Make sure to mark the <i class="icon-check"></i> save audio checkbox.</p>
+<p>The <strong>field names</strong> field is pretty forward, it contains the field names of the note we just created in Anki. The <strong>Save format</strong> field however is a bit more complicated. It’ll contain <em>tokens</em> or variables (similar to fields in your Anki note) available for each Japanese word hoverable through Rikaisama. Each field name must have both a corresponding token, marked by a dollar sign and a single letter (eg. <code>Expression</code> → <code>$d</code>) as well as a token for empty spaces in between. To get our furigana, the kana reading must be encapsulated next to our expression (eg. <code>$d[$r]</code>). The <code>$a</code> token contains just the mp3 filename. To get it to play in our cards, we require a correct format (eg. <code>[sound:ちょうつがい - 蝶番.mp3]</code>), hence the <code>[sound:$a]</code>.</p>
 <hr/>
 <p><strong>Clipboard &amp; Save tab</strong></p>
 <p>Anki keeps all of it’s assets, like audio or images, in a specific folder. Thus, we’ll have to adjust the path these audiofiles are saved in rikaisama’s settings as well. On a clean Anki install on windows, this folder will probably be something like <code>C:\Users\your_name\Documents\Anki\anki_username\collection.media</code>. When located, use that folder’s path for your <strong>Saved Audio</strong> path.</p>
@@ -338,9 +338,14 @@
 <p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/rikaisamadict.jpg" style="width: 500px; height: auto; max-width: 100%;"/></p>
 <h3 id="usage"><a class="toclink" href="#usage">Usage</a></h3>
 <p>Now let’s test our set-up!</p>
-<p>For Rikaisama to recognize which Anki set and which notes to use, we’ll have to open anki and enter our set everytime we’re on hunting spree. If you get a mismatch error, just click <strong>add</strong> and ensure that the selected type is <code>Rikai</code> by clicking on the current type and selecting the proper one. Just click close again afterwards.</p>
+<p>For Rikaisama to recognize which Anki set and which notes to use, we’ll have to open anki and enter our set everytime we’re on hunting spree. If you get a mismatch error, just click <strong>add</strong> and ensure that the selected type is <code>Rikai</code> by clicking on the current type and selecting the proper one (just click close again afterwards).</p>
+<p>Hover over these two words. A rikai pop with definitions should appear. </p>
 <p><span lang="ja"><ruby><rb>理</rb><rp>(</rp><rt>り</rt><rp>)</rp></ruby><ruby><rb>解</rb><rp>(</rp><rt>かい</rt><rp>)</rp></ruby></span> | <span lang="ja"><ruby><rb>暗</rb><rp>(</rp><rt>あん</rt><rp>)</rp></ruby><ruby><rb>記</rb><rp>(</rp><rt>き</rt><rp>)</rp></ruby></span> (I’m not obsessed, I swear~)</p>
-<p>Hover over the next two words. A rikai pop with definitions should appear. Now just click <code>r</code> (the <em>Real-Time Import</em> key) to import these words into your set. Hoorah! Note that Rikaisama by default does not allow duplicates, so if you try to add an earlier added word, you’ll get an error message.</p>
+<p>Now, while still hovering over them, click <code>r</code> (the <em>Real-Time Import</em> key) to import these words into your set. Hoorah! Note that Rikaisama by default does not allow duplicates, so if you try to add an earlier added word, you’ll get an error message.</p>
+<p>I’ve exported my own copy of this example and uploaded if you want to compare or save yourself the work of creating the note template manually:</p>
+<ul>
+<li><strong>Download</strong>: <a href="https://www.dropbox.com/s/xnj67hqj3cubfn2/Rikai%20vocab.apkg?dl=0">Example set Rikai <i class="icon-download-alt"></i></a> (not done yet)</li>
+</ul>
 <h1 id="appliances"><a class="toclink" href="#appliances">Appliances</a></h1>
 <h2 id="internet"><a class="toclink" href="#internet">Internet</a></h2>
 <p>This one goes without saying as that’s pretty much the prime objective of this tutorial. If you’re a relatively new learner, NHK provides simplified news articles and videos at <a href="http://www3.nhk.or.jp/news/easy/">NHK Easy News</a>. I used these a lot near the end of my first year studying, and it’s a neat way to stay up to date with what’s going in Japan, or more generally in the world, as well (it’s rather awkward if you don’t, as Japanologist or student in cultural or social sciences).</p>
@@ -371,9 +376,10 @@
 <p>If you’re running Firefox and your game side by side you’ll be able to max up your visual novel ankisets in no time, just like this guy!</p>
 <iframe allowfullscreen="" frameborder="0" height="270" src="https://www.youtube.com/embed/7djqr-RG26s?feature=oembed" width="480"></iframe>
 <h1 id="my-plug-in"><a class="toclink" href="#my-plug-in">My Plug-in</a></h1>
-<p>If there’s one downside to this method, it’s that audio will be added to your cards regardless if there’s actually an audio file in existence. More concretely, your audio-fields will have a reference to a non-existent file. Now, one solution is to, whenever you come across such a card during your anki-time, manually delete the audio entry and occasionally clearing all “empty” card notes by selecting <strong>Tools</strong> → <strong>Empty Cards</strong>.</p>
+<p>If there’s one downside to this method, it’s that an audio reference will be added to your cards regardless if there’s an existant audio recording online. This is especially the case with lesser known words or idoms: while reading Harry Potter I’ve added a few hundred of such cards. Now, one solution is to, whenever you come across such a card during your anki-time, manually delete the audio entry in your card’s Audio field and occasionally clearing all “empty” card notes by selecting <strong>Tools</strong> → <strong>Empty Cards</strong>.</p>
 <p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-removesound.jpg" style="width: 232px; height: auto; max-width: 100%;"/></p>
-<p>But! If your sets contain thousands of cards, it’s easier to do this automatically, don’t you think. I’ve written a small python plug-in that compares your set’s audio entries with the audio files in your anki library and deletes empty notes. I’ve added the plug-in to my <a href="https://steviepoppe.net/resources/">resources</a>, if you’re interested. (actually I haven’t yet and will do this in the weekend but as no one’s reading this yet anyway it doesn’t matter :D)</p>
+<p>To automatize this process however, I’ve written a small python plug-in to remove all references to non-existant audio files. Install it by clicking <strong>Tools</strong> → <strong>Add-ons</strong>  → <strong>Browse &amp; Install</strong> and copy-pasting <code>1328067109</code> there (you’ll have to restart Anki afterwards). To use, just click <strong>Tools</strong> → <strong>Remove Absent Audio References</strong>. Next, click <strong>Tools</strong> → <strong>Empty Cards</strong> to remove all the empty oral-recognition cards.</p>
+<p>In case you’re interested, this plug-in is hosted on Anki’s add-on page <a href="https://ankiweb.net/shared/info/1328067109">here</a>.</p>
 <h1 id="wait-there-is-more"><a class="toclink" href="#wait-there-is-more">Wait! There is more!</a></h1>
 <p>The main goal of this post was to introduce a less known, but highly useful, Anki functionality by linking Rikaisama’s excellent<sup id="fnref:12"><a class="footnote-ref" href="#fn:12" rel="footnote">12</a></sup> pop-up dictionary with Anki’s API, as well as show several possible appliances. If you’ve any further questions, feel free to check out the other articles in this series on Anki, or to leave a comment below.</p>
 <ul>
@@ -383,8 +389,8 @@
 </ul>
 <h1 id="further-reading"><a class="toclink" href="#further-reading">Further reading</a></h1>
 <ul>
-<li><a href="http://learnjapaneseonline.info/2014/10/14/kikitori-japanese-listening-the-dolly-sentences-method-technical-how-to-do-it/">Japanese Voice Synthesis in Anki</a>: My approach uses JapanesePod101’s vast audiolibrary. However, not occasionally I encounter words that have no native spoken audio recorded. If you want completion, This tutorial explains how you to set-up Text-to-Speech (TTS) with Anki. I haven’t done this myself however, so your mileage might vary.</li>
-<li><a href="http://www.nihongonobaka.com/learn-japanese-through-video-games/">Learn Japanese Through Videogames</a>: speaking of videogames, you could also look up videogame scripts (<span lang="ja">セリフ集</span>) and vocab-mine from those. This guy wrote a decent blog on that. The recent Phoenix Wright spin-off, Dai Gyakuten Saiban, has yet to be confirmed to receive a western release, so I’ll have to brush up my court of law vocab this way before playing. </li>
+<li><a href="http://learnjapaneseonline.info/2014/10/14/kikitori-japanese-listening-the-dolly-sentences-method-technical-how-to-do-it/">AwesomeTTS for Anki</a>: My approach uses JapanesePod101’s vast audio library. However, not occasionally I encounter words that have no native spoken audio recorded. If you want completion, this open-source tool allows for text-to-speech in your Anki cards. I haven’t done this myself however, so your mileage might vary.</li>
+<li><a href="http://www.nihongonobaka.com/learn-japanese-through-video-games/">Learn Japanese Through Videogames</a>: speaking of videogames, you could also look up videogame scripts (<span lang="ja">セリフ<ruby><rb>集</rb><rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby></span>) and vocab-mine from those. This guy wrote a decent blog on that. The recent Phoenix Wright spin-off, Dai Gyakuten Saiban, has yet to be confirmed to receive a western release, so I’ll have to brush up my court of law vocab this way before playing. </li>
 </ul>
 <div class="footnote">
 <hr/>
@@ -452,6 +458,8 @@
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
                 <dt>zo 28 augustus 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
+                <dt>di 06 september 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/anki-plugin/">Anki Plugin</a></dd>
                 <dt>di 06 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
             </dl>
