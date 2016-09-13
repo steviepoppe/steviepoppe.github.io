@@ -223,7 +223,7 @@
 <p><a href="http://rikaisama.sourceforge.net/">Rikaisama’s homepage</a> contains a crude, bare-bones set-up guide covering the basics of linking Rikaisama with Anki. It does however expect technical knowledge of it’s readers, which I feel will averse some. I try to simplify things while still explaining <em>why</em> we’re doing things, since it really is pretty easy to set-up. If you’d rather get straight to the point, just ignore the reasoning parts (or skip to <a href="#usage">1.2.4. Usage</a> to download a premade ankiset with matching notetype: all you’ll have to do then is to change a few Rikaisama settings).</p>
 <h3 id="anki"><a class="toclink" href="#anki">Anki</a></h3>
 <p>First, Anki will need an additional add-on as well in order to allow real-time import. It’s ‘available’ at Ankiweb’s <a href="https://ankiweb.net/shared/info/2512410601">plug-in page</a>, although actual installation is done in-app. Open Anki on your desktop, go to <strong>Tools</strong> → <strong>Add-ons</strong> → <strong>Browse &amp; Install</strong>, and copypaste <strong>2512410601</strong> in the pop-up dialogue.</p>
-<p>Now, we’ll create a new set to contain your Rikaisama-powered cards, a new note-type with fields corresponding to the info you’d like out of rikaisama, and finally a few card-types to test us on on visual recognition, on oral recognition, and on production.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> Start by creating a new set, eg. <code>rikai-vocab</code><sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup>. On Windows, press <code>CTRL-SHIFT-N</code>, or click <strong>Tools</strong> → <strong>Manage Note Types</strong>, to enter the notetype management screen. Click <strong>add</strong>, then <strong>ok</strong> on the next screen, to create a new note type. Call it <code>Rikai</code> (do note my excellent graphical skills as seen in the screenshot below ( ͡° ͜ʖ ͡°) )!</p>
+<p>Now, we’ll create a new set to contain your Rikaisama-powered cards, a new note-type with fields corresponding to the info you’d like out of rikaisama, and finally a few card-types to test us on on visual recognition, on oral recognition, and on production.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> Start by creating a new set, eg. <code>rikai-vocab</code><sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup>. On Windows, press <kbd>CTRL-SHIFT-N</kbd>, or click <strong>Tools</strong> → <strong>Manage Note Types</strong>, to enter the notetype management screen. Click <strong>add</strong>, then <strong>ok</strong> on the next screen, to create a new note type. Call it <code>Rikai</code> (do note my excellent graphical skills as seen in the screenshot below ( ͡° ͜ʖ ͡°) )!</p>
 <p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-notetypes-s.jpg" style="width: 400px; height: auto; max-width: 100%;"/></p>
 <p>Next, select the new Rikai note-type and click <strong>Fields</strong>. We’ll rename the current front and backside as <code>Expression</code> and <code>Meaning</code>, and add two new Fields <code>Audio</code> and <code>Notes</code> (this one could be used for personal notes or example sentences). If you’re interested in pitch accents, add a fifth field <code>Pitch</code>. Next, close this screen and click on <strong>Cards</strong>. We’ll manage the different cards this note generates as well as it’s make-up.</p>
 <p>We’ll start with some basic layout. Add the following lines to the bottom of the middle Shared Style screen. For optimal learning, we’ll keep word readings in kana as furigana displayed on touch/hover. This way learners are less likely to use them as a crutch.</p>
@@ -341,7 +341,7 @@
 <p>For Rikaisama to recognize which Anki set and which notes to use, we’ll have to open anki and enter our set everytime we’re on hunting spree. If you get a mismatch error, just click <strong>add</strong> and ensure that the selected type is <code>Rikai</code> by clicking on the current type and selecting the proper one (just click close again afterwards).</p>
 <p>Hover over these two words. A rikai pop with definitions should appear. </p>
 <p><span lang="ja"><ruby><rb>理解</rb><rp>(</rp><rt>りかい</rt><rp>)</rp></ruby></span> | <span lang="ja"><ruby><rb>暗記</rb><rp>(</rp><rt>あんき</rt><rp>)</rp></ruby></span> (I’m not obsessed, I swear~)</p>
-<p>Now, while still hovering over them, click <code>r</code> (the <em>Real-Time Import</em> key) to import these words into your set. Hoorah! Note that Rikaisama by default does not allow duplicates, so if you try to add an earlier added word, you’ll get an error message.</p>
+<p>Now, while still hovering over them, type <kbd>r</kbd> (the <em>Real-Time Import</em> key) to import these words into your set. Hoorah! Note that Rikaisama by default does not allow duplicates, so if you try to add an earlier added word, you’ll get an error message.</p>
 <p>I’ve exported my own copy of this example and uploaded if you want to compare or save yourself the work of creating the note template manually:</p>
 <ul>
 <li><strong>Download</strong>: <a href="https://www.dropbox.com/s/xnj67hqj3cubfn2/Rikai%20vocab.apkg?dl=0">Example set Rikai <i class="icon-download-alt"></i></a></li>
@@ -377,9 +377,7 @@
 <iframe allowfullscreen="" frameborder="0" height="270" src="https://www.youtube.com/embed/7djqr-RG26s?feature=oembed" width="480"></iframe>
 <h1 id="my-plug-in"><a class="toclink" href="#my-plug-in">My Plug-in</a></h1>
 <p>If there’s one downside to this method, it’s that an audio reference will be added to your cards regardless if there’s an existant audio recording online. This is especially the case with lesser known words or idoms: while reading Harry Potter I’ve added a few hundred of such cards. Now, one solution is to, whenever you come across such a card during your anki-time, manually delete the audio entry in your card’s Audio field and occasionally clearing all “empty” card notes by selecting <strong>Tools</strong> → <strong>Empty Cards</strong>.</p>
-<blockquote>
 <p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-removesound.jpg" style="width: 232px; height: auto; max-width: 100%;"/></p>
-</blockquote>
 <p>To automatize this process however, I’ve written a small python plug-in to remove all references to non-existant audio files. Install it by clicking <strong>Tools</strong> → <strong>Add-ons</strong>  → <strong>Browse &amp; Install</strong> and copy-pasting <code>1328067109</code> there (you’ll have to restart Anki afterwards). To use, just click <strong>Tools</strong> → <strong>Remove Absent Audio References</strong>. Next, click <strong>Tools</strong> → <strong>Empty Cards</strong> to remove all the empty oral-recognition cards.</p>
 <p>In case you’re interested, this plug-in is hosted on Anki’s add-on page <a href="https://ankiweb.net/shared/info/1328067109">here</a>.</p>
 <h1 id="wait-there-is-more"><a class="toclink" href="#wait-there-is-more">Wait! There is more!</a></h1>
@@ -387,7 +385,7 @@
 <ul>
 <li><a href="#"> A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a> (<em>coming soon</em>)</li>
 <li><a href="#">Using Anki’s API to contextualize your vocab cards with example sentences</a> (<em>coming soon</em>)</li>
-<li><a href="#">Estimating a text’s difficulty based on your Anki’s vocab set</a> (<em>coming soon</em>)</li>
+<li><a href="#">Making the switch: J-J definitions in your vocab cards</a> (<em>coming soon</em>)</li>
 </ul>
 <h1 id="further-reading"><a class="toclink" href="#further-reading">Further reading</a></h1>
 <ul>
@@ -458,10 +456,10 @@
             <dl class="dl-horizontal">
                 <dt>wo 07 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
-                <dt>di 06 september 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
                 <dt>zo 28 augustus 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
+                <dt>di 06 september 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
             </dl>
             </div>
         <hr />
