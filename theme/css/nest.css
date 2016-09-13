@@ -1549,6 +1549,10 @@ pre {
     margin: 0px;
   }
 
+#files {
+text-align: left;  
+}
+
   @media (min-width: 768px) {
     #footnotediv {
       max-width: 400px;
