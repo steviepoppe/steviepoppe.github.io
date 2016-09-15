@@ -105,11 +105,6 @@
                           <ul class="socialnav socialonly social-icons-footer collapse">
 
                             <li>
-                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
-                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
-                              </a><span class="screen-reader">Twitter</span>
-                            </li>
-                            <li>
                               <a href="https://be.linkedin.com/in/stevie-poppe-9048b395" title="Linkedin">
                                 <i class="icon-linkedin" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Linkedin</span>
@@ -118,6 +113,11 @@
                               <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
                                 <i class="icon-flickr" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
                             </li>
                             <li>
                               <a href="https://www.goodreads.com/user/show/35676792-stevie-poppe" title="Goodreads">
@@ -153,7 +153,7 @@
         <div class="row">
               <div class="col-lg-12">
                   <div class="header-content center">
-                      <h1 class="header-title nocount">Hello World - About This Blog</h1>
+                      <h1 class="header-title nocount">Hello World - About This Blog<sup id="fnref:footnote"><a class="footnote-ref imagesource" href="#fn:footnote" rel="footnote">1</a></sup></h1>
                       <p class="header-date">di 23 augustus 2016, in category <a href="https://steviepoppe.net/blog/category/technical/">Technical</a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
@@ -189,13 +189,13 @@
 
 <h1 id="blogplatform"><a class="toclink" href="#blogplatform">Blogplatform</a></h1>
 <h2 id="deciding"><a class="toclink" href="#deciding">Deciding</a></h2>
-<p>From the outset I tried to steer away from heavy content management systems such as <strong>Drupal</strong> or <strong>WordPress</strong>. They’re easy to work with and take a lot of work of your hands, but a serverside database means too heavy a load for what’s basically a smallscale personal blog, and several unnecessary security risks on top.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> The tech-hipster in me opted for a DIY approach with full control over both content and design. Static blog framework wise there are several popular options, but as I’m more accustomed to the <em>Python</em> programming language through other applications, I ended up choosing for <strong><a href="http://blog.getpelican.com/">Pelican</a></strong> over the more widespread <em>Ruby</em>-based <strong><a href="http://jekyllrb.com/">Jekyll</a></strong>. An added value of managing my blogs clientside and delivering small sized static pages is the ease of finding an appropriate host (I host my pages on <strong><a href="https://pages.github.com/">GitHub Pages</a></strong> while serving larger files through Dropbox) and a seamless integration in my <em>Markdown</em>-based writing workflow.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></p>
+<p>From the outset I tried to steer away from heavy content management systems such as <strong>Drupal</strong> or <strong>WordPress</strong>. They’re easy to work with and take a lot of work of your hands, but a serverside database means too heavy a load for what’s basically a smallscale personal blog, and several unnecessary security risks on top.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">2</a></sup> The tech-hipster in me opted for a DIY approach with full control over both content and design. Static blog framework wise there are several popular options, but as I’m more accustomed to the <em>Python</em> programming language through other applications, I ended up choosing for <strong><a href="http://blog.getpelican.com/">Pelican</a></strong> over the more widespread <em>Ruby</em>-based <strong><a href="http://jekyllrb.com/">Jekyll</a></strong>. An added value of managing my blogs clientside and delivering small sized static pages is the ease of finding an appropriate host (I host my pages on <strong><a href="https://pages.github.com/">GitHub Pages</a></strong> while serving larger files through Dropbox) and a seamless integration in my <em>Markdown</em>-based writing workflow.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">3</a></sup></p>
 <h2 id="set-up"><a class="toclink" href="#set-up">Set-up</a></h2>
-<p>The initial set-up is relatively simple, as installation and basic generation is done through command line, and content written in <em>Markdown</em>, <em>AsciiDoc</em> or <em>reStructuredText</em><sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> gets served as stand-alone pages or articles. There’s a wide choice of <a href="http://www.pelicanthemes.com/">existing templates</a>, but further customization requires some working knowledge on webdesign as well as, preferably, on basic programming concepts (Pelican templates are created using the python-based <strong><a href="http://jinja.pocoo.org/">Jinja2</a></strong>, allowing for template logic and inheritance). Needless to say, hosting on GitHub Pages requires knowledge of <strong>Git</strong>, but that’s really not a skill learned in vain as the concept of version control applies well to writing important papers too.</p>
+<p>The initial set-up is relatively simple, as installation and basic generation is done through command line, and content written in <em>Markdown</em>, <em>AsciiDoc</em> or <em>reStructuredText</em><sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">4</a></sup> gets served as stand-alone pages or articles. There’s a wide choice of <a href="http://www.pelicanthemes.com/">existing templates</a>, but further customization requires some working knowledge on webdesign as well as, preferably, on basic programming concepts (Pelican templates are created using the python-based <strong><a href="http://jinja.pocoo.org/">Jinja2</a></strong>, allowing for template logic and inheritance). Needless to say, hosting on GitHub Pages requires knowledge of <strong>Git</strong>, but that’s really not a skill learned in vain as the concept of version control applies well to writing important papers too.</p>
 <h2 id="development"><a class="toclink" href="#development">Development</a></h2>
-<p>Getting acquainted with these tools can be time consuming. Luckily Pelican’s <a href="http://docs.getpelican.com/en/3.6.3/#">well documented</a>, and there are plenty of tutorials out there, as well as hundreds of working examples hosted on GitHub available as reference (the backbone of my template is a heavily modified <em><a href="https://github.com/kdeldycke/plumage">Plumage</a></em> theme). I prefer a minimalistic layout easy on the eye, and steered clear of unnecessary clutter, but with the advent of visual blogging<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup> I figured I’d integrate <em>some</em> graphical elements, such as article banners (that’s the extent of it really, I’m not much of na artist), as visual content engages the reader more easily. One easily overlooked design problem is ensuring responsive webpages for the ever increasing mobile internet traffic<sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup>, but with easy support for <em><a href="http://sass-lang.com/">Sass</a></em>, or just using Twitter’s <strong>Bootstrap</strong> framework, this comes pretty naturally. Finally, implementing additional features is pretty easy too. There’s a wide range of existing <a href="https://github.com/getpelican/pelican-plugins">plugins</a> for features like searching, minifying assets, table of contents and comments (using the third-party <strong><a href="https://disqus.com/">Disqus</a></strong> blog hosting service). </p>
+<p>Getting acquainted with these tools can be time consuming. Luckily Pelican’s <a href="http://docs.getpelican.com/en/3.6.3/#">well documented</a>, and there are plenty of tutorials out there, as well as hundreds of working examples hosted on GitHub available as reference (the backbone of my template is a heavily modified <em><a href="https://github.com/kdeldycke/plumage">Plumage</a></em> theme). I prefer a minimalistic layout easy on the eye, and steered clear of unnecessary clutter, but with the advent of visual blogging<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">5</a></sup> I figured I’d integrate <em>some</em> graphical elements, such as article banners (that’s the extent of it really, I’m not much of na artist), as visual content engages the reader more easily. One easily overlooked design problem is ensuring responsive webpages for the ever increasing mobile internet traffic<sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">6</a></sup>, but with easy support for <em><a href="http://sass-lang.com/">Sass</a></em>, or just using Twitter’s <strong>Bootstrap</strong> framework, this comes pretty naturally. Finally, implementing additional features is pretty easy too. There’s a wide range of existing <a href="https://github.com/getpelican/pelican-plugins">plugins</a> for features like searching, minifying assets, table of contents and comments (using the third-party <strong><a href="https://disqus.com/">Disqus</a></strong> blog hosting service). </p>
 <h2 id="hosting"><a class="toclink" href="#hosting">Hosting</a></h2>
-<p>GitHub has allowed free hosting for static personal or projectsites on GitHub Pages for a while now. This boils down to creating a new repository with your username and GitHub url (<em>steviepoppe.github.io</em>) and hosting your pages there. I created an additional source branch to host all my sourcefiles, use <a href="https://github.com/davisp/ghp-import">ghp-import</a> to place my output files in a seperate branch, and force push that to the master branch on GH Pages.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6" rel="footnote">6</a></sup></p>
+<p>GitHub has allowed free hosting for static personal or projectsites on GitHub Pages for a while now. This boils down to creating a new repository with your username and GitHub url (<em>steviepoppe.github.io</em>) and hosting your pages there. I created an additional source branch to host all my sourcefiles, use <a href="https://github.com/davisp/ghp-import">ghp-import</a> to place my output files in a seperate branch, and force push that to the master branch on GH Pages.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6" rel="footnote">7</a></sup></p>
 <div class="codehilite"><pre><span></span><span class="n">pelican</span> <span class="n">content</span> <span class="o">-</span><span class="n">o</span> <span class="n">output</span> <span class="o">-</span><span class="n">s</span> <span class="n">publishconf</span><span class="o">.</span><span class="n">py</span> <span class="o">&amp;&amp;</span> <span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="nn">output</span> <span class="o">&amp;&amp;</span> <span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">f</span> <span class="n">origin</span> <span class="n">gh</span><span class="o">-</span><span class="n">pages</span><span class="p">:</span><span class="n">master</span>
 </pre></div>
 <p>So far GitHub’s SSL certificate only covers *.github.io domains, there’s no support yet for custom domains. Thus as final step after having set up my custom domain, and as an additional security layer, I use <a href="https://www.cloudflare.com/">CloudFare</a> to secure part of the connection and enroll some further optimisations.</p>
@@ -211,23 +211,26 @@
 <div class="footnote">
 <hr/>
 <ol>
+<li id="fn:footnote">
+<p>Icelandic Sunset by Stevie Poppe (<a href="https://flic.kr/p/M83mKT">https://flic.kr/p/M83mKT</a> - CC BY-SA 2.0) <a class="footnote-backref" href="#fnref:footnote" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
 <li id="fn:1">
-<p>Burnett, Brett. 2015. “Why Did We Migrate from Drupal to Jekyll?” Text. The BHW Group. <a href="https://thebhwgroup.com/blog/jekyll-drupal-wordpress">https://thebhwgroup.com/blog/jekyll-drupal-wordpress</a> <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+<p>Burnett, Brett. 2015. “Why Did We Migrate from Drupal to Jekyll?” Text. The BHW Group. <a href="https://thebhwgroup.com/blog/jekyll-drupal-wordpress">https://thebhwgroup.com/blog/jekyll-drupal-wordpress</a> <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 2 in the text">↩</a></p>
 </li>
 <li id="fn:2">
-<p>O’Nolan, John. 2015. “The Ultimate Guide to Writing &amp; Publishing with Markdown”. Ghost. <a href="https://blog.ghost.org/markdown/">https://blog.ghost.org/markdown/</a> <a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">↩</a></p>
+<p>O’Nolan, John. 2015. “The Ultimate Guide to Writing &amp; Publishing with Markdown”. Ghost. <a href="https://blog.ghost.org/markdown/">https://blog.ghost.org/markdown/</a> <a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
 <li id="fn:3">
-<p>All three are open, lightweight markup languages with a heavy focus on readability through seperation of content and layout layers. <a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
+<p>All three are open, lightweight markup languages with a heavy focus on readability through seperation of content and layout layers. <a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 4 in the text">↩</a></p>
 </li>
 <li id="fn:4">
-<p>Fanguy, Will. 2016. “The Amazing Evolution of Visual Storytelling: Blogging, Instagram, Snapchat, and the Future”. Business 2 Community. <a href="http://www.business2community.com/trends-news/amazing-evolution-visual-storytelling-blogging-instagram-snapchat-future-01557833">http://www.business2community.com/trends-news/amazing-evolution-visual-storytelling-blogging-instagram-snapchat-future-01557833</a> <a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">↩</a></p>
+<p>Fanguy, Will. 2016. “The Amazing Evolution of Visual Storytelling: Blogging, Instagram, Snapchat, and the Future”. Business 2 Community. <a href="http://www.business2community.com/trends-news/amazing-evolution-visual-storytelling-blogging-instagram-snapchat-future-01557833">http://www.business2community.com/trends-news/amazing-evolution-visual-storytelling-blogging-instagram-snapchat-future-01557833</a> <a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 5 in the text">↩</a></p>
 </li>
 <li id="fn:5">
-<p>‘<em>the amount of mobile traffic now accounts for more than half of total internet traffic</em>‘ “Cisco Visual Networking Index: Global Mobile Data Traffic Forecast Update, 2015–2020 White Paper”. 2016. Cisco. <a href="http://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/mobile-white-paper-c11-520862.html">http://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/mobile-white-paper-c11-520862.html</a> <a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text">↩</a></p>
+<p>‘<em>the amount of mobile traffic now accounts for more than half of total internet traffic</em>‘ “Cisco Visual Networking Index: Global Mobile Data Traffic Forecast Update, 2015–2020 White Paper”. 2016. Cisco. <a href="http://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/mobile-white-paper-c11-520862.html">http://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/mobile-white-paper-c11-520862.html</a> <a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 6 in the text">↩</a></p>
 </li>
 <li id="fn:6">
-<p>I’m doing this manually through command line for now, but there’s several automatisation options including using <a href="https://travis-ci.org/">Travis-CI</a> for the more hardcore blogger. <a class="footnote-backref" href="#fnref:6" rev="footnote" title="Jump back to footnote 6 in the text">↩</a></p>
+<p>I’m doing this manually through command line for now, but there’s several automatisation options including using <a href="https://travis-ci.org/">Travis-CI</a> for the more hardcore blogger. <a class="footnote-backref" href="#fnref:6" rev="footnote" title="Jump back to footnote 7 in the text">↩</a></p>
 </li>
 </ol>
 </div>
@@ -252,10 +255,10 @@
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
-                <dt>do 25 augustus 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/08/pelican-plugin-css-only-footnote-pop-up/">Pelican Plugin: CSS-only footnote pop-up</a></dd>
                 <dt>di 06 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
+                <dt>do 25 augustus 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/08/pelican-plugin-css-only-footnote-pop-up/">Pelican Plugin: CSS-only footnote pop-up</a></dd>
             </dl>
             </div>
         <hr />

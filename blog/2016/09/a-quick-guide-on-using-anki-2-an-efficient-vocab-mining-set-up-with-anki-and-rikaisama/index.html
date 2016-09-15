@@ -105,11 +105,6 @@
                           <ul class="socialnav socialonly social-icons-footer collapse">
 
                             <li>
-                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
-                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
-                              </a><span class="screen-reader">Twitter</span>
-                            </li>
-                            <li>
                               <a href="https://be.linkedin.com/in/stevie-poppe-9048b395" title="Linkedin">
                                 <i class="icon-linkedin" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Linkedin</span>
@@ -118,6 +113,11 @@
                               <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
                                 <i class="icon-flickr" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
                             </li>
                             <li>
                               <a href="https://www.goodreads.com/user/show/35676792-stevie-poppe" title="Goodreads">
@@ -153,7 +153,7 @@
         <div class="row">
               <div class="col-lg-12">
                   <div class="header-content center">
-                      <h1 class="header-title nocount">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</h1>
+                      <h1 class="header-title nocount">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama<sup id="fnref:footnote"><a class="footnote-ref imagesource" href="#fn:footnote" rel="footnote">1</a></sup></h1>
                       <p class="header-date">do 08 september 2016, in category <a href="https://steviepoppe.net/blog/category/studies/">Studies</a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
@@ -209,7 +209,7 @@
 <p>Welcome to the lovely world of <code>Integrated Anki &amp; Rikaisama</code>!</p>
 <hr/>
 
-<p><strong>Rikaichan</strong>, and it’s Chrome variant <strong>Rikaikun</strong>, have already been widely established as incredibly helpful tools for reading Japanese online. Nevertheless, one major function remained missing still: a seamless integration with Anki for efficient vocabulary mining. A recent extension of the original Rikaichan, aptly named <strong>Rikaisama</strong> (it’s a <em>pun</em>!), adds several new features including communication with the Anki API, <em>Sanseido Web Dictionary</em>‘s J-J dictionary definitions, access to <em>J-Pod101</em>‘s<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> audiofiles, and several more<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>. Concretely, this means audio playback of tens of thousands of words and expressions as well as easy integration of new vocab into Anki. Despite these incredibly useful features, Rikaisama remains fairly unknown and unblogged about. To counter that, this blog serves as a brief tutorial on setting up a Rikaisama/Anki environment as well as demonstrating some useful real-life appliances.</p>
+<p><strong>Rikaichan</strong>, and it’s Chrome variant <strong>Rikaikun</strong>, have already been widely established as incredibly helpful tools for reading Japanese online. Nevertheless, one major function remained missing still: a seamless integration with Anki for efficient vocabulary mining. A recent extension of the original Rikaichan, aptly named <strong>Rikaisama</strong> (it’s a <em>pun</em>!), adds several new features including communication with the Anki API, <em>Sanseido Web Dictionary</em>‘s J-J dictionary definitions, access to <em>J-Pod101</em>‘s<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">2</a></sup> audiofiles, and several more<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">3</a></sup>. Concretely, this means audio playback of tens of thousands of words and expressions as well as easy integration of new vocab into Anki. Despite these incredibly useful features, Rikaisama remains fairly unknown and unblogged about. To counter that, this blog serves as a brief tutorial on setting up a Rikaisama/Anki environment as well as demonstrating some useful real-life appliances.</p>
 
 <h1 id="rikaisama"><a class="toclink" href="#rikaisama">Rikaisama</a></h1>
 <h2 id="download"><a class="toclink" href="#download">Download</a></h2>
@@ -223,7 +223,7 @@
 <p><a href="http://rikaisama.sourceforge.net/">Rikaisama’s homepage</a> contains a crude, bare-bones set-up guide covering the basics of linking Rikaisama with Anki. It does however expect technical knowledge of it’s readers, which I feel will averse some. I try to simplify things while still explaining <em>why</em> we’re doing things, since it really is pretty easy to set-up. If you’d rather get straight to the point, just ignore the reasoning parts (or skip to <a href="#usage">1.2.4. Usage</a> to download a premade ankiset with matching notetype: all you’ll have to do then is to change a few Rikaisama settings).</p>
 <h3 id="anki"><a class="toclink" href="#anki">Anki</a></h3>
 <p>First, Anki will need an additional add-on as well in order to allow real-time import. It’s ‘available’ at Ankiweb’s <a href="https://ankiweb.net/shared/info/2512410601">plug-in page</a>, although actual installation is done in-app. Open Anki on your desktop, go to <strong>Tools</strong> → <strong>Add-ons</strong> → <strong>Browse &amp; Install</strong>, and copypaste <strong>2512410601</strong> in the pop-up dialogue.</p>
-<p>Now, we’ll create a new set to contain your Rikaisama-powered cards, a new note-type with fields corresponding to the info you’d like out of rikaisama, and finally a few card-types to test us on on visual recognition, on oral recognition, and on production.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> Start by creating a new set, eg. <code>rikai-vocab</code><sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup>. On Windows, press <kbd>CTRL-SHIFT-N</kbd>, or click <strong>Tools</strong> → <strong>Manage Note Types</strong>, to enter the notetype management screen. Click <strong>add</strong>, then <strong>ok</strong> on the next screen, to create a new note type. Call it <code>Rikai</code> (do note my excellent graphical skills as seen in the screenshot below ( ͡° ͜ʖ ͡°) )!</p>
+<p>Now, we’ll create a new set to contain your Rikaisama-powered cards, a new note-type with fields corresponding to the info you’d like out of rikaisama, and finally a few card-types to test us on on visual recognition, on oral recognition, and on production.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">4</a></sup> Start by creating a new set, eg. <code>rikai-vocab</code><sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">5</a></sup>. On Windows, press <kbd>CTRL-SHIFT-N</kbd>, or click <strong>Tools</strong> → <strong>Manage Note Types</strong>, to enter the notetype management screen. Click <strong>add</strong>, then <strong>ok</strong> on the next screen, to create a new note type. Call it <code>Rikai</code> (do note my excellent graphical skills as seen in the screenshot below ( ͡° ͜ʖ ͡°) )!</p>
 <p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-notetypes-s.jpg" style="width: 400px; height: auto; max-width: 100%;"/></p>
 <p>Next, select the new Rikai note-type and click <strong>Fields</strong>. We’ll rename the current front and backside as <code>Expression</code> and <code>Meaning</code>, and add two new Fields <code>Audio</code> and <code>Notes</code> (this one could be used for personal notes or example sentences). If you’re interested in pitch accents, add a fifth field <code>Pitch</code>. Next, close this screen and click on <strong>Cards</strong>. We’ll manage the different cards this note generates as well as it’s make-up.</p>
 <p>We’ll start with some basic layout. Add the following lines to the bottom of the middle Shared Style screen. For optimal learning, we’ll keep word readings in kana as furigana displayed on touch/hover. This way learners are less likely to use them as a crutch.</p>
@@ -334,7 +334,7 @@
 <p>I personally tag all rikai-created ankicards as such, this isn’t necessary but it might come of use in your anki’s browser one day.</p>
 <hr/>
 <h3 id="dictionaries"><a class="toclink" href="#dictionaries">Dictionaries</a></h3>
-<p>A final step in case you haven’t used Rikaichan before, is to install some dictionaries files, available at <a href="http://www.polarcloud.com/getrcx/">Rikaichan’s homepage</a>. I personally use the <strong>Japanese - Dutch</strong>,<sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup> <strong>Japanese English</strong> and <strong>Japanese Names</strong> dictionaries, and sort them in those order in Rikaisama’s configuration.</p>
+<p>A final step in case you haven’t used Rikaichan before, is to install some dictionaries files, available at <a href="http://www.polarcloud.com/getrcx/">Rikaichan’s homepage</a>. I personally use the <strong>Japanese - Dutch</strong>,<sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">6</a></sup> <strong>Japanese English</strong> and <strong>Japanese Names</strong> dictionaries, and sort them in those order in Rikaisama’s configuration.</p>
 <p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/rikaisamadict.jpg" style="width: 500px; height: auto; max-width: 100%;"/></p>
 <h3 id="usage"><a class="toclink" href="#usage">Usage</a></h3>
 <p>Now let’s test our set-up!</p>
@@ -351,18 +351,18 @@
 <p>This one goes without saying as that’s pretty much the prime objective of this tutorial. If you’re a relatively new learner, NHK provides simplified news articles and videos at <a href="http://www3.nhk.or.jp/news/easy/">NHK Easy News</a>. I used these a lot near the end of my first year studying, and it’s a neat way to stay up to date with what’s going in Japan, or more generally in the world (frankly it’s a bit awkward if you don’t as student in cultural or social sciences).</p>
 <h2 id="novels"><a class="toclink" href="#novels">Novels</a></h2>
 <blockquote>
-<p><span lang="ja">「言い方がまちがってるわ。ウィン、ガー・デイアム　レヴィ・オーサ。『ガー』と長一くきれいに言わなくちゃ」</span><sup id="fnref:6"><a class="footnote-ref" href="#fn:6" rel="footnote">6</a></sup></p>
+<p><span lang="ja">「言い方がまちがってるわ。ウィン、ガー・デイアム　レヴィ・オーサ。『ガー』と長一くきれいに言わなくちゃ」</span><sup id="fnref:6"><a class="footnote-ref" href="#fn:6" rel="footnote">7</a></sup></p>
 </blockquote>
 <h3 id="jnovelformatter"><a class="toclink" href="#jnovelformatter">JNovelFormatter</a></h3>
-<p><a href="http://forum.koohii.com/post-113458.html">JNovelFormatter</a> is a neat little tool by the developer of Rikaisama<sup id="fnref:7"><a class="footnote-ref" href="#fn:7" rel="footnote">7</a></sup> that converts japanese literature in .txt format into clean parsed HTML files. Layout is fairly customizable, although I think the original settings are easy on the eye as-is (I like dark backgrounds when reading for hours at a time, makes me feel less like I’m gazing straight into a lightbulb). End of sentence dots get turned into bookmarkable anchors so you won’t lose track of your progress.</p>
+<p><a href="http://forum.koohii.com/post-113458.html">JNovelFormatter</a> is a neat little tool by the developer of Rikaisama<sup id="fnref:7"><a class="footnote-ref" href="#fn:7" rel="footnote">8</a></sup> that converts japanese literature in .txt format into clean parsed HTML files. Layout is fairly customizable, although I think the original settings are easy on the eye as-is (I like dark backgrounds when reading for hours at a time, makes me feel less like I’m gazing straight into a lightbulb). End of sentence dots get turned into bookmarkable anchors so you won’t lose track of your progress.</p>
 <p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-jnovel.jpg" style="width: 380px; height: auto; max-width: 100%;"/></p>
 <p>I highly recommend this method! I’ve used this approach while reading <em>The Girl Who Leapt Through Time</em> (<span lang="ja"><ruby><rb>時</rb><rp>(</rp><rt>とき</rt><rp>)</rp></ruby>をかける<ruby><rb>少女</rb><rp>(</rp><rt>しょうじょ</rt><rp>)</rp></ruby></span>) during our <span lang="ja"><ruby><rb>読書</rb><rp>(</rp><rt>どくしょ</rt><rp>)</rp></ruby>クラブ</span>‘s book-reading sessions and just last week, as a kind of summer project, worked my way through the first <em>Harry Potter</em> (a surprisingly high difficulty but I know the original by heart so that helped heaps context-wise).</p>
-<p>As for resources, there’s plenty to be found online. Light novels are commonly uploaded in text format and probably a good starting point for the more advanced learner.<sup id="fnref:8"><a class="footnote-ref" href="#fn:8" rel="footnote">8</a></sup> I’ve heard <em>Zero no Tsukaima</em> (<span lang="ja">ゼロの<ruby><rb>使魔</rb><rp>(</rp><rt>つかいま</rt><rp>)</rp></ruby></span>) and <em>Kino no Tabi</em> (<span lang="ja">キノの<ruby><rb>旅</rb><rp>(</rp><rt>たび</rt><rp>)</rp></ruby></span>) are relatively easy reads, for example.<sup id="fnref:9"><a class="footnote-ref" href="#fn:9" rel="footnote">9</a></sup></p>
+<p>As for resources, there’s plenty to be found online. Light novels are commonly uploaded in text format and probably a good starting point for the more advanced learner.<sup id="fnref:8"><a class="footnote-ref" href="#fn:8" rel="footnote">9</a></sup> I’ve heard <em>Zero no Tsukaima</em> (<span lang="ja">ゼロの<ruby><rb>使魔</rb><rp>(</rp><rt>つかいま</rt><rp>)</rp></ruby></span>) and <em>Kino no Tabi</em> (<span lang="ja">キノの<ruby><rb>旅</rb><rp>(</rp><rt>たび</rt><rp>)</rp></ruby></span>) are relatively easy reads, for example.<sup id="fnref:9"><a class="footnote-ref" href="#fn:9" rel="footnote">10</a></sup></p>
 <h3 id="aozora"><a class="toclink" href="#aozora">Aozora</a></h3>
-<p><a href="Aozora">http://www.aozora.gr.jp/</a>, pretty much the Japanese Gutenberg project, freely hosts tons of public-domain books online.<sup id="fnref:10"><a class="footnote-ref" href="#fn:10" rel="footnote">10</a></sup> Check out Natsume Soseki’s classic Botchan as <a href="http://www.aozora.gr.jp/cards/000148/files/752_14964.html">example</a>. Their literary standards are a bit higher as the typical light novel so it’s quite an adjustment, but great for those who’re looking for easy-to-find, legally obtainable literature.</p>
+<p><a href="Aozora">http://www.aozora.gr.jp/</a>, pretty much the Japanese Gutenberg project, freely hosts tons of public-domain books online.<sup id="fnref:10"><a class="footnote-ref" href="#fn:10" rel="footnote">11</a></sup> Check out Natsume Soseki’s classic Botchan as <a href="http://www.aozora.gr.jp/cards/000148/files/752_14964.html">example</a>. Their literary standards are a bit higher as the typical light novel so it’s quite an adjustment, but great for those who’re looking for easy-to-find, legally obtainable literature.</p>
 <h2 id="anime"><a class="toclink" href="#anime">Anime</a></h2>
 <p>A really cool concept recently released is Animelon’s multi-layer subtitled anime streaming web-app, akin to the <a href="https://www.erin.ne.jp/en/">Erin’s Challenge</a> video’s (except with arguably way more interesting content: as of date there are over 60 series hosted, mostly all big names ranging from more recent hits as SAO and Attack on Titan to classics as Fullmetal Alchemist: Brotherhood and Clannad).</p>
-<p>If I were to recommend one to start with, I’d definitely pick Clannad.<sup id="fnref:11"><a class="footnote-ref" href="#fn:11" rel="footnote">11</a></sup> The high-school setting means relatively easy and casual vocabulary (as opposed to, for example, SAO’s highly technical and fantasy-related vocab you’ll barely ever encounter in real life), while the voice acting’s pacing is calm enough to pick up as relative beginner, and devoid of difficult accents. </p>
+<p>If I were to recommend one to start with, I’d definitely pick Clannad.<sup id="fnref:11"><a class="footnote-ref" href="#fn:11" rel="footnote">12</a></sup> The high-school setting means relatively easy and casual vocabulary (as opposed to, for example, SAO’s highly technical and fantasy-related vocab you’ll barely ever encounter in real life), while the voice acting’s pacing is calm enough to pick up as relative beginner, and devoid of difficult accents. </p>
 <p>Check out their video demonstration below to see the various possibilities:</p>
 <iframe allowfullscreen="" frameborder="0" height="270" src="https://www.youtube.com/embed/XYR3_Yb9gBo?feature=oembed" width="480"></iframe>
 <p>What bothers me a bit is the legality of it all. They’re currently keeping this site up as proof-of-concept in search of potential buyers but meanwhile they’re hosting full series in HD quality “for educational purposes only”. I’m not complaining but I hope they survive, since this service is golden, really.</p>
@@ -381,7 +381,7 @@
 <p>To automatize this process however, I’ve written a small python plug-in to remove all references to non-existant audio files. Install it by clicking <strong>Tools</strong> → <strong>Add-ons</strong>  → <strong>Browse &amp; Install</strong> and copy-pasting <code>1328067109</code> there (you’ll have to restart Anki afterwards). To use, just click <strong>Tools</strong> → <strong>Remove Absent Audio References</strong>. Next, click <strong>Tools</strong> → <strong>Empty Cards</strong> to remove all the empty oral-recognition cards.</p>
 <p>In case you’re interested, this plug-in is hosted on Anki’s add-on page <a href="https://ankiweb.net/shared/info/1328067109">here</a>.</p>
 <h1 id="wait-there-is-more"><a class="toclink" href="#wait-there-is-more">Wait! There is more!</a></h1>
-<p>The main goal of this post was to introduce a less known, but highly useful, Anki functionality by linking Rikaisama’s excellent<sup id="fnref:12"><a class="footnote-ref" href="#fn:12" rel="footnote">12</a></sup> pop-up dictionary with Anki’s API, as well as show several possible appliances. If you’ve any further questions, feel free to check out the other articles in this series on Anki, or to leave a comment below.</p>
+<p>The main goal of this post was to introduce a less known, but highly useful, Anki functionality by linking Rikaisama’s excellent<sup id="fnref:12"><a class="footnote-ref" href="#fn:12" rel="footnote">13</a></sup> pop-up dictionary with Anki’s API, as well as show several possible appliances. If you’ve any further questions, feel free to check out the other articles in this series on Anki, or to leave a comment below.</p>
 <ul>
 <li><a href="#"> A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a> (<em>coming soon</em>)</li>
 <li><a href="#">Using Anki’s API to contextualize your vocab cards with example sentences</a> (<em>coming soon</em>)</li>
@@ -395,41 +395,44 @@
 <div class="footnote">
 <hr/>
 <ol>
+<li id="fn:footnote">
+<p>Image taken from the 2012 Japanese animated film Wolf Children by Mamoru Hosoda, under Fair Use doctrine. <a class="footnote-backref" href="#fnref:footnote" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
 <li id="fn:1">
-<p>A popular online language course podcast. They have podcasts ranging from newbie (mostly English) to upper intermediate (100% Japanese). I used to use these in the beginning as the added scripts are quite helpful for raising listening skills. The male, English speaking is notoriously difficult to stand, however, and despite most content being free, they have some iffy marketing techniques. Regardless, they recorded a dictionary’s worth of vocabulary in high quality audio for Jim Breen’s dictionary, so that’s hella cool. Read more: <a href="http://blogs.japanesepod101.com/blog/2009/04/20/biggest-announcement-ever-edict-japanese-dictionary-now-with-audio-for-every-clip-must-hear">http://blogs.japanesepod101.com/blog/2009/04/20/biggest-announcement-ever-edict-japanese-dictionary-now-with-audio-for-every-clip-must-hear</a> <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+<p>A popular online language course podcast. They have podcasts ranging from newbie (mostly English) to upper intermediate (100% Japanese). I used to use these in the beginning as the added scripts are quite helpful for raising listening skills. The male, English speaking is notoriously difficult to stand, however, and despite most content being free, they have some iffy marketing techniques. Regardless, they recorded a dictionary’s worth of vocabulary in high quality audio for Jim Breen’s dictionary, so that’s hella cool. Read more: <a href="http://blogs.japanesepod101.com/blog/2009/04/20/biggest-announcement-ever-edict-japanese-dictionary-now-with-audio-for-every-clip-must-hear">http://blogs.japanesepod101.com/blog/2009/04/20/biggest-announcement-ever-edict-japanese-dictionary-now-with-audio-for-every-clip-must-hear</a> <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 2 in the text">↩</a></p>
 </li>
 <li id="fn:2">
-<p>Other useful features include pitch order, updated frequency lists, and EPWING dictionary support if you’re into that. The full list is on their homepage. <a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">↩</a></p>
+<p>Other useful features include pitch order, updated frequency lists, and EPWING dictionary support if you’re into that. The full list is on their homepage. <a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
 <li id="fn:3">
-<p>I’ll assume concepts like notes and types are somewhat clear to the reader. If not, I refer to that particular section of my previous Anki article <a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/#creating-your-first-set-and-cards">Creating your own cards… <em>Efficiently</em>!</a> for a more detailed guide on notes and setting up templates. <a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
+<p>I’ll assume concepts like notes and types are somewhat clear to the reader. If not, I refer to that particular section of my previous Anki article <a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/#creating-your-first-set-and-cards">Creating your own cards… <em>Efficiently</em>!</a> for a more detailed guide on notes and setting up templates. <a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 4 in the text">↩</a></p>
 </li>
 <li id="fn:4">
-<p>I personally keep several sets containing rikai-powered cards. A set for each new book I read, sets for vocab related to my studies, and a set for whatever I come across online. I do this to keep my priorities in check: during exams I give less priority to keeping up to date with my books/misc vocab. <a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">↩</a></p>
+<p>I personally keep several sets containing rikai-powered cards. A set for each new book I read, sets for vocab related to my studies, and a set for whatever I come across online. I do this to keep my priorities in check: during exams I give less priority to keeping up to date with my books/misc vocab. <a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 5 in the text">↩</a></p>
 </li>
 <li id="fn:5">
-<p>Courtesy of Leuven University’s very own Japanology department! More info on the Waran Jiten Japanese-Dutch dictionary at <a href="http://japansnederlandswoordenboek.org/index.php/Hoofdpagina">http://japansnederlandswoordenboek.org/index.php/Hoofdpagina</a> <a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text">↩</a></p>
+<p>Courtesy of Leuven University’s very own Japanology department! More info on the Waran Jiten Japanese-Dutch dictionary at <a href="http://japansnederlandswoordenboek.org/index.php/Hoofdpagina">http://japansnederlandswoordenboek.org/index.php/Hoofdpagina</a> <a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 6 in the text">↩</a></p>
 </li>
 <li id="fn:6">
-<p>The single most satisfying scene from the Japanese edition of the first Harry Potter novel. <a class="footnote-backref" href="#fnref:6" rev="footnote" title="Jump back to footnote 6 in the text">↩</a></p>
+<p>The single most satisfying scene from the Japanese edition of the first Harry Potter novel. <a class="footnote-backref" href="#fnref:6" rev="footnote" title="Jump back to footnote 7 in the text">↩</a></p>
 </li>
 <li id="fn:7">
-<p>Actually, this guy made a lot of surprisingly helpful tools for learning Japanese, including the more popular “sbs2srs” for creating Anki sets based on subtitles and video, and OCR Manga Reader, a manga reader with Rikaichan-like functionality using optical character recognition. Full list is at <a href="http://rtkwiki.koohii.com/wiki/Community_Tools">http://rtkwiki.koohii.com/wiki/Community_Tools</a> <a class="footnote-backref" href="#fnref:7" rev="footnote" title="Jump back to footnote 7 in the text">↩</a></p>
+<p>Actually, this guy made a lot of surprisingly helpful tools for learning Japanese, including the more popular “sbs2srs” for creating Anki sets based on subtitles and video, and OCR Manga Reader, a manga reader with Rikaichan-like functionality using optical character recognition. Full list is at <a href="http://rtkwiki.koohii.com/wiki/Community_Tools">http://rtkwiki.koohii.com/wiki/Community_Tools</a> <a class="footnote-backref" href="#fnref:7" rev="footnote" title="Jump back to footnote 8 in the text">↩</a></p>
 </li>
 <li id="fn:8">
-<p>I’ll refrain from linking here as that’s legally gray territory. <a class="footnote-backref" href="#fnref:8" rev="footnote" title="Jump back to footnote 8 in the text">↩</a></p>
+<p>I’ll refrain from linking here as that’s legally gray territory. <a class="footnote-backref" href="#fnref:8" rev="footnote" title="Jump back to footnote 9 in the text">↩</a></p>
 </li>
 <li id="fn:9">
-<p>Then again, Joyce’s Ulysses is probably an easy read as well compared to the likes of Proust’s In Search of Lost Time, so I’ll come back to this statement when I’ve judged for myself. <a class="footnote-backref" href="#fnref:9" rev="footnote" title="Jump back to footnote 9 in the text">↩</a></p>
+<p>Then again, Joyce’s Ulysses is probably an easy read as well compared to the likes of Proust’s In Search of Lost Time, so I’ll come back to this statement when I’ve judged for myself. <a class="footnote-backref" href="#fnref:9" rev="footnote" title="Jump back to footnote 10 in the text">↩</a></p>
 </li>
 <li id="fn:10">
-<p>According to Wikipedia, they host over 10.000 works including both out-of-copyright or made freely available by the authors. Read more: <a href="https://en.wikipedia.org/wiki/Aozora_Bunko">https://en.wikipedia.org/wiki/Aozora_Bunko</a> <a class="footnote-backref" href="#fnref:10" rev="footnote" title="Jump back to footnote 10 in the text">↩</a></p>
+<p>According to Wikipedia, they host over 10.000 works including both out-of-copyright or made freely available by the authors. Read more: <a href="https://en.wikipedia.org/wiki/Aozora_Bunko">https://en.wikipedia.org/wiki/Aozora_Bunko</a> <a class="footnote-backref" href="#fnref:10" rev="footnote" title="Jump back to footnote 11 in the text">↩</a></p>
 </li>
 <li id="fn:11">
-<p>If you’re watching Clannad: After Story afterwards, keep tissues at hand. <a class="footnote-backref" href="#fnref:11" rev="footnote" title="Jump back to footnote 11 in the text">↩</a></p>
+<p>If you’re watching Clannad: After Story afterwards, keep tissues at hand. <a class="footnote-backref" href="#fnref:11" rev="footnote" title="Jump back to footnote 12 in the text">↩</a></p>
 </li>
 <li id="fn:12">
-<p>Actually, while Rikaisama improves greatly upon Rikaichan, there’s still some features I’d like to see implemented such as the ability to display sanseido-mode J-J as well as default J-E at the same time, or to select which definition to ankify. The developer set up a <a href="http://rikaisama.sourceforge.net/wishlist.html">to-do list</a> of sorts, but as it’s a one-man hobbyist project I’ll expect these to be implemented rather slowly. <a class="footnote-backref" href="#fnref:12" rev="footnote" title="Jump back to footnote 12 in the text">↩</a></p>
+<p>Actually, while Rikaisama improves greatly upon Rikaichan, there’s still some features I’d like to see implemented such as the ability to display sanseido-mode J-J as well as default J-E at the same time, or to select which definition to ankify. The developer set up a <a href="http://rikaisama.sourceforge.net/wishlist.html">to-do list</a> of sorts, but as it’s a one-man hobbyist project I’ll expect these to be implemented rather slowly. <a class="footnote-backref" href="#fnref:12" rev="footnote" title="Jump back to footnote 13 in the text">↩</a></p>
 </li>
 </ol>
 </div>
@@ -456,10 +459,10 @@
             <dl class="dl-horizontal">
                 <dt>wo 07 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
-                <dt>di 06 september 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
                 <dt>zo 28 augustus 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
+                <dt>di 06 september 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
             </dl>
             </div>
         <hr />

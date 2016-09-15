@@ -19,7 +19,7 @@
   <meta name="robots" content="NOODP">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="One of the pitfalls of learning Japanese vocabulary through ankicards Rikaisama Download Like Rikaichan, Rikaisama is a Firefox plugin, available for download on their sourceforge download page ...">
+  <meta name="description" content="So you’ve followed my previous tutorial and set up this beautiful environment to create vocabulary cards with audio and furigana based on text you read online. Yet, while studying your new set, ...">
   <meta name="keywords" content="Anki, Rikaisama, Tutorial, Japanese, Japan, Study">
   <meta name="author" content="Stevie Poppe">
   <meta name="mobile-web-app-capable" content="yes">
@@ -105,11 +105,6 @@
                           <ul class="socialnav socialonly social-icons-footer collapse">
 
                             <li>
-                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
-                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
-                              </a><span class="screen-reader">Twitter</span>
-                            </li>
-                            <li>
                               <a href="https://be.linkedin.com/in/stevie-poppe-9048b395" title="Linkedin">
                                 <i class="icon-linkedin" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Linkedin</span>
@@ -118,6 +113,11 @@
                               <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
                                 <i class="icon-flickr" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
                             </li>
                             <li>
                               <a href="https://www.goodreads.com/user/show/35676792-stevie-poppe" title="Goodreads">
@@ -153,7 +153,7 @@
         <div class="row">
               <div class="col-lg-12">
                   <div class="header-content center">
-                      <h1 class="header-title nocount">A <del>Quick</del> Guide on Using Anki 3: contextualize your vocab cards with example sentences</h1>
+                      <h1 class="header-title nocount">A <del>Quick</del> Guide on Using Anki 3: contextualize your vocab cards with example sentences<sup id="fnref:footnote"><a class="footnote-ref imagesource" href="#fn:footnote" rel="footnote">1</a></sup></h1>
                       <p class="header-date">wo 14 september 2016, in category <a href="https://steviepoppe.net/blog/category/studies/">Studies</a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
@@ -181,10 +181,27 @@
 </div>
             </nav>
         
+<p>So you’ve followed <a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">my previous tutorial</a> and set up this beautiful environment to create vocabulary cards with audio and furigana based on text you read online. Yet, while studying your new set, you feel this nagging feeling… Something’s missing still…</p>
+<p>Fear no longer!</p>
+<p>set up a  want to:</p>
+<ul>
+<li><i class="icon-check"></i> read a Japanese novel without ending up crying yourself to sleep realizing you know <em>nothing</em>, Jon Snow?</li>
+<li><i class="icon-check"></i> learn Japanese by watching anime, but like, for real?</li>
+<li><i class="icon-check"></i> create beautiful Anki sets filled with handpicked vocabulary, hidden furigana reading aids, AND crystal-clear audio pronunciations, all without spending days of mindnumbing copypasting?</li>
+</ul>
+<p>Welcome to the lovely world of <code>Integrated Anki &amp; Rikaisama</code>!</p>
 <hr/>
 <!-- PELICAN_BEGIN_SUMMARY -->
-<p>One of the pitfalls of learning Japanese vocabulary through ankicards</p>
+<p>One of the commmon pitfalls of learning Japanese vocabulary through ankicards is learning them loose of context. You might find yourself having no problems recalling vocabulary when reviewing your anki cards, but less so when confronted with real-life situations. To counter this common problem, and bring our vocab cards to a next level, we’ll use an additional Anki plug-in to add Japanese example sentences and their translations. This blog offers an easy step-by-step tutorial on setting this up using an existing Anki plug-in, as well as a small modification to the code to </p>
 <!-- PELICAN_END_SUMMARY -->
+<p>Which you can download below:</p>
+<ul>
+<li><strong>Download</strong>: <a href="https://www.dropbox.com/s/xnj67hqj3cubfn2/Rikai%20vocab.apkg?dl=0">Example set Rikai <i class="icon-download-alt"></i></a></li>
+</ul>
+<p>10.000 Japanese sentences method.</p>
+<p>expression = re.search(r’^[^[]+’,expression).group(0)</p>
+<p>This means you’ll have to manually edit… <em>Code</em>… Don’t worry however, the process is extremely simple and as usual, I’ll give both direct steps, a download, and an explanation for those interested in the technical specifics.</p>
+<p><kbd>ctrl-a</kbd></p>
 <h1 id="rikaisama"><a class="toclink" href="#rikaisama">Rikaisama</a></h1>
 <h2 id="download"><a class="toclink" href="#download">Download</a></h2>
 <p>Like Rikaichan, Rikaisama is a Firefox plugin, available for download on their <a href="https://sourceforge.net/projects/rikaisama/files/">sourceforge download page</a> (free, of course). If you’re an avid Chrome supporter, this one might be worth switching for.</p>
@@ -227,6 +244,14 @@
 <ul>
 <li></li>
 </ul>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:footnote">
+<p>Image taken from the 2012 Japanese animated film Wolf Children by Mamoru Hosoda, under Fair Use doctrine. <a class="footnote-backref" href="#fnref:footnote" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+</ol>
+</div>
     <hr/>
         </div>
 
@@ -234,14 +259,14 @@
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
-                <dt>wo 07 september 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
                 <dt>do 08 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
-                <dt>di 06 september 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
+                <dt>wo 07 september 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
                 <dt>zo 28 augustus 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
+                <dt>di 06 september 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
             </dl>
             </div>
         <hr />
