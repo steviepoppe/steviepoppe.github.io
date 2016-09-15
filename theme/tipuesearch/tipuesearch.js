@@ -24,7 +24,7 @@ http://www.tipue.com/search
                'mode'                   : 'static',
                'liveDescription'        : '*',
                'liveContent'            : '*',
-               'contentLocation'        : 'tipuesearch/tipuesearch_content.json',
+               'contentLocation'        : '/tipuesearch_content.json',
                'debug'                  : false
           
           }, options);
@@ -84,6 +84,7 @@ http://www.tipue.com/search
 
                if (set.mode == 'static')
                {
+                    Console.log(set.contentLocation);
                     tipuesearch_in = $.extend({}, tipuesearch);
                }                              
                

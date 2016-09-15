@@ -67,10 +67,11 @@ var Footnotes = {
 
     footnotescroll: function(e) {
   var t, a, n, r, o, i;
+
   if (location.pathname.replace(/^\//, "") === this.pathname.replace(/^\//, "") || location.hostname === this.hostname) {
     if (e.preventDefault(), o = $("nav.navbar").height() + 32, $(this).hasClass("footnote-backref")) 
         return i = "footnote-highlight", n = $(this), t = $('[id="' + n.attr("href").slice(1) + '"]'), 
-    a = t.closest("p, ul, ol"), a.addClass(i), a.one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", 
+    a = t.closest("p, ul, ol, sup"), a.addClass(i), a.one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", 
         function() {
       return console.log("hello"), a.removeClass(i)
     }), $("html,body").animate({
@@ -85,6 +86,7 @@ var Footnotes = {
     }, 500), !1
   }
 }
+
 }
 
 $(document).ready(function(){
