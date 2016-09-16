@@ -84,7 +84,6 @@ http://www.tipue.com/search
 
                if (set.mode == 'static')
                {
-                    Console.log(set.contentLocation);
                     tipuesearch_in = $.extend({}, tipuesearch);
                }                              
                
