@@ -201,7 +201,7 @@
 <p>Google “Anki JJ” and you’ll come across dozens of posts describing the “leap from the J-E to JJ dictionary”. It appears one of the more popular studying methods amongst self learners online, and is highly blogged about on such blogs as <a href="http://japaneselevelup.com/beating-the-anki-j-j-branches-1-earn-your-battle-scars/">Japaneselevelup.com</a> and koohii.com</p>
 <p>If you’ve followed my <a href="#">previous tutorial</a> on adding Japanese example sentences to your vocabulary cards, this tutorial will feel very similar. We’ll install an Anki add-on, slightly edit it to fit our workflow, bulk-edit our existing cards to add Japanese definitions, and alter our card-layout to display them in a fashionable manner. This might be my first tutorial worthy of the header <strong>quick</strong>.</p>
 <h1 id="sanseido-add-on"><a class="toclink" href="#sanseido-add-on">Sanseido add-on</a></h1>
-<p>There are various online Japanese dictionaries for looking up Japanese vocabulary. I’ve been using <a href="https://kotobank.jp/">kotobank.jp</a> for a while now and like it’s interface. Another popular one is <a href="http://dictionary.goo.ne.jp/">Goo dictionary</a>, a clone of the Yahoo’s former Japanese dictionary. For our purpose, we’ll use Sanseido however. Specifically, we’ll use “simplified J-J definitions from www.sanseido.net’s デイリーコンサイス<ruby><rb>国語辞典</rb><rp>(</rp><rt>こくごじてん</rt><rp>)</rp></ruby> (Daily Concise Kokugo Jiten)”.</p>
+<p>There are various online monolingial dictionaries for Japanese vocabulary. I’ve been using <a href="https://kotobank.jp/">kotobank.jp</a> for a while now and like it’s interface. Another popular one is <a href="http://dictionary.goo.ne.jp/">Goo dictionary</a>, a clone of the Yahoo’s former Japanese dictionary. For our purpose, we’ll use Sanseido however. Specifically, we’ll use “simplified J-J definitions from <a href="http://www.sanseido.net/">sanseido.net</a>‘s デイリーコンサイス<ruby><rb>国語辞典</rb><rp>(</rp><rt>こくごじてん</rt><rp>)</rp></ruby> (Daily Concise Kokugo Jiten)”.</p>
 <h2 id="download"><a class="toclink" href="#download">Download</a></h2>
 <p>The <strong>Sanseido Definitions</strong> add-on has a page on Ankiweb’s <a href="https://ankiweb.net/shared/info/1967553085">plug-in page</a>, but as usual we’ll install the plug-in using the Desktop Anki application. Go to <strong>Tools</strong> → <strong>Add-ons</strong> → <strong>Browse &amp; Install</strong>, and copypaste <strong>1967553085</strong> in the pop-up dialogue.</p>
 <h2 id="set-up"><a class="toclink" href="#set-up">Set-up</a></h2>
@@ -236,6 +236,20 @@
 <div class="codehilite"><pre><span></span>    <span class="n">term</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">r'^[^\[]+'</span><span class="p">,</span><span class="n">term</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 <p>If you’d like to edit this yourself, add it to the <code>find_examples</code> class right after it defined <code>examples</code> as a list. it should be around line 139 (<code>def find_examples(expression, maxitems):</code> <code>examples = []</code>).</p>
+<p><strong>Real-Time_Import_for_use_with_the_Rikaisama_Firefox_Extension.py</strong></p>
+<p>This extension calls on Anki’s API to create new notes. I haven’t found a way to hook japanese_examples to outside note-creation, so instead I’ve editted the real_time_import plug-in itself to call japanese_examples at run-time.</p>
+<p>First, we’ll have to import that extension to be able to call it’s methods. If you’re doing this set-up manually, add below’s line near the top, with the other includes (around line 30).</p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">sanseidoDefsForAnki</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+<p>Next, I’ve written a few lines in the <code>createNote</code> method to call Japanese-examples’ find method at run-time and, if examples were found and our note-type has the correct destination field, add these to our newly created card. This should come before <code>dupOrEmpty = note.dupeOrEmpty()</code> around line 100.</p>
+<div class="codehilite"><pre><span></span>        <span class="c1"># Create sanseido definitions</span>
+        <span class="k">try</span><span class="p">:</span> <span class="n">glossNote</span><span class="p">(</span> <span class="n">note</span> <span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">showTooltip</span><span class="p">(</span><span class="s2">"Error, could not create sanseido definition."</span><span class="p">);</span>
+        <span class="k">try</span><span class="p">:</span> <span class="n">note</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">showTooltip</span><span class="p">(</span><span class="s2">"Error, could not create sanseido definition."</span><span class="p">);</span>
+</pre></div>
 <h1 id="wait-there-is-more"><a class="toclink" href="#wait-there-is-more">Wait! There is more!</a></h1>
 <p>The main goal of this post was to introduce another less known, but highly useful, Anki functionality on increasing your study efficiency, as well as hopefully create an attitude of self-reliability by reaching out various tools and possibilities. If you’ve any further questions, feel free to check out the other articles in this series on Anki, or to leave a comment below.</p>
 <ul>
@@ -265,14 +279,14 @@
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
-                <dt>wo 07 september 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
                 <dt>do 08 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
-                <dt>zo 28 augustus 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
+                <dt>wo 07 september 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
                 <dt>di 06 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
+                <dt>zo 28 augustus 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
             </dl>
             </div>
         <hr />

@@ -204,14 +204,15 @@
 <p>So you’ve followed <a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">my previous tutorial</a> and set up this beautiful environment for creating vocabulary cards with audio and furigana based on text you read online. Yet, studying your new set, you feel this nagging feeling… There’s something’s missing still… “<em>Hm, could it be…?</em>”, you ponder quietly. <strong>Yes</strong>. <code>Japanese example sentences for context</code>!</p>
 <hr/>
 <!-- PELICAN_BEGIN_SUMMARY -->
-<p>One of the commmon pitfalls of learning Japanese vocabulary through ankicards is learning them loose of context. Perhaps you find yourself in a situation having no problems recalling vocabulary when reviewing your anki cards, but less so when confronted with real-life situations. If this sounds familar, one way to counter this common problem would be to install an additional Anki add-on and bring our vocab cards to a next level by adding Japanese example sentences and their translations. This blog offers an easy step-by-step tutorial on setting this up. Additionally, for those who’ve followed my previous tutorial, I add some extra code to combine the example sentence functions with the instant-import features of the firefox plug-in Rikaisama.</p>
+<p>One of the commmon pitfalls of learning Japanese vocabulary through ankicards is learning them loose of context. Perhaps you find yourself in a situation having no problems recalling vocabulary when reviewing your anki cards, but less so when confronted with real-life situations. If this sounds familar, one way to counter this common problem would be to install an additional Anki add-on, and bring our vocab cards to a next level by adding Japanese example sentences and their translations. This blog offers an easy step-by-step tutorial on setting this up. Additionally, for those who’ve followed my previous tutorial, I add some extra code to combine the example sentence functions with the instant-import features of the firefox plug-in Rikaisama.</p>
 <!-- PELICAN_END_SUMMARY -->
 <h1 id="plug-in"><a class="toclink" href="#plug-in">Plug-in</a></h1>
 <p>We’ll use an existing Anki add-on called <strong>Japanese Example Sentences</strong> to add Japanese sentences taken from <a href="https://tatoeba.org/eng/">Tatoeba.org</a>, a “collaborative, open, free and even addictive” community on producing example sentences (the internet is such a cool place). </p>
 <h2 id="download"><a class="toclink" href="#download">Download</a></h2>
 <p>The Japanese Example Sentences add-on has a page on Ankiweb’s <a href="https://ankiweb.net/shared/info/2413435972">plug-in page</a>, but as usual we’ll install the plug-in using the Desktop Anki application. Go to <strong>Tools</strong> → <strong>Add-ons</strong> → <strong>Browse &amp; Install</strong>, and copypaste <strong>2413435972</strong> in the pop-up dialogue.</p>
 <h2 id="set-up"><a class="toclink" href="#set-up">Set-up</a></h2>
-<p>Install</p>
+<p>The notetypes of the vocabulary you want sentences for will need a new field to contain these.
+On Windows, press <kbd>CTRL-SHIFT-N</kbd>, or click <strong>Tools</strong> → <strong>Manage Note Types</strong>, to enter the notetype management screen. Click <strong>add</strong>, then <strong>ok</strong> on the next screen, to create a new note type. Call it <code>Rikai</code> (do note my excellent graphical skills as seen in the screenshot below ( ͡° ͜ʖ ͡°) )!</p>
 <p>Keep vocab expression in “Expression”. Rename this field or change py definition.</p>
 <p>add card field “Examples”</p>
 <h2 id="anki-note-lay-out"><a class="toclink" href="#anki-note-lay-out">Anki Note Lay-out</a></h2>
@@ -246,11 +247,11 @@
 </pre></div>
 <p>If you’d like to edit this yourself, add it to the <code>find_examples</code> class right after it defined <code>examples</code> as a list. it should be around line 139 (<code>def find_examples(expression, maxitems):</code> <code>examples = []</code>).</p>
 <p><strong>Real-Time_Import_for_use_with_the_Rikaisama_Firefox_Extension.py</strong></p>
-<p>This extension calls on Anki’s API to create new notes. I haven’t found a way to hook japanese_examples to outside note-creation, so instead I’ve editted the real_time_import plug-in itself to call japanese_examples at run-time.</p>
+<p>This extension calls on Anki’s API to create new notes. I haven’t found a way to hook japanese_examples to external note-creation, so instead I’ve editted the real_time_import plug-in itself to call japanese_examples at run-time.</p>
 <p>First, we’ll have to import that extension to be able to call it’s methods. If you’re doing this set-up manually, add below’s line near the top, with the other includes (around line 30).</p>
 <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">japanese_examples</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
-<p>Next, I’ve written a few lines in the <code>createNote</code> method to call Japanese-examples’ find method at run-time and, if examples were found and our note-type has the correct destination field, add these to our newly created card.</p>
+<p>Next, I’ve written a few lines in the <code>createNote</code> method to call Japanese-examples’ find method at run-time and, if examples were found and our note-type has the correct destination field, add these to our newly created card. This should come before <code>dupOrEmpty = note.dupeOrEmpty()</code> around line 100.</p>
 <div class="codehilite"><pre><span></span>        <span class="c1"># for use with japanese examples</span>
         <span class="n">examples</span> <span class="o">=</span> <span class="n">find_examples_multiple</span><span class="p">(</span><span class="n">note</span><span class="p">,</span> <span class="n">MAX_PERMANENT</span><span class="p">)</span>
 
@@ -299,14 +300,14 @@
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
-                <dt>wo 07 september 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
                 <dt>do 08 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
-                <dt>zo 28 augustus 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
+                <dt>wo 07 september 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
                 <dt>di 06 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
+                <dt>zo 28 augustus 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
             </dl>
             </div>
         <hr />

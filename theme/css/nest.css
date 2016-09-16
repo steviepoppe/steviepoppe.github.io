@@ -352,7 +352,7 @@ nav.toc{
 
 @media (min-width: 768px) {
 
-}
+
 .header-wrapper{
   margin-left: -50px;
   margin-right: -50px;
@@ -526,45 +526,14 @@ nav.toc{
 
   }
 
-/*  @media (min-width: 1200px) {
-
-    .container {
-      width: 950px;
-      padding-right: 25px;
-      padding-left: 25px;
-    }
-
-    .container-main img{
-      max-width:900px;
-      height: auto;
-    }
-    .banner, .image.featured {
-      margin-right: -25px;
-      margin-left: -25px;
-    }
-
-    }*/
+  #footercontent{
+   margin-right: auto; 
+   margin-left: auto;
+ }
 
 
-    #footercontent{
-     margin-right: auto; 
-     margin-left: auto;
-   }
-
-
-/*@media (min-width: 1200px) {
-  .container {
-    width: 850px;
-}
-.head-container{
-    width: 950px;
-}
-}*/
-
-
-
-html,
-body {
+ html,
+ body {
   margin:0;
   padding:0;
   height:100%;
