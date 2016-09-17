@@ -209,20 +209,37 @@
 <p>Edit py for Expression instead of Word.</p>
 <p>Layout</p>
 <h2 id="anki-note-lay-out"><a class="toclink" href="#anki-note-lay-out">Anki Note Lay-out</a></h2>
-<div class="codehilite"><pre><span></span><span class="nc">.examples</span> <span class="p">{</span><span class="nb">font-size</span><span class="o">:</span><span class="m">75%</span><span class="p">;</span> <span class="nb">text-align</span><span class="o">:</span> <span class="nb">left</span><span class="p">;}</span>
-<span class="nc">.title</span> <span class="p">{</span><span class="nb">font-size</span><span class="o">:</span><span class="m">16px</span><span class="p">;</span> <span class="nb">color</span><span class="o">:</span> <span class="m">#999999</span><span class="p">;}</span>
+<div class="codehilite"><pre><span></span><span class="nc">.english_title</span> <span class="p">{</span><span class="nb">font-size</span><span class="o">:</span><span class="m">16px</span><span class="p">;</span> <span class="nb">color</span><span class="o">:</span> <span class="m">#999999</span><span class="p">;}</span>
+<span class="nc">.sanseido</span> <span class="p">{</span><span class="nb">font-size</span><span class="o">:</span><span class="m">90%</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="nn">#english</span> <span class="p">{</span> <span class="nb">display</span><span class="o">:</span> <span class="nb">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="nn">#english_meaning</span><span class="nd">:hover</span> <span class="nn">#english</span><span class="p">{</span> <span class="nb">display</span><span class="o">:</span> <span class="nb">inherit</span><span class="p">;</span> <span class="p">}</span>
 </pre></div>
+<p><strong>Expression</strong></p>
 <ul>
 <li><strong>Back Template</strong></li>
 </ul>
-<div class="codehilite"><pre><span></span>{{#Examples}}
+<p>Replace the <code>{{furigana:Meaning}}</code> line with below’s code. You’ll do this in <strong>Expression</strong> → <strong>Back Template</strong>, <strong>Meaning</strong> → <strong>Front Template</strong> and <strong>Audio</strong> → <strong>Back Template</strong>.</p>
+<div class="codehilite"><pre><span></span>{{#Sanseido}}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"sanseido"</span><span class="p">&gt;</span>{{furigana:Sanseido}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"examples"</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span> <span class="s">"title"</span><span class="p">&gt;</span>Sentences:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-{{furigana:Examples}}
+{{/Sanseido}}
+
+
+{{#Sanseido}}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"english_meaning"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span> <span class="s">"english_title"</span><span class="p">&gt;</span>English:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span> <span class="s">"english"</span><span class="p">&gt;</span>
+{{/Sanseido}}
+
+{{furigana:Meaning}}<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+
+{{#Sanseido}}
+<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-{{/Examples}}
+{{/Sanseido}}
 </pre></div>
+<hr/>
 <h1 id="usage"><a class="toclink" href="#usage">Usage</a></h1>
 <h2 id="contextualizing-existing-cards"><a class="toclink" href="#contextualizing-existing-cards">Contextualizing existing cards</a></h2>
 <p>If you’ve set up rikaisama to include <em>‘rikai’</em> as tag on new cards, this should be a breeze. Open anki’s browser (by clicking <strong>Browse</strong> from the main window), select the rikai tag in the left column, and press <kbd>ctrl-a</kbd> to select all your cards. Next, click <strong>Edit</strong> → <strong>Regenerate Sanseido Expression</strong>. It will crawl the internet for each new definition so this might take quite a while.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">2</a></sup></p>
@@ -279,10 +296,12 @@
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
-                <dt>do 08 september 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
                 <dt>wo 07 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
+                <dt>za 17 september 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">A <del>Quick</del> Guide on Using Anki 3: contextualize your vocab cards with example sentences</a></dd>
+                <dt>do 08 september 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
                 <dt>di 06 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
                 <dt>zo 28 augustus 2016</dt>

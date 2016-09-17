@@ -22,7 +22,7 @@
   <meta name="robots" content="NOODP">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="So you’ve followed my previous tutorial and set up this beautiful environment for creating vocabulary cards with audio and furigana based on text you read online. Yet, studying your new set, you ...">
+  <meta name="description" content="One of the commmon pitfalls of learning Japanese vocabulary through ankicards is learning them loose of context. Perhaps you find yourself in a situation having no problems recalling vocabulary when reviewing your anki cards, but less so when confronted with real-life situations. If this sounds familar, one way to counter this common problem would be to install an additional Anki add-on, and bring our vocab cards to a next level by adding Japanese example sentences and their translations. This blog offers an easy step-by-step tutorial on setting this up. Additionally, for those who’ve followed my previous tutorial, I add some extra code to combine the example sentence functions with the instant-import features of the firefox plug-in Rikaisama.">
   <meta name="keywords" content="Anki, Rikaisama, Tutorial, Japanese, Japan, Study, 10 000 sentences">
   <meta name="author" content="Stevie Poppe">
   <meta name="mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="https://steviepoppe.net/favicon.ico">
 
   <title>A Quick Guide on Using Anki 3: contextualize your vocab cards with example sentences | Onoreto</title>
-<link rel="canonical" href="https://steviepoppe.net/drafts/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences.html">
+<link rel="canonical" href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">
 
 
 <!--               <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
@@ -157,7 +157,7 @@
               <div class="col-lg-12">
                   <div class="header-content center">
                       <h1 class="header-title nocount">A <del>Quick</del> Guide on Using Anki 3: contextualize your vocab cards with example sentences<sup id="fnref:footnote"><a class="footnote-ref imagesource" href="#fn:footnote" rel="footnote">1</a></sup></h1>
-                      <p class="header-date">wo 14 september 2016, in category <a href="https://steviepoppe.net/blog/category/studies/">Studies</a></p>
+                      <p class="header-date">za 17 september 2016, in category <a href="https://steviepoppe.net/blog/category/studies/">Studies</a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
                       <p class="pull-right header-tags">
@@ -189,9 +189,9 @@
 <li><a href="#set-up_1">Set-up</a></li>
 </ul>
 </li>
-<li><a href="#usage_1">Usage</a><ul>
+<li><a href="#new-usage">New Usage</a><ul>
 <li><a href="#contextualizing-existing-cards_1">Contextualizing existing cards</a></li>
-<li><a href="#contextualizing-new-cards_1">Contextualizing new cards</a></li>
+<li><a href="#contextualizing-imported-cards">Contextualizing imported cards</a></li>
 </ul>
 </li>
 <li><a href="#download_1">Download</a></li>
@@ -201,27 +201,31 @@
 </div>
             </nav>
         
+<p>(This guide is still a bit rough, I’ll edit it further after I’ve returned from my trip to Romania)</p>
 <p>So you’ve followed <a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">my previous tutorial</a> and set up this beautiful environment for creating vocabulary cards with audio and furigana based on text you read online. Yet, studying your new set, you feel this nagging feeling… There’s something’s missing still… “<em>Hm, could it be…?</em>”, you ponder quietly. <strong>Yes</strong>. <code>Japanese example sentences for context</code>!</p>
 <hr/>
-<!-- PELICAN_BEGIN_SUMMARY -->
+
 <p>One of the commmon pitfalls of learning Japanese vocabulary through ankicards is learning them loose of context. Perhaps you find yourself in a situation having no problems recalling vocabulary when reviewing your anki cards, but less so when confronted with real-life situations. If this sounds familar, one way to counter this common problem would be to install an additional Anki add-on, and bring our vocab cards to a next level by adding Japanese example sentences and their translations. This blog offers an easy step-by-step tutorial on setting this up. Additionally, for those who’ve followed my previous tutorial, I add some extra code to combine the example sentence functions with the instant-import features of the firefox plug-in Rikaisama.</p>
-<!-- PELICAN_END_SUMMARY -->
+
 <h1 id="plug-in"><a class="toclink" href="#plug-in">Plug-in</a></h1>
 <p>We’ll use an existing Anki add-on called <strong>Japanese Example Sentences</strong> to add Japanese sentences taken from <a href="https://tatoeba.org/eng/">Tatoeba.org</a>, a “collaborative, open, free and even addictive” community on producing example sentences (the internet is such a cool place). </p>
 <h2 id="download"><a class="toclink" href="#download">Download</a></h2>
 <p>The Japanese Example Sentences add-on has a page on Ankiweb’s <a href="https://ankiweb.net/shared/info/2413435972">plug-in page</a>, but as usual we’ll install the plug-in using the Desktop Anki application. Go to <strong>Tools</strong> → <strong>Add-ons</strong> → <strong>Browse &amp; Install</strong>, and copypaste <strong>2413435972</strong> in the pop-up dialogue.</p>
+<p>If you want a test Anki deck to work with, I’ve uploaded an example set containing the necessary notetype and two test-notes for download: <a href="https://www.dropbox.com/s/xnj67hqj3cubfn2/Rikai%20vocab.apkg?dl=0">Example set Rikai <i class="icon-download-alt"></i></a>.</p>
 <h2 id="set-up"><a class="toclink" href="#set-up">Set-up</a></h2>
-<p>The notetypes of the vocabulary you want sentences for will need a new field to contain these.
-On Windows, press <kbd>CTRL-SHIFT-N</kbd>, or click <strong>Tools</strong> → <strong>Manage Note Types</strong>, to enter the notetype management screen. Click <strong>add</strong>, then <strong>ok</strong> on the next screen, to create a new note type. Call it <code>Rikai</code> (do note my excellent graphical skills as seen in the screenshot below ( ͡° ͜ʖ ͡°) )!</p>
-<p>Keep vocab expression in “Expression”. Rename this field or change py definition.</p>
-<p>add card field “Examples”</p>
+<p>The notetypes of the vocabulary you want sentences for will need a new field to contain these. On Windows, press <kbd>CTRL-SHIFT-N</kbd>, or click <strong>Tools</strong> → <strong>Manage Note Types</strong>, to enter the notetype management screen. Select the notetype of the cards you’d like to contain example sentences and click <strong>fields</strong>.</p>
+<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-notetype-select.jpg" style="width: 398px; height: auto; max-width: 100%;"/></p>
+<p>On the next screen, click <strong>add</strong> and call the field <code>Examples</code>. Now close this screen. On the previous notetype management screen, click <strong>cards</strong>. We’ll edit our lay-out and add the sentences in our actual cards.</p>
+<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-contextcard.jpg" style="width: 402px; height: auto; max-width: 100%;"/></p>
 <h2 id="anki-note-lay-out"><a class="toclink" href="#anki-note-lay-out">Anki Note Lay-out</a></h2>
+<p>Add below’s code at the bottom of the middle lay-out screen. It’ll display the example sentences to the left of your cards.</p>
 <div class="codehilite"><pre><span></span><span class="nc">.examples</span> <span class="p">{</span><span class="nb">font-size</span><span class="o">:</span><span class="m">75%</span><span class="p">;</span> <span class="nb">text-align</span><span class="o">:</span> <span class="nb">left</span><span class="p">;}</span>
 <span class="nc">.title</span> <span class="p">{</span><span class="nb">font-size</span><span class="o">:</span><span class="m">16px</span><span class="p">;</span> <span class="nb">color</span><span class="o">:</span> <span class="m">#999999</span><span class="p">;}</span>
 </pre></div>
 <ul>
 <li><strong>Back Template</strong></li>
 </ul>
+<p>Add below’s HTML code at the bottom of your different cards’ back templates. </p>
 <div class="codehilite"><pre><span></span>{{#Examples}}
 <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
 <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"examples"</span><span class="p">&gt;</span>
@@ -230,17 +234,20 @@ On Windows, press <kbd>CTRL-SHIFT-N</kbd>, or click <strong>Tools</strong> → <
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{/Examples}}
 </pre></div>
+<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-notetype-back.jpg" style="width: 681px; height: auto; max-width: 100%;"/></p>
+<p>When done, close all this and the previous screen. Let’s try this plug-in out now!</p>
 <h1 id="usage"><a class="toclink" href="#usage">Usage</a></h1>
 <h2 id="contextualizing-existing-cards"><a class="toclink" href="#contextualizing-existing-cards">Contextualizing existing cards</a></h2>
-<p>You can add example </p>
+<p>We’ll start by adding example sentences to our existing cards of the notetype we’ve just added. Press <kbd>b</kbd> or click on “Browse” to open Anki’s Card Browser. To the left of this screen, select the deck or tag containing the cards you’d like to edit. Press <kbd>ctrl-a</kbd> to select all of those and 
+click <strong>Edit</strong> → <strong>Bulk-add examples</strong>. Most, if not all, should contain sexy new example sentences for you to learn.</p>
+<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-browser.jpg" style="width: 549px; height: auto; max-width: 100%;"/></p>
 <h2 id="contextualizing-new-cards"><a class="toclink" href="#contextualizing-new-cards">Contextualizing new cards</a></h2>
-<p>a</p>
+<p>When creating a new card of a notetype that contains the <strong>Examples</strong> field, the add-on will automatically fill in that field as soon as you’ve entered a Japanese expression in the <strong>Expression</strong> field.</p>
 <h1 id="usage-with-rikaisama-real-time-import"><a class="toclink" href="#usage-with-rikaisama-real-time-import">Usage with Rikaisama / Real Time Import</a></h1>
-<p>A drawback to this plug-in is that it does not support vocab expressions using furigana, and neither can example sentences be added automatically on adding a new note through rikaisama.</p>
+<p>A drawback to this plug-in is that it does not support vocab expressions using furigana, and neither can example sentences be added automatically on adding a new note through rikaisama. I’ve you’ve been following my <a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">previous blogpost</a>, you’ll probably want to to follow these next steps as well.</p>
+<p>I’ve made some adjustments to both the Anki Real-Time Import add-on and the Japanese_Examples add-on. I’ve added the editted files on a <a href="https://github.com/steviepoppe/anki_addon_edits">new repository on my github</a> so feel free to download these there and replace the existing add-on files on your Anki’s add-on folder on your computer (eg. <code>C:\Users\your_username\Documents\Anki\addons</code>).</p>
+<p>I’ve described all my edits below in case you’d like to do this manually.</p>
 <h2 id="set-up_1"><a class="toclink" href="#set-up_1">Set-up</a></h2>
-<p>This part assumes a Rikai notetype as created following the <a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">previous blogpost</a>, or at the very least a notetype to use in combination with Rikaisama and the Anki Real-Time Import add-on. If you want a test deck to work with, I’ve uploaded an example set containing the necessary notetype and two test-notes for download: <a href="https://www.dropbox.com/s/xnj67hqj3cubfn2/Rikai%20vocab.apkg?dl=0">Example set Rikai <i class="icon-download-alt"></i></a>.</p>
-<p>Both the Japanese_Examples as the Real-Time Export plug-in require a few small edits. I’ve added both editted files on <a href="">a new github repository</a> for you to download. Browse to your Anki’s add-on folder on your computer (eg. <code>C:\Users\your_username\Documents\Anki\addons</code>) and just use them to replace the existing files.</p>
-<p>I’ve described my edits below in case you’d like to do this manually.</p>
 <p><strong>japanese_examples.py</strong></p>
 <p>We’ve set up our notes to show furigana on our vocabulary. This requires square brackets (eg. <code>気象庁[きしょうちょう]</code>). The anki plug-in for Japanese examples however does not support this out of the box. For that reason, I’ve added a single line of code that uses a regular expression to only use the contents up to the first square bracket as expression.</p>
 <div class="codehilite"><pre><span></span>    <span class="n">expression</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">r'^[^\[]+'</span><span class="p">,</span><span class="n">expression</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -259,17 +266,28 @@ On Windows, press <kbd>CTRL-SHIFT-N</kbd>, or click <strong>Tools</strong> → <
         <span class="k">if</span> <span class="n">examples</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">n</span><span class="p">[</span><span class="n">DEST_FIELD</span><span class="p">]:</span>
             <span class="n">note</span><span class="p">[</span><span class="n">DEST_FIELD</span><span class="p">]</span> <span class="o">=</span> <span class="n">examples</span>
 </pre></div>
-<h1 id="usage_1"><a class="toclink" href="#usage_1">Usage</a></h1>
+<p>Finally, I’ve editted the mark-up of the examplesentences themselves to hide the english translations unless hovered above (or on press on smartphones).</p>
+<p>Locate the <code>examples.append</code> call in the <code>find_examples</code> method. You’ll want to replace it (I commented it out) with below’s line. It’ll be around line 174.           </p>
+<div class="codehilite"><pre><span></span><span class="n">examples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"&lt;div id='eng_test'&gt;</span><span class="si">%s</span><span class="s2">&lt;span id='eng_sentence'&gt;</span><span class="si">%s</span><span class="s2">&lt;/span&gt;&lt;/div&gt;"</span> <span class="o">%</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">example</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\t</span><span class="s1">'</span><span class="p">)))</span>
+</pre></div>
+<p>In the <code>find_examples_multiple</code> method (around line 214), replace the current <code>return</code> with below’s line. We want only one break between example sentences.</p>
+<div class="codehilite"><pre><span></span><span class="k">return</span> <span class="s2">"&lt;br&gt;"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">examples</span><span class="p">)</span>
+</pre></div>
+<p><strong>Important!</strong> For this to work, you’ll need to make an edit in your note template’s layout. As usual enter the notetype management screen by pressing <kbd>CTRL-SHIFT-N</kbd>, or click <strong>Tools</strong> → <strong>Manage Note Types</strong>. Select the notetype of the cards you’d like to contain example sentences and click <strong>fields</strong>. From there, select the <code>Rikai</code> note, click on <strong>cards</strong> and add below’s CSS code to the bottom of the shared lay-out screen in the middle. </p>
+<div class="codehilite"><pre><span></span><span class="nn">#eng_sentence</span> <span class="p">{</span> <span class="nb">display</span><span class="o">:</span> <span class="nb">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="nn">#eng_test</span><span class="nd">:hover</span> <span class="nn">#eng_sentence</span><span class="p">{</span> <span class="nb">display</span><span class="o">:</span> <span class="nb">inherit</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+<h1 id="new-usage"><a class="toclink" href="#new-usage">New Usage</a></h1>
 <h2 id="contextualizing-existing-cards_1"><a class="toclink" href="#contextualizing-existing-cards_1">Contextualizing existing cards</a></h2>
-<p>If you’ve set up rikaisama to include <em>‘rikai’</em> as tag on new cards, this should be a breeze. Open anki’s browser (by clicking <strong>Browse</strong> from the main window), select the rikai tag in the left column, and press <kbd>ctrl-a</kbd> to select all your cards. Next, click <strong>Edit</strong> → <strong>Bulk-add examples</strong>. Most, if not all, should contain sexy new example sentences for you to learn.</p>
-<h2 id="contextualizing-new-cards_1"><a class="toclink" href="#contextualizing-new-cards_1">Contextualizing new cards</a></h2>
+<p>If you’ve set up rikaisama to include <em>‘rikai’</em> as tag on new cards, this should be a breeze. Open anki’s browser (by clicking <strong>Browse</strong> or pressing <kbd>b</kbd>), select the <em>rikai</em> tag in the left column, and press <kbd>ctrl-a</kbd> to select all your cards. Next, click <strong>Edit</strong> → <strong>Bulk-add examples</strong>. </p>
+<h2 id="contextualizing-imported-cards"><a class="toclink" href="#contextualizing-imported-cards">Contextualizing imported cards</a></h2>
 <p>If you’ve followed above steps, every time you add a new word online by pressing <kbd>r</kbd> (the <em>Real-Time Import</em> key) while hovering over something Japanese, it’ll automatically contain example sentences as well.</p>
 <p>Try it out on below’s “<strong>Word of the Day</strong>“™!</p>
 <p><span lang="ja"><ruby><rb>文脈</rb><rp>(</rp><rt>ぶんみゃく</rt><rp>)</rp></ruby></span> | <span lang="ja"><ruby><rb>語彙</rb><rp>(</rp><rt>ごい</rt><rp>)</rp></ruby></span></p>
 <h1 id="download_1"><a class="toclink" href="#download_1">Download</a></h1>
 <p>As usual, I’ve exported my own copy of this tutorial and uploaded it in case you’d like to compare or save yourself the work of editting the note template yourself.</p>
 <ul>
-<li><strong>Download</strong>: <a href="#">Example set Sentences <i class="icon-download-alt"></i></a></li>
+<li><strong>Download</strong>: <a href="https://www.dropbox.com/s/2lq0d7cn2rqywih/Rikai%20vocab_context.apkg?dl=0">Example set Sentences <i class="icon-download-alt"></i></a></li>
 </ul>
 <h1 id="wait-there-is-more"><a class="toclink" href="#wait-there-is-more">Wait! There is more!</a></h1>
 <p>The main goal of this post was to introduce another less known, but highly useful, Anki functionality on increasing your study efficiency, as well as hopefully create an attitude of self-reliability by reaching out various tools and possibilities. If you’ve any further questions, feel free to check out the other articles in this series on Anki, or to leave a comment below.</p>
@@ -296,14 +314,28 @@ On Windows, press <kbd>CTRL-SHIFT-N</kbd>, or click <strong>Tools</strong> → <
     <hr/>
         </div>
 
+    <div class="comments">
+        <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'steviepoppe';
+                var disqus_identifier = 'blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/';
+                var disqus_url = 'https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+        <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
                 <hr />
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
-                <dt>do 08 september 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
                 <dt>wo 07 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
+                <dt>do 08 september 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
                 <dt>di 06 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
                 <dt>zo 28 augustus 2016</dt>
