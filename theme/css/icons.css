@@ -1165,7 +1165,11 @@ ul.icons li [class*=" icon-"] {
 .icon-headphones:before {
   content: "\f025";
 }
+.icon-history:before {
+  content: "\f1da";
+}
 
+.small-font {font-size: 85%;}
 /* Social Icons */
 @font-face {
   font-family: 'fontello';
