@@ -22,7 +22,7 @@
   <meta name="robots" content="NOODP">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="You’ve been studying Japanese for a while now and reached a level of Japanese adequate enough to understand (simple) texts. Drilling new vocabulary has become a daily routine so entangled in your ...">
+  <meta name="description" content="You’ve been studying Japanese for a while now and reached a level of Japanese adequate enough to understand (simple) texts. Drilling new vocabulary has become a daily routine so entangled in your lifestyle you barely notice anymore. If you were to describe your current level of proficiency, you’d proudly present yourself as an intermediate level learner. Sounds familiar? Let’s take it a notch further by adding Japanese definitions to our ankisets and reduce our dependency on English definition crutches!">
   <meta name="keywords" content="Anki, Rikaisama, Tutorial, Japanese, Japan, Study">
   <meta name="author" content="Stevie Poppe">
   <meta name="mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="https://steviepoppe.net/favicon.ico">
 
   <title>A Quick Guide on Using Anki 4: Making the switch - J-J definitions in your vocab cards | Onoreto</title>
-<link rel="canonical" href="https://steviepoppe.net/drafts/a-quick-guide-on-using-anki-4-making-the-switch-j-j-definitions-in-your-vocab-cards.html">
+<link rel="canonical" href="https://steviepoppe.net/blog/2016/10/a-quick-guide-on-using-anki-4-making-the-switch-j-j-definitions-in-your-vocab-cards/">
 
 
 <!--               <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
@@ -157,7 +157,7 @@
               <div class="col-lg-12">
                   <div class="header-content center">
                       <h1 class="header-title nocount">A <del>Quick</del> Guide on Using Anki 4: Making the switch - J-J definitions in your vocab cards<sup id="fnref:footnote"><a class="footnote-ref imagesource" href="#fn:footnote" rel="footnote">1</a></sup></h1>
-                      <p class="header-date">zo 18 september 2016, in category <a href="https://steviepoppe.net/blog/category/studies/">Studies</a></p>
+                      <p class="header-date">zo 02 oktober 2016, in category <a href="https://steviepoppe.net/blog/category/studies/">Studies</a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
                       <p class="pull-right header-tags">
@@ -178,81 +178,63 @@
 <li><a href="#download">Download</a></li>
 <li><a href="#set-up">Set-up</a></li>
 <li><a href="#anki-note-lay-out">Anki Note Lay-out</a></li>
-</ul>
-</li>
-<li><a href="#usage">Usage</a><ul>
-<li><a href="#contextualizing-existing-cards">Contextualizing existing cards</a></li>
-<li><a href="#contextualizing-new-cards">Contextualizing new cards</a></li>
+<li><a href="#bulk-edit">Bulk-edit</a></li>
 </ul>
 </li>
 <li><a href="#usage-with-rikaisama-real-time-import">Usage with Rikaisama / Real Time Import</a><ul>
 <li><a href="#set-up_1">Set-up</a></li>
+<li><a href="#contextualizing-imported-cards">Contextualizing imported cards</a></li>
 </ul>
 </li>
+<li><a href="#download-example-set">Download Example Set</a></li>
 <li><a href="#wait-there-is-more">Wait! There is more!</a></li>
-<li><a href="#further-reading">Further reading</a></li>
 </ul>
 </div>
             </nav>
         
-<!-- PELICAN_BEGIN_SUMMARY -->
-<p>You’ve been studying Japanese for a while now and reached a level of Japanese adequate enough to understand (simple) texts. Drilling new vocabulary has become a daily routine so entangled in your lifestyle you barely notice anymore. If you were to describe your current level, you’d stand up and shout with pride: “I’m at an intermediate level of studying Japanese!”. Sounds familiar? Let’s take away (or at the very least, hide) our English definition crutches and start learning vocabulary through their Japanese definitions!</p>
-<!-- PELICAN_END_SUMMARY -->
-<p>Google “Anki JJ” and you’ll come across dozens of posts describing the “leap from the J-E to JJ dictionary”. It appears one of the more popular studying methods amongst self learners online, and is highly blogged about on such blogs as <a href="http://japaneselevelup.com/beating-the-anki-j-j-branches-1-earn-your-battle-scars/">Japaneselevelup.com</a> and koohii.com</p>
-<p>If you’ve followed my <a href="#">previous tutorial</a> on adding Japanese example sentences to your vocabulary cards, this tutorial will feel very similar. We’ll install an Anki add-on, slightly edit it to fit our workflow, bulk-edit our existing cards to add Japanese definitions, and alter our card-layout to display them in a fashionable manner. This might be my first tutorial worthy of the header <strong>quick</strong>.</p>
+
+<p>You’ve been studying Japanese for a while now and reached a level of Japanese adequate enough to understand (simple) texts. Drilling new vocabulary has become a daily routine so entangled in your lifestyle you barely notice anymore. If you were to describe your current level of proficiency, you’d proudly present yourself as an intermediate level learner. Sounds familiar? Let’s take it a notch further by adding Japanese definitions<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">2</a></sup> to our ankisets and reduce our dependency on English definition crutches!</p>
+
+<p>If you’ve followed my <a href="#">previous tutorial</a> on adding Japanese example sentences to your vocabulary cards, this tutorial will feel very similar: we’ll install an Anki add-on, alter our card-layout to display the definitions in a fashionable manner, and finally bulk-edit our existing cards to actually add them. (This might be my first tutorial worthy of the header <strong>quick</strong>).</p>
 <h1 id="sanseido-add-on"><a class="toclink" href="#sanseido-add-on">Sanseido add-on</a></h1>
-<p>There are various online monolingial dictionaries for Japanese vocabulary. I’ve been using <a href="https://kotobank.jp/">kotobank.jp</a> for a while now and like it’s interface. Another popular one is <a href="http://dictionary.goo.ne.jp/">Goo dictionary</a>, a clone of the Yahoo’s former Japanese dictionary. For our purpose, we’ll use Sanseido however. Specifically, we’ll use “simplified J-J definitions from <a href="http://www.sanseido.net/">sanseido.net</a>‘s デイリーコンサイス<ruby><rb>国語辞典</rb><rp>(</rp><rt>こくごじてん</rt><rp>)</rp></ruby> (Daily Concise Kokugo Jiten)”.</p>
+<p>There are various online monolingual dictionaries for Japanese vocabulary. I personally like and use <a href="http://www.weblio.jp">Weblio</a> and <a href="http://dictionary.goo.ne.jp/">Goo</a>, but for our Anki cards we’ll use <a href="http://www.sanseido.net/">Sanseido</a> - they’re usually more concise as the other dictionaries and tend to use easier vocabulary. Luck has it someone has already written an anki add-on to serve our blog’s purpose. The result of our work will look as follows:</p>
+<p><img alt="center border" src="{filename}/images/anki-gyakuten.jpg"/></p>
 <h2 id="download"><a class="toclink" href="#download">Download</a></h2>
-<p>The <strong>Sanseido Definitions</strong> add-on has a page on Ankiweb’s <a href="https://ankiweb.net/shared/info/1967553085">plug-in page</a>, but as usual we’ll install the plug-in using the Desktop Anki application. Go to <strong>Tools</strong> → <strong>Add-ons</strong> → <strong>Browse &amp; Install</strong>, and copypaste <strong>1967553085</strong> in the pop-up dialogue.</p>
+<p>The <strong>Sanseido Definitions</strong> add-on has a page on Ankiweb’s <a href="https://ankiweb.net/shared/info/1967553085">plug-in page</a>, but as usual we’ll install the plug-in using the Desktop Anki application. Go to <strong>Tools</strong> → <strong>Add-ons</strong> → <strong>Browse &amp; Install</strong>, and copypaste <strong>1967553085</strong> in the pop-up dialog. Restart the application to complete the installation.</p>
 <h2 id="set-up"><a class="toclink" href="#set-up">Set-up</a></h2>
-<p>New field: “Sanseido”</p>
-<p>Edit py for Expression instead of Word.</p>
-<p>Layout</p>
+<p>The notetypes of the vocabulary you want sentences for will need a new field to contain the Japanese definition. On the desktop Anki application, press <kbd>CTRL-SHIFT-N</kbd>, or click <strong>Tools</strong> → <strong>Manage Note Types</strong>, to enter the notetype management screen. Select the notetype of the cards you’d like to contain example sentences and click <strong>fields</strong>.</p>
+<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-notetype-select.jpg" style="width: 398px; height: auto; max-width: 100%;"/></p>
+<p>On the next screen, click <strong>add</strong> and call the field <code>Sanseido</code>. Now close this screen. On the previous notetype management screen, click <strong>cards</strong>. We’ll edit our lay-out and display the new field in our cards.</p>
 <h2 id="anki-note-lay-out"><a class="toclink" href="#anki-note-lay-out">Anki Note Lay-out</a></h2>
-<div class="codehilite"><pre><span></span><span class="nc">.english_title</span> <span class="p">{</span><span class="nb">font-size</span><span class="o">:</span><span class="m">16px</span><span class="p">;</span> <span class="nb">color</span><span class="o">:</span> <span class="m">#999999</span><span class="p">;}</span>
-<span class="nc">.sanseido</span> <span class="p">{</span><span class="nb">font-size</span><span class="o">:</span><span class="m">90%</span><span class="p">;</span> <span class="p">}</span>
-
-<span class="nn">#english</span> <span class="p">{</span> <span class="nb">display</span><span class="o">:</span> <span class="nb">none</span><span class="p">;</span> <span class="p">}</span>
-<span class="nn">#english_meaning</span><span class="nd">:hover</span> <span class="nn">#english</span><span class="p">{</span> <span class="nb">display</span><span class="o">:</span> <span class="nb">inherit</span><span class="p">;</span> <span class="p">}</span>
+<p><strong>Lay-out</strong></p>
+<p>Add below’s CSS code to the shared style screen of your note’s card-type template.</p>
+<div class="codehilite"><pre><span></span><span class="nc">.title</span> <span class="p">{</span><span class="nb">font-size</span><span class="o">:</span><span class="m">16px</span><span class="p">;</span> <span class="nb">color</span><span class="o">:</span> <span class="m">#999999</span><span class="p">;}</span>
 </pre></div>
-<p><strong>Expression</strong></p>
-<ul>
-<li><strong>Back Template</strong></li>
-</ul>
-<p>Replace the <code>{{furigana:Meaning}}</code> line with below’s code. You’ll do this in <strong>Expression</strong> → <strong>Back Template</strong>, <strong>Meaning</strong> → <strong>Front Template</strong> and <strong>Audio</strong> → <strong>Back Template</strong>.</p>
-<div class="codehilite"><pre><span></span>{{#Sanseido}}
-<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"sanseido"</span><span class="p">&gt;</span>{{furigana:Sanseido}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-{{/Sanseido}}
-
-
+<p><strong>Templates</strong></p>
+<p>Replace the <code>{{Meaning}}</code> line with below’s code. You’ll do this in <strong>Expression</strong> → <strong>Back Template</strong>, <strong>Meaning</strong> → <strong>Front Template</strong> and <strong>Audio</strong> → <strong>Back Template</strong>.</p>
+<div class="codehilite"><pre><span></span>{{Meaning}}<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
 {{#Sanseido}}
-<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"english_meaning"</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span> <span class="s">"english_title"</span><span class="p">&gt;</span>English:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-<span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span> <span class="s">"english"</span><span class="p">&gt;</span>
-{{/Sanseido}}
-
-{{furigana:Meaning}}<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-
-{{#Sanseido}}
-<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"japanese_meaning"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span> <span class="s">"title"</span><span class="p">&gt;</span>Japanese:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span> 
+<span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span> <span class="s">"japanese"</span> <span class="na">class</span><span class="o">=</span><span class="s">"sanseido"</span><span class="p">&gt;</span>
+{{furigana:Sanseido}}<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{/Sanseido}}
 </pre></div>
 <hr/>
-<h1 id="usage"><a class="toclink" href="#usage">Usage</a></h1>
-<h2 id="contextualizing-existing-cards"><a class="toclink" href="#contextualizing-existing-cards">Contextualizing existing cards</a></h2>
-<p>If you’ve set up rikaisama to include <em>‘rikai’</em> as tag on new cards, this should be a breeze. Open anki’s browser (by clicking <strong>Browse</strong> from the main window), select the rikai tag in the left column, and press <kbd>ctrl-a</kbd> to select all your cards. Next, click <strong>Edit</strong> → <strong>Regenerate Sanseido Expression</strong>. It will crawl the internet for each new definition so this might take quite a while.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">2</a></sup></p>
-<h2 id="contextualizing-new-cards"><a class="toclink" href="#contextualizing-new-cards">Contextualizing new cards</a></h2>
-<p>a</p>
+<h2 id="bulk-edit"><a class="toclink" href="#bulk-edit">Bulk-edit</a></h2>
+<p>Open anki’s browser (by pressing <kbd>b</kbd> or clicking <strong>Browse</strong> from the main window). The left of this browser has an overview of all your different sets and tags. Select the deck or tag containing the cards you’d like to edit. Press <kbd>ctrl-a</kbd> to select all of those and click <strong>Edit</strong> → <strong>Regenerate Sanseido Expression</strong>. It will crawl the internet for each new definition so this might take quite a while.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">2</a></sup></p>
+<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-browser2.jpg" style="width: 741px; height: auto; max-width: 100%;"/></p>
 <h1 id="usage-with-rikaisama-real-time-import"><a class="toclink" href="#usage-with-rikaisama-real-time-import">Usage with Rikaisama / Real Time Import</a></h1>
-<p>A drawback to this plug-in is that it does not support vocab expressions using furigana, and neither can example sentences be added automatically on adding a new note through rikaisama.</p>
+<p>As with my previous tutorial, a drawback to this plug-in is that it does not support vocab expressions using furigana, and neither can example sentences be added automatically on adding a new note through rikaisama. We’ll have to make some small adjustments for that.</p>
+<p>I’ve added the editted file on a <a href="https://github.com/steviepoppe/anki_addon_edits/tree/master/jj_tutorial">new repository on my github</a> so go ahead and replace the existing add-on files on your Anki’s add-on folder on your computer (eg. <code>C:\Users\your_username\Documents\Anki\addons</code>) with the ones on there.</p>
+<p>I’ve described all my edits below in case you’d prefer to do this manually. Feel free to skip this part if you’re not technically inclined.</p>
 <h2 id="set-up_1"><a class="toclink" href="#set-up_1">Set-up</a></h2>
-<p><strong>japanese_examples.py</strong></p>
+<p><strong>sanseidoDefsForAnki.py</strong></p>
 <p>We’ve set up our notes to show furigana on our vocabulary. This requires square brackets (eg. <code>気象庁[きしょうちょう]</code>). The anki plug-in for Japanese examples however does not support this out of the box. For that reason, I’ve added a single line of code that uses a regular expression to only use the contents up to the first square bracket as expression.</p>
 <div class="codehilite"><pre><span></span>    <span class="n">term</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">r'^[^\[]+'</span><span class="p">,</span><span class="n">term</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
-<p>If you’d like to edit this yourself, add it to the <code>find_examples</code> class right after it defined <code>examples</code> as a list. it should be around line 139 (<code>def find_examples(expression, maxitems):</code> <code>examples = []</code>).</p>
+<p>If you’d like to edit this yourself, add below’s code as first line in the <code>fetchDef</code> class - it should be around line 27 (<code>def fetchDef(term):</code>).</p>
 <p><strong>Real-Time_Import_for_use_with_the_Rikaisama_Firefox_Extension.py</strong></p>
 <p>This extension calls on Anki’s API to create new notes. I haven’t found a way to hook japanese_examples to outside note-creation, so instead I’ve editted the real_time_import plug-in itself to call japanese_examples at run-time.</p>
 <p>First, we’ll have to import that extension to be able to call it’s methods. If you’re doing this set-up manually, add below’s line near the top, with the other includes (around line 30).</p>
@@ -267,6 +249,15 @@
         <span class="k">except</span><span class="p">:</span>
             <span class="n">showTooltip</span><span class="p">(</span><span class="s2">"Error, could not create sanseido definition."</span><span class="p">);</span>
 </pre></div>
+<h2 id="contextualizing-imported-cards"><a class="toclink" href="#contextualizing-imported-cards">Contextualizing imported cards</a></h2>
+<p>If you’ve followed above steps, every time you add a new word online by pressing <kbd>r</kbd> (the <em>Real-Time Import</em> key) while hovering over something Japanese, it’ll automatically contain example sentences as well.</p>
+<p>Try it out on below’s “<strong>Words of the Day</strong>“™!</p>
+<p><span lang="ja"><ruby><rb>逆転</rb><rp>(</rp><rt>ぎゃくてん</rt><rp>)</rp></ruby></span> | <span lang="ja"><ruby><rb>裁判</rb><rp>(</rp><rt>さいばん</rt><rp>)</rp></ruby></span></p>
+<h1 id="download-example-set"><a class="toclink" href="#download-example-set">Download Example Set</a></h1>
+<p>As usual, I’ve exported my own copy of this tutorial and uploaded it in case you’d like to compare or save yourself the work of editting the note template yourself. It includes work from the previous two tutorials.</p>
+<ul>
+<li><strong>Download</strong>: <a href="https://www.dropbox.com/s/9wrpciaawfxeuo5/Rikai%20vocab_jj.apkg?dl=0">Example set Sanseido <i class="icon-download-alt"></i></a></li>
+</ul>
 <h1 id="wait-there-is-more"><a class="toclink" href="#wait-there-is-more">Wait! There is more!</a></h1>
 <p>The main goal of this post was to introduce another less known, but highly useful, Anki functionality on increasing your study efficiency, as well as hopefully create an attitude of self-reliability by reaching out various tools and possibilities. If you’ve any further questions, feel free to check out the other articles in this series on Anki, or to leave a comment below.</p>
 <ul>
@@ -274,38 +265,51 @@
 <li><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">Setting up a perfect vocab-mining environment with Anki and Rikaisama</a>
 <a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">Using Anki’s API to contextualize your vocab cards with example sentences</a></li>
 </ul>
-<h1 id="further-reading"><a class="toclink" href="#further-reading">Further reading</a></h1>
-<ul>
-<li></li>
-</ul>
 <div class="footnote">
 <hr/>
 <ol>
 <li id="fn:footnote">
-<p>Image taken from the 2012 Japanese animated film Wolf Children by Mamoru Hosoda, under Fair Use doctrine. <a class="footnote-backref" href="#fnref:footnote" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+<p>Image taken from the 2012 Japanese animated film Wolf Children by Mamoru Hosoda, used under Fair Use doctrine. <a class="footnote-backref" href="#fnref:footnote" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
 </li>
 <li id="fn:1">
-<p>it takes a couple of seconds for one card. At time of writing, I had 20761 cards based on the Rikai note type, filling these in took about an hour and a half… <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 2 in the text">↩</a></p>
+<p>Google <code>Anki JJ</code> and you’ll come across dozens of posts describing the “<em>leap from the J-E to J-J dictionary</em>”. It appears to be one of the more popular studying methods amongst self learners online, and is highly blogged about on such blogs as <a href="http://japaneselevelup.com/beating-the-anki-j-j-branches-1-earn-your-battle-scars/">Japaneselevelup.com</a> or on the koohii.com forums. <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn:2">
+<p>it takes a couple of seconds for one card. At time of writing, I had 20761 cards based on the Rikai note type, filling these in took about an hour and a half… <a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
 </ol>
 </div>
     <hr/>
         </div>
 
+    <div class="comments">
+        <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'steviepoppe';
+                var disqus_identifier = 'blog/2016/10/a-quick-guide-on-using-anki-4-making-the-switch-j-j-definitions-in-your-vocab-cards/';
+                var disqus_url = 'https://steviepoppe.net/blog/2016/10/a-quick-guide-on-using-anki-4-making-the-switch-j-j-definitions-in-your-vocab-cards/';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+        <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
                 <hr />
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
+                <dt>wo 07 september 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
                 <dt>za 17 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">A <del>Quick</del> Guide on Using Anki 3: contextualize your vocab cards with example sentences</a></dd>
                 <dt>do 08 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
-                <dt>wo 07 september 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
-                <dt>zo 28 augustus 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
                 <dt>di 06 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
+                <dt>zo 28 augustus 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/08/visiting-a-japanese-elementary-school-an-awkward-experience-to-remember/">Visiting a Japanese Elementary School - An (Awkward) Experience to Remember</a></dd>
             </dl>
             </div>
         <hr />
