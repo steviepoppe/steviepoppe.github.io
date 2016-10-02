@@ -223,16 +223,16 @@
 <hr/>
 <h2 id="bulk-edit"><a class="toclink" href="#bulk-edit">Bulk-edit</a></h2>
 <p>The plug-in expects your vocabulary to be contained in a field called <code>Word</code>. If your field is called <code>Expression</code>, you’ll have to edit this in the plug-in’s python file on your Anki’s add-on folder (eg. <code>C:\Users\your_username\Documents\Anki\addons\sanseidoDefsForAnki.py</code>). Open it with your text-editor of choice (notepad is fine) and change <code>expressionField = 'Word'</code> to <code>expressionField = 'Expression'</code>.</p>
-<p>Open anki’s browser (by pressing <kbd>b</kbd> or clicking <strong>Browse</strong> from the main window). The left of this browser has an overview of all your different sets and tags. Select the deck or tag containing the cards you’d like to edit. Press <kbd>ctrl-a</kbd> to select all of those and click <strong>Edit</strong> → <strong>Regenerate Sanseido Expression</strong>. It will crawl the internet for each new definition so this might take quite a while.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">2</a></sup></p>
+<p>Open anki’s browser (by pressing <kbd>b</kbd> or clicking <strong>Browse</strong> from the main window). The left of this browser has an overview of all your different sets and tags. Select the deck or tag containing the cards you’d like to edit. Press <kbd>ctrl-a</kbd> to select all of those and click <strong>Edit</strong> → <strong>Regenerate Sanseido Expression</strong>. It will crawl the internet for each new definition so this might take quite a while.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">3</a></sup></p>
 <p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-browser2.jpg" style="width: 741px; height: auto; max-width: 100%;"/></p>
 <h1 id="usage-with-rikaisama-real-time-import"><a class="toclink" href="#usage-with-rikaisama-real-time-import">Usage with Rikaisama / Real Time Import</a></h1>
 <p>As with my previous tutorial, a drawback to this plug-in is that it does not support vocab expressions using furigana, and neither can example sentences be added automatically on adding a new note through rikaisama. We’ll have to make some small adjustments for that.</p>
-<p>I’ve added the editted file on a <a href="https://github.com/steviepoppe/anki_addon_edits/tree/master/jj_tutorial">new repository on my github</a> so go ahead and replace the existing add-on files on your Anki’s add-on folder on your computer (eg. <code>C:\Users\your_username\Documents\Anki\addons</code>) with the ones on there.</p>
+<p>I’ve added the editted files on a <a href="https://github.com/steviepoppe/anki_addon_edits/tree/master/jj_tutorial">new repository on my github</a> so go ahead and replace the existing add-on files on your Anki’s add-on folder on your computer (eg. <code>C:\Users\your_username\Documents\Anki\addons</code>) with the ones on there.</p>
 <p>I’ve described all my edits below in case you’d prefer to do this manually. Feel free to skip this part if you’re not technically inclined.</p>
 <h2 id="set-up_1"><a class="toclink" href="#set-up_1">Set-up</a></h2>
 <p><strong>sanseidoDefsForAnki.py</strong></p>
 <p>We’ve set up our notes to show furigana on our vocabulary. This requires square brackets (eg. <code>気象庁[きしょうちょう]</code>). The anki plug-in for Japanese examples however does not support this out of the box. For that reason, I’ve added a single line of code that uses a regular expression to only use the contents up to the first square bracket as expression.</p>
-<div class="codehilite"><pre><span></span>    <span class="n">term</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">r'^[^\[]+'</span><span class="p">,</span><span class="n">term</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">term</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">r'^[^\[]+'</span><span class="p">,</span><span class="n">term</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 <p>If you’d like to edit this yourself, add below’s code as first line in the <code>fetchDef</code> class - it should be around line 27 (<code>def fetchDef(term):</code>).</p>
 <p><strong>Real-Time_Import_for_use_with_the_Rikaisama_Firefox_Extension.py</strong></p>
@@ -241,18 +241,19 @@
 <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">sanseidoDefsForAnki</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 <p>Next, I’ve written a few lines in the <code>createNote</code> method to call sanseidoDefsForAnki’s glossNote method at run-time and, if examples were found and our note-type has the correct destination field, add these to our newly created card. This should come before <code>dupOrEmpty = note.dupeOrEmpty()</code> around line 100.</p>
-<div class="codehilite"><pre><span></span>        <span class="c1"># Create sanseido definitions</span>
-        <span class="k">try</span><span class="p">:</span> <span class="n">glossNote</span><span class="p">(</span> <span class="n">note</span> <span class="p">)</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="n">showTooltip</span><span class="p">(</span><span class="s2">"Error, could not create sanseido definition."</span><span class="p">);</span>
-        <span class="k">try</span><span class="p">:</span> <span class="n">note</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="n">showTooltip</span><span class="p">(</span><span class="s2">"Error, could not create sanseido definition."</span><span class="p">);</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Create sanseido definitions</span>
+<span class="k">try</span><span class="p">:</span> <span class="n">glossNote</span><span class="p">(</span> <span class="n">note</span> <span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">showTooltip</span><span class="p">(</span><span class="s2">"Error, could not create sanseido definition."</span><span class="p">);</span>
+<span class="k">try</span><span class="p">:</span> <span class="n">note</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">showTooltip</span><span class="p">(</span><span class="s2">"Error, could not create sanseido definition."</span><span class="p">);</span>
 </pre></div>
 <h2 id="contextualizing-imported-cards"><a class="toclink" href="#contextualizing-imported-cards">Contextualizing imported cards</a></h2>
-<p>If you’ve followed above steps, every time you add a new word online by pressing <kbd>r</kbd> (the <em>Real-Time Import</em> key) while hovering over something Japanese, it’ll automatically contain example sentences as well.</p>
+<p>If you’ve followed above steps, every time you add a new word online by pressing <kbd>r</kbd> (the <em>Real-Time Import</em> key) while hovering over something Japanese, it’ll automatically contain a Sanseido dictionary definition as well.</p>
 <p>Try it out on below’s “<strong>Words of the Day</strong>“™!</p>
-<p><span lang="ja"><ruby><rb>逆転</rb><rp>(</rp><rt>ぎゃくてん</rt><rp>)</rp></ruby></span> | <span lang="ja"><ruby><rb>裁判</rb><rp>(</rp><rt>さいばん</rt><rp>)</rp></ruby></span></p>
+<div class="codehilite"><pre><span></span><span class="cp">{{</span><span class="err">逆転</span><span class="o">(</span><span class="err">ぎゃくてん</span><span class="o">)</span><span class="cp">}}</span><span class="x"> | </span><span class="cp">{{</span><span class="err">裁判</span><span class="o">(</span><span class="err">さいばん</span><span class="o">)</span><span class="cp">}}</span><span class="x"></span>
+</pre></div>
 <h1 id="download-example-set"><a class="toclink" href="#download-example-set">Download Example Set</a></h1>
 <p>As usual, I’ve exported my own copy of this tutorial and uploaded it in case you’d like to compare or save yourself the work of editting the note template yourself. It includes work from the previous two tutorials.</p>
 <ul>
@@ -300,12 +301,12 @@
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
+                <dt>do 08 september 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
                 <dt>wo 07 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
                 <dt>za 17 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">A <del>Quick</del> Guide on Using Anki 3: contextualize your vocab cards with example sentences</a></dd>
-                <dt>do 08 september 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
                 <dt>di 06 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
                 <dt>zo 28 augustus 2016</dt>
