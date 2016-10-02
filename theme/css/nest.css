@@ -2,6 +2,18 @@
   counter-reset: h1counter;
 }
 
+.paginator{
+  margin-bottom: 68px;
+  margin-top: -15px;
+}
+
+.prev_page{
+  margin-left: -25px;
+}
+.next_page{
+  margin-right: -25px;
+}
+
 .container-main{
   margin-top: 20px;
 }
