@@ -197,8 +197,8 @@
 
 <p>If you’ve followed my <a href="#">previous tutorial</a> on adding Japanese example sentences to your vocabulary cards, this tutorial will feel very similar: we’ll install an Anki add-on, alter our card-layout to display the definitions in a fashionable manner, and finally bulk-edit our existing cards to actually add them. (This might be my first tutorial worthy of the header <strong>quick</strong>).</p>
 <h1 id="sanseido-add-on"><a class="toclink" href="#sanseido-add-on">Sanseido add-on</a></h1>
-<p>There are various online monolingual dictionaries for Japanese vocabulary. I personally like and use <a href="http://www.weblio.jp">Weblio</a> and <a href="http://dictionary.goo.ne.jp/">Goo</a>, but for our Anki cards we’ll use <a href="http://www.sanseido.net/">Sanseido</a> - they’re usually more concise as the other dictionaries and tend to use easier vocabulary. Luck has it someone has already written an anki add-on to serve our blog’s purpose. The result of our work will look as follows:</p>
-<p><img alt="center border" src="{filename}/images/anki-gyakuten.jpg"/></p>
+<p>There are various online monolingual dictionaries for Japanese vocabulary. I personally like <a href="http://www.weblio.jp">Weblio</a> and <a href="http://dictionary.goo.ne.jp/">Goo</a>, but for our Anki cards we’ll use <a href="http://www.sanseido.net/">Sanseido</a> - their definitions are usually more concise as the other dictionaries and tend to employ more comprehenseble vocabulary. Luck has it someone has already written an anki add-on to serve our blog’s purpose. The result of our work will look as follows:</p>
+<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-gyakuten.jpg" style="width: 394px; height: auto; max-width: 100%;"/></p>
 <h2 id="download"><a class="toclink" href="#download">Download</a></h2>
 <p>The <strong>Sanseido Definitions</strong> add-on has a page on Ankiweb’s <a href="https://ankiweb.net/shared/info/1967553085">plug-in page</a>, but as usual we’ll install the plug-in using the Desktop Anki application. Go to <strong>Tools</strong> → <strong>Add-ons</strong> → <strong>Browse &amp; Install</strong>, and copypaste <strong>1967553085</strong> in the pop-up dialog. Restart the application to complete the installation.</p>
 <h2 id="set-up"><a class="toclink" href="#set-up">Set-up</a></h2>
@@ -211,9 +211,8 @@
 <div class="codehilite"><pre><span></span><span class="nc">.title</span> <span class="p">{</span><span class="nb">font-size</span><span class="o">:</span><span class="m">16px</span><span class="p">;</span> <span class="nb">color</span><span class="o">:</span> <span class="m">#999999</span><span class="p">;}</span>
 </pre></div>
 <p><strong>Templates</strong></p>
-<p>Replace the <code>{{Meaning}}</code> line with below’s code. You’ll do this in <strong>Expression</strong> → <strong>Back Template</strong>, <strong>Meaning</strong> → <strong>Front Template</strong> and <strong>Audio</strong> → <strong>Back Template</strong>.</p>
-<div class="codehilite"><pre><span></span>{{Meaning}}<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-{{#Sanseido}}
+<p>Add the following code below the line displaying your vocab’s translation/English definition (eg. <code>{{Meaning}}</code>) . You’ll do this in <strong>Expression</strong> → <strong>Back Template</strong>, <strong>Meaning</strong> → <strong>Front Template</strong> and <strong>Audio</strong> → <strong>Back Template</strong>.</p>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>{{#Sanseido}}
 <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"japanese_meaning"</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span> <span class="s">"title"</span><span class="p">&gt;</span>Japanese:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span> 
 <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span> <span class="s">"japanese"</span> <span class="na">class</span><span class="o">=</span><span class="s">"sanseido"</span><span class="p">&gt;</span>
@@ -223,6 +222,7 @@
 </pre></div>
 <hr/>
 <h2 id="bulk-edit"><a class="toclink" href="#bulk-edit">Bulk-edit</a></h2>
+<p>The plug-in expects your vocabulary to be contained in a field called <code>Word</code>. If your field is called <code>Expression</code>, you’ll have to edit this in the plug-in’s python file on your Anki’s add-on folder (eg. <code>C:\Users\your_username\Documents\Anki\addons\sanseidoDefsForAnki.py</code>). Open it with your text-editor of choice (notepad is fine) and change <code>expressionField = 'Word'</code> to <code>expressionField = 'Expression'</code>.</p>
 <p>Open anki’s browser (by pressing <kbd>b</kbd> or clicking <strong>Browse</strong> from the main window). The left of this browser has an overview of all your different sets and tags. Select the deck or tag containing the cards you’d like to edit. Press <kbd>ctrl-a</kbd> to select all of those and click <strong>Edit</strong> → <strong>Regenerate Sanseido Expression</strong>. It will crawl the internet for each new definition so this might take quite a while.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">2</a></sup></p>
 <p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-browser2.jpg" style="width: 741px; height: auto; max-width: 100%;"/></p>
 <h1 id="usage-with-rikaisama-real-time-import"><a class="toclink" href="#usage-with-rikaisama-real-time-import">Usage with Rikaisama / Real Time Import</a></h1>
@@ -240,7 +240,7 @@
 <p>First, we’ll have to import that extension to be able to call it’s methods. If you’re doing this set-up manually, add below’s line near the top, with the other includes (around line 30).</p>
 <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">sanseidoDefsForAnki</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
-<p>Next, I’ve written a few lines in the <code>createNote</code> method to call Japanese-examples’ find method at run-time and, if examples were found and our note-type has the correct destination field, add these to our newly created card. This should come before <code>dupOrEmpty = note.dupeOrEmpty()</code> around line 100.</p>
+<p>Next, I’ve written a few lines in the <code>createNote</code> method to call sanseidoDefsForAnki’s glossNote method at run-time and, if examples were found and our note-type has the correct destination field, add these to our newly created card. This should come before <code>dupOrEmpty = note.dupeOrEmpty()</code> around line 100.</p>
 <div class="codehilite"><pre><span></span>        <span class="c1"># Create sanseido definitions</span>
         <span class="k">try</span><span class="p">:</span> <span class="n">glossNote</span><span class="p">(</span> <span class="n">note</span> <span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
@@ -300,12 +300,12 @@
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
+                <dt>do 08 september 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
                 <dt>wo 07 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
                 <dt>za 17 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">A <del>Quick</del> Guide on Using Anki 3: contextualize your vocab cards with example sentences</a></dd>
-                <dt>do 08 september 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
                 <dt>di 06 september 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
                 <dt>zo 28 augustus 2016</dt>
