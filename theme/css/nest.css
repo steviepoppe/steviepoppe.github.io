@@ -658,7 +658,7 @@ pre {
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
   color: #124877; !important
-  font-family: 'Poiret One', cursive; !important
+  font-family: 'Poiret One', cursive, "Noto Sans Japanese","Meiryo",sans-serif; !important
   line-height: 125%;
 }
 
