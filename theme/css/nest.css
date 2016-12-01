@@ -769,8 +769,10 @@ h2 {
 
   .post-title, .post-title a{
     font-size: 32px;
-    font-weight: 700;
-    font-family: 'Poiret One',cursive !important;
+/*    font-weight: 700;
+    font-family: 'Poiret One',cursive !important;*/
+    font-family: 'Poiret One',cursive,"Noto Sans Japanese","Meiryo",sans-serif !important;
+    font-weight: 100;
   }
 
   .datetitle, .banner-index-content a, .post-title, .post-title a{
