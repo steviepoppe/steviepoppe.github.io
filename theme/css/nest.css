@@ -855,8 +855,8 @@ padding-right: 0px;
     .header-title {
       font-size: 32px;
       color: #fff;
-      font-weight: 700;
-      font-family: 'Poiret One', cursive !important;
+      font-family: 'Poiret One',cursive,"Noto Sans Japanese","Meiryo",sans-serif !important;
+      font-weight: 100;
     }
     .header-date {
       margin-top: 15px;
