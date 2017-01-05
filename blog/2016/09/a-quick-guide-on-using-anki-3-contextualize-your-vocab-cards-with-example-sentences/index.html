@@ -211,6 +211,7 @@
 <p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-contextcard.jpg" style="width: 402px; height: auto; max-width: 100%;"/></p>
 <h2 id="download"><a class="toclink" href="#download">Download</a></h2>
 <p>The Japanese Example Sentences add-on has a page on Ankiweb’s <a href="https://ankiweb.net/shared/info/2413435972">plug-in page</a>, but as usual we’ll install the plug-in using the Desktop Anki application. Go to <strong>Tools</strong> → <strong>Add-ons</strong> → <strong>Browse &amp; Install</strong>, and copypaste <strong>2413435972</strong> in the pop-up dialog. Restart the application to complete the installation.</p>
+<p><strong>Edit</strong>: as user <em>nwt</em> mentioned in the comments, this example-set is fairly outdated. Follow [the instructions][https://ankiweb.net/shared/info/2413435972] left in the plug-in’s comment section to update to the most recent set.</p>
 <p>If you want a test Anki deck to work with, I’ve uploaded an example set, the result of my previous Anki tutorial, containing the necessary notetype and two test-notes for download: <a href="https://www.dropbox.com/s/xnj67hqj3cubfn2/Rikai%20vocab.apkg?dl=0">Example set Rikai <i class="icon-download-alt"></i></a>.</p>
 <h2 id="set-up"><a class="toclink" href="#set-up">Set-up</a></h2>
 <p>The notetypes of the vocabulary you want sentences for will need a new field to contain these. On the desktop Anki application, press <kbd>CTRL-SHIFT-N</kbd>, or click <strong>Tools</strong> → <strong>Manage Note Types</strong>, to enter the notetype management screen. Select the notetype of the cards you’d like to contain example sentences and click <strong>fields</strong>.</p>
@@ -224,10 +225,10 @@
 <ul>
 <li><strong>Back Template</strong></li>
 </ul>
-<p>Add below’s HTML code at the bottom of your different cards’ back templates.</p>
+<p>Add below’s HTML code at the bottom of your different cards’ back templates. As pointed out in the comments, <code>lang="ja"</code> serves to render characters correctly, rather than in simplified Chinese due Han unification.</p>
 <div class="codehilite"><pre><span></span>{{#Examples}}
 <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"examples"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"examples"</span> <span class="na">lang</span><span class="o">=</span><span class="s">"ja"</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span> <span class="s">"title"</span><span class="p">&gt;</span>Sentences:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
 {{furigana:Examples}}
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -248,7 +249,9 @@
 <h2 id="set-up_1"><a class="toclink" href="#set-up_1">Set-up</a></h2>
 <p><strong>japanese_examples.py</strong></p>
 <p>We’ve set up our notes to show furigana on our vocabulary. This requires square brackets (eg. <code>気象庁[きしょうちょう]</code>). The anki plug-in for Japanese examples however does not support this out of the box. For that reason, I’ve added a single line of code that uses a regular expression to only use the contents up to the first square bracket as expression.</p>
-<div class="codehilite"><pre><span></span><span class="n">expression</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">r'^[^\[]+'</span><span class="p">,</span><span class="n">expression</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">searched</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">r'^[^\[]+'</span><span class="p">,</span><span class="n">expression</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">searched</span><span class="p">:</span>
+    <span class="n">expression</span> <span class="o">=</span> <span class="n">searched</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 <p>If you’d like to edit this yourself, add that piece of code to the <code>find_examples</code> class right after it defined <code>examples</code> as a list. it should be around line 139 (<code>def find_examples(expression, maxitems):</code> <code>examples = []</code>).</p>
 <p><strong>Real-Time_Import_for_use_with_the_Rikaisama_Firefox_Extension.py</strong></p>
@@ -274,7 +277,7 @@
 <hr/>
 <p><strong>Important!</strong> For this to work, you’ll need to make an edit in your note template’s layout. As usual enter the notetype management screen by pressing <kbd>CTRL-SHIFT-N</kbd>, or click <strong>Tools</strong> → <strong>Manage Note Types</strong>. Select the notetype of the cards you’d like to contain example sentences and click <strong>fields</strong>. From there, select the <code>Rikai</code> note, click on <strong>cards</strong> and add below’s CSS code to the bottom of the shared lay-out screen in the middle. </p>
 <div class="codehilite"><pre><span></span><span class="nn">#eng_sentence</span> <span class="p">{</span> <span class="nb">display</span><span class="o">:</span> <span class="nb">none</span><span class="p">;</span> <span class="p">}</span>
-<span class="nn">#eng_test</span><span class="nd">:hover</span> <span class="nn">#eng_sentence</span><span class="p">{</span> <span class="nb">display</span><span class="o">:</span> <span class="nb">inherit</span><span class="p">;</span> <span class="p">}</span>
+<span class="nn">#eng_test</span><span class="nd">:hover</span> <span class="nn">#eng_sentence</span><span class="p">{</span> <span class="nb">display</span><span class="o">:</span> <span class="nb">inherit</span><span class="p">;</span> <span class="nb">color</span><span class="o">:</span> <span class="m">#eb4c42</span><span class="p">;}</span>
 </pre></div>
 <h1 id="new-usage"><a class="toclink" href="#new-usage">New Usage</a></h1>
 <h2 id="contextualizing-existing-cards_1"><a class="toclink" href="#contextualizing-existing-cards_1">Contextualizing existing cards</a></h2>
@@ -332,16 +335,16 @@
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
-                <dt>Sat 15 October 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/10/anki-add-on-japanese-translations-for-korean-vocabulary/">Anki Add-on: Japanese translations for Korean vocabulary</a></dd>
-                <dt>Sun 02 October 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/10/a-quick-guide-on-using-anki-4-making-the-switch-j-j-definitions-in-your-vocab-cards/">A <del>Quick</del> Guide on Using Anki 4: Making the switch - J-J definitions in your vocab cards</a></dd>
-                <dt>Thu 08 September 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
                 <dt>Wed 07 September 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
-                <dt>Tue 06 September 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
+                <dt>Sun 02 October 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/10/a-quick-guide-on-using-anki-4-making-the-switch-j-j-definitions-in-your-vocab-cards/">A <del>Quick</del> Guide on Using Anki 4: Making the switch - J-J definitions in your vocab cards</a></dd>
+                <dt>Sat 15 October 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/10/anki-add-on-japanese-translations-for-korean-vocabulary/">Anki Add-on: Japanese translations for Korean vocabulary</a></dd>
+                <dt>Thu 08 September 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
+                <dt>Mon 17 October 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/10/narrating-newspapers-weekly-vlogging-as-a-japanese-renshu/">Narrating Newspapers: Weekly Vlogging as a Japanese 練習</a></dd>
             </dl>
             </div>
         <hr />
