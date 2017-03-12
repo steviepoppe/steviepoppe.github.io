@@ -12,10 +12,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://steviepoppe.net/blog/2016/10/narrating-newspapers-weekly-vlogging-as-a-japanese-renshu/</loc>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/</loc>
     <priority>0.5</priority>
   </url>
@@ -33,6 +29,10 @@
   </url>
   <url>
     <loc>https://steviepoppe.net/blog/2016/10/writing-a-musical/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://steviepoppe.net/blog/2016/10/narrating-newspapers-weekly-vlogging-as-a-japanese-renshu/</loc>
     <priority>0.5</priority>
   </url>
   <url>
