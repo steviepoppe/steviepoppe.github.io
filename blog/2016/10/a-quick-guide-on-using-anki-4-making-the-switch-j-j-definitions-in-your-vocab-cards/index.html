@@ -22,7 +22,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="You’ve been studying Japanese for a while now and reached a level of Japanese adequate enough to understand (simple) texts. Drilling new vocabulary has become a daily routine so entangled in your lifestyle you barely notice anymore. If you were to describe your current level of proficiency, you’d proudly present yourself as an intermediate level learner. Sounds familiar? Let’s take it a notch further by adding Japanese definitions to our ankisets and reduce our dependency on English definition crutches!">
+  <meta name="description" content="You’ve been studying Japanese for a while now and reached a level of Japanese adequate enough to understand (simple) texts. Drilling new vocabulary has become a daily routine so entangled in your lifestyle you barely notice anymore. If you were to describe your current level of proficiency, you’d proudly present yourself as an intermediate level learner. Sounds familiar? Let’s take it a notch further by adding Japanese definitions2 to our ankisets and reduce our dependency on English definition crutches!">
   <meta name="keywords" content="Anki, Rikaisama, Tutorial, Japanese, Japan, Study">
   <meta name="author" content="Stevie Poppe">
   <meta name="mobile-web-app-capable" content="yes">
@@ -193,7 +193,7 @@
             </nav>
         
 
-<p>You’ve been studying Japanese for a while now and reached a level of Japanese adequate enough to understand (simple) texts. Drilling new vocabulary has become a daily routine so entangled in your lifestyle you barely notice anymore. If you were to describe your current level of proficiency, you’d proudly present yourself as an intermediate level learner. Sounds familiar? Let’s take it a notch further by adding Japanese definitions<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">2</a></sup> to our ankisets and reduce our dependency on English definition crutches!</p>
+<p>You’ve been studying Japanese for a while now and reached a level of Japanese adequate enough to understand (simple) texts. Drilling new vocabulary has become a daily routine so entangled in your lifestyle you barely notice anymore. If you were to describe your current level of proficiency, you’d proudly present yourself as an intermediate level learner. Sounds familiar? Let’s take it a notch further by adding Japanese definitions<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">2</a></sup> to our ankisets and reduce our dependency on English definition crutches!</p>
 
 <p>If you’ve followed my <a href="#">previous tutorial</a> on adding Japanese example sentences to your vocabulary cards, this tutorial will feel very similar: we’ll install an Anki add-on, alter our card-layout to display the definitions in a fashionable manner, and finally bulk-edit our existing cards to actually add them. (This might be my first tutorial worthy of the header <strong>quick</strong>).</p>
 <h1 id="sanseido-add-on"><a class="toclink" href="#sanseido-add-on">Sanseido add-on</a></h1>
@@ -208,7 +208,7 @@
 <h2 id="anki-note-lay-out"><a class="toclink" href="#anki-note-lay-out">Anki Note Lay-out</a></h2>
 <p><strong>Lay-out</strong></p>
 <p>Add below’s CSS code to the shared style screen of your note’s card-type template.</p>
-<div class="codehilite"><pre><span></span><span class="nc">.title</span> <span class="p">{</span><span class="nb">font-size</span><span class="o">:</span><span class="m">16px</span><span class="p">;</span> <span class="nb">color</span><span class="o">:</span> <span class="m">#999999</span><span class="p">;}</span>
+<div class="codehilite"><pre><span></span><span class="p">.</span><span class="nc">title</span> <span class="p">{</span><span class="k">font-size</span><span class="p">:</span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span> <span class="k">color</span><span class="p">:</span> <span class="mh">#999999</span><span class="p">;}</span>
 </pre></div>
 <p><strong>Templates</strong></p>
 <p>Add the following code below the line displaying your vocab’s translation/English definition (eg. <code>{{Meaning}}</code>) . You’ll do this in <strong>Expression</strong> → <strong>Back Template</strong>, <strong>Meaning</strong> → <strong>Front Template</strong> and <strong>Audio</strong> → <strong>Back Template</strong>.</p>
@@ -222,7 +222,7 @@
 </pre></div>
 <hr/>
 <h2 id="bulk-edit"><a class="toclink" href="#bulk-edit">Bulk-edit</a></h2>
-<p>Open anki’s browser (by pressing <kbd>b</kbd> or clicking <strong>Browse</strong> from the main window). The left of this browser has an overview of all your different sets and tags. Select the deck or tag containing the cards you’d like to edit. Press <kbd>ctrl-a</kbd> to select all of those and click <strong>Edit</strong> → <strong>Regenerate Sanseido Expression</strong>. It will crawl the internet for each new definition so this might take quite a while.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">3</a></sup></p>
+<p>Open anki’s browser (by pressing <kbd>b</kbd> or clicking <strong>Browse</strong> from the main window). The left of this browser has an overview of all your different sets and tags. Select the deck or tag containing the cards you’d like to edit. Press <kbd>ctrl-a</kbd> to select all of those and click <strong>Edit</strong> → <strong>Regenerate Sanseido Expression</strong>. It will crawl the internet for each new definition so this might take quite a while.<sup id="fnref-2"><a class="footnote-ref" href="#fn-2">3</a></sup></p>
 <p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-browser2.jpg" style="width: 741px; height: auto; max-width: 100%;"/></p>
 <p><strong>Note</strong>: the plug-in expects your vocabulary to be contained in a field called <code>Word</code>. If your field is called <code>Expression</code>, you’ll have to edit this in the plug-in’s python file on your Anki’s add-on folder (eg. <code>C:\Users\your_username\Documents\Anki\addons\sanseidoDefsForAnki.py</code>). Open it with your text-editor of choice (notepad is fine) and change <code>expressionField = 'Word'</code> to <code>expressionField = 'Expression'</code>.</p>
 <p><strong>EDIT</strong>: as of July 2017, Sanseido’s domain changed from .net to .biz. As mentioned in the comments section, you’ll have to manually edit <strong>sanseidoDefsForAnki.py</strong>, search for <code>sanseido.net</code> and replace it with <code>sanseido.biz</code> for it to work. Alternatively, replace the file with the one on my github repository linked below.</p>
@@ -232,7 +232,7 @@
 <h2 id="set-up_1"><a class="toclink" href="#set-up_1">Set-up</a></h2>
 <p><strong>sanseidoDefsForAnki.py</strong></p>
 <p>We’ve set up our notes to show furigana on our vocabulary. This requires square brackets (eg. <code>気象庁[きしょうちょう]</code>). The anki plug-in for Sanseido definitions however does not support this out of the box. For that reason, I’ve added a single line of code that uses a regular expression to only use the contents up to the first square bracket as expression.</p>
-<div class="codehilite"><pre><span></span><span class="n">term</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">r'^[^\[]+'</span><span class="p">,</span><span class="n">term</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">term</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'^[^\[]+'</span><span class="p">,</span><span class="n">term</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 <p>If you’d like to edit this yourself, add below’s code as first line in the <code>fetchDef</code> class - it should be around line 27 (<code>def fetchDef(term):</code>).</p>
 <p><strong>Real-Time_Import_for_use_with_the_Rikaisama_Firefox_Extension.py</strong></p>
@@ -269,14 +269,14 @@
 <div class="footnote">
 <hr/>
 <ol>
-<li id="fn:footnote">
-<p>Image taken from the 2012 Japanese animated film Wolf Children by Mamoru Hosoda, used under Fair Use doctrine. <a class="footnote-backref" href="#fnref:footnote" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+<li id="fn-footnote">
+<p>Image taken from the 2012 Japanese animated film Wolf Children by Mamoru Hosoda, used under Fair Use doctrine. <a class="footnote-backref" href="#fnref-footnote" title="Jump back to footnote 1 in the text">↩</a></p>
 </li>
-<li id="fn:1">
-<p>Google <code>Anki JJ</code> and you’ll come across dozens of posts describing the “<em>leap from the J-E to J-J dictionary</em>”. It appears to be one of the more popular studying methods amongst self learners online, and is highly blogged about on such blogs as <a href="http://japaneselevelup.com/beating-the-anki-j-j-branches-1-earn-your-battle-scars/">Japaneselevelup.com</a> or on the koohii.com forums. <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 2 in the text">↩</a></p>
+<li id="fn-1">
+<p>Google <code>Anki JJ</code> and you’ll come across dozens of posts describing the “<em>leap from the J-E to J-J dictionary</em>”. It appears to be one of the more popular studying methods amongst self learners online, and is highly blogged about on such blogs as <a href="http://japaneselevelup.com/beating-the-anki-j-j-branches-1-earn-your-battle-scars/">Japaneselevelup.com</a> or on the koohii.com forums. <a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 2 in the text">↩</a></p>
 </li>
-<li id="fn:2">
-<p>it takes a couple of seconds for one card. At time of writing, I had 20761 cards based on the Rikai note type; parsing these took about an hour and a half. <a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
+<li id="fn-2">
+<p>it takes a couple of seconds for one card. At time of writing, I had 20761 cards based on the Rikai note type; parsing these took about an hour and a half. <a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
 </ol>
 </div>
@@ -301,16 +301,16 @@
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
-                <dt>Sat 17 September 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">A <del>Quick</del> Guide on Using Anki 3: contextualize your vocab cards with example sentences</a></dd>
                 <dt>Sat 15 October 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/10/anki-add-on-japanese-translations-for-korean-vocabulary/">Anki Add-on: Japanese translations for Korean vocabulary</a></dd>
+                <dt>Sat 17 September 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">A <del>Quick</del> Guide on Using Anki 3: contextualize your vocab cards with example sentences</a></dd>
                 <dt>Thu 08 September 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
                 <dt>Wed 07 September 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
-                <dt>Mon 17 October 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/10/narrating-newspapers-weekly-vlogging-as-a-japanese-renshu/">Narrating Newspapers: Weekly Vlogging as a Japanese 練習</a></dd>
+                <dt>Tue 19 September 2017</dt>
+                <dd><a href="https://steviepoppe.net/blog/2017/09/going-abroad-as-a-research-student/">Going Abroad as a Research Student</a></dd>
             </dl>
             </div>
         <hr />

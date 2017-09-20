@@ -22,7 +22,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Due to my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the rest of my design. To target specifically Japanese text, I wrote a small Markdown-Python extension for use in static blog generators as Jekyll and Pelican (or pretty much anything that utilizes Markdown-Python to parse Markdown in HTML) and embed such text in a span with the language attribute set to Japanese. The added, and probably more important bonus, aside from styling and semantic reasons, is that this method counters the negative effects of Han unification in so-called CJK-languages.">
+  <meta name="description" content="Due to my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the rest of my design.1 To target specifically Japanese text, I wrote a small Markdown-Python extension for use in static blog generators as Jekyll and Pelican (or pretty much anything that utilizes Markdown-Python to parse Markdown in HTML) and embed such text in a span with the language attribute set to Japanese. The added, and probably more important bonus, aside from styling and semantic reasons, is that this method counters the negative effects of Han unification in so-called CJK-languages.">
   <meta name="keywords" content="fonts, Japanese, markdown, pelican, python">
   <meta name="author" content="Stevie Poppe">
   <meta name="mobile-web-app-capable" content="yes">
@@ -184,10 +184,10 @@
             </nav>
         
 
-<p>Due to my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the rest of my design.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> To target specifically Japanese text, I wrote a small Markdown-Python extension for use in static blog generators as Jekyll and Pelican (or pretty much anything that utilizes Markdown-Python to parse Markdown in HTML) and embed such text in a span with the language attribute set to Japanese. The added, and probably more important bonus, aside from styling and semantic reasons, is that this method counters the negative effects of <a href="https://en.wikipedia.org/wiki/Han_unification">Han unification</a> in so-called CJK-languages.</p>
+<p>Due to my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the rest of my design.<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> To target specifically Japanese text, I wrote a small Markdown-Python extension for use in static blog generators as Jekyll and Pelican (or pretty much anything that utilizes Markdown-Python to parse Markdown in HTML) and embed such text in a span with the language attribute set to Japanese. The added, and probably more important bonus, aside from styling and semantic reasons, is that this method counters the negative effects of <a href="https://en.wikipedia.org/wiki/Han_unification">Han unification</a> in so-called CJK-languages.</p>
 
 <h1 id="download"><a class="toclink" href="#download">Download</a></h1>
-<p>I’ve added the extension on it’s <a href="https://github.com/steviepoppe/lang_ja_span_markdown">own repository</a> on my github for anyone interested, but as it serves it’s purpose for me as-is I have no further interest in maintaining it at the moment.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></p>
+<p>I’ve added the extension on it’s <a href="https://github.com/steviepoppe/lang_ja_span_markdown">own repository</a> on my github for anyone interested, but as it serves it’s purpose for me as-is I have no further interest in maintaining it at the moment.<sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup></p>
 <h1 id="installation"><a class="toclink" href="#installation">Installation</a></h1>
 <p>Copy the <code>japanese.py</code> script into your python-markdown extension directory.</p>
 <p>If you’re using <a href="http://docs.getpelican.com/en/latest/">Pelican</a> as static site generator, open your project’s <code>pelicanconf.py</code> and add <code>'japanese'</code> to the <code>MD_EXTENSIONS</code> list:</p>
@@ -200,18 +200,18 @@
 <p>will output</p>
 <div class="codehilite"><pre><span></span>    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">lang</span><span class="o">=</span><span class="s">"ja"</span><span class="p">&gt;</span>読書クラブ<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </pre></div>
-<p><strong>Example 1</strong> (fonts): just compare <span style="font-size: 135%;"><span lang="ja"><ruby><rb>読書</rb><rp>(</rp><rt>どくしょ</rt><rp>)</rp></ruby>クラブ</span></span> (custom) to <span style="font-size: 130%;"><ruby><rb>読書</rb><rp>(</rp><rt>どくしょ</rt><rp>)</rp></ruby>クラブ</span> (Meiryo) to <span style='font-size: 130%; font-family: "MS Gothic";'><ruby><rb>読書</rb><rp>(</rp><rt>どくしょ</rt><rp>)</rp></ruby>クラブ</span> (MS Gothic default).<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></p>
-<p><strong>Example 2</strong> (unihan): compare the Chinese to Japanese characters: <span lang="zh" style="font-size: 130%; font-family: 'Quicksand',sans-serif;">隆</span> (<span lang="ja" style="font-size: 135%;">隆</span>), <span lang="zh" style="font-size: 130%; font-family: 'Quicksand',sans-serif;">誤</span> (<span lang="ja" style="font-size: 135%;">誤</span>), <span lang="zh" style="font-size: 130%; font-family: 'Quicksand',sans-serif;">直</span> (<span lang="ja" style="font-size: 135%;">直</span>).<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></p>
+<p><strong>Example 1</strong> (fonts): just compare <span style="font-size: 135%;"><span lang="ja"><ruby><rb>読書</rb><rp>(</rp><rt>どくしょ</rt><rp>)</rp></ruby>クラブ</span></span> (custom) to <span style="font-size: 130%;"><ruby><rb>読書</rb><rp>(</rp><rt>どくしょ</rt><rp>)</rp></ruby>クラブ</span> (Meiryo) to <span style='font-size: 130%; font-family: "MS Gothic";'><ruby><rb>読書</rb><rp>(</rp><rt>どくしょ</rt><rp>)</rp></ruby>クラブ</span> (MS Gothic default).<sup id="fnref-3"><a class="footnote-ref" href="#fn-3">3</a></sup></p>
+<p><strong>Example 2</strong> (unihan): compare the Chinese to Japanese characters: <span lang="zh" style="font-size: 130%; font-family: 'Quicksand',sans-serif;">隆</span> (<span lang="ja" style="font-size: 135%;">隆</span>), <span lang="zh" style="font-size: 130%; font-family: 'Quicksand',sans-serif;">誤</span> (<span lang="ja" style="font-size: 135%;">誤</span>), <span lang="zh" style="font-size: 130%; font-family: 'Quicksand',sans-serif;">直</span> (<span lang="ja" style="font-size: 135%;">直</span>).<sup id="fnref-4"><a class="footnote-ref" href="#fn-4">4</a></sup></p>
 <h1 id="styling"><a class="toclink" href="#styling">Styling</a></h1>
-<p>Although it’s a bit of a risk performance-wise, I’m quite a fan of Google’s free webfonts.<sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup> Due the complexity of the Japanese character-set, development on these have been slow<sup id="fnref:6"><a class="footnote-ref" href="#fn:6" rel="footnote">6</a></sup>, but <a href="https://en.wikipedia.org/wiki/Noto_fonts">Google’s Noto Font</a> is getting quite performant and with the Japanese font set supporting near 7000 characters, it should pose no problem for most webprojects. Since it works better, typography-wise, with the rest of my fonts, I use this one over fonts as Meiryo that’re more widespread across all platforms.</p>
+<p>Although it’s a bit of a risk performance-wise, I’m quite a fan of Google’s free webfonts.<sup id="fnref-5"><a class="footnote-ref" href="#fn-5">5</a></sup> Due the complexity of the Japanese character-set, development on these have been slow<sup id="fnref-6"><a class="footnote-ref" href="#fn-6">6</a></sup>, but <a href="https://en.wikipedia.org/wiki/Noto_fonts">Google’s Noto Font</a> is getting quite performant and with the Japanese font set supporting near 7000 characters, it should pose no problem for most webprojects. Since it works better, typography-wise, with the rest of my fonts, I use this one over fonts as Meiryo that’re more widespread across all platforms.</p>
 <p>Using the CSS below, I ensure max compatibility by using Meiryo and others as fallback if the page can’t connect to Google’s font API.</p>
-<div class="codehilite"><pre><span></span><span class="k">@import</span> <span class="nt">url</span><span class="o">(</span><span class="nt">https</span><span class="o">://</span><span class="nt">fonts</span><span class="nc">.googleapis.com</span><span class="o">/</span><span class="nt">earlyaccess</span><span class="o">/</span><span class="nt">notosansjapanese</span><span class="nc">.css</span><span class="o">)</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="p">@</span><span class="k">import</span> <span class="nt">url</span><span class="o">(</span><span class="nt">https</span><span class="o">://</span><span class="nt">fonts</span><span class="p">.</span><span class="nc">googleapis</span><span class="p">.</span><span class="nc">com</span><span class="o">/</span><span class="nt">earlyaccess</span><span class="o">/</span><span class="nt">notosansjapanese</span><span class="p">.</span><span class="nc">css</span><span class="o">)</span><span class="p">;</span>
 
     <span class="o">[</span><span class="nt">lang</span><span class="o">=</span><span class="s2">"ja"</span><span class="o">]</span> <span class="p">{</span>
-      <span class="nb">font-family</span><span class="o">:</span> <span class="s2">"Noto Sans Japanese"</span><span class="o">,</span> <span class="s2">"メイリオ"</span><span class="o">,</span><span class="s2">"Meiryo"</span><span class="o">,</span><span class="s2">"ヒラギノ角ゴ Pro W3"</span><span class="o">,</span>
-      <span class="s2">"Hiragino Kaku Gothic Pro"</span><span class="o">,</span><span class="s2">"ＭＳ Ｐゴシック"</span><span class="o">,</span><span class="s2">"MS PGothic"</span><span class="o">,</span><span class="n">Sans</span><span class="o">-</span><span class="n">Serif</span><span class="p">;</span>
-      <span class="nb">font-weight</span><span class="o">:</span> <span class="m">100</span><span class="p">;</span>
-      <span class="nb">font-size</span><span class="o">:</span> <span class="m">95%</span><span class="p">;</span>
+      <span class="k">font-family</span><span class="p">:</span> <span class="s2">"Noto Sans Japanese"</span><span class="p">,</span> <span class="s2">"メイリオ"</span><span class="p">,</span><span class="s2">"Meiryo"</span><span class="p">,</span><span class="s2">"ヒラギノ角ゴ Pro W3"</span><span class="p">,</span>
+      <span class="s2">"Hiragino Kaku Gothic Pro"</span><span class="p">,</span><span class="s2">"ＭＳ Ｐゴシック"</span><span class="p">,</span><span class="s2">"MS PGothic"</span><span class="p">,</span><span class="n">Sans-Serif</span><span class="p">;</span>
+      <span class="k">font-weight</span><span class="p">:</span> <span class="mi">100</span><span class="p">;</span>
+      <span class="k">font-size</span><span class="p">:</span> <span class="mi">95</span><span class="kt">%</span><span class="p">;</span>
     <span class="p">}</span>
 </pre></div>
 <h1 id="further-reading"><a class="toclink" href="#further-reading">Further reading</a></h1>
@@ -224,23 +224,23 @@
 <div class="footnote">
 <hr/>
 <ol>
-<li id="fn:1">
-<p>This is less so on mobile devices. Most Windows web browsers default to MS Gothic, lacking anti-aliasing found in newer fonts as Meiryo, and require some manual adjustments. For maximal compatibility, I prefer to do this in-site. If no further customization is necessary, just adding Meiryo as fallback font in the page’s font-family is sufficient, eg. <code>font-family: Arial, Helvetica, Meiryo,sans-serif;</code>. <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+<li id="fn-1">
+<p>This is less so on mobile devices. Most Windows web browsers default to MS Gothic, lacking anti-aliasing found in newer fonts as Meiryo, and require some manual adjustments. For maximal compatibility, I prefer to do this in-site. If no further customization is necessary, just adding Meiryo as fallback font in the page’s font-family is sufficient, eg. <code>font-family: Arial, Helvetica, Meiryo,sans-serif;</code>. <a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">↩</a></p>
 </li>
-<li id="fn:2">
-<p>A possible extension could be one where different regular expressions test for different languages and thus deliver different lang attributes. If I find the need for that on my own blog (eg. Korean), I’ll update this.  <a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">↩</a></p>
+<li id="fn-2">
+<p>A possible extension could be one where different regular expressions test for different languages and thus deliver different lang attributes. If I find the need for that on my own blog (eg. Korean), I’ll update this.  <a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text">↩</a></p>
 </li>
-<li id="fn:3">
-<p>For furigana support I use a slightly editted version of an existing MD extension available at <a href="https://github.com/djfun/furigana_markdown">https://github.com/djfun/furigana_markdown</a>. <a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
+<li id="fn-3">
+<p>For furigana support I use a slightly editted version of an existing MD extension available at <a href="https://github.com/djfun/furigana_markdown">https://github.com/djfun/furigana_markdown</a>. <a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
-<li id="fn:4">
-<p>If a multilingual page uses only Japanese, it’s sufficient to put a Japanese font as fallback in the body’s font-family. If occasionally Chinese or Korean characters are used as well, this approach, aside from semantic benefits, remains more recommended. <a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">↩</a></p>
+<li id="fn-4">
+<p>If a multilingual page uses only Japanese, it’s sufficient to put a Japanese font as fallback in the body’s font-family. If occasionally Chinese or Korean characters are used as well, this approach, aside from semantic benefits, remains more recommended. <a class="footnote-backref" href="#fnref-4" title="Jump back to footnote 4 in the text">↩</a></p>
 </li>
-<li id="fn:5">
-<p>I use <a href="https://fonts.google.com/specimen/Quicksand">Quicksand</a> and <a href="https://fonts.google.com/specimen/Poiret+One">Poirot One</a> for all my latin-based text on this page, for example. <a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text">↩</a></p>
+<li id="fn-5">
+<p>I use <a href="https://fonts.google.com/specimen/Quicksand">Quicksand</a> and <a href="https://fonts.google.com/specimen/Poiret+One">Poirot One</a> for all my latin-based text on this page, for example. <a class="footnote-backref" href="#fnref-5" title="Jump back to footnote 5 in the text">↩</a></p>
 </li>
-<li id="fn:6">
-<p>Adobe’s competing, subscription-based Typekit apparently offers a wider range of Japanese webfonts for anyone interested: <a href="https://typekit.com/fonts?script=japanese">https://typekit.com/fonts?script=japanese</a>. <a class="footnote-backref" href="#fnref:6" rev="footnote" title="Jump back to footnote 6 in the text">↩</a></p>
+<li id="fn-6">
+<p>Adobe’s competing, subscription-based Typekit apparently offers a wider range of Japanese webfonts for anyone interested: <a href="https://typekit.com/fonts?script=japanese">https://typekit.com/fonts?script=japanese</a>. <a class="footnote-backref" href="#fnref-6" title="Jump back to footnote 6 in the text">↩</a></p>
 </li>
 </ol>
 </div>
@@ -267,14 +267,14 @@
             <dl class="dl-horizontal">
                 <dt>Thu 25 August 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/08/pelican-plugin-css-only-footnote-pop-up/">Pelican Plugin: CSS-only footnote pop-up</a></dd>
+                <dt>Tue 23 August 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/08/hello-world-about-this-blog/">Hello World - About This Blog</a></dd>
+                <dt>Tue 19 September 2017</dt>
+                <dd><a href="https://steviepoppe.net/blog/2017/09/going-abroad-as-a-research-student/">Going Abroad as a Research Student</a></dd>
                 <dt>Mon 17 October 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/10/narrating-newspapers-weekly-vlogging-as-a-japanese-renshu/">Narrating Newspapers: Weekly Vlogging as a Japanese 練習</a></dd>
-                <dt>Wed 07 September 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
-                <dt>Sat 17 September 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">A <del>Quick</del> Guide on Using Anki 3: contextualize your vocab cards with example sentences</a></dd>
-                <dt>Sun 02 October 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/10/a-quick-guide-on-using-anki-4-making-the-switch-j-j-definitions-in-your-vocab-cards/">A <del>Quick</del> Guide on Using Anki 4: Making the switch - J-J definitions in your vocab cards</a></dd>
+                <dt>Sat 15 October 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/10/anki-add-on-japanese-translations-for-korean-vocabulary/">Anki Add-on: Japanese translations for Korean vocabulary</a></dd>
             </dl>
             </div>
         <hr />
