@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <!-- Stylesheets -->
+  <link href="https://steviepoppe.net/theme/css/bootstrap.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/nest.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/icons.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/pygment.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+
+  <link href="https://steviepoppe.net//theme/css/magnific-popup.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/admonition.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/keys.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/slick.css" rel="stylesheet">
+  <style>
+    @import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+    @import 'https://fonts.googleapis.com/css?family=Poiret+One|Quicksand';
+  </style>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js">
+  </script>
+  <!-- /Stylesheets -->
+
+  <script type="text/javascript">
+    var host = "steviepoppe.net";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+      window.location.protocol = "https";
+  </script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="This short series of blogs chronicles the bare-bones required to conduct a basic form of social media analysis on corpora of (Japanese) Tweets. It is primarily intended for undergraduate and graduate students whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle. The purpose of this third blog and the next, fourth blog is to introduce the reader to the concept of natural language processing (NLP), to the techniques available for processing Japanese texts, and to some basic forms of quantitative content analysis that could be performed with that processed data. Concretely, in this third blog we will: Learn about natural language processing in a Japanese context, Set up the morphological analyzer MeCab and the neologism dictionary mecab-ipadic-NEologd, Install and set-up the quantitative content analysis tool KH Coder, Perform a rudimentary content analysis on a corpus of tweets collected with methods described in the previous two blogs. Although this blog thus assumes that the reader has read part one and two of this series, it should also serve as a solid stand-alone introduction to setting up MeCab and the IPADic NEologd dictionary (as of writing still pretty much the de-facto canonical tools in academic scholarship applying a form of Japanese computational linguistics) and combining them with KH Coder. Due to the nature of the field, parts of this tutorial will be rather technical and rely on having some basic experience working with the Windows command prompt or MacOS Terminal, but despite the complexity of the matter, there shouldn’t be much of a technical difficulty gap compared to the previous tutorials. Japanese Natural Language Processing ‘Natural language’ refers to the usage of language that has developed naturally over time among humans, encompassing methods of communication such as speech, written text and signaling. Natural Language Processing, then, is the field of developing how computers can understand and process such use of language in a cognitive way. Applications of NLP are seen anywhere ranging from AI assistants (such as Siri, Alexa or Google Assistant), to automatic translation (e.g. Google Translate), targeted advertising, and even in health-care. An important preliminary step in processing natural language computationally is to tokenize of language (also referred to as word segmentation). In other words, to break down language into smaller segments …">
+  <meta name="keywords" content="Big Data, Digital Humanities, Japanese, Python, Tutorial,  Twitter, Japanese, Japan, Study">
+  <meta name="author" content="Stevie Poppe">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="shortcut icon" sizes="196x196" href="https://steviepoppe.net/favicon-192.png">
+
+<link rel="icon" href="https://steviepoppe.net/favicon-32.png" sizes="32x32">
+<link rel="icon" href="https://steviepoppe.net/favicon-96.png" sizes="96x96">
+<link rel="icon" href="https://steviepoppe.net/favicon-128.png" sizes="128x128">
+<link rel="icon" href="https://steviepoppe.net/favicon-192.png" sizes="192x192">
+
+  <title>A Quick Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 3: Natural Language Processing With MeCab, Neologd and KH Coder | Onoreto</title>
+<link rel="canonical" href="https://steviepoppe.net/blog/2020/06/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-3/">
+
+
+<!--               <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+              <script>
+                 WebFont.load({
+                  google: {
+                    families: ['Poiret+One', 'Quicksand']
+                  }
+                });
+              </script> -->
+
+
+
+              <!-- RSS Feeds -->
+              <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
+              <link href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
+              <link href="http://localhost:8000/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
+              <!-- /RSS Feeds -->
+
+              <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <![endif]-->
+
+
+
+          <link rel="author" href="https://plus.google.com/112676714486792414615"/>
+   
+
+<meta name="robots" content="index">        </head>
+
+        <body>
+
+    <!-- OVERLAY MENU -->
+    <div id="overlay-menu" class="overlay-menu">
+
+      <a href="#" id="overlay-menu-hide" class="navigation-hide"><button title="Close (Esc)" type="button" class="mfp-close">×</button></a>
+
+      <div class="overlay-menu-inner">
+        <nav class="overlay-menu-nav">
+
+          <ul id="overflow-nav">
+            <li>
+              <a class="link" href="https://steviepoppe.net"><i class="icon-home icon-menu"></i>Home</a>
+            </li>
+
+            <li class="slidedown"><a href="#"><i class="icon-folder-close icon-menu"></i>Categories</a>
+              <ul>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+              </ul>
+            </li>
+
+<li >
+                            <a class="link" href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a class="link" href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>          </ul>
+        </nav>
+      </div>
+
+      <div class="overlay-navigation-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+                          <ul class="socialnav2 social-icons-footer" style="width: auto;display: inline-block;float: none;">
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          </div>
+            <div class="col-sm-12 text-center">
+              <p class="copyright font-alt m-b-0">(ɔ) Stevie Poppe 2016 - 2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /OVERLAY MENU -->
+
+          <div id="wrapper">
+
+            <div class="master scrollingnav">
+              <div class="head-container">
+
+                <header class="page-header">
+                  <a href="https://steviepoppe.net" class="avatar-container pull-left show-overlay toggle-menu" title="Menu">
+                    <div class="avatar">
+                      <div class="side"><img src="https://steviepoppe.net/images/logo2.png" class="img-responsive"/></div>
+                    </div>
+                  </a>
+                  <h1 id="onoreto" title="Onoreto" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">noreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
+                </header>
+
+                <div id="nav-wrapper">
+                  <nav class="navbar navbar-default scrollingnav" id="nav">
+
+                    <div class="navbar-collapse" id="steviesmenubar">
+                      <div style="float: left;;margin-left: 20px;">
+                        <ul class="nav navbar-nav">
+                          <li id="smallicon">
+<a class="small-nav-menu toggle-menu" href="#" title="Menu" style="color:unset;background-color:unset;transition: none;padding-right: 0px;">
+<img src="https://steviepoppe.net/images/logo2.png" style="border-radius: 50%;height: 25px;margin-top: -5px;margin-right: 5px;">
+</a>
+</li>
+<li class=" ">
+                            <a  href="/"><i class="icon-home icon-menu"></i>Blog</a>
+                            </li><li class=" dropdown">
+                            <a  class="dropdown-toggle" data-target="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="/blog/category/"><i class="icon-folder-close icon-menu"></i>Categories                              <span class="caret"></span>
+</a>
+                              <ul class="dropdown-menu" id="menu1" aria-labelledby="drop4"> 
+                                <li><a href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                                <li><a href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li> 
+                                <li><a href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+                              </ul> 
+                            </li><li >
+                            <a href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>                          </ul>
+                        </div>
+                        <div class="social">
+                          <ul class="socialnav socialonly social-icons-footer collapse">
+
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                          </ul>
+                          <ul class="socialnav rssonly social-icons-footer">
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" >
+                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input" style="width: 130px;"></form>
+                          </div>
+
+
+                        </div>
+
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div id="main">
+    <div class="container content padding-40 articleshadow" itemscope itemtype="http://schema.org/Article">
+    <div class="container header-wrapper banner">
+        <div class="row" style="background: linear-gradient(rgba(6, 6, 6, 0.60), rgba(0, 0, 0, 0.60)), url('https://steviepoppe.net/images/anki_header2.jpg'); background-position: center; background-size: cover;">
+              <div class="col-lg-12">
+                  <div class="header-content center">
+                      <h1 class="header-title nocount"><span itemprop="name">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 3: Natural Language Processing With MeCab, Neologd and KH Coder</span><sup id="fnref-footnote"><a class="footnote-ref imagesource" href="#fn-footnote" rel="footnote">1</a></sup></h1>
+                      <p class="header-date"><span itemprop="datePublished" content="2016-09-07">Fri 05 June 2020</span>, in category <a href="https://steviepoppe.net/blog/category/studies/"><span itemprop="articleSection">Studies</span></a></p>
+                      <div class="header-underline"></div>
+                      <div class="clearfix"></div>
+                      <p class="pull-right header-tags">
+                          <span class="icon-tags" aria-hidden="true"></span>
+<a href="https://steviepoppe.net/blog/tags/big-data/">Big Data</a>, <a href="https://steviepoppe.net/blog/tags/digital-humanities/">Digital Humanities</a>, <a href="https://steviepoppe.net/blog/tags/japanese/">Japanese</a>, <a href="https://steviepoppe.net/blog/tags/python/">Python</a>, <a href="https://steviepoppe.net/blog/tags/tutorial/">Tutorial</a>, <a href="https://steviepoppe.net/blog/tags/twitter/">Twitter</a>                      </p>
+                  </div>
+              </div>
+        </div>
+    </div>
+    <div class="container-main" itemprop="articleBody">
+<!--         <h1 style="text-align: center;" class="nocount">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 3: Natural Language Processing With MeCab, Neologd and KH Coder</h1>
+ -->
+            <nav class="toc-container">
+              <input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none">
+            <p class="toc_title">Table of Contents<span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></p>
+            <div class="toc">
+<ul>
+<li><a href="#japanese-natural-language-processing">Japanese Natural Language Processing</a></li>
+<li><a href="#japanese-morphological-analyzing">Japanese morphological analyzing</a><ul>
+<li><a href="#mecab-installation">MeCab Installation</a></li>
+<li><a href="#mecab-ipadic-neologd-installation-optional">mecab-ipadic-NEologd installation (optional)</a></li>
+<li><a href="#mecab-user-dictionary-optional">mecab user dictionary (optional)</a></li>
+<li><a href="#normalizing-japanese-text-with-neologdn-optional">Normalizing Japanese text with Neologdn (optional)</a></li>
+</ul>
+</li>
+<li><a href="#kh-coder">KH Coder</a><ul>
+<li><a href="#preparing-tweet-content-python">Preparing tweet content: python</a></li>
+<li><a href="#using-kh-coder">Using KH Coder</a><ul>
+<li><a href="#stop-words-optional">Stop-words (optional)</a></li>
+<li><a href="#analysis">Analysis</a><ul>
+<li><a href="#frequency-list">Frequency List</a></li>
+<li><a href="#co-occurrence-network">Co-occurrence network</a></li>
+<li><a href="#kwic-concordance">KWIC concordance</a></li>
+<li><a href="#coding-topics">Coding topics</a></li>
+</ul>
+</li>
+<li><a href="#to-do">To do</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#wait-there-is-more">Wait! There is more!</a></li>
+</ul>
+</div>
+            </nav>
+        <p><em>This short series of blogs chronicles the bare-bones required to conduct a basic form of social media analysis on corpora of (Japanese) Tweets. It is primarily intended for </em><em>undergraduate and graduate students</em><em> whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle.</em></p>
+
+
+<p>The purpose of this third blog and the next, fourth blog is to introduce the reader to the concept of natural language processing (NLP), to the techniques available for processing Japanese texts, and to some basic forms of quantitative content analysis that could be performed with that processed data. Concretely, in this third blog we will:</p>
+<ul>
+<li><i class="icon-check"></i>  Learn about natural language processing in a Japanese context,</li>
+<li><i class="icon-check"></i>  Set up the morphological analyzer <strong>MeCab</strong> and the neologism dictionary <strong>mecab-ipadic-NEologd</strong>,</li>
+<li><i class="icon-check"></i>  Install and set-up the quantitative content analysis tool KH Coder,</li>
+<li><i class="icon-check"></i>  Perform a rudimentary content analysis on a corpus of tweets collected with methods described in the previous two blogs.</li>
+</ul>
+<p>Although this blog thus assumes that the reader has read <a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/">part one</a> and <a href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/">two</a> of this series, it should also serve as a solid stand-alone introduction to setting up MeCab and the IPADic NEologd dictionary (as of writing still pretty much the de-facto canonical tools in academic scholarship applying a form of Japanese computational linguistics) and combining them with KH Coder.</p>
+<p>Due to the nature of the field, parts of this tutorial will be rather technical and rely on having some basic experience working with the Windows command prompt or MacOS Terminal, but despite the complexity of the matter, there shouldn’t be much of a technical difficulty gap compared to the previous tutorials.<sup><a class="footnote-ref" href="#fn-1" id="fnref-1" rel="footnote">2</a></sup></p>
+
+<h1 id="japanese-natural-language-processing"><a class="toclink" href="#japanese-natural-language-processing">Japanese Natural Language Processing</a></h1>
+<p>‘Natural language’ refers to the usage of language that has developed naturally over time among humans, encompassing methods of communication such as speech, written text and signaling. Natural Language Processing, then, is the field of developing how computers can understand and process such use of language in a cognitive way. Applications of NLP are seen anywhere ranging from AI assistants (such as Siri, Alexa or Google Assistant), to automatic translation (e.g. Google Translate), targeted advertising, and even in health-care.<sup><a class="footnote-ref" href="#fn-2" id="fnref-2" rel="footnote">3</a></sup></p>
+<p>An important preliminary step in processing natural language computationally is to <strong>tokenize</strong> of language (also referred to as <strong>word segmentation</strong>). In other words, to break down language into smaller segments (tokens), with morphemes being the smallest unit of language having grammatical meaning that can be broken down to. The following step in the NLP pipeline is then to identify the grammatical and semantic meaning of each morpheme within the context of the text it belongs to; a process called <strong>part-of-speech tagging</strong> (POS tagging). This is easier to do when handling languages with clear cut semantic borders such as punctuation and space boundaries, but more challenging when dealing with ambiguous, agglutinative and non-segmented languages (such as Japanese).</p>
+<p>Due to the nature of the Japanese language, those two steps commonly go hand in hand under the header of <strong>morphological analysis</strong> and are done at the hand of so-called dictionaries; corpora of texts with a part of speech tag-set processed by hand and/or through machine learning methods. There is some debate to the development of those dictionaries as well, depending on how coarse or fine-grained tokenization tags should be (i.e. should <em>sakanafuraiteishoku</em> 魚フライ定食 be seen as one token, as a combination of <em>sakanafurai</em> 魚フライ and <em>teishoku</em> 定食, or as <em>sakana</em> 魚, <em>furai</em> フライ and <em>teishoku</em> 定食?), as well as what rules are applied, and which sources should be used for new dictionary entries.<sup><a class="footnote-ref" href="#fn-3" id="fnref-3" rel="footnote">4</a></sup> Depending on the selected dictionary, different Japanese morphological analysis tools will then apply different POS tagging techniques<sup><a class="footnote-ref" href="#fn-4" id="fnref-4" rel="footnote">5</a></sup> – probabilistic methods being the most common<sup><a class="footnote-ref" href="#fn-5" id="fnref-5" rel="footnote">6</a></sup> – in calculating boundaries and contextual tags of a language sequence.</p>
+<p>Having tokenized and POS-tagged texts (which can be further preprocessed with methods such as stop-word removal), we can now employ a variety of computer-assisted quantitative content and text analysis techniques suitable for social media, ranging from a very rudimentary keyword frequency analysis, to topic modeling based on coding tables, sentiment analysis and narrative network theory analysis (which will be demonstrated over the next few articles). Although there are several NLP frameworks available that offer limited support for the Japanese language (such as NLTK and SpaCy), it is crucial that the initial process of morphological analysis is tailored to our needs. This blog article will therefore expand on a set-up adequate for tackling social media content such as tweets.</p>
+<h1 id="japanese-morphological-analyzing"><a class="toclink" href="#japanese-morphological-analyzing">Japanese morphological analyzing</a></h1>
+<p>Despite being discontinued for almost a decade, and although rapid developments have being made in Japanese NLP over the past few years, the morphological analyzer <strong>MeCab</strong> remains as of writing the fastest, most frequently used Japanese tokenizer | POS-tagger, and the only option we can use in combination with KH Coder. There are, however, several other highly promising Japanese NLP options in active<sup><a class="footnote-ref" href="#fn-6" id="fnref-6" rel="footnote">7</a></sup> development that should not be neglected (and for which I will write a more complete comparison of in the near future):</p>
+<ul>
+<li><strong><a href="https://mocobeta.github.io/janome/">Janome</a></strong> is a pure Python MeCab alternative with a decent post-processing analyzer framework and <a href="https://mocobeta.github.io/janome/en/">English language documentation</a>.<sup><a class="footnote-ref" href="#fn-7" id="fnref-7" rel="footnote">8</a></sup></li>
+<li><strong><a href="https://megagonlabs.github.io/ginza/">Ginza</a></strong> is an all-encompassing Japanese NLP library based on the NLP library <a href="https://spacy.io/">spaCy</a>, the <a href="https://universaldependencies.org/introduction.html">Universal Dependencies</a> cross-linguistic annotation convention, and the Japanese morphological analyzer <a href="https://github.com/WorksApplications/SudachiPy">SudachiPy</a> (the latter, a python flavor of <a href="https://github.com/WorksApplications/Sudachi">Sudachi</a>, being the actual alternative to MeCab).<sup><a class="footnote-ref" href="#fn-8" id="fnref-8" rel="footnote">9</a></sup></li>
+<li><strong><a href="https://github.com/ku-nlp/jumanpp">Juman++</a></strong>, unlike MeCab and its predecessors, relies on recurrent neural networks (<a href="https://builtin.com/data-science/recurrent-neural-networks-powerhouse-language-modeling">RNN</a>) – a deep learning method – for its POS tagging rather than on token dictionaries. While much slower than Mecab + NEologd, it appears to have <a href="https://qiita.com/riverwell/items/438e88427363511e9f28">incredible promise</a> in dealing with colloquial language and spelling inconsistencies, which will be particularly useful for processing social media content.</li>
+</ul>
+<h2 id="mecab-installation"><a class="toclink" href="#mecab-installation">MeCab Installation</a></h2>
+<p>There are several options for installing MeCab, based on our set-up:</p>
+<ul>
+<li><strong><a href="https://taku910.github.io/mecab/#download">Unix | Windows x86</a></strong>: the official installers for Unix and 32-bit versions of Windows.</li>
+<li><strong><a href="https://github.com/ikegami-yukino/mecab/releases">Windows 64-bit</a></strong>: An unofficial 64-bit installer (select <strong>mecab-64-0.996.2.exe</strong>).<sup><a class="footnote-ref" href="#fn-9" id="fnref-9" rel="footnote">10</a></sup></li>
+<li><strong><a href="https://qiita.com/berry-clione/items/b3a537962c84244a2a09">Mac</a></strong> (JP): Haven’t tested this myself but installation seems fairly straightforward using brew.</li>
+</ul>
+<p>Make sure to select UTF-8 as encoding option when installing MeCab; UTF-8 is required to guarantee compatibility with Python and the optional custom dictionary <strong>mecab-ipadic-NEologd</strong>.<sup><a class="footnote-ref" href="#fn-10" id="fnref-10" rel="footnote">11</a></sup> Upon completion, we should also add two references to our global system variables. On Windows devices, open <strong>System Utility</strong> in the control panel and click <strong>system variables</strong>:</p>
+<p>First we should add a PATH reference to the folder containing the MeCab executables: select Path → edit → new → add the path to that folder (e.g. C:\Program Files\MeCab\bin).
+Next, we should add a global variable MECABRC, with a value pointing to <em>(our mecab folder)\etc\mecabrc</em> (e.g. to <strong>C:\Program Files\MeCab\etc\mecabrc</strong>). The Mecabrc file within contains configuration data for MeCab, including the path to the dictionary we will using.</p>
+<div class="slider" style="margin: auto; text-align: center;">
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/mecab_saru.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 559px; height: auto; max-width: 100%;"/><span><strong>Figure 1:</strong> Example of MeCab + IPADIC POS-tagging of Japanese text</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/mecab_saru2.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 776px; height: auto; max-width: 100%;"/><span><strong>Figure 2:</strong> Example of encoding issues</span></div>
+</div>
+<p>As seen in <strong>Figure 1</strong>, MeCab probes the text-input at the hand of the selected dictionary (in this case the default IPADIC dictionary) in order to segment the Japanese text and return the grammatical and semantic meaning of each morpheme. The dictionary files (<strong>sys.dic</strong> and <strong>unk.dic</strong>) were pre-compiled based on a list of CSV files containing that grammatical and semantic information for most common morphemes. A closer look at any of those CSV files reveals a data structure according to the following column scheme:</p>
+<blockquote>
+<p>Surface form (表層形), left context ID (左文脈ID), right context ID (右文脈ID), cost (コスト), part-of-speech (品詞), part-of-speech sub-classification 1 (品詞細分類1), part-of-speech sub-classification 2 (品詞細分類2), part-of-speech sub-classification 3 (品詞細分類3), conjugation type (活用型), inflectional form (活用形), original form (原形), reading (読み), pronunciation (発音)</p>
+</blockquote>
+<p>Take, for example, the entry for <em>tabero</em> <span lang="ja"><ruby><rb>食</rb><rp>(</rp><rt>た</rt><rp>)</rp></ruby></span>べろ in <strong>Verb.csv</strong> or the entry for the grammatical particle <em>ha</em> は:</p>
+<blockquote>
+<p>食べろ,623,623,7175,動詞,自立,,,一段,命令ｒｏ,食べる,タベロ,タベロ
+は,14,,助詞,係助詞,,,,,は,ハ,ワ</p>
+</blockquote>
+<p>The cost column indicates how likely the word is to occur (with a smaller number indicating a higher likelihood to occur). The context IDs are internal references to categories defined in the *.def files (specifically <strong>left-id.def</strong> and <strong>right-id.def</strong>) and classify the meaning of the morpheme within the text content seen either from the left or right (in this case, those IDs both refer to (動詞,自立,*,*,一段,命令ｒｏ,*). The other categories are self-explanatory: 食べろ, read and pronounced as タベロ,<sup><a class="footnote-ref" href="#fn-12" id="fnref-12" rel="footnote">13</a></sup> is the commanding <em>ro</em> conjugation of the dictionary form 食べる, an independent <em>ichidan</em> verb.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After installing MeCab with the UTF-8 option, the MeCab default dictionary will have been recompiled with UTF-8 character encoding. Usually, running MeCab with the <strong>mecab.exe</strong> executable in (in /bin/) or by using the command (<code>mecab</code>) in the command prompt would allow usage as seen in <strong>figure 1</strong>. Depending on the character encoding of the console prompt (can be tested by using <code>chcp</code>), running MeCab as-is could result in encoding issues (see <strong>Figure 2</strong>), however. Having the Region Settings of the system locale set to Japanese, for example, would change the encoding (the code page) for console applications to <strong>code page 932</strong> (e.g. Shift JIS).</p>
+<p>Fortunately for us, there is hardly any use to running MeCab as-is; we’ll be running MeCab either with KH Coder or through Python scripts (which handles encoding for us). The above problem is therefore not of high importance and can nevertheless be by-passed with some simple workarounds.<sup><a class="footnote-ref" href="#fn-12" id="fnref2-12" rel="footnote">13</a></sup></p>
+</div>
+<p>Finally, it should be noted that MeCab accepts several arguments in dealing with unknown words or for formatting output. This will be more relevant for the next part of this tutorial series, but for now, see <strong>figure 4</strong> for a demonstration:</p>
+<ul>
+<li><code>-d</code>: path to one or more tokenizer dictionaries.</li>
+<li><code>-E</code>: Which escape sequence to use at the end of the parsed string (tabs: \t, backspaces: \b, newlines: \n, etc.</li>
+<li><code>-O</code>: Quick-formatting options. Wakati (short for <em>wakachi-gaki</em>, 分かち書き), for example, is a tokenizer option for returning a string with only the surface form of each token, separated by spaces.<sup><a class="footnote-ref" href="#fn-13" id="fnref-13" rel="footnote">14</a></sup></li>
+<li><code>-F</code>: Grants us more control over the output formatting. Adding <code>-F%m:\\t\\t%f[0]\\n</code>, for example, will format the outcome as seen in figure 4: the token surface form and the first element of the ‘<a href="https://en.wikipedia.org/wiki/Feature_(machine_learning)">features</a>‘ array (part-of-speech), separated by tab spaces.</li>
+<li><code>--unk-feature</code>: set the return value of the part-of-speech column for unknown words (e.g. to ‘<em>unknown</em>‘ or to <em>michigo</em> ‘未知語’). Can be alternated with <code>-x</code> (e.g. <code>-x 'unknown'</code>).</li>
+</ul>
+<h2 id="mecab-ipadic-neologd-installation-optional"><a class="toclink" href="#mecab-ipadic-neologd-installation-optional">mecab-ipadic-NEologd installation (optional)</a></h2>
+<p>POS-tagging Japanese text on social media is particularly difficult due to the volatile nature of language usage on social media, including usage of neologisms and colloquialisms, as well as Japanese-specific usage of half-width characters, different Unicode characters and text <em>emoji</em> (<em>kaomoji</em>). The standard dictionary provided with MeCab, IPADic, hasn’t been maintained in over a decade and does not satisfy our needs. While optional, it is therefore highly recommended to install the neologism dictionary <strong>mecab-ipadic-NEologd</strong>, a MeCab dictionary expansion of the IPADic dictionary built using manual and machine learning methods on a wide variety of online texts. It contains a lot of entries of terms common on Japanese social media, as well as common names not yet belonging to the default MeCab dictionary (see <strong>figure 3</strong> for a comparison when inputting prime minister Shinzo Abe’s name using respectively the default IPADic dictionary and the NEologd expansion).</p>
+<div class="slider" style="margin: auto; text-align: center;">
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/mecab_abe.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 760px; height: auto; max-width: 100%;"/><span><strong>Figure 3:</strong> Parsed results of 安倍晋三 (Abe Shinzō) with respectively default and NEologd dictionary.</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/mecab_options.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 1073px; height: auto; max-width: 100%;"/><span><strong>Figure 4:</strong> Parsed text with various tokenizer settings.</span></div>
+</div>
+<p>Installation of the Neologism dictionary is rather obtuse; as it requires us to manually build the dictionary based on our existing copy of the IPADIC dictionary and the source files for the NEologd expansion.<sup><a class="footnote-ref" href="#fn-14" id="fnref-14" rel="footnote">15</a></sup> This process is simple enough on Unix or Mac (as described on the project page), but less so on Windows. The following steps are, again, Windows-specific.</p>
+<ul>
+<li>The <a href="https://github.com/neologd/mecab-ipadic-neologd">project-page for NEologd</a> is hosted on GitHub and periodically updated. For those who have git installed, clone the project to a directory of choice with <code>$ git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git</code>. If not, select <strong>Clone or download → Download ZIP</strong> and extract to a directory of choice.</li>
+<li>As mentioned earlier, MeCab dictionaries are compiled based on a list of CSV files containing grammatical and semantic information for each morpheme. We will need to recompile that dictionary based on the NEologd CSV files. Those CSV files are highly compressed as <em>.xz files listed in the seed directory of the NEologd project folder. We will have to </em><em>extract</em>* those (select all the files with xz extension and extract them using 7zip or another file archiver of choice).</li>
+<li>Next, back in the ‘MeCab/dic’ folder <strong>make a copy</strong> of the ‘ipadic’ folder. Name it ‘ipadic-neologd’. As-is, the IPADic source files (the CSV and def files) remain encoded in EUC-JP (or SHIFT-JIS for older copies). The NEologd CSV files, however, are encoded in UTF-8. Compiling those together will lead to inconsistencies; we should therefore change the character encoding of the IPADic source files to UTF-8 as well.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This can be done manually with most advanced text editors, or in bulk with <strong>iconv</strong> (part of <a href="http://gnuwin32.sourceforge.net/install.html">GNUWin32</a>).<sup><a class="footnote-ref" href="#fn-15" id="fnref-15" rel="footnote">16</a></sup> For the sake of convenience, this tutorial provides the re-encoded files on a dedicated <a href="https://github.com/steviepoppe/mecab_dic_utf8">GitHub repository</a>. Simply download the repository as zip file and extract those files in the ‘ipadic-neologd’ folder to replace the previous copies.<sup><a class="footnote-ref" href="#fn-16" id="fnref-16" rel="footnote">17</a></sup></p>
+</div>
+<p>Finally, move the previously extracted NEologd CSV files to the ‘ipadic-neologd’ folder. We can now <strong>compile</strong> our IPADic-NEologd dictionary from the command prompt by changing to that directory and running <strong>mecab-dict-index</strong> with encoding set both from and to UTF-8:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cd</span> C:<span class="se">\P</span>rogram Files<span class="se">\M</span>eCab<span class="se">\d</span>ic<span class="se">\i</span>padic-neologd
+mecab-dict-index -f utf-8 -t utf-8
+</pre></div>
+</td></tr></table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a reading error occurs, open the folder ‘/bin/’ (e.g.’C:\Program Files\MeCab\bin’), right-click mecab-dict-index.exe → settings → compatibility → check “run as Administrator”, and try again.</p>
+</div>
+<p>From here, edit MeCab’s settings to point to the IPADic-NEologd dictionary instead of the default IPADic dictionary. To do so, open the <strong>mecabrc</strong> file in ‘MeCab/etc/’ with a text editor and change <code>dicdir</code> to the relevant path (e.g. <code>C:\Program Files\MeCab\dic\ipadic-neologd\</code>).</p>
+<h2 id="mecab-user-dictionary-optional"><a class="toclink" href="#mecab-user-dictionary-optional">mecab user dictionary (optional)</a></h2>
+<p>It is likely that during close readings of the texts we’re analyzing, new, specific terms will come up that are not yet part of the IPADic and NEologd dictionaries. Or perhaps we’ll be dealing with application-oriented text classification. As an example, and although it falls more under NER processing,<sup><a class="footnote-ref" href="#fn-17" id="fnref-17" rel="footnote">18</a></sup> one project<sup><a class="footnote-ref" href="#fn-18" id="fnref-18" rel="footnote">19</a></sup> involved a dictionary consisting of Japanese book titles generated from a bibliographic database. Their pipeline involved processing incoming tweets from the Twitter Streaming API with MeCab,<sup><a class="footnote-ref" href="#fn-19" id="fnref-19" rel="footnote">20</a></sup> building a database of tweets containing tokens of bibliographic nature.</p>
+<p>On top of the system dictionary we have compiled with the above methods, MeCab permits additional user-generated dictionaries:</p>
+<ol>
+<li>Create a CSV file with terms formatted according to the data structure and column scheme seen above and save it a convenient folder. In our case, a user.csv file, saved in ‘MeCab\dic\ipadic-neologd\user', containing one row <code>旦那ストレス,,,1234,名詞,固有名詞,一般,*,*,*,旦那ストレス,ダンナストレス,ダンナストレス</code>.</li>
+<li>Open the command prompt. Navigate (<code>cd</code>) to the folder containing the system dictionary (e.g. MeCab\dic\ipadic-neologd) and run <strong>mecab-dict-index</strong> with the parameter -u set to the output dictionary: e.g. <code>mecab-dict-index -u user\user.dic -f utf-8 -t utf-8 user\user.csv</code>.</li>
+<li>Finally, open mecabrc with a text-editor and add a new variable <code>userdic</code>, pointing to one or multiple dictionaries (separated by comma): e.g. userdic = <code>C:\Program Files\MeCab\dic\ipadic-UTF8\user\book_titles.dic,C:\Program Files\MeCab\dic\ipadic-UTF8\user\emoji.dic</code>.</li>
+</ol>
+<div class="slider" style="margin: auto; text-align: center;">
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/cmd_mecab_user1.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 838px; height: auto; max-width: 100%;"/></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/cmd_mecab_user2.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 595px; height: auto; max-width: 100%;"/></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/cmd_mecab_user3.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 836px; height: auto; max-width: 100%;"/><span><strong>Figure 5:</strong> 安倍晋三 (Abe Shinzō) with NEologd dictionary.</span></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The cost field above was filled in randomly. While not harmful when dealing with very specific terms, doing so with a very large dictionary can obviously mess with our results. For a guide on estimating the cost, read <a href="http://www.mwsoft.jp/programming/nlp/mecab_dictionary_customize.html">コストの自動推定</a> (JP).</p>
+</div>
+<h2 id="normalizing-japanese-text-with-neologdn-optional"><a class="toclink" href="#normalizing-japanese-text-with-neologdn-optional">Normalizing Japanese text with Neologdn (optional)</a></h2>
+<p>Within the context of NLP, normalization refers to the process of converting words to their ‘canonical’ form or implied meaning, regardless of its spelling (usage of upper- and lowercases, acronyms, alternative spellings, misspellings, etc). Like stemming or lemmatization (reducing words to their root form by removing inflection), this should be done on a case-by-case basis. In the Japanese language, for example, りんご、リンゴ and 林檎 (<em>ringo</em>) are all common notations for the word ‘apple’.<sup><a class="footnote-ref" href="#fn-20" id="fnref-20" rel="footnote">21</a></sup> Likewise, 可愛い, かわいい, カワイイ and even ｶﾜ(・∀・)ｲｲ!! (<em>kawaii</em>) all mean ‘cute’, but – unlike the rather neutral variants for apple – differ slightly in demographic usage.</p>
+<p>Normalizing Japanese text with mixed spellings of <em>kana</em> and <em>kanji</em> is a complicated process.<sup><a class="footnote-ref" href="#fn-21" id="fnref-21" rel="footnote">22</a></sup> for now, however, <a href="https://github.com/ikegami-yukino/neologdn">this</a> small library consists of several regular expressions already helpful in normalizing common tendencies of Japanese text on social media, such as converting half-width characters to full-width. As always, install with <strong>pip</strong>: <code>pip install neologdn</code>.</p>
+<hr/>
+<h1 id="kh-coder"><a class="toclink" href="#kh-coder">KH Coder</a></h1>
+<p><a href="https://khcoder.net/en/">KH Coder</a> is an open-source tool for performing quantitative content analysis, both by conducting statistical analysis on the whole set of text, or by applying coding rules and categorizing pieces of text. Although KH coder supports a variety of other languages (using the Stanford POS tagger), KH Coder was originally written with the Japanese language in mind and supports both ChaSen and MeCab. Having taken the above steps, we can now conduct analysis with KH Coder using a tokenizer and POS-tagger that should be more suitable for dealing with social media content.</p>
+<p>KH Coder can be downloaded from the link above. I wholeheartedly recommend to view the author’s <a href="https://khcoder.net/en/tutorial_slides.pdf">powerpoint slides</a> as well as <a href="http://www.ritsumei.ac.jp/file.jsp?id=325881">read</a> <a href="http://www.ritsumei.ac.jp/file.jsp?id=346128">both</a> of his publications on how to apply KH Coder for the purpose of quantitative content analysis.<sup><a class="footnote-ref" href="#fn-22" id="fnref-22" rel="footnote">23</a></sup></p>
+<h2 id="preparing-tweet-content-python"><a class="toclink" href="#preparing-tweet-content-python">Preparing tweet content: python</a></h2>
+<p>Before we start with KHCoder, however, let’s build a CSV file based on the CSV file of (re)tweets generated in the previous article. This new CSV, consisting of two columns (the tweet text and its author), will have such artifacts as hashtags and user mentions removed. Our script (as usual, available for download on <a href="https://github.com/steviepoppe/python_twitter_api_examples">GitHub</a>), thus look as follows:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">neologdn</span>
+<span class="k">def</span> <span class="nf">parse_tweets</span><span class="p">(</span><span class="n">sys_args</span><span class="p">):</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="n">sys_args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">text_column</span> <span class="o">=</span> <span class="n">sys_args</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="s2">"text"</span>
+    <span class="n">chunksize</span> <span class="o">=</span> <span class="mi">100000</span>
+    <span class="n">line_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">tweet_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">'./results/</span><span class="si">%s</span><span class="s1">_tweet_</span><span class="si">%s</span><span class="s1">.csv'</span> <span class="o">%</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="n">text_column</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'./results/</span><span class="si">%s</span><span class="s1">.csv'</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="n">chunksize</span><span class="p">,</span> <span class="n">iterator</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+        <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="n">text_column</span><span class="p">,</span> <span class="s2">"hashtags"</span><span class="p">,</span> <span class="s2">"user_mentions"</span><span class="p">,</span> <span class="s2">"is_retweet"</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">chunk</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">tweet_row</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">line_count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">hashtags</span> <span class="o">=</span>  <span class="n">tweet</span><span class="p">[</span><span class="s2">"hashtags"</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"hashtags"</span><span class="p">])</span> <span class="k">else</span> <span class="p">[]</span>
+            <span class="n">user_mentions</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"user_mentions"</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"user_mentions"</span><span class="p">])</span> <span class="k">else</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"is_retweet"</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="n">tweet_text</span> <span class="o">=</span> <span class="n">neologdn</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="n">text_column</span><span class="p">],</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+                <span class="n">tweet_text</span> <span class="o">=</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tweet_text</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span> <span class="ow">or</span> <span class="n">i</span><span class="o">.</span><span class="n">isspace</span><span class="p">()])</span>
+                <span class="n">tweet_text</span> <span class="o">=</span> <span class="n">clean_tweets</span><span class="p">(</span><span class="n">tweet_text</span><span class="p">,</span> <span class="n">hashtags</span><span class="p">,</span> <span class="n">user_mentions</span><span class="p">)</span>
+<span class="hll">                <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet_text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'cp932'</span><span class="p">,</span><span class="s2">"ignore"</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'cp932'</span><span class="p">)</span>
+</span>                <span class="nb">print</span><span class="p">(</span><span class="n">tweet_row</span><span class="p">[</span><span class="s2">"text"</span><span class="p">])</span>
+                <span class="n">tweet_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tweet_row</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Processed </span><span class="si">%s</span><span class="s1"> lines.'</span> <span class="o">%</span> <span class="n">line_count</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Processed total of </span><span class="si">%s</span><span class="s1"> lines.'</span> <span class="o">%</span> <span class="n">line_count</span><span class="p">)</span>
+    <span class="n">tweet_json</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tweet_list</span><span class="p">)</span>
+<span class="hll">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./results/</span><span class="si">%s</span><span class="s1">_tweet_</span><span class="si">%s</span><span class="s1">.csv'</span> <span class="o">%</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="n">text_column</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'a'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"cp932"</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span>        <span class="n">tweet_json</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="p">(</span><span class="ow">not</span> <span class="n">exists</span><span class="p">),</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">clean_tweets</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">hashtags</span><span class="p">,</span> <span class="n">user_mentions</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">""</span><span class="p">),</span> <span class="n">chain</span><span class="p">(</span><span class="n">hashtags</span><span class="p">,</span> <span class="n">user_mentions</span><span class="p">),</span> <span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">"#|＃"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="s2">""</span><span class="p">))</span> 
+    <span class="k">return</span> <span class="n">text</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">parse_tweets</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Similar to the scripts provided in the previous tutorials, the script above should be saved in the folder we have used thus far to store the rest of our script files (e.g. ‘<strong>C:\python_examples</strong>‘ → ‘<strong>python_tweet_content.py</strong>’). The script takes two argument: the name of the input CSV file and the name of the save-file. The commands used to execute our script could thus respectively look like: <code>python python_tweet_content.py #旦那ストレス danna</code> (output CSV files are stored in the same folder as the input CSV, e.g. ‘results/旦那ストレス_tweet_content.csv’). That latter step is necessary because KH Coder only accepts files with ASCII file-names.</p>
+<p>On that matter, KHCoder only supports EUC and SHIFT-JIS encoded text-files. Thus far we have been encoding our files as UTF-8. While obtuse, <strong>lines 28</strong> and <strong>35</strong> are necessary steps to re-encode that content.</p>
+</div>
+<h2 id="using-kh-coder"><a class="toclink" href="#using-kh-coder">Using KH Coder</a></h2>
+<p>Having started KH Coder, let us first change some settings. Click <strong>Project → Settings</strong>, and make sure ‘MeCab’ is selected as method for Word Extraction and the path refers to the correct executable.<sup><a class="footnote-ref" href="#fn-23" id="fnref-23" rel="footnote">24</a></sup> Furthermore, make sure <strong>Unicode Dictionary</strong> is checked: we are using a Unicode (UTF-8)-encoded dictionary.</p>
+<p>Next, click <strong>Project → New</strong>, and select the CSV file we extracted using the script above (make sure Japanese and MeCab are selected as language and POS-tagger). From there, click <strong>Pre-Processing → Run Pre-Processing</strong> (this might take quite a while depending on the size of the file). If everything went well, we can now conduct statistical analysis and produce various visualizations that offer quantitative insights in the corpus of tweets we collected.</p>
+<h3 id="stop-words-optional"><a class="toclink" href="#stop-words-optional">Stop-words (optional)</a></h3>
+<p>Stop-words refers to the most commonly used words in natural language; words we might want to filter out of our corpora depending on the context. Although we have done some filtering of noise already, <strong>figure 7</strong> reveals <em>suru</em> する (an irregular verb meaning to do, often used in combination with compound verbs) and <em>nai</em> ない as some of the most frequent lemmas. Another (or complimentary) method to remove such elements from textual content is thus to make use of stop-word lists.</p>
+<p>I will write an extended blog post about how one might generate a Japanese language stop-word list, but for now I recommend <a href="https://github.com/stopwords-iso/stopwords-ja/blob/master/stopwords-ja.txt">this one</a>.<sup><a class="footnote-ref" href="#fn-24" id="fnref-24" rel="footnote">25</a></sup> Simply save in a convenient location and open with a text-editor of choice. Add an extra row “—cell—” (necessary for KH Coder’s inner workings) and an extra row “ー”. Next, in KH Coder, click <strong>Pre-Processing → Select Words to Analyze → force ignore</strong>. Mark the <em>Read from a file</em> check-button, and click <strong>browse</strong> to select the above stop-word list. Finally, run pre-processing again.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The usage of the Japanese ー in informal online language is to extend vowels (e.g. しかーし → しかーし) or to flatten consecutive vowels in a way that sounds more rough (e.g. うるさい → うるせー). Neologd does includes many terms that are abbreviated in such matter (知らねー) which are then normalized to the root form (知る), but does not, for example, process variations using both ー and small kana to extend the same vowel (知らねぇー、じゃねぇー,スゲェー), as well as various exclamations like はぁー. In those cases, ー is wrongfully tagged as a proper noun.</p>
+<p>This behavior actually stems from MeCab’s default behavior in trying to identify and tag unknown words. Running MeCab with the <code>unk-feature</code> parameter set helps in that we can choose to tag unknown words as such. Unfortunately, KH Coder is built around MeCab’s ChaSen output (using the ‘<code>-OChasen</code>’ parameter), and changing this requires rewriting a lot of the inner workings of KH Coder. An easier option is thus to just add words that clearly do not add value to the force ignore list.</p>
+</div>
+<h3 id="analysis"><a class="toclink" href="#analysis">Analysis</a></h3>
+<p>As an illustration, this article uses a corpus of Japanese tweets containing the hashtag #<span lang="ja"><ruby><rb>旦那</rb><rp>(</rp><rt>だんな</rt><rp>)</rp></ruby></span>ストレス (husband stress), collected over the span of several weeks during the COVID-19 crisis (see <a href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/">part two</a> of this series for more information).</p>
+<p>The focus on that particular hashtag took place within a larger discussion – as part of a BA project – of the COVID-19 crisis and gender hegemony in Japan. One question that came up was whether Twitter users were using those hashtags as means of forming communities of self-empowerment, or instead resorted to using the medium as a form of semi-public diary. Moreover, what were the main topics discussed in this corpus of collected tweets?</p>
+<h4 id="frequency-list"><a class="toclink" href="#frequency-list">Frequency List</a></h4>
+<p>In order to navigate that question, one of the first steps we might do is generate a frequency list (see <strong>figure 6</strong>); by clicking <strong>Tools → Words → Frequency List</strong>, and generating a CSV or Excel file based either on the general Top 150 tokens or sorted by POS tags. This gives us not only a clear overview of the most frequent terms and thus of key topics, but also of possible errors occurring during tokenization (e.g. wrongfully parsed terms).</p>
+<p>Having imported that file in KH Coder, we could immediately see that our corpus of 2,555 tweets consists out of 73,590 tokens (40,473 after stop-word filtering), with 7,914 of those unique terms (7,257 after stop-word filtering). A term frequency distribution (Tools → Words → Descriptive Stats), illustrated in <strong>figures 7</strong> and <strong>8</strong>, further reveals that about half of those 7,914 terms occur only once.</p>
+<div class="slider" style="margin: auto; text-align: center;">
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/tf_danna.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 790px; height: auto; max-width: 100%;"/><span><strong>Figure 6:</strong> 30 most frequent terms.</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/khcoder_tf_list.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 450px; height: auto; max-width: 100%;"/><span><strong>Figure 7:</strong> Term frequency distribution list.</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/khcoder_tf.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 480px; height: auto; max-width: 100%;"/><span><strong>Figure 8:</strong> Term frequency distribution plot.</span></div>
+</div>
+<p>There is not much else we take away from this information alone. It is not a particular surprise that the most common term is <span lang="ja"><ruby><rb>旦那</rb><rp>(</rp><rt>だんな</rt><rp>)</rp></ruby></span> (<em>dan’na</em>, husband). Frustrations seem likely related to household chores like cleaning, laundry and cooking. Therefore, we might want to rely on co-occurrence matrices such as co-occurrence networks and multidimensional scaling (MDS) of words as visual representations of similarity in meaning.</p>
+<h4 id="co-occurrence-network"><a class="toclink" href="#co-occurrence-network">Co-occurrence network</a></h4>
+<p>A co-occurrence network is a form of network analysis exploring co-occurring terms in our text. In other words, a visual network is formed based on the proximity of high-frequency terms (in non-inflicted form) as a means of identifying clusters of implied meaning.<sup><a class="footnote-ref" href="#fn-25" id="fnref-25" rel="footnote">26</a></sup> This could help to empirically reveal some of the major trends in these tweets. <strong>figure 10</strong> (without stop-word list) and <strong>figure 11</strong> (filtered of stop-words) are limited to words with a term frequency of 40 (accounting for about 2% or approximately top 150 most frequent terms, and approximately 40% of all terms) and of all POS-categories excluding grammatical ones such as <em>joshi</em> 助詞 and <em>hitei jodōshi</em> 否定助動詞 (negating auxiliary verbs such as <em>zu</em> ず and <em>nu</em> ぬ). Both figures are based on the top 50 combinations of proximity, while <strong>figure 12</strong> and the interactive HTML variant thereof, <strong>figure 9</strong>, take only combinations with a similarity coefficient of 0.1 or higher.</p>
+<div class="slider" style="margin: auto; text-align: center;">
+<div class="border">
+<iframe height="600px" id="inlineFrameExample" src="https://steviepoppe.net/images/twitter/khc14_temp6.html" style="border: none;box-shadow: none;" title="Inline Frame Example" width="100%">
+</iframe>
+<span><strong>Figure 9:</strong> Interactive co-occurrence network of TF =&gt; 50 &amp; similarity coefficient =&gt; 0.1 (filtered by stop-word list).</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/khcoder_co_nostopwords.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 761px; height: auto; max-width: 100%;"/><span><strong>Figure 10:</strong> co-occurrence network of TF =&gt; 50 &amp; top 50 combinations of proximity (unfiltered).</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/khcoder_co_stopwords.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 818px; height: auto; max-width: 100%;"/><span><strong>Figure 11:</strong> co-occurrence network of TF =&gt; 50 &amp; top 50 combinations of proximity (filtered by stop-word list).</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/khcoder_co_10.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 739px; height: auto; max-width: 100%;"/><span><strong>Figure 12:</strong> Co-occurrence network of TF =&gt; 50 &amp; similarity coefficient =&gt; 0.1 (filtered by stop-word list).</span></div>
+</div>
+<h4 id="kwic-concordance"><a class="toclink" href="#kwic-concordance">KWIC concordance</a></h4>
+<p>Clicking on any of the terms in the co-occurrence network in KH Coder opens the KWIC concordance screen,<sup><a class="footnote-ref" href="#fn-26" id="fnref-26" rel="footnote">27</a></sup> revealing all the tweets containing that particular term as well as the closeness of other frequent terms.</p>
+<p>A big trend among these posts seems to be the frustration of the tweet users towards the lack op cooperation of their husband in daily housework – cleaning, laundry, cooking, taking care of children, groceries – as well as lack in assisting with parental duties, lack of hygiene and lack of communication. This happens on top of the COVID-19 crisis leading to measures such as remote work or temporary unemployment. Take, for example, the following three randomly selected and translated tweets based respectively on the terms ‘corona’, cleaning’ and ‘bath’:</p>
+<blockquote>
+<p>“Being in the same room, on top of the stress of self-quarantining during the Corona-crisis, is just too difficult.”</p>
+<p>“A week of vacation during Golden Week. During that time I worked 4 days. Regardless of the holidays, a housewife operates as usual: cooking, cleaning, laundry, playing with children… During that time, my husband did nothing but playing on his smart phone or reading manga. Even if I ask him to play with the children, it’s impossible…”</p>
+<p>“In spite of working in the service industry, you come back home and fall asleep in the sofa without washing your hands or taking a bath? I told you to take a bath when coming back. Even if I ask several times, after one or two days it’s back to usual. We have three children and we all use that sofa. Don’t undo our effort to self-quarantine!”</p>
+</blockquote>
+<h4 id="coding-topics"><a class="toclink" href="#coding-topics">Coding topics</a></h4>
+<p>Judging from the above information, we could identify several topics: children, household tasks, the novel corona-virus, family-in-law, … Based on the term frequency information we obtained through the methods above, a very rudimentary coding dictionary of terms that align with those topics was thus created:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">Children</span>
+<span class="err">子供達</span> <span class="k">OR</span> <span class="err">子供</span> <span class="k">OR</span> <span class="err">こども</span> <span class="k">OR</span> <span class="err">子ども</span> <span class="k">OR</span> <span class="err">子ども</span> <span class="k">OR</span> <span class="err">娘</span> <span class="k">OR</span> <span class="err">赤ちゃん</span> <span class="k">OR</span> <span class="err">あかちゃん</span> <span class="k">OR</span> <span class="err">息子</span> <span class="k">OR</span> <span class="err">妊婦</span> <span class="k">OR</span> <span class="err">育児</span> <span class="k">OR</span> <span class="err">保育園</span>
+
+<span class="o">*</span><span class="n">Household_Tasks</span>
+<span class="err">掃除</span> <span class="k">OR</span> <span class="err">干す</span> <span class="k">OR</span> <span class="err">洗濯</span> <span class="k">OR</span> <span class="err">片付け</span> <span class="k">OR</span> <span class="err">洗い物</span> <span class="k">OR</span> <span class="err">洗物</span> <span class="k">OR</span> <span class="err">洗濯機</span> <span class="k">OR</span> <span class="err">風呂</span> <span class="k">OR</span> <span class="err">入れる</span> <span class="k">OR</span> <span class="err">掃除機</span> <span class="k">OR</span> <span class="err">トイレ</span> <span class="k">OR</span> <span class="err">エアコン</span> <span class="k">OR</span> <span class="err">床</span> <span class="k">OR</span> <span class="err">布団</span> <span class="k">OR</span> <span class="err">家事</span> <span class="k">OR</span> <span class="err">ゴミ箱</span> <span class="k">OR</span> <span class="err">ゴミ袋</span> <span class="k">OR</span> <span class="n">near</span><span class="p">(</span><span class="err">ゴミ</span><span class="o">-</span><span class="err">出す</span><span class="p">)</span> <span class="k">OR</span> <span class="n">near</span><span class="p">(</span><span class="err">ゴミ</span><span class="o">-</span><span class="err">捨てる</span><span class="p">)</span> <span class="k">OR</span> <span class="err">買い物</span> <span class="k">OR</span> <span class="err">買物</span> <span class="k">OR</span> <span class="err">乾く</span> <span class="k">OR</span> <span class="err">ごはん</span> <span class="k">OR</span> <span class="err">ご飯</span> <span class="k">OR</span> <span class="err">炊事</span> <span class="k">OR</span> <span class="err">料理</span> <span class="k">OR</span> <span class="err">作る</span> <span class="k">OR</span> <span class="err">食べる</span> <span class="k">OR</span> <span class="err">食う</span> <span class="k">OR</span> <span class="err">弁当</span> <span class="k">OR</span> <span class="err">晩ご飯</span> <span class="k">OR</span> <span class="err">朝ごはん</span> <span class="k">OR</span> <span class="err">食</span> <span class="k">OR</span> <span class="err">育児</span> <span class="k">OR</span> <span class="err">保育園</span> <span class="k">OR</span> <span class="err">食器</span>
+
+<span class="o">*</span><span class="n">Divorce</span>
+<span class="err">離婚</span>
+
+<span class="o">*</span><span class="n">Alcohol</span>
+<span class="err">酷い</span> <span class="k">OR</span> <span class="err">グレープフルーツサワー</span> <span class="k">OR</span> <span class="err">酒サワー</span> <span class="k">OR</span> <span class="err">ビール</span> <span class="k">OR</span> <span class="n">near</span><span class="p">(</span><span class="err">飲む</span><span class="o">-</span><span class="err">行く</span><span class="p">)</span>
+
+<span class="o">*</span><span class="n">Family_in_Law</span>
+<span class="err">義母</span> <span class="k">OR</span> <span class="err">義父</span> <span class="k">OR</span> <span class="err">義妹</span>
+
+<span class="o">*</span><span class="n">Idle_Complaints</span>
+<span class="err">機嫌</span> <span class="k">OR</span> <span class="err">悪い</span> <span class="k">OR</span> <span class="err">気持ち</span> <span class="k">OR</span> <span class="n">near</span><span class="p">(</span><span class="err">やめる</span><span class="o">-</span><span class="err">ほしい</span><span class="p">)</span> <span class="k">OR</span> <span class="err">キモイ</span> <span class="k">OR</span> <span class="err">愚痴</span> <span class="k">OR</span> <span class="err">吐く</span> <span class="k">OR</span> <span class="err">イライラ</span> <span class="k">OR</span> <span class="err">ストレス</span> <span class="k">OR</span> <span class="err">バカ</span> <span class="k">OR</span> <span class="err">馬鹿</span> <span class="k">OR</span> <span class="err">馬鹿野郎</span> <span class="k">OR</span> <span class="err">モラ</span> <span class="k">OR</span> <span class="err">アホ</span> <span class="k">OR</span> <span class="err">デブ</span> <span class="k">OR</span> <span class="err">しねる</span> <span class="k">OR</span> <span class="err">モラハラ</span> <span class="k">OR</span> <span class="err">腹立つ</span> <span class="k">OR</span> <span class="err">死ねる</span> <span class="k">OR</span> <span class="err">クズ</span>
+<span class="o">#</span><span class="n">Note</span><span class="p">:</span> <span class="err">しね</span> <span class="k">and</span> <span class="err">死ね</span> <span class="k">are</span> <span class="n">mistakingly</span> <span class="n">stemmed</span> <span class="k">to</span> <span class="err">しねる</span> <span class="k">instead</span> <span class="k">of</span> <span class="err">しぬ</span>
+
+<span class="o">*</span> <span class="n">Corona</span>
+<span class="err">十万円</span> <span class="k">OR</span> <span class="err">１０万円</span> <span class="k">OR</span> <span class="err">コロナ</span> <span class="k">OR</span> <span class="err">自粛</span> <span class="k">OR</span> <span class="err">感染症</span> <span class="k">OR</span> <span class="err">感染</span> <span class="k">OR</span> <span class="err">危機感</span> <span class="k">OR</span> <span class="err">リスク</span> <span class="k">OR</span> <span class="err">新型コロナウイルス</span>
+
+<span class="o">*</span><span class="n">Financial_Employment</span>
+<span class="err">給付金</span> <span class="k">OR</span> <span class="err">テレワーク</span> <span class="k">OR</span> <span class="err">在宅ワーク</span> <span class="k">OR</span> <span class="err">失業</span> <span class="k">OR</span> <span class="err">仕事</span> <span class="k">OR</span> <span class="err">業</span> <span class="k">OR</span> <span class="err">収入</span> <span class="k">OR</span> <span class="err">テレワーク</span> <span class="k">OR</span> <span class="err">在宅ワーク</span> <span class="k">OR</span> <span class="err">在宅</span> <span class="k">OR</span> <span class="err">休み</span> <span class="k">OR</span> <span class="err">休む</span> <span class="k">OR</span> <span class="err">会社</span> <span class="k">OR</span> <span class="err">出社</span> <span class="k">OR</span> <span class="err">勤務</span>
+</pre></div>
+</td></tr></table>
+<p>Saving the above file and applying it as coding rule against the corpus (<strong>Tools → Coding → Frequency → H5</strong>) reveals how many tweets contain keywords that we have coded among the above categories (as seen in <strong>Figure 13</strong>).</p>
+<p>Considering the origin of the corpus, it is safe to say that the majority of tweets will contain grievances concerning the Twitter user’s husband. Indeed, over a quarter of those posts contain harsh, aggressive language. Posts that directly reference COVID-19 (about 5%) or even the employment status of the husband (approx. 15%), however, are relatively low in numbers. The most prevalent category is that of household tasks; confirming the likelihood that these users are using the medium to vent daily frustrations in regards to the labor performed as a housewife and the lack of compassion or assistance from the husband; something that is further aggravated due to the virus.</p>
+<div class="slider" style="margin: auto; text-align: center;">
+<div class="border"><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/khcoder_topic_freq.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 791px; height: auto; max-width: 100%;"/><span><strong>Figure 13:</strong> Topic frequency.</span></div>
+<div class="border"><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/kh_users_tf.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 805px; height: auto; max-width: 100%;"/><span><strong>Figure 14:</strong> Term frequency of user description corpus.</span></div>
+<div class="border"><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/kh_users_co.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 943px; height: auto; max-width: 100%;"/><span><strong>Figure 15:</strong> Co-occurrence network of of user description corpus (TF &gt; 30 &amp; Coef. &gt;= 0.10).</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/kh_users_topics.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 746px; height: auto; max-width: 100%;"/><span><strong>Figure 16:</strong> Topic frequency of of user description corpus.</span></div>
+</div>
+<p>Finally, we might want to apply the same methods on a corpus of the personal description of Twitter users to gain more insight into the behavioral patterns of those engaging with the #<em>husbandstress</em> hashtag. The following data is based on a list of user profiles that have posted at least one tweet with that hashtag (a total of 1,429 profiles), filtered by the same standards as above. <strong>Figure 15</strong> and <strong>Figure 16</strong>, in particular, shows several trends among those users:</p>
+<ol>
+<li>Nodes that refer to personal hobbies or things those users might be interested in lately, such as animation and video games (something for which NEologd is particularly useful),</li>
+<li>The personal identity marker of being a mother,</li>
+<li>Complaints concerning the husband, with the related possibility of a divorce, as well as reference to living together with the mother-in-law.</li>
+<li>The usual Twitter structures such as <em>mugon forō shitsureishimasu </em><span lang="ja"><ruby><rb>無言</rb><rp>(</rp><rt>むごん</rt><rp>)</rp></ruby></span>フォロー<span lang="ja"><ruby><rb>失礼</rb><rp>(</rp><rt>しつれい</rt><rp>)</rp></ruby></span>します (“forgive me for following without saying anything”); implying that many users will use the account to follow others, possible in similar situations, without the secondary purpose to communicate with each other,</li>
+<li>References to the purpose of the Twitter account: a second account intended to express daily grievances.</li>
+</ol>
+<blockquote>
+<p>“My husband is just impossible. I am comforted by seeing the tweets of people expressing the same stress.”</p>
+<p>“I feel murderous rage towards my husband and parents-in-law. This is a complaints-account. Forgive me for silent-following.”</p>
+<p>“Account dedicated to complaining about my husband. I want someone with whom I can freely share such complaints.”</p>
+<p>“I only write complaints about my husband. I am 9 months pregnant and have one 3 year old child. I like Arashi and Korean dramas. Sorry for silent-following. Feel free to do so yourself.”</p>
+</blockquote>
+<h3 id="to-do"><a class="toclink" href="#to-do">To do</a></h3>
+<p>The above analysis is of course a mere illustration of how these tools could contribute towards a quantitative content analysis approach on Japanese tweets. There are various issues remaining in the above example, including a lack of taking into account the general weighing impact of disproportionately frequent tweeters, a too rudimentary topic coding, a lack of theoretical base and, as is common in criticism on content analysis, perhaps too liberal or reductive an interpretation of co-occurring high-frequency terms. It is recommended that BA and MA students interested in applying these techniques delve further into the methodology of content analysis as well as look up other, published examples utilizing MeCab or KH Coder.</p>
+<hr/>
+<h1 id="wait-there-is-more"><a class="toclink" href="#wait-there-is-more">Wait! There is more!</a></h1>
+<p>This brief tutorial offered a brief introduction to natural language processing in Japanese context as well as some of the tools available, such as KH Coder. Yet, while the graphical user interface of KH Coder and its plethora of statistical analysis options provided are definitely valuable for in-depth quantitative content analysis, in our next post we will be looking into the benefits of dedicated NLP tools for Python and apply a more extensive method of Japanese normalization.</p>
+<ul>
+<li><a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 1: Twitter Data Collection</a></li>
+<li><a href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 2: Basic Metrics &amp; Graphs</a></li>
+<li><a href="https://steviepoppe.net/blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 4: Natural Language Processing With MeCab, Neologd and NLTK</a></li>
+<li><a href="#">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 5: Advanced Metrics &amp; Graphs</a></li>
+</ul>
+<p><em>On a final note, it is my aim to write tutorials like these in such a way that they provide enough detail and (technical) information on the applied methodology to be useful in extended contexts, while still being accessible to less IT-savvy students. If anything is unclear, however, please do not hesitate to leave questions in the comment section below. <i class="icon-hand-down"></i></em></p>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn-footnote">
+<p>Still image from the 2012 Japanese animated film Wolf Children by Mamoru Hosoda, used under a Fair Use doctrine. <a class="footnote-backref" href="#fnref-footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn-1">
+<p>Again, this tutorial is Windows-centric. It provides some guidelines for Mac users, but those steps have not personally been tested. <a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn-2">
+<p>This is of course based on my own limited understanding; entire degrees are set up around those fields. For serious research projects (such as during a graduate thesis), it might be worthwhile to contact someone from the local Digital Humanities department. For a general introduction to NLP, <a href="https://towardsdatascience.com/your-guide-to-natural-language-processing-nlp-48ea2511f6e1">Your Guide to Natural Language Processing (NLP)</a> is a good article to start with. Finally, for a more general introduction to Japanese NLP and computational linguistics, I recommend the free introductory chapter (<a href="https://web.stanford.edu/group/cslipublications/cslipublications/site/9781575867533.shtml">available here</a>) of Bond, F. et al’s 2016. “Readings in Japanese Natural Language Processing”. <a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+<li id="fn-3">
+<p>For a brief overview of the various dictionaries available for Japanese NLP, read <a href="https://www.dampfkraft.com/nlp/japanese-tokenizer-dictionaries.html">An Overview of Japanese Tokenizer Dictionaries</a>. <a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 4 in the text">↩</a></p>
+</li>
+<li id="fn-4">
+<p>For a brief overview of POS-tagging methods, read <a href="https://medium.com/analytics-vidhya/pos-tagging-using-conditional-random-fields-92077e5eaa31">NLP Guide: Identifying Part of Speech Tags using Conditional Random Fields</a>. <a class="footnote-backref" href="#fnref-4" title="Jump back to footnote 5 in the text">↩</a></p>
+</li>
+<li id="fn-5">
+<p>As pointed out in this <a href="https://www.quora.com/What-are-some-Japanese-tokenizers-or-tokenization-strategies">Quora thread</a>, ChaSen used Hidden Markov Model (HMM) chains in its statistical calculation of probability and inferring relationships between each other. As <a href="https://acl-arc.comp.nus.edu.sg/archives/acl-arc-090501d4/data/pdf/anthology-PDF/W/W04/W04-3230.pdf">outlined in this paper</a> by the author of MeCab, MeCab uses Conditional Random Fields (CRFs), a probability model similar to Maximum Entropy Markov Models (MEMM). <a class="footnote-backref" href="#fnref-5" title="Jump back to footnote 6 in the text">↩</a></p>
+</li>
+<li id="fn-6">
+<p>There are various others, such as ChaSen, JUMAN, <a href="https://github.com/atilika/kuromoji">Kuromoji</a> and <a href="http://www.phontron.com/kytea/">KyTea</a>, but those haven’t been in development for a while and don’t bring anything extra to the table. <a href="https://taku910.github.io/cabocha/">CaboCha</a> is sometimes incorrectly listed among them, but is actually a syntactic dependency analyzer using Support Vector Machines that works side by side with MeCab and is written by the same developer. <a href="https://github.com/taishi-i/nagisa">Nagisa</a>, another python-based ‘Japanese tokenizer based on recurrent neural networks’, looks promising but at this point doesn’t seem to have any benefits over its RNN alternatives such as JUMAN++. <a href="https://stanfordnlp.github.io/CoreNLP/index.html">Stanford NLP</a> is an encompassing NLP solution with <a href="https://stanfordnlp.github.io/stanfordnlp/models.html#human-languages-supported-by-stanfordnlp">recently added</a> support for Japanese texts, based on the Japanese Google Universal Dependency Treebank, but I haven’t checked this out in further detail. <a class="footnote-backref" href="#fnref-6" title="Jump back to footnote 7 in the text">↩</a></p>
+</li>
+<li id="fn-7">
+<p>Its dedicated promotional character, a little girl holding an eponymous janome (bullseye) umbrella, is pretty cute too. <a class="footnote-backref" href="#fnref-7" title="Jump back to footnote 8 in the text">↩</a></p>
+</li>
+<li id="fn-8">
+<p>Moreover, Sudachi appear to be the only one among these to perform in-depth normalization of words with inconsistent spelling. <a class="footnote-backref" href="#fnref-8" title="Jump back to footnote 9 in the text">↩</a></p>
+</li>
+<li id="fn-9">
+<p>Running MeCab on Mac, Unix or x86 Windows architecture is fairly straightforward. Running Mecab on x64 architecture, however, was rather complex and required users to edit and recompile the source code manually. For the sake of archiving or future reference, <a href="https://naokiwatanabe.blogspot.com/2014/09/mecab.html">these</a> <a href="https://qiita.com/h_kabocha/items/5bee9e9b852aed11411b">different</a> <a href="http://sutchy.cocolog-nifty.com/sutchy/2015/05/windows-python3.html">blog</a> <a href="https://qiita.com/tobesan/items/6b6f3a025fdd177ef52a">entries</a> were helpful in lining out the required steps. Fortunately, as of 2019, another developer provided a forked 64 bit installer. <a class="footnote-backref" href="#fnref-9" title="Jump back to footnote 10 in the text">↩</a></p>
+</li>
+<li id="fn-10">
+<p>An expansion of the IPADic dictionary. Although there is an <a href="https://github.com/neologd/mecab-unidic-neologd/">NEologd expansion</a> of the NINJAL-developed <a href="https://unidic.ninjal.ac.jp/">UniDic</a> (an actively maintained dictionary upholding Universal Dependencies conventions), the coarse nature of the much-older IPADic in tokening might arguably be a better fit for this kind of project. <a class="footnote-backref" href="#fnref-10" title="Jump back to footnote 11 in the text">↩</a></p>
+</li>
+<li id="fn-11">
+<p>While the particle は would, for example, return a reading of <em>ha</em> ハ and pronunciation of <em>wa</em> ワ. <a class="footnote-backref" href="#fnref-11" title="Jump back to footnote 12 in the text">↩</a></p>
+</li>
+<li id="fn-12">
+<p>Unless we edit the source code manually and recompile the application, there is not much we can do to fix this at this point anyway. One workaround, as <a href="https://blog.14nigo.net/2019/12/mecabpython3.html">this Japanese blogger</a> writes, is to set the output encoding of the command prompt to utf-8 using <code>chcp 65001</code> and piping the Japanese query with <code>echo</code> to mecab (e.g. <code>!#batch echo 猿も木から落ちる | mecab</code>), or alternatively, to use another command line utility program such as git Git Bash. <a class="footnote-backref" href="#fnref-12" title="Jump back to footnote 13 in the text">↩</a><a class="footnote-backref" href="#fnref2-12" title="Jump back to footnote 13 in the text">↩</a></p>
+</li>
+<li id="fn-13">
+<p>The other options are “-O chasen” (to display the POS tagged tokens in ChaSen format), “-O yomi” (for displaying the reading of the token) and “-O dump” (the default options, dumps all information). <a class="footnote-backref" href="#fnref-13" title="Jump back to footnote 14 in the text">↩</a></p>
+</li>
+<li id="fn-14">
+<p>As pointed out here, an alternative method is to compile NEologd as a user dictionary and to use it in conjunction with the standard UNIDic dictionary, rather than to compile the two in one system dictionary. <a class="footnote-backref" href="#fnref-14" title="Jump back to footnote 15 in the text">↩</a></p>
+</li>
+<li id="fn-15">
+<p>Having installed <strong>iconv</strong>, we could do the following in our command prompt to encode all CSV files to UTF-8. Simply replace the originals with the ones in the child directory afterwards: <code>for %%a in (*.csv) do "C:\Program Files (x86)\GnuWin32\bin\iconv.exe" -f EUC-JP -t UTF-8 %%a &gt; ./utf8/%%a</code>. <a class="footnote-backref" href="#fnref-15" title="Jump back to footnote 16 in the text">↩</a></p>
+</li>
+<li id="fn-16">
+<p>Because of the frequent updates and massive size of the raw NEologd CSV files, this tutorial won’t provide a compiled dic file, however. <a class="footnote-backref" href="#fnref-16" title="Jump back to footnote 17 in the text">↩</a></p>
+</li>
+<li id="fn-17">
+<p>Named Entity Recognition; identifying and tagging tokens that are real-world objects (persons, locations, products, etc). The NEologd dictionary has some basic NER as part of the pos sub-classification. The entry for Belgium, for example, returns the following: “ベルギー,名詞,固有名詞,地域,国,,,ベルギー,ベルギー,ベルギー”. In other words, Belgium is classified as a noun → proper noun → region → country. <a class="footnote-backref" href="#fnref-17" title="Jump back to footnote 18 in the text">↩</a></p>
+</li>
+<li id="fn-18">
+<p><strong>S. Yada and K. Kageura</strong>. 2015. Identification of Tweets that Mention Books: An Experimental Comparison of Machine Learning Methods. Digital Libraries: Providing Quality Information: 17<sup>th</sup> International Conference on Asia-Pacific Digital Libraries, ICADL 2015, Seoul, Korea, December 9-12, 2015. Proceedings <a class="footnote-backref" href="#fnref-18" title="Jump back to footnote 19 in the text">↩</a></p>
+</li>
+<li id="fn-19">
+<p>For a process like this that requires handling large amounts of incoming tweets per minute, speed is particularly of essence. MeCab is therefore the most appropriate option, as of writing. <a class="footnote-backref" href="#fnref-19" title="Jump back to footnote 20 in the text">↩</a></p>
+</li>
+<li id="fn-20">
+<p>The Japanese term for such words with different written forms and spelling inconsistencies is <em>hyōkiyure</em> #<span lang="ja"><ruby><rb>表記</rb><rp>(</rp><rt>ひょうき</rt><rp>)</rp></ruby></span>ゆれ (or… 表記揺れ 🙃). <a class="footnote-backref" href="#fnref-20" title="Jump back to footnote 21 in the text">↩</a></p>
+</li>
+<li id="fn-21">
+<p>For a brief overview of this problem and one potential solution, <a href="https://www.aclweb.org/anthology/W16-3918.pdf">read</a>, <strong>Ikeda, Taishi, Hiroyuki Shindo, and Yuji Matsumoto</strong>. 2016. ‘Japanese Text Normalization with Encoder-Decoder Model’. In Proceedings of the 2<sup>nd</sup> Workshop on Noisy User-Generated Text (WNUT), 129–137. Osaka, Japan: The COLING 2016 Organizing Committee. <a href="https://www.aclweb.org/anthology/W16-3918">https://www.aclweb.org/anthology/W16-3918</a>. <a class="footnote-backref" href="#fnref-21" title="Jump back to footnote 22 in the text">↩</a></p>
+</li>
+<li id="fn-22">
+<p>KH Coder is a complex application with a broad variety of tools. The application of KH Coder highlighted in this article serve as a mere introduction, and I wholeheartedly recommend anyone interested in what it has to offer to read the full <a href="http://svn.sourceforge.jp/svnroot/slothlib/CSharp/Version1/SlothLib/NLP/Filter/StopWord/word/Japanese.txt">manual</a> as well. <a class="footnote-backref" href="#fnref-22" title="Jump back to footnote 23 in the text">↩</a></p>
+</li>
+<li id="fn-23">
+<p>The one we have installed earlier. KH Coder 3 comes with a version of MeCab pre-installed in khcoder3/dep which can be safely deleted. <a class="footnote-backref" href="#fnref-23" title="Jump back to footnote 24 in the text">↩</a></p>
+</li>
+<li id="fn-24">
+<p>Another commonly used stop-word list is the one released by the developers of the SlothLib web library, available here. Stop words are calculated not just on term frequency in large example corpora but also by its relation with other (based on n-grams). For an extensive overview of manually calculating such a list in Japanese, see <a href="https://mieruca-ai.com/ai/nlp-stopwords/">https://mieruca-ai.com/ai/nlp-stopwords/</a>. <a class="footnote-backref" href="#fnref-24" title="Jump back to footnote 25 in the text">↩</a></p>
+</li>
+<li id="fn-25">
+<p>A method of content-analysis first applied by psychologist Charles Osgood in his 1959 paper “The Representational Model and Relevant Research Methods”. KH Coder’s visual application is based on force-directed graph drawing algorithms known as Fruchterman–Reingold forces, a method developed by Fruchterman &amp; Reingold in 1991. <a class="footnote-backref" href="#fnref-25" title="Jump back to footnote 26 in the text">↩</a></p>
+</li>
+<li id="fn-26">
+<p>KWIC stands for Key Word In Context. A KWIC concordance shows a list of all the pieces of text containing a particular lemma (KH Coder performs a form of lemmatization by taking the base form of the lemma based on the MeCab dictionary employed: i.e. stripping conjugation of verbs). <a class="footnote-backref" href="#fnref-26" title="Jump back to footnote 27 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+    <hr/>
+        </div>
+
+    <div class="comments">
+        <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'steviepoppe';
+                var disqus_identifier = 'blog/2020/06/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-3/';
+                var disqus_url = 'https://steviepoppe.net/blog/2020/06/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-3/';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+        <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+                <hr />
+        <div class="category">
+            <h2>Related posts</h2>
+            <dl class="dl-horizontal">
+                <dt>Sun 05 July 2020</dt>
+                <dd><a href="https://steviepoppe.net/blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 4: Natural Language Processing With MeCab, Neologd and NLTK</a></dd>
+                <dt>Fri 15 May 2020</dt>
+                <dd><a href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 2: Basic Metrics & Graphs</a></dd>
+                <dt>Wed 01 April 2020</dt>
+                <dd><a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 1: Twitter Data Collection</a></dd>
+                <dt>Tue 14 May 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/05/japanese-e-books-vocab-mining-drm-and-copyright-law/">Japanese E-books, vocab-mining, DRM and copyright law</a></dd>
+                <dt>Wed 17 April 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/">A <del>Quick</del> Guide on Using Anki 5: an efficient vocab mining set-up with Anki and Yomichan</a></dd>
+            </dl>
+            </div>
+        <hr />
+    </div>
+
+      <nav class="pagination">
+
+    <span id="older-nav">
+      <a href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/">Older Posts
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="139,512 1024,512 1024,436 139,436 528,47 465,0 0,483 465,948 528,901 "></polygon></svg></a>
+    </span>
+
+    <span id="newer-nav">
+      <a href="https://steviepoppe.net/blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/">
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="885,512 0,512 0,436 885,436 496,47 559,0 1024,483 559,948 496,901 "></polygon></svg> Newer Posts</a>
+    </span>
+  </nav>
+
+    <script src="https://steviepoppe.net/theme/js/youarehere.min.js"></script>
+    <!-- You can also customize the bar a bit -->
+                </div>
+
+                <footer id="footer" class="footer gradient-2">
+                  <div id="footercontent">
+                    <span itemprop="copyrightHolder">(ɔ) Stevie Poppe 2016 - 2021</span>
+                    <div>
+                      <ul class="footer-nav">                    
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/" class="footer-nav-middle-a footer-nav-first-a">Home</a></li>
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/blog/archives/" class="footer-nav-middle-a ">Archives</a></li>
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/blog/category/" class="footer-nav-middle-a ">Categories</a></li>
+                       <li class=" footer-nav-last ">
+                        <a href="https://steviepoppe.net/blog/tags/" class="footer-nav-middle-a ">Tagcloud</a></li>
+                      </ul>
+                    </div>
+                  </footer>
+                </div>
+
+      <div class="scroll-up" style="display: none;">
+        <a href="#main">&#xfe3f;</a>
+      </div>
+                <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/bootstrap.js"></script>
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/jquery.easing.1.3.js"></script>
+                <!-- <script type="text/javascript" src="https://steviepoppe.net/theme/js/parallax.min.js"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/clipboard.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/slick.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
+
+              </body>
+              </html>

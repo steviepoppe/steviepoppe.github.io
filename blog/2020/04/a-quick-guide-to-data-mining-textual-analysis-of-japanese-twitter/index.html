@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <!-- Stylesheets -->
+  <link href="https://steviepoppe.net/theme/css/bootstrap.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/nest.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/icons.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/pygment.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+
+  <link href="https://steviepoppe.net//theme/css/magnific-popup.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/admonition.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/keys.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/slick.css" rel="stylesheet">
+  <style>
+    @import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+    @import 'https://fonts.googleapis.com/css?family=Poiret+One|Quicksand';
+  </style>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js">
+  </script>
+  <!-- /Stylesheets -->
+
+  <script type="text/javascript">
+    var host = "steviepoppe.net";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+      window.location.protocol = "https";
+  </script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="This short series of blogs chronicles the bare-bones required to conduct a basic form of textual analysis on corpora of Japanese tweets. Examples of similar tutorials on the Internet are numerous, but less so are accessible beginner tutorials guiding the reader throughout the processes of: setting up the initial technical environment, compiling corpora of clean, processed data, and, adding a visual, quantitative element to any qualitative reading of that text, by utilization of textual analysis tools tailored for Japanese content. This series is therefore primarily intended for undergraduate and graduate students whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle. Keeping in mind that many of those situated in the humanities might experience an initial technical hurdle, this first blog will focus primarily on the how, rather than on the why of doing Twitter-based research, by detailing the minimal necessities for getting up and running — supplemented by a brief optional, technical explanation for those who are interested. With this first blog, the reader will thus concretely: Set up a Twitter Developer account and obtain Twitter credentials, Set up a Python development environment, Run tailored Python scripts to build datasets of tweets, based either on keywords or on the tweet history of particular users Use Python for preprocessing the dataset into a usable corpus. This first blog assumes that the reader has already chosen a topic or target of analysis for which a form of Social Network Analysis (SNA) or content analysis of Twitter data is well-suited. A more thorough epistemological introduction to the why, what, when and who of SNA, as well as further recommended reading, will follow in the future. Suffice to say, the technical ease of working with the Twitter APIs, as well as the global-spread use of Twitter (roughly half a billion tweets are sent every single day, with Japanese per capita usage ranking particularly high), offer an excellent introduction to getting acquainted with SNA through practical, real-life examples. Set-up It must be emphasized that the field this tutorial roughly falls under, Digital Humanities (DH), is extremely broad; and understanding the various possibilities DH offers, as well as when and how to apply those, have their own intricate challenges. Within the scope of our brief tutorial series, however, the initial technical hurdles …">
+  <meta name="keywords" content="Big Data, Digital Humanities, Japanese, Python, Tutorial,  Twitter, Japanese, Japan, Study">
+  <meta name="author" content="Stevie Poppe">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="shortcut icon" sizes="196x196" href="https://steviepoppe.net/favicon-192.png">
+
+<link rel="icon" href="https://steviepoppe.net/favicon-32.png" sizes="32x32">
+<link rel="icon" href="https://steviepoppe.net/favicon-96.png" sizes="96x96">
+<link rel="icon" href="https://steviepoppe.net/favicon-128.png" sizes="128x128">
+<link rel="icon" href="https://steviepoppe.net/favicon-192.png" sizes="192x192">
+
+  <title>A Quick Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 1: Twitter Data Collection | Onoreto</title>
+<link rel="canonical" href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/">
+
+
+<!--               <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+              <script>
+                 WebFont.load({
+                  google: {
+                    families: ['Poiret+One', 'Quicksand']
+                  }
+                });
+              </script> -->
+
+
+
+              <!-- RSS Feeds -->
+              <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
+              <link href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
+              <link href="http://localhost:8000/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
+              <!-- /RSS Feeds -->
+
+              <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <![endif]-->
+
+
+
+          <link rel="author" href="https://plus.google.com/112676714486792414615"/>
+   
+
+<meta name="robots" content="index">        </head>
+
+        <body>
+
+    <!-- OVERLAY MENU -->
+    <div id="overlay-menu" class="overlay-menu">
+
+      <a href="#" id="overlay-menu-hide" class="navigation-hide"><button title="Close (Esc)" type="button" class="mfp-close">×</button></a>
+
+      <div class="overlay-menu-inner">
+        <nav class="overlay-menu-nav">
+
+          <ul id="overflow-nav">
+            <li>
+              <a class="link" href="https://steviepoppe.net"><i class="icon-home icon-menu"></i>Home</a>
+            </li>
+
+            <li class="slidedown"><a href="#"><i class="icon-folder-close icon-menu"></i>Categories</a>
+              <ul>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+              </ul>
+            </li>
+
+<li >
+                            <a class="link" href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a class="link" href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>          </ul>
+        </nav>
+      </div>
+
+      <div class="overlay-navigation-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+                          <ul class="socialnav2 social-icons-footer" style="width: auto;display: inline-block;float: none;">
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          </div>
+            <div class="col-sm-12 text-center">
+              <p class="copyright font-alt m-b-0">(ɔ) Stevie Poppe 2016 - 2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /OVERLAY MENU -->
+
+          <div id="wrapper">
+
+            <div class="master scrollingnav">
+              <div class="head-container">
+
+                <header class="page-header">
+                  <a href="https://steviepoppe.net" class="avatar-container pull-left show-overlay toggle-menu" title="Menu">
+                    <div class="avatar">
+                      <div class="side"><img src="https://steviepoppe.net/images/logo2.png" class="img-responsive"/></div>
+                    </div>
+                  </a>
+                  <h1 id="onoreto" title="Onoreto" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">noreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
+                </header>
+
+                <div id="nav-wrapper">
+                  <nav class="navbar navbar-default scrollingnav" id="nav">
+
+                    <div class="navbar-collapse" id="steviesmenubar">
+                      <div style="float: left;;margin-left: 20px;">
+                        <ul class="nav navbar-nav">
+                          <li id="smallicon">
+<a class="small-nav-menu toggle-menu" href="#" title="Menu" style="color:unset;background-color:unset;transition: none;padding-right: 0px;">
+<img src="https://steviepoppe.net/images/logo2.png" style="border-radius: 50%;height: 25px;margin-top: -5px;margin-right: 5px;">
+</a>
+</li>
+<li class=" ">
+                            <a  href="/"><i class="icon-home icon-menu"></i>Blog</a>
+                            </li><li class=" dropdown">
+                            <a  class="dropdown-toggle" data-target="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="/blog/category/"><i class="icon-folder-close icon-menu"></i>Categories                              <span class="caret"></span>
+</a>
+                              <ul class="dropdown-menu" id="menu1" aria-labelledby="drop4"> 
+                                <li><a href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                                <li><a href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li> 
+                                <li><a href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+                              </ul> 
+                            </li><li >
+                            <a href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>                          </ul>
+                        </div>
+                        <div class="social">
+                          <ul class="socialnav socialonly social-icons-footer collapse">
+
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                          </ul>
+                          <ul class="socialnav rssonly social-icons-footer">
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" >
+                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input" style="width: 130px;"></form>
+                          </div>
+
+
+                        </div>
+
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div id="main">
+    <div class="container content padding-40 articleshadow" itemscope itemtype="http://schema.org/Article">
+    <div class="container header-wrapper banner">
+        <div class="row" style="background: linear-gradient(rgba(6, 6, 6, 0.60), rgba(0, 0, 0, 0.60)), url('https://steviepoppe.net/images/anki_header2.jpg'); background-position: center; background-size: cover;">
+              <div class="col-lg-12">
+                  <div class="header-content center">
+                      <h1 class="header-title nocount"><span itemprop="name">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 1: Twitter Data Collection</span><sup id="fnref-footnote"><a class="footnote-ref imagesource" href="#fn-footnote" rel="footnote">1</a></sup></h1>
+                      <p class="header-date"><span itemprop="datePublished" content="2016-09-07">Wed 01 April 2020</span>, in category <a href="https://steviepoppe.net/blog/category/studies/"><span itemprop="articleSection">Studies</span></a></p>
+                      <div class="header-underline"></div>
+                      <div class="clearfix"></div>
+                      <p class="pull-right header-tags">
+                          <span class="icon-tags" aria-hidden="true"></span>
+<a href="https://steviepoppe.net/blog/tags/big-data/">Big Data</a>, <a href="https://steviepoppe.net/blog/tags/digital-humanities/">Digital Humanities</a>, <a href="https://steviepoppe.net/blog/tags/japanese/">Japanese</a>, <a href="https://steviepoppe.net/blog/tags/python/">Python</a>, <a href="https://steviepoppe.net/blog/tags/tutorial/">Tutorial</a>, <a href="https://steviepoppe.net/blog/tags/twitter/">Twitter</a>                      </p>
+                  </div>
+              </div>
+        </div>
+    </div>
+    <div class="container-main" itemprop="articleBody">
+<!--         <h1 style="text-align: center;" class="nocount">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 1: Twitter Data Collection</h1>
+ -->
+            <nav class="toc-container">
+              <input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none">
+            <p class="toc_title">Table of Contents<span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></p>
+            <div class="toc">
+<ul>
+<li><a href="#set-up">Set-up</a><ul>
+<li><a href="#twitter-api-credentials">Twitter API credentials</a></li>
+<li><a href="#python">Python</a></li>
+</ul>
+</li>
+<li><a href="#accumulating-data">Accumulating Data</a><ul>
+<li><a href="#by-account-twitter-rest-api">By Account: Twitter REST API</a></li>
+<li><a href="#by-keyword">By keyword</a><ul>
+<li><a href="#historical-search-twitter-rest-api">Historical Search: Twitter REST API</a></li>
+<li><a href="#real-time-twitter-streaming-api">Real-Time: Twitter Streaming API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#data-processing">Data Processing</a><ul>
+<li><a href="#preprocessing-with-python">Preprocessing with Python</a></li>
+</ul>
+</li>
+<li><a href="#wait-there-is-more">Wait! There is more!</a></li>
+</ul>
+</div>
+            </nav>
+        
+
+<p>This short series of blogs chronicles the bare-bones required to conduct a basic form of textual analysis on corpora of Japanese tweets. Examples of similar tutorials on the Internet are numerous,<sup><a class="footnote-ref" href="#fn-1" id="fnref-1" rel="footnote">2</a></sup> but less so are accessible beginner tutorials guiding the reader throughout the processes of:</p>
+<ol>
+<li>setting up the initial technical environment,</li>
+<li>compiling corpora of clean, processed data, and,</li>
+<li>adding a visual, quantitative element to any qualitative reading of that text, by utilization of textual analysis tools <strong>tailored for Japanese content</strong>.</li>
+</ol>
+<p>This series is therefore primarily intended for <strong>undergraduate and graduate students</strong> whose topics of research include contemporary Japan or its online <em>vox populi</em>, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle.</p>
+<p>Keeping in mind that many of those situated in the humanities might experience an initial technical hurdle, this first blog will focus primarily on the <em>how</em>, rather than on the <em>why</em> of doing Twitter-based research, by detailing the minimal necessities for getting up and running — supplemented by a brief optional, technical explanation <em>for those who are interested</em>. With this first blog, the reader will thus concretely:</p>
+<ul>
+<li><i class="icon-check"></i> Set up a Twitter Developer account and obtain Twitter credentials,</li>
+<li><i class="icon-check"></i> Set up a Python development environment,</li>
+<li><i class="icon-check"></i> Run tailored Python scripts to build datasets of tweets, based either on keywords or on the tweet history of particular users</li>
+<li><i class="icon-check"></i> Use Python for preprocessing the dataset into a usable corpus.</li>
+</ul>
+<p>This first blog assumes that the reader has already chosen a topic or target of analysis for which a form of Social Network Analysis (SNA) or content analysis of Twitter data is well-suited. A more thorough epistemological introduction to the <em>why</em>, <em>what</em>, <em>when</em> and <em>who</em> of SNA, as well as further recommended reading, will follow in the future. Suffice to say, the technical ease of working with the Twitter APIs, as well as the global-spread use of Twitter (roughly half a billion tweets are sent every single day, with Japanese per capita usage ranking particularly high), offer an excellent introduction to getting acquainted with SNA through practical, real-life examples.</p>
+
+<h1 id="set-up"><a class="toclink" href="#set-up">Set-up</a></h1>
+<p>It must be emphasized that the field this tutorial roughly falls under, <strong>Digital Humanities</strong> (DH), is extremely broad; and understanding the various possibilities DH offers, as well as when and how to apply those, have their own intricate challenges. Within the scope of our brief tutorial series, however, the initial technical hurdles of setting up a proper technical environment and just getting scripts running will probably be the most challenging for most readers. The set-up and approach we will be applying throughout this series might seem daunting at first, but as of writing, there is no free alternative with a graphical user interface that offers as much control as doing things manually would.</p>
+<h2 id="twitter-api-credentials"><a class="toclink" href="#twitter-api-credentials">Twitter API credentials</a></h2>
+<p><strong>APIs</strong> (Application Programming Interfaces) are pieces of code that permit cross-platform and cross-programming language communication between different software. A web-application, a desktop application or a simple script of code (such as the ones in our article) might access an API in order to exchange (retrieve, create, update or delete) information. Mobile versions of Twitter (Android, iOS), for example, are relatively simple applications that might access the Twitter API to <em>get</em> tweet data from its online servers to display it on-screen, or instead <em>sent</em> and save a newly written tweet. This kind of interaction between different applications, written in different programming languages, is everywhere: even a simple retweet button on a blog article, or a Buzzfeed news article peppered with a bunch of relevant tweets, rely on those Twitter APIs.</p>
+<p>Like many other large social media platforms such as Facebook and YouTube, Twitter has an extensive list of APIs made available to developers, researchers and market strategists alike. The most extensive ones are limited to expensive Premium and Enterprise editions targeting commercial enterprises, but, while undeniably limited, the free standard APIs and its Terms of Service (ToS) do permit us a certain degree of data accumulation sufficient for our goals.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are some pitfalls that must be noted in regards to the limitations of the free-to-use Twitter <strong>APIs</strong>. None of the methods provided below permit the collecting of an exhaustive collection of tweets. Instead, queries will be executed against a sample of the global total amount of (historical) tweets.<sup><a class="footnote-ref" href="#fn-2" id="fnref-2" rel="footnote">3</a></sup> Therefore, any conclusions drawn based on the amount of tweets per timespan will be estimates rather than absolutes. Moreover, due to the time restraints of the Search API (7 days), ad-hoc research of older phenomena is nearly impossible. Depending on the scope of the search query, the Search API and Timeline API in particular could yield more accurate results than using the Streaming API does, however.<sup><a class="footnote-ref" href="#fn-3" id="fnref-3" rel="footnote">4</a></sup></p>
+</div>
+<p>Before we are able to begin, however, we should first apply for a Twitter developer account and obtain several <strong>credentials</strong> required to access those Twitter APIs. Open the <a href="https://developer.twitter.com/en/apply">Twitter developer page</a> (if you don’t yet have a Twitter account, you will have to create one now) and click on Apply for an account.</p>
+<p><img alt="twitter1" class="hwimportant fborder fcenter halfwidth" src="https://steviepoppe.net/images/twitter/twitter1.png" title="twitter1"/></p>
+<p>Throughout the next few screens, select <strong>Doing academic research</strong> → verify your personal personal information (if you haven’t do so yet, you will likely have to verify your cellphone number) → <strong>describe your intended use</strong> → review your application → accept the Developer Agreement → click <strong>Submit Application</strong>.</p>
+<p><img alt="twitter2" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/twitter/twitter2.png" title="twitter2"/></p>
+<p>Your application will be judged in-person based on your <strong>Intended Use</strong> and should be well thought-out. I have written a brief example—<em>for your reference only</em>—, as to how you might approach this, in the screenshots below.</p>
+<p alt="twitter" class="hwimportant center border">
+<img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/twitter3.png" style="width: 45% !important;"/>
+<img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/twitter4.png" style="width: 45% !important;"/>
+</p>
+<p>Upon receiving a confirmation of approval (an application is usually approved or denied within a matter of hours), head to the <a href="https://developer.twitter.com/en/apps/create">Apps management screen</a> → click <strong>Create an app</strong> and fill in the required information: an ‘app’ name, brief application description, Website URL, and information regarding how your application will be used. Again, something similar to what is written in the screenshot below should be sufficient for your description. Moreover, the field <strong>how it will be used</strong> can repeat what was written in the previous application (it is not required to wait for further external approval after creating an ‘app’, so this step is less important). Neither is it important to have a personal website; it is fine to substitute this with an URL to your Facebook, LinkedIn or Twitter profile.</p>
+<p><img alt="twitter5" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/twitter/twitter5.png" title="twitter5"/></p>
+<p>Next, click on the <strong>details</strong> button for the new <em>‘app’</em> and open the <strong>Key and tokens</strong> tab. Generate <strong>Consumer API keys</strong> and <strong>Access token and access token secret keys</strong>, and note these down in a separate file. They are required to connect to the Twitter API through our Python scripts after we have finished our set-up.</p>
+<h2 id="python"><a class="toclink" href="#python">Python</a></h2>
+<p>Although there are plenty of other programming languages with which we might access the Twitter API for similar results (such as Java or Ruby), in this series of blogs we will use the easy-to-read, well-documented scripting language <strong>Python</strong>. Python (along with the statistical research language R) has, due to its extensive library of third-party modules, become somewhat of a <em>de facto lingua franca</em> within the (digital) humanities. Within DH, its usage covers anything from data processing, visualization and chore automation to machine learning, Natural Language Processing (NLP) and general linguistic analysis.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended to follow a brief, optional tutorial.<sup><a class="footnote-ref" href="#fn-4" id="fnref-4" rel="footnote">5</a></sup> Python is relatively easy to learn and doesn’t require any prior knowledge of programming.</p>
+</div>
+<p>Now head to the <a href="https://www.python.org/downloads/">Python homepage</a> and download the latest installer version matching your operating system. Recent installers will already be packaged together with necessary add-ons such as <strong>pip</strong>, a Python package manager for installing custom packages. Make sure to check the <strong>Add Python 3.x to PATH</strong> check button before proceeding.<sup><a class="footnote-ref" href="#fn-5" id="fnref-5" rel="footnote">6</a></sup></p>
+<p>Next, open the Windows <strong>command prompt</strong> (or the Terminal on Mac OS X).<sup><a class="footnote-ref" href="#fn-6" id="fnref-6" rel="footnote">7</a></sup> To do so on Windows, press <span class="keys"><kbd class="key-windows">Win</kbd><span>+</span><kbd class="key-r">R</kbd></span> , enter <strong>cmd</strong> and press <span class="keys"><kbd class="key-enter">Enter</kbd></span>.<sup><a class="footnote-ref" href="#fn-7" id="fnref-7" rel="footnote">8</a></sup> Now input <code>python</code> (or its abbreviation <code>py</code>) and press <span class="keys"><kbd class="key-enter">Enter</kbd></span> again. Given that the installation went off without a hitch (and that the python executable was successfully added to your PATH variable), this should open the python interpreter as shown in the screenshot below. Play around a bit and input <code>quit()</code> to exit the python interpreter environment.</p>
+<p alt="twitter" class="hwimportant center border">
+<img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/install_python.png" style="width: 45% !important;"/>
+<img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/cmd_python.png" style="width: 45% !important;"/>
+</p>
+<p>Finally, we will need to install<strong> <a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/tweepy.org">tweepy</a></strong>, a Python package required by our example scripts in order to simplify our access to the Twitter APIs. Input <code>pip install tweepy</code> to install Tweepy and any dependent packages.<sup><a class="footnote-ref" href="#fn-8" id="fnref-8" rel="footnote">9</a></sup></p>
+<hr/>
+<h1 id="accumulating-data"><a class="toclink" href="#accumulating-data">Accumulating Data</a></h1>
+<p>Having set up our development environment, let us now dive into some working examples:</p>
+<ol>
+<li>Copy and paste the desired script(s) below in a text editor of choice,<sup><a class="footnote-ref" href="#fn-9" id="fnref-9" rel="footnote">10</a></sup> select <strong>save as</strong> and save them with a suitable name with the <code>.py</code> file extension (python files)) in an easily accessible folder (e.g. save the first script as <code>account_scraper.py</code> in <code>c:\python_examples\</code>). Alternatively, you could also download them from this article’s corresponding <a href="https://github.com/steviepoppe/python_twitter_api_examples">GitHub page</a>. Don’t forget to replace the placeholder Twitter API credentials (<strong>####</strong>) with the credentials obtained earlier.</li>
+<li>Open the command prompt again. Navigate to the folder containing the python script(s) you have just saved (e.g. use the command cd to change directories: <code>cd C:\python_examples\</code>).</li>
+<li>Run the python script by invoking the name you saved it by, using the python command and the name of the query (either the search query or the name of the target Twitter profile, e.g. <code>python python_twitter.py poppestevie</code> or <code>py python_search.py poppestevie</code>).</li>
+<li>Pressing <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in your command prompt at any time will cease the process. Due to the API limitations, the account API script will finish in a matter of seconds, while the real-time streaming API example will run until the process is terminated and, depending on the popularity of the search query, the historical search API script could run for over a day despite a hard limitation of 7 days.</li>
+<li>The APIs return tweets matching our search queries as unstructured data formatted in <a href="https://en.wikipedia.org/wiki/JSON">JavaScript Object Notation</a> (JSON, a lightweight data-interchange format).<sup><a class="footnote-ref" href="#fn-10" id="fnref-10" rel="footnote">11</a></sup> Our script saves those to a valid JSON formatted file in a ‘results’ subfolder (e.g. <code>C:\python_examples\results\</code>.<sup><a class="footnote-ref" href="#fn-11" id="fnref-11" rel="footnote">12</a></sup></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When encoding to UTF8 is enabled, Unicode characters (such as Japanese characters or emoji) and other characters that fall outside the ASCII range are, by default, escaped (e.g. 🤷 → ‘\u1F937’). This is a <a href="https://docs.python.org/3/howto/unicode.html">common practice</a> taken to avoid data mangling among legacy systems, and is far more memory effective due to the large size of Unicode characters (which are up to 4 times larger than their ASCII representations). The scripts on these pages, however, bypass this behavior with the <code class="highlight"><span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span></code> argument.</p>
+<p>Datasets that are expected to contain several hundreds of thousands of tweets are recommended to have that argument set to True, as such datasets will easily take up to several gigabytes of disk space. Decoding texts to their actual Unicode value is, in those cases, best kept on a need-only basis during the preprocessing phase.<sup><a class="footnote-ref" href="#fn-12" id="fnref-12" rel="footnote">13</a></sup></p>
+</div>
+<h3 id="by-account-twitter-rest-api"><a class="toclink" href="#by-account-twitter-rest-api">By Account: Twitter REST API</a></h3>
+<p>Our first example script collects tweets posted by specific Twitter users, up to the most recent ~3200 tweets posted by those accounts (a limitation inherent to the Twitter API itself, which cannot be easily bypassed).<sup><a class="footnote-ref" href="#fn-13" id="fnref-13" rel="footnote">14</a></sup></p>
+<p>In essence this script uses Tweepy’s pagination method Cursor to iterate through the target’s timeline, 200 tweets at a time (the maximum amount permitted per access call it makes to the Twitter GET API). Objects are returned as dictionaries of JSON objects, which are iterated through and written to a new, JSON-compliant file (e.g. <em>poppestevie_search_tweets.json</em>).</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tweepy</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1">#Twitter API credentials</span>
+<span class="n">consumer_key</span> <span class="o">=</span> <span class="s1">'####'</span>
+<span class="n">consumer_secret</span> <span class="o">=</span> <span class="s1">'####'</span>
+<span class="n">access_key</span> <span class="o">=</span> <span class="s1">'####'</span>
+<span class="n">access_secret</span> <span class="o">=</span> <span class="s1">'####'</span>
+<span class="n">search_query</span> <span class="o">=</span> <span class="s1">''</span>
+
+<span class="k">def</span> <span class="nf">get_timeline_tweets</span><span class="p">(</span><span class="n">screen_name</span><span class="p">):</span>
+    <span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuthHandler</span><span class="p">(</span><span class="n">consumer_key</span><span class="p">,</span> <span class="n">consumer_secret</span><span class="p">)</span>
+    <span class="n">auth</span><span class="o">.</span><span class="n">set_access_token</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">access_secret</span><span class="p">)</span>
+    <span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">wait_on_rate_limit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">wait_on_rate_limit_notify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">tweet_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S'</span><span class="p">)</span>
+    <span class="c1">#create dir results if != exists</span>
+    <span class="n">Path</span><span class="p">(</span><span class="s2">"./results/"</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./results/timeline_tweets_</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">.json'</span> <span class="o">%</span> <span class="p">(</span><span class="n">screen_name</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">),</span> 
+        <span class="n">mode</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="c1">#bit of a  hacky way to create valid JSON but easier on memory</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'{"objects":['</span><span class="p">)</span> 
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># cursor pagination, 200 is limit of returned Tweets per access call</span>
+            <span class="k">for</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">,</span> <span class="n">screen_name</span><span class="o">=</span><span class="n">screen_name</span><span class="p">,</span> 
+                <span class="n">count</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">tweet_mode</span><span class="o">=</span><span class="s1">'extended'</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="c1">#set ensure_ascii to true to encode Unicode in ascii. </span>
+                <span class="c1">#',' conditional operator is part of the manual JSON parsing hack</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">((</span><span class="s1">','</span> <span class="k">if</span> <span class="n">tweet_count</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">''</span><span class="p">)</span> <span class="o">+</span> 
+                    <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">_json</span><span class="p">,</span><span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">sort_keys</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span><span class="n">indent</span> <span class="o">=</span> <span class="mi">4</span><span class="p">))</span>
+                <span class="n">tweet_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">tweet_count</span> <span class="o">%</span> <span class="mi">200</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">"Downloaded </span><span class="si">%d</span><span class="s2"> tweets"</span> <span class="o">%</span> <span class="n">tweet_count</span><span class="p">)</span> 
+        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Process terminated."</span><span class="p">)</span>
+
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">']}'</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Downloaded </span><span class="si">%d</span><span class="s2"> tweets, Saved to ./results/timeline_tweets_</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">.json"</span> 
+        <span class="o">%</span> <span class="p">(</span><span class="n">tweet_count</span><span class="p">,</span> <span class="n">screen_name</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="c1">#pass in the username of the target account as argument in command prompt.</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">search_query</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">get_timeline_tweets</span><span class="p">(</span><span class="n">search_query</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+<p><img alt="cmd_python_user" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/twitter/cmd_python_user.png" title="cmd_python_user"/></p>
+<h2 id="by-keyword"><a class="toclink" href="#by-keyword">By keyword</a></h2>
+<p>The following two scripts will accumulate tweets based on one or several search queries. The first second example collects tweets from the existing pool of tweets up to about a week prior to running the script, while the second script opens a direct stream to filter incoming content based on the required keyword in real-time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have not formerly worked with the command prompt in Windows, inputting Japanese or other non-western characters (as a search query, for example) will likely result in gibberish. The easiest solution is to change the display font of the command prompt to one that contains all Unicode characters (right click on the title bar → settings → font → select a font such as MSゴシック).</p>
+</div>
+<h3 id="historical-search-twitter-rest-api"><a class="toclink" href="#historical-search-twitter-rest-api">Historical Search: Twitter REST API</a></h3>
+<p>Similar to our previous example, this script relies on Tweepy’s Cursor pagination; collecting approximately 100 tweets per access call and writing these to local files as valid JSON. In order to both prevent crashes caused by a memory leak in Tweepy’s pagination method and in order to keep the file size of our JSON files manageable (particularly trending topics might return up to millions of of results over the timespan of many hours running this script, taking up several gigabytes worth of disk space per single file), results are split over different files by an arbitrary number of tweets per file (defaulting to 10 000 tweets, set in <strong>line 11</strong>).</p>
+<p>Since this script runs until either the imposed API limit of 7 days is hit or the extent of all relevant tweets within the Twitter sample are collected (which could take up tens of hours depending on the popularity of the queries), this script can therefore be ceased mid-process by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> within the command prompt the script is currently running in.</p>
+<p>As is well-documented on <a href="https://developer.twitter.com/en/docs/basics/rate-limits">Twitter API’s documentation</a>, using the <a href="https://developer.twitter.com/en/docs/basics/authentication/oauth-2-0/application-only">Application only authentication</a> instead of user authentication permits us a much higher amount of requests within a single window of 15 minutes; translating to a faster and more maintainable approach to data-mining historical tweets (roughly 100 tweets x 450 access calls per 15 minutes, for a total of roughly <strong>180 000 tweets per hour</strong>).</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tweepy</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1">#Twitter API credentials</span>
+<span class="n">consumer_key</span> <span class="o">=</span> <span class="s1">'####'</span>
+<span class="n">consumer_secret</span> <span class="o">=</span> <span class="s1">'####'</span>
+<span class="n">max_counter</span> <span class="o">=</span> <span class="mi">10001</span>  <span class="c1">#set to 0 to save all tweets to one file instead of chunking in pieces</span>
+<span class="n">max_id</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1">#Optional: Until which ID?</span>
+<span class="n">since_id</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1">#Optional: Since which ID?</span>
+<span class="n">language</span> <span class="o">=</span> <span class="s1">'ja'</span> <span class="c1">#Optional: filtering by which language? Japanese? -&gt; 'ja'</span>
+<span class="n">search_query</span> <span class="o">=</span> <span class="s1">'China'</span>
+<span class="n">quit</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">search_tweets</span><span class="p">(</span><span class="n">sys_args</span><span class="p">):</span>
+
+    <span class="k">global</span> <span class="n">max_id</span>
+    <span class="k">global</span> <span class="n">since_id</span>
+    <span class="k">global</span> <span class="n">search_query</span>
+    <span class="k">global</span> <span class="n">language</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">search_query</span> <span class="o">=</span> <span class="n">sys_args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">max_id</span> <span class="o">=</span> <span class="n">sys_args</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">since_id</span> <span class="o">=</span> <span class="n">sys_args</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="n">language</span> <span class="o">=</span> <span class="n">sys_args</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+
+    <span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">AppAuthHandler</span><span class="p">(</span><span class="n">consumer_key</span><span class="p">,</span> <span class="n">consumer_secret</span><span class="p">)</span>
+    <span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">wait_on_rate_limit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">wait_on_rate_limit_notify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">tweet_total_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S'</span><span class="p">)</span>
+    <span class="n">part</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">tweet_count</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+
+    <span class="c1">#create dir results if != exists</span>
+    <span class="n">Path</span><span class="p">(</span><span class="s2">"./results/"</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">tweet_count</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">quit</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">part</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">tweet_count</span> <span class="o">=</span> <span class="n">process_tweets</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">search_query</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">part</span><span class="p">)</span>
+        <span class="n">tweet_total_count</span> <span class="o">+=</span> <span class="n">tweet_count</span>
+
+    <span class="c1">#To do: save last tweet ID in the registry in order to automatize with batch scripts</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">"Finished process. Downloaded </span><span class="si">%d</span><span class="s2"> total tweets. Last tweet ID was </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">tweet_total_count</span><span class="p">,</span> <span class="n">max_id</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">process_tweets</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">search_query</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">part</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">max_id</span> 
+    <span class="k">global</span> <span class="n">quit</span> 
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./results/search_tweets_</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">_part-</span><span class="si">%s</span><span class="s1">.json'</span> <span class="o">%</span> <span class="p">(</span><span class="n">search_query</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">part</span><span class="p">),</span> 
+        <span class="n">mode</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="c1">#bit of a hacky way to create valid JSON but easier on memory</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'{"objects":['</span><span class="p">)</span> 
+        <span class="n">tweet_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># cursor pagination, 100 is limit of returned tweets per access call</span>
+<span class="hll">            <span class="k">for</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">search</span><span class="p">,</span><span class="n">q</span><span class="o">=</span><span class="n">search_query</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> 
+</span>                <span class="n">tweet_mode</span><span class="o">=</span><span class="s1">'extended'</span><span class="p">,</span>
+                <span class="n">lang</span><span class="o">=</span><span class="n">language</span><span class="p">,</span>
+                <span class="n">since_id</span><span class="o">=</span><span class="n">since_id</span><span class="p">,</span>
+                <span class="n">max_id</span><span class="o">=</span><span class="n">max_id</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="n">max_counter</span><span class="p">):</span>
+                <span class="c1"># tweepy takes max_id as first id to return: already have this so skip </span>
+                <span class="c1"># (that's also why the max_counter is 10001 instead of 10k)</span>
+                <span class="k">if</span> <span class="n">max_id</span> <span class="o">!=</span> <span class="n">status</span><span class="o">.</span><span class="n">id_str</span><span class="p">:</span>
+                    <span class="n">max_id</span> <span class="o">=</span> <span class="n">status</span><span class="o">.</span><span class="n">id_str</span>
+                    <span class="c1">#conditional operator is part of the manual JSON parsing hack</span>
+                    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">((</span><span class="s1">','</span> <span class="k">if</span> <span class="n">tweet_count</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">''</span><span class="p">)</span> <span class="o">+</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">_json</span><span class="p">,</span>
+                        <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">sort_keys</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span><span class="n">indent</span> <span class="o">=</span> <span class="mi">4</span><span class="p">))</span>
+                    <span class="n">tweet_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="n">tweet_count</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">"Downloaded </span><span class="si">%d</span><span class="s2"> tweets"</span> <span class="o">%</span> <span class="n">tweet_count</span><span class="p">)</span> 
+        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Process terminated. Last tweet ID was </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">max_id</span><span class="p">)</span>
+            <span class="n">quit</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">TweepError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Memory error. Last tweet ID was </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">max_id</span><span class="p">)</span>
+
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">']}'</span><span class="p">)</span>
+
+    <span class="c1">#To do: we don't know if we've reached the last tweet until the tweepy API call,</span>
+    <span class="c1"># which happens after creating  a new JSON file. For now, this just removes the empty, final json file</span>
+    <span class="c1">#optionally we could keep all objects, per chunk of 10k, </span>
+    <span class="c1">#in memory and save at the end but this is way more memory-taxing</span>
+    <span class="k">if</span> <span class="n">tweet_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">"Downloaded </span><span class="si">%d</span><span class="s2"> tweets, Saved to ./results/search_tweets_</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">_part-</span><span class="si">%s</span><span class="s2">.json"</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="n">tweet_count</span><span class="p">,</span> <span class="n">search_query</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">part</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">"./results/search_tweets_</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">_part-</span><span class="si">%s</span><span class="s2">.json"</span> <span class="o">%</span> <span class="p">(</span><span class="n">search_query</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">part</span><span class="p">))</span>
+
+    <span class="c1">#no need to loop if all tweets are saved in one file</span>
+    <span class="k">if</span> <span class="n">max_counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">quit</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="n">tweet_count</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">search_tweets</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+<p><img alt="cmd_python_search" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/twitter/cmd_python_search.png" title="cmd_python_search"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If we wish to <strong>resume</strong> this process starting from where we left off, we might do so using the <code>max_id</code> <a href="https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets">argument</a> during our Search API access call (which can be set in <strong>line 12</strong>). Simply replacing None with the tweet ID of the last JSON object in our previously compiled JSON list of results will do the trick. Likewise, we could do the same, using <code>since_id</code> (<strong>line 13</strong>), to collect tweets over a longer period of time (by taking the tweet ID of the first object in the last compiled JSON file as the entry point).</p>
+<p>If we intent to further limit the requested tweets to a <strong>particular language</strong>, we could also optionally filter our results by setting an language argument (<strong>line 14</strong>) for our access call: e.g. “<code class="highlight"><span class="n">language</span> <span class="o">=</span> <span class="s1">'ja'</span></code>”. It is perfectly possible to filter by several different languages, as well (e.g. “<code class="highlight"><span class="n">language</span><span class="o">=</span><span class="p">[</span><span class="s2">"ja"</span><span class="p">,</span><span class="s2">"en"</span><span class="p">]</span></code>”). Using a filter to limit tweets by location, however, is not recommended due to the limited amount of Twitter accounts that accurately add such information.<sup><a class="footnote-ref" href="#fn-14" id="fnref-14" rel="footnote">15</a></sup></p>
+<p>Finally, it might be worthwhile to look into the <a href="https://developer.twitter.com/en/docs/tweets/rules-and-filtering/guides/build-standard-queries">Twitter API documentation</a> in regards to filtering incoming tweets. If we intend to filter out retweets, for example, we could further adjust our script (<strong>line 63</strong>) by changing “<code class="highlight"><span class="n">q</span><span class="o">=</span><span class="n">search_query</span></code>” to “<code class="highlight"><span class="n">q</span><span class="o">=</span><span class="n">search_query</span> <span class="o">+</span> <span class="s2">" -filter:retweets"</span></code>”. Moreover, in order to search by multiple queries, we could just input several queries or use the logical operators <strong>OR</strong> in-between (e.g. “<code class="highlight"><span class="n">py</span> <span class="n">python_twitter_stream</span><span class="o">.</span><span class="n">py</span> <span class="s2">"#corona #covid19"</span></code>” for tweets containing both, or “<code class="highlight"><span class="n">py</span> <span class="n">python_twitter_search</span><span class="o">.</span><span class="n">py</span> <span class="s2">"#corona OR #covid19"</span></code>” for those containing either. Don’t forget to enclose the query in [] brackets, however!</p>
+</div>
+<h3 id="real-time-twitter-streaming-api"><a class="toclink" href="#real-time-twitter-streaming-api">Real-Time: Twitter Streaming API</a></h3>
+<p>Unlike the previous two examples, the following script does not pull data from a RESTful API but creates a <em>listener</em> that is perpetually connected to the Twitter Streaming API (referred to as the <strong><em>firehose</em></strong>, limited to about ∼1% of incoming Twitter traffic). It signals to the API which queries to filter by, upon which the Twitter API pushes back all matching incoming tweets.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tweepy</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1">#Twitter API credentials</span>
+<span class="n">consumer_key</span> <span class="o">=</span> <span class="s1">'####'</span>
+<span class="n">consumer_secret</span> <span class="o">=</span> <span class="s1">'####'</span>
+<span class="n">access_key</span> <span class="o">=</span> <span class="s1">'####'</span>
+<span class="n">access_secret</span> <span class="o">=</span> <span class="s1">'####'</span>
+
+<span class="n">tweet_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">search_query</span> <span class="o">=</span> <span class="s1">''</span>
+<span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S'</span><span class="p">)</span>
+<span class="hll"><span class="n">language</span> <span class="o">=</span> <span class="s1">''</span> <span class="c1">#Optional: filtering by which language? Japanese? -&gt; 'ja'</span>
+</span>
+<span class="k">class</span> <span class="nc">StreamListener</span><span class="p">(</span><span class="n">tweepy</span><span class="o">.</span><span class="n">StreamListener</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">on_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./results/stream_tweets_</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">.json'</span> <span class="o">%</span> <span class="p">(</span><span class="n">search_query</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">),</span> 
+                <span class="s1">'a'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="k">global</span> <span class="n">tweet_count</span> 
+                <span class="n">status</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                <span class="c1">#make sure the incoming data is tweet JSON, not rate related JSON</span>
+                <span class="k">if</span> <span class="s2">"created_at"</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
+                    <span class="c1">#prettifying json by parsing status string as json and then redumping ?? oof        </span>
+                    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">((</span><span class="s1">','</span> <span class="k">if</span> <span class="n">tweet_count</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">''</span><span class="p">)</span> 
+                        <span class="o">+</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">status</span><span class="p">,</span><span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">sort_keys</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span><span class="n">indent</span> <span class="o">=</span> <span class="mi">4</span><span class="p">))</span>            
+                    <span class="n">tweet_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="n">tweet_count</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">"Downloaded </span><span class="si">%d</span><span class="s2"> tweets"</span> <span class="o">%</span> <span class="n">tweet_count</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Error on_data: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>         
+            <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">on_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Error status on_error: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">status</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuthHandler</span><span class="p">(</span><span class="n">consumer_key</span><span class="p">,</span> <span class="n">consumer_secret</span><span class="p">)</span>
+    <span class="n">auth</span><span class="o">.</span><span class="n">set_access_token</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">access_secret</span><span class="p">)</span>
+    <span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">wait_on_rate_limit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">wait_on_rate_limit_notify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">search_query</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">language</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Python stream started. Press ctrl-c to disconnect."</span><span class="p">)</span>
+
+    <span class="c1">#create dir results if != exists</span>
+    <span class="n">Path</span><span class="p">(</span><span class="s2">"./results/"</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1">#very hacky way of creating valid JSON but easier on memory</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./results/stream_tweets_</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">.json'</span> <span class="o">%</span> <span class="p">(</span><span class="n">search_query</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">),</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'{"objects":['</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">StreamListener</span> <span class="o">=</span> <span class="n">StreamListener</span><span class="p">()</span>
+            <span class="n">stream</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Stream</span><span class="p">(</span><span class="n">auth</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">auth</span><span class="p">,</span> <span class="n">listener</span><span class="o">=</span><span class="n">StreamListener</span><span class="p">,</span><span class="n">tweet_mode</span><span class="o">=</span><span class="s1">'extended'</span><span class="p">)</span>
+            <span class="n">stream</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">track</span><span class="o">=</span><span class="p">[</span><span class="n">search_query</span><span class="p">],</span> <span class="n">languages</span><span class="o">=</span><span class="p">[</span><span class="n">language</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">stream</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span> <span class="c1">#disconnect the stream and stop streaming</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Stream disconnected. Downloaded </span><span class="si">%d</span><span class="s2"> tweets, Saved to ./results/stream_tweets_</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">.json"</span>
+            <span class="o">%</span> <span class="p">(</span><span class="n">tweet_count</span><span class="p">,</span> <span class="n">search_query</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">))</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./results/stream_tweets_</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">.json'</span> <span class="o">%</span> <span class="p">(</span><span class="n">search_query</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">),</span> <span class="s1">'a'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">']}'</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the reader intents to limit the requested tweets to a particular language, they can impose a filter by editing the language variable (<strong>line 16</strong>) to the intended language (e.g. “<code class="highlight"><span class="n">language</span> <span class="o">=</span> <span class="s1">'ja'</span></code>”).<sup><a class="footnote-ref" href="#fn-15" id="fnref-15" rel="footnote">16</a></sup></p>
+</div>
+<h1 id="data-processing"><a class="toclink" href="#data-processing">Data Processing</a></h1>
+<p>By now, we should have one or several files containing raw tweet data formatted in JSON. opening one of those files with our text editor of choice permits us a closer look at the skeleton of such tweet objects. As seen in the example below, each single tweet contains a large amount of meta information (the <a href="https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/tweet-object">Twitter Developer page</a> offers a brief structural overview of each field in a JSON tweet object), not all of which might be relevant to us. The following fields are some that might be immediately relevant to us at this stage:</p>
+<p><strong>“created_at”</strong>: “UTC time when this tweet was created.”
+<strong>“id”</strong>: “The integer representation of the unique identifier for this tweet”
+<strong>“text”</strong>: “The actual UTF-8 text of the status update. “
+<strong>“lang”</strong>: “<em>Nullable</em>. When present, indicates a BCP 47 language identifier corresponding to the machine-detected language of the tweet text”
+<strong>“user”</strong> → <strong>“name”</strong>: “The name of the user, as they’ve defined it.”
+<strong>“user”</strong> → <strong>“screen_name”</strong>: “The screen name, handle, or alias that this user identifies themselves with. “
+<strong>“user”</strong> → <strong>“location”</strong>: “<em>Nullable</em>. The user-defined location for this account’s profile. Not necessarily a location, nor machine-parseable. “</p>
+<p><img alt="json_example" class="hwimportant fborder fcenter halfwidth" src="https://steviepoppe.net/images/twitter/json_example.gif" title="json_example"/></p>
+<p>For this tutorial, the reader will mostly likely require only one or several elements of each tweet, such as the text, time-stamp, and user-name. It is generally best practice to save only the data required, and in that case the above scripts could have easily been edited to do so instead of returning unnecessary large JSON dumps. It could be argued, however, that due to the volatile state of data mining on Twitter, it is still beneficial to have an untainted and complete copy of the data we will be working with. Data seemingly unnecessary at first glance might turn out to be useful halfway through your writing process.</p>
+<p>For that reason, we will use the complete JSON dumps acquired through the methods above to build the processed sets necessary for our analysis. With preprocessing, this blog post thus actually refers to the process of removing irrelevant data and any other form of noise until we have obtained exactly what we need.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>During this phase, it is further worthwhile to think about how to deal with the other contextual data surrounding each tweet. What about the attached media (URLs, images, videos or sound bites)? How does the tweet fit within a larger thread of conversation? what should we know about the original of retweets or quotes? What about shortened URLs in retweets or quotes? Is the tweet still relevant to our research if it was mined because the full URL of a retweeted tweet contained a matching keyword? Especially for larger datasets, it is important to remove ‘noise’ (e.g. irrelevant tweets and other data) to ensure more precise results.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">OpenRefine (optional)</p>
+<p>The final section of this article provides another Python script for preprocessing any obtained tweet data to something we can actually use for further analysis. Optionally, we might also install the data cleanup and transformation application <a href="http://openrefine.org/">OpenRefine</a>.</p>
+<p>Although the most clear cut way to obtain data to one’s own needs would be to alter the python scripts provided in this article (Python really is a fairly straightforward programming language), for those who are turned off by the prospect of editing code, the graphical interface of OpenRefine might offer some respite. Moreover, for those collecting data written in different writing systems (such as Japanese), OpenRefine’s data cleanup functionality might turn out particularly useful when dealing with file conversation (e.g. to older versions of MS Excel).</p>
+<p>Again, it is recommend getting a bit acquainted with the application. <a href="https://programminghistorian.org/">Programming Historian</a> (an open-source and open-access journal of peer-reviewed technical tutorials for those in the humanities) offers a useful <a href="https://programminghistorian.org/en/lessons/cleaning-data-with-openrefine">introductory guide</a>.</p>
+</div>
+<h2 id="preprocessing-with-python"><a class="toclink" href="#preprocessing-with-python">Preprocessing with Python</a></h2>
+<p>In essence, the script below is a simple parser that loads the content of the JSON files generated through the above methods and saves several relevant fields (such as the tweet text content, its hashtags and date of creation, as well as basic information pertaining the author) of each tweet in a new CSV file.<sup><a class="footnote-ref" href="#fn-16" id="fnref-16" rel="footnote">17</a></sup> This script serves as a basic skeleton that can be edited to include or exclude desired fields,<sup><a class="footnote-ref" href="#fn-17" id="fnref-17" rel="footnote">18</a></sup> or could be used for further preprocessing (such as cleaning the textual content of URLs or stop words).</p>
+<p>As of late 2017, Twitter doubled the allowed character size, which particularly benefits tweets written in Japanese. This script always takes the most complete data (such as the <code>full_text</code> or <code>extended_tweet</code> field), in case the tweet content is longer than 140 characters. Nevertheless, a retweet of a message that exceeds the 140 character length will still get cut off in the JSON Twitter’s APIs return, potentially losing user mentions or hashtags in the process and significantly messing with our metrics. This is not optimal, as the Twitter API will still return search results based on keywords that might have been cut off. To remedy this, the script will reconstruct the retweet based on the content, hashtags and other entity information from the original tweet.</p>
+<p>Of final note is the addition of simple helper method for converting the time of creation (in standard UCT) to a ISO 8601 compliant format, another international standard for exchanging date/time-related data.</p>
+<p>In order to run the script below, we will again invoke the script using the command prompt. This script expects one argument: the name of our target document (excluding its .JSON file extension, e.g. “<code>py python_parse_tweet.py timeline_tweets_abeshinzo_20200510_211848</code>”).</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tweepy</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span> <span class="nf">parse_tweets</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+
+    <span class="n">Path</span><span class="p">(</span><span class="s2">"./results/"</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"./results/</span><span class="si">%s</span><span class="s2">.json"</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">tweet_data</span><span class="p">:</span>       
+        <span class="c1">#newline parameter is necessary for correctly formatting newlines inside quoted fields</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./results/</span><span class="si">%s</span><span class="s1">.csv'</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+
+            <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="s1">'excel'</span><span class="p">)</span>
+            <span class="c1">#table headers</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">"tweet_id"</span><span class="p">,</span><span class="s2">"text"</span><span class="p">,</span> <span class="s2">"hashtags"</span><span class="p">,</span> <span class="s2">"created_at"</span><span class="p">,</span> <span class="s2">"is_retweet"</span><span class="p">,</span> <span class="s2">"user_screen_name"</span><span class="p">,</span> 
+                <span class="s2">"user_description"</span><span class="p">,</span> <span class="s2">"user_friends_count"</span><span class="p">,</span> <span class="s2">"user_followers_count"</span><span class="p">,</span> 
+                <span class="s2">"user_total_tweets"</span><span class="p">,</span> <span class="s2">"user_created_at"</span><span class="p">])</span>
+
+            <span class="n">tweets</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">tweet_data</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">[</span><span class="s2">"objects"</span><span class="p">]:</span>                    
+                <span class="n">tweet_id</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span>
+                <span class="n">entities</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"entities"</span><span class="p">]</span>
+
+                <span class="n">user</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"user"</span><span class="p">]</span>
+                <span class="n">user_screen_name</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s2">"screen_name"</span><span class="p">]</span>
+                <span class="n">user_description</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s2">"description"</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">user_following_count</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s2">"friends_count"</span><span class="p">]</span>
+                <span class="n">user_followers_count</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s2">"followers_count"</span><span class="p">]</span>
+                <span class="n">user_total_tweets</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s2">"statuses_count"</span><span class="p">]</span>
+                <span class="n">user_created_at</span> <span class="o">=</span> <span class="n">string_to_dt</span><span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="s2">"created_at"</span><span class="p">])</span>
+                <span class="n">created_at</span> <span class="o">=</span> <span class="n">string_to_dt</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"created_at"</span><span class="p">])</span>
+                <span class="n">retweet_count</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"retweet_count"</span><span class="p">]</span>
+                <span class="n">is_retweet</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"retweeted_status"</span> <span class="ow">in</span> <span class="n">tweet</span><span class="p">)</span>   
+                <span class="n">hashtags</span> <span class="o">=</span> <span class="p">()</span>
+
+                <span class="k">if</span> <span class="n">is_retweet</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+                    <span class="n">retweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"retweeted_status"</span><span class="p">]</span>
+                    <span class="n">retweet_original_id</span> <span class="o">=</span> <span class="n">retweet</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span>
+                    <span class="n">re_entities</span> <span class="o">=</span> <span class="n">retweet</span><span class="p">[</span><span class="s2">"entities"</span><span class="p">]</span>
+
+                    <span class="n">text</span> <span class="o">=</span> <span class="s2">"RT @"</span> <span class="o">+</span> <span class="n">entities</span><span class="p">[</span><span class="s2">"user_mentions"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"screen_name"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">": "</span> <span class="o">+</span> <span class="p">(</span><span class="n">retweet</span><span class="p">[</span><span class="s2">"extended_tweet"</span><span class="p">][</span><span class="s2">"full_text"</span><span class="p">]</span> 
+                        <span class="k">if</span> <span class="s2">"extended_tweet"</span> <span class="ow">in</span> <span class="n">retweet</span> <span class="k">else</span> <span class="n">retweet</span><span class="p">[</span><span class="s2">"full_text"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"full_text"</span> <span class="ow">in</span> <span class="n">retweet</span> <span class="k">else</span> <span class="n">retweet</span><span class="p">[</span><span class="s2">"text"</span><span class="p">])</span>
+
+                    <span class="k">if</span> <span class="s1">'hashtags'</span> <span class="ow">in</span> <span class="n">re_entities</span><span class="p">:</span>
+                        <span class="n">hashtags</span> <span class="o">=</span> <span class="p">(</span><span class="n">hashtag</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span> <span class="k">for</span> <span class="n">hashtag</span> <span class="ow">in</span> <span class="n">re_entities</span><span class="p">[</span><span class="s2">"hashtags"</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>                   
+                    <span class="n">text</span> <span class="o">=</span> <span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"extended_tweet"</span><span class="p">][</span><span class="s2">"full_text"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"extended_tweet"</span> <span class="ow">in</span> <span class="n">tweet</span> 
+                    <span class="k">else</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"full_text"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"full_text"</span> <span class="ow">in</span> <span class="n">tweet</span> <span class="k">else</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"text"</span><span class="p">])</span>
+
+                    <span class="k">if</span> <span class="s1">'hashtags'</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">:</span>
+                        <span class="n">hashtags</span> <span class="o">=</span> <span class="p">(</span><span class="n">hashtag</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span> <span class="k">for</span> <span class="n">hashtag</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">[</span><span class="s2">"hashtags"</span><span class="p">])</span>
+
+                <span class="c1">#converts hashtag dict to comma-seperated string, can be commented out if original list is preferred</span>
+                <span class="n">hashtags</span> <span class="o">=</span> <span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hashtags</span><span class="p">)</span>
+
+                <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+                <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">tweet_id</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">hashtags</span><span class="p">,</span> <span class="n">created_at</span><span class="p">,</span> <span class="n">is_retweet</span><span class="p">,</span> <span class="n">user_screen_name</span><span class="p">,</span> <span class="n">user_description</span><span class="p">,</span> 
+                    <span class="n">user_following_count</span><span class="p">,</span> <span class="n">user_followers_count</span><span class="p">,</span> <span class="n">user_total_tweets</span><span class="p">,</span> <span class="n">user_created_at</span><span class="p">])</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Finished. Saved to ./results/</span><span class="si">%s</span><span class="s2">_tweets.csv"</span> <span class="o">%</span> <span class="p">(</span><span class="n">file_name</span><span class="p">))</span>
+
+<span class="c1">#converts Tweet date to ISO 8601 compliant string. Tweet timezones are standard UTC</span>
+<span class="k">def</span> <span class="nf">string_to_dt</span><span class="p">(</span><span class="n">time_string</span><span class="p">):</span>
+    <span class="n">date_object</span> <span class="o">=</span>  <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">time_string</span><span class="p">,</span> <span class="s1">'</span><span class="si">%a</span><span class="s1"> %b </span><span class="si">%d</span><span class="s1"> %H:%M:%S %z %Y'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">date_object</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="c1">#pass in the target filename without "json" as argument in command prompt.</span>
+    <span class="n">parse_tweets</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</td></tr></table>
+<p><img alt="open_refine_abe" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/twitter/open_refine_abe.png" title="open_refine_abe"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Spreadsheets such as OpenLibre have strong CSV support. MS Excel versions prior to 2019, however, has some issues with handling newlines, which will most likely mess with our data structure.19 If working with such versions of Excel is a must, the easiest option for dealing with this problem is to import the CSV in OpenRefine (as seen in the screenshot above) and export as Excel file.</p>
+</div>
+<hr/>
+<h1 id="wait-there-is-more"><a class="toclink" href="#wait-there-is-more">Wait! There is more!</a></h1>
+<p>This brief tutorial outlined the bare necessities to accumulate tweets, either in real time or historical, based either on user profiles or on particular keywords, using the Python scripting language and several working example scripts. Furthermore, this tutorial outlined a basic method for preprocessing those results into a viable dataset suitable to apply methods of quantitative analysis on. Using a preprocessed CSV generated through the steps taken above, the next guides in this series will cover existing tools and methods that may assist the reader in strengthening their topic of research with a Social Media Analysis angle.<sup><a class="footnote-ref" href="#fn-19" id="fnref-19" rel="footnote">20</a></sup></p>
+<ul>
+<li><a href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 2: Basic Metrics &amp; Graphs</a></li>
+<li><a href="https://steviepoppe.net/blog/2020/06/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-3/">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 3: Natural Language Processing With MeCab, Neologd and KH Coder</a></li>
+<li><a href="https://steviepoppe.net/blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 4: Natural Language Processing With MeCab, Neologd and NLTK</a></li>
+<li><a href="#">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 5: Advanced Metrics &amp; Graphs</a></li>
+</ul>
+<p><em>On a final note, it is my aim to write tutorials like these in such a way that they provide enough detail and (technical) information on the applied methodology to be useful in extended contexts, while still being accessible to less IT-savvy students. If anything is unclear, however, please do not hesitate to leave questions in the comment section below. <i class="icon-hand-down"></i></em></p>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn-footnote">
+<p>Still image from the 2012 Japanese animated film Wolf Children by Mamoru Hosoda, used under a Fair Use doctrine. <a class="footnote-backref" href="#fnref-footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn-1">
+<p>Moreover, the majority of general tutorials found online relied on dated methods and did not take into account recent Twitter changes such as extended length of tweets or quotes. <a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn-2">
+<p>Unfortunately little information is available concerning to how Twitter samples this data. While Twitter, by design, has a particular sociocultural demographic that might not not be fully representative of a greater offline public sphere, even conclusions regarding Twitter usage itself cannot in good faith be called scientifically proof as long as there is not sufficient knowledge on the way Twitter handles its sampling methods. <a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+<li id="fn-3">
+<p>Several attempts have been made to increase sample size and accuracy. One of such, focusing on building a dataset representative of the Japanese Twitter public sphere, is: <strong>Hino, Airo, and Robert A. Fahey</strong>. 2019. ‘Representing the Twittersphere: Archiving a Representative Sample of Twitter Data under Resource Constraints’. International Journal of Information Management 48 (October): 175–84. <a href="https://doi.org/10.1016/j.ijinfomgt.2019.01.019.">https://doi.org/10.1016/j.ijinfomgt.2019.01.019.</a> <a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 4 in the text">↩</a></p>
+</li>
+<li id="fn-4">
+<p>This blog recommends <a href="https://automatetheboringstuff.com/2e/chapter0/">Automate the Boring Stuff</a> and the interactive <a href="https://cscircles.cemc.uwaterloo.ca/">Computer Science Circles</a> or its video series <a href="https://open.cs.uwaterloo.ca/python-from-scratch/">Python from Scratch</a>. Earth Data Science has <a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/earthdatascience.org/courses/use-data-open-source-python/">great</a> <a href="https://www.earthdatascience.org/courses/earth-analytics-python/">tutorials</a> as well. <a class="footnote-backref" href="#fnref-4" title="Jump back to footnote 5 in the text">↩</a></p>
+</li>
+<li id="fn-5">
+<p>PATH is an environmental variable; doing this will allow us to run the Python compiler from command line without having to manually locate its executable. <a class="footnote-backref" href="#fnref-5" title="Jump back to footnote 6 in the text">↩</a></p>
+</li>
+<li id="fn-6">
+<p>This tutorial was written with PC users in mind but won’t differ that much for other platforms. <a class="footnote-backref" href="#fnref-6" title="Jump back to footnote 7 in the text">↩</a></p>
+</li>
+<li id="fn-7">
+<p>Or, I mean, whatever method you personally prefer. ¯\_(ツ)_/¯. <a class="footnote-backref" href="#fnref-7" title="Jump back to footnote 8 in the text">↩</a></p>
+</li>
+<li id="fn-8">
+<p>If you get a message that <strong>pip</strong> is not a recognized command, you will either have to <a href="https://pip.pypa.io/en/stable/installing/">manually install pip</a> or <a href="https://appuals.com/fix-pip-is-not-recognized-as-an-internal-or-external-command/">add the path</a> of your existing pip installation to your PATH variable. <a class="footnote-backref" href="#fnref-8" title="Jump back to footnote 9 in the text">↩</a></p>
+</li>
+<li id="fn-9">
+<p>I personally use <a href="https://www.sublimetext.com/3">Sublime Text 3</a> and <a href="https://atom.io/">Atom</a> looks pretty great as well, but for the sake our tutorial, even notepad is sufficient <a class="footnote-backref" href="#fnref-9" title="Jump back to footnote 10 in the text">↩</a></p>
+</li>
+<li id="fn-10">
+<p>A standard for cross-platform changing of data. Data and its meta-data are represented by key-value pairs: e.g. <code class="highlight"><span class="err">“</span><span class="p">{</span><span class="nt">"first_name"</span> <span class="p">:</span> <span class="s2">"Stevie"</span><span class="p">,</span> <span class="nt">"last_name"</span><span class="p">:</span> <span class="s2">"Poppe"</span><span class="p">}</span><span class="err">”</span></code>. <a class="footnote-backref" href="#fnref-10" title="Jump back to footnote 11 in the text">↩</a></p>
+</li>
+<li id="fn-11">
+<p>Technically, this will return a file of comma-separated JSON objects, which is not <em>100%</em> compliant but works either way and is less memory intensive than creating a massive JSON array, especially with the Streaming API. <a class="footnote-backref" href="#fnref-11" title="Jump back to footnote 12 in the text">↩</a></p>
+</li>
+<li id="fn-12">
+<p>Moreover, optionally adding <code>b</code> as part of the access mode argument in the <code>open</code> class indicates that the script should write in binary mode as opposite to text mode, which is uncommon in such scripts, but decodes already escaped Unicode characters. In this case, it is necessary to encode our JSON dump to UTF8 → by calling the method <code class="highlight"><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf8"</span><span class="p">)</span></code>. <a class="footnote-backref" href="#fnref-12" title="Jump back to footnote 13 in the text">↩</a></p>
+</li>
+<li id="fn-13">
+<p>The only other option to access historical tweets of someone’s timeline beyond the initial 3200 tweets, is to resort to text scraping (e.g. using Javascript to simulate scrolling down and python to scrape the AJAX-loaded tweets). If there’s a demand for an in-depth tutorial I will add an appendix blog for that <em>eventually</em>. <a class="footnote-backref" href="#fnref-13" title="Jump back to footnote 14 in the text">↩</a></p>
+</li>
+<li id="fn-14">
+<p>Language uses BCP 47 language identifiers. Language of each tweet is machine-detected and not 100% accurate. <a href="https://support.gnip.com/apis/powertrack2.0/rules.html#Operators">Read more</a>. <a class="footnote-backref" href="#fnref-14" title="Jump back to footnote 15 in the text">↩</a></p>
+</li>
+<li id="fn-15">
+<p>Again, the Twitter Stream API has several limitations in regards to the amount of tweets returned per second. Neither does it allow more than one established stream connection at one time. The above script will be sufficient to retrieve a sizable dataset but unless we have access to the paid full <strong>firehose</strong>, there are no methods available to guarantee an exhaustive collection. <a class="footnote-backref" href="#fnref-15" title="Jump back to footnote 16 in the text">↩</a></p>
+</li>
+<li id="fn-16">
+<p>CSV is another open data exchange format for storing records of data, with fields separated by a comma. It might be easier to visualize the format as a kind of Excel spreadsheet, and indeed, spreadsheet applications such as OpenLibre or Excel 2019 offer quite strong integration of the CSV format. <a class="footnote-backref" href="#fnref-16" title="Jump back to footnote 17 in the text">↩</a></p>
+</li>
+<li id="fn-17">
+<p>Running this script on a dataset of tweets by a single account will produce a lot of unnecessarily repeated user data, for example. <a class="footnote-backref" href="#fnref-17" title="Jump back to footnote 18 in the text">↩</a></p>
+</li>
+<li id="fn-18">
+<p>Even then, Excel has <a href="https://answers.microsoft.com/en-us/msoffice/forum/all/numbers-in-csv-file-longer-then-15-digit-are-lost/8d779cc3-2f16-4bda-bbd0-9c4edcf2549b">some issues</a> with importing (CSV) files that contain long numerals such as tweet IDs: only the first 15 significant digits are interpreted, displaying the remaining digits as 0. The best solution would be to thus select <strong>Text</strong> for the relevant column formatting upon importing the CSV data. <a class="footnote-backref" href="#fnref-18" title="Jump back to footnote 19 in the text">↩</a></p>
+</li>
+<li id="fn-19">
+<p>For two excellent and recent English language papers which utilize a form of quantitative analysis of Japanese tweets in order to strengthen their main arguments, see: <strong>Tamara Fuchs &amp; Fabian Schäfer (2020)</strong>: Normalizing misogyny: hate speech and verbal abuse of female politicians on Japanese Twitter, Japan Forum, <a href="https://doi.org/10.1080/09555803.2019.1687564">DOI: 10.1080/09555803.2019.1687564</a>, and <strong>Fabian Schäfer, Stefan Evert, and Philipp Heinrich (2017)</strong>: Japan’s 2014 General Election: Political Bots, Right-Wing Internet Activism, and Prime Minister Shinzō Abe’s Hidden Nationalist Agenda, Big Data. 294-309. <a href="https://doi.org/10.1089/big.2017.0049">DOI: 10.1089/big.2017.0049</a>. <a class="footnote-backref" href="#fnref-19" title="Jump back to footnote 20 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+    <hr/>
+        </div>
+
+    <div class="comments">
+        <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'steviepoppe';
+                var disqus_identifier = 'blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/';
+                var disqus_url = 'https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+        <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+                <hr />
+        <div class="category">
+            <h2>Related posts</h2>
+            <dl class="dl-horizontal">
+                <dt>Sun 05 July 2020</dt>
+                <dd><a href="https://steviepoppe.net/blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 4: Natural Language Processing With MeCab, Neologd and NLTK</a></dd>
+                <dt>Fri 05 June 2020</dt>
+                <dd><a href="https://steviepoppe.net/blog/2020/06/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-3/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 3: Natural Language Processing With MeCab, Neologd and KH Coder</a></dd>
+                <dt>Fri 15 May 2020</dt>
+                <dd><a href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 2: Basic Metrics & Graphs</a></dd>
+                <dt>Tue 14 May 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/05/japanese-e-books-vocab-mining-drm-and-copyright-law/">Japanese E-books, vocab-mining, DRM and copyright law</a></dd>
+                <dt>Wed 17 April 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/">A <del>Quick</del> Guide on Using Anki 5: an efficient vocab mining set-up with Anki and Yomichan</a></dd>
+            </dl>
+            </div>
+        <hr />
+    </div>
+
+      <nav class="pagination">
+
+    <span id="older-nav">
+      <a href="https://steviepoppe.net/blog/2019/09/travels-two-weeks-in-mainland-china-changsha-yunnan-xian/">Older Posts
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="139,512 1024,512 1024,436 139,436 528,47 465,0 0,483 465,948 528,901 "></polygon></svg></a>
+    </span>
+
+    <span id="newer-nav">
+      <a href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/">
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="885,512 0,512 0,436 885,436 496,47 559,0 1024,483 559,948 496,901 "></polygon></svg> Newer Posts</a>
+    </span>
+  </nav>
+
+    <script src="https://steviepoppe.net/theme/js/youarehere.min.js"></script>
+    <!-- You can also customize the bar a bit -->
+                </div>
+
+                <footer id="footer" class="footer gradient-2">
+                  <div id="footercontent">
+                    <span itemprop="copyrightHolder">(ɔ) Stevie Poppe 2016 - 2021</span>
+                    <div>
+                      <ul class="footer-nav">                    
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/" class="footer-nav-middle-a footer-nav-first-a">Home</a></li>
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/blog/archives/" class="footer-nav-middle-a ">Archives</a></li>
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/blog/category/" class="footer-nav-middle-a ">Categories</a></li>
+                       <li class=" footer-nav-last ">
+                        <a href="https://steviepoppe.net/blog/tags/" class="footer-nav-middle-a ">Tagcloud</a></li>
+                      </ul>
+                    </div>
+                  </footer>
+                </div>
+
+      <div class="scroll-up" style="display: none;">
+        <a href="#main">&#xfe3f;</a>
+      </div>
+                <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/bootstrap.js"></script>
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/jquery.easing.1.3.js"></script>
+                <!-- <script type="text/javascript" src="https://steviepoppe.net/theme/js/parallax.min.js"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/clipboard.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/slick.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
+
+              </body>
+              </html>

@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <!-- Stylesheets -->
+  <link href="https://steviepoppe.net/theme/css/bootstrap.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/nest.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/icons.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/pygment.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+
+  <link href="https://steviepoppe.net//theme/css/magnific-popup.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/admonition.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/keys.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/slick.css" rel="stylesheet">
+  <style>
+    @import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+    @import 'https://fonts.googleapis.com/css?family=Poiret+One|Quicksand';
+  </style>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js">
+  </script>
+  <!-- /Stylesheets -->
+
+  <script type="text/javascript">
+    var host = "steviepoppe.net";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+      window.location.protocol = "https";
+  </script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="This short series of blogs chronicles the bare-bones required to conduct a basic form of social media analysis on corpora of (Japanese) Tweets. It is primarily intended for undergraduate and graduate students whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle. The purpose of this second blog is two-fold: 1) to introduce the reader to some possibilities in regards to basic social media analysis (applicable almost immediately upon having finished the previous guide), and 2) to touch upon a crucial, yet sometimes ignored aspect of social media analysis: the legal and ethical caveats regarding privacy and informed content when researching user-generated content on social media. By using a concrete, real-world example, we will thus: Think about how we might integrate Twitter analysis into our project, Use the Python scripting language to further process our dataset to our needs and obtain relevant metrics, Use spreadsheet software such as Openlibre or Excel to produce pivot tables and graphs, Reflect on the ethical and legal ramifications of working with social media data in academic research. Context I assisted several third-year BA students working on a group essay covering aspects of the COVID-19 virus and marital issues within a larger framework of hegemonic masculinity, femininity and gender hegemony in Japan. Their choice of incorporating an element of social network analysis was not ungrounded. Correlating to increased remote work measures taken in Japan as a COVID-19 precaution, several hashtags concerning marital issues began to trend on Japanese Twitter starting Mid-April 2020 and saw further acceleration after being promptly picked up on by several news outlets and tabloids both within- and outside of Japan (such as the Japanese hashtag #coronadivorce, #koronarikon #コロナ離婚(りこん)). One of my research interests concerns the many ways the internet, as a cultural artifact, augments or subverts our personal reality. Of interest to this project, then, was how the explosion in usage of the above hashtags reifies in Japan a situation that is undoubtedly being felt worldwide among many (married) couples during the pandemic. Concretely we had several questions: how does Twitter (and general social media usage) fit within the lives of struggling couples trying to cope with the uncertainty of the Corona crisis and its amplification of internal relational struggles? Does the usage of those hashtags …">
+  <meta name="keywords" content="Big Data, Digital Humanities, Japanese, Python, Tutorial,  Twitter, Japanese, Japan, Study">
+  <meta name="author" content="Stevie Poppe">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="shortcut icon" sizes="196x196" href="https://steviepoppe.net/favicon-192.png">
+
+<link rel="icon" href="https://steviepoppe.net/favicon-32.png" sizes="32x32">
+<link rel="icon" href="https://steviepoppe.net/favicon-96.png" sizes="96x96">
+<link rel="icon" href="https://steviepoppe.net/favicon-128.png" sizes="128x128">
+<link rel="icon" href="https://steviepoppe.net/favicon-192.png" sizes="192x192">
+
+  <title>A Quick Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 2: Basic Metrics & Graphs | Onoreto</title>
+<link rel="canonical" href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/">
+
+
+<!--               <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+              <script>
+                 WebFont.load({
+                  google: {
+                    families: ['Poiret+One', 'Quicksand']
+                  }
+                });
+              </script> -->
+
+
+
+              <!-- RSS Feeds -->
+              <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
+              <link href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
+              <link href="http://localhost:8000/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
+              <!-- /RSS Feeds -->
+
+              <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <![endif]-->
+
+
+
+          <link rel="author" href="https://plus.google.com/112676714486792414615"/>
+   
+
+<meta name="robots" content="index">        </head>
+
+        <body>
+
+    <!-- OVERLAY MENU -->
+    <div id="overlay-menu" class="overlay-menu">
+
+      <a href="#" id="overlay-menu-hide" class="navigation-hide"><button title="Close (Esc)" type="button" class="mfp-close">×</button></a>
+
+      <div class="overlay-menu-inner">
+        <nav class="overlay-menu-nav">
+
+          <ul id="overflow-nav">
+            <li>
+              <a class="link" href="https://steviepoppe.net"><i class="icon-home icon-menu"></i>Home</a>
+            </li>
+
+            <li class="slidedown"><a href="#"><i class="icon-folder-close icon-menu"></i>Categories</a>
+              <ul>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+              </ul>
+            </li>
+
+<li >
+                            <a class="link" href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a class="link" href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>          </ul>
+        </nav>
+      </div>
+
+      <div class="overlay-navigation-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+                          <ul class="socialnav2 social-icons-footer" style="width: auto;display: inline-block;float: none;">
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          </div>
+            <div class="col-sm-12 text-center">
+              <p class="copyright font-alt m-b-0">(ɔ) Stevie Poppe 2016 - 2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /OVERLAY MENU -->
+
+          <div id="wrapper">
+
+            <div class="master scrollingnav">
+              <div class="head-container">
+
+                <header class="page-header">
+                  <a href="https://steviepoppe.net" class="avatar-container pull-left show-overlay toggle-menu" title="Menu">
+                    <div class="avatar">
+                      <div class="side"><img src="https://steviepoppe.net/images/logo2.png" class="img-responsive"/></div>
+                    </div>
+                  </a>
+                  <h1 id="onoreto" title="Onoreto" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">noreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
+                </header>
+
+                <div id="nav-wrapper">
+                  <nav class="navbar navbar-default scrollingnav" id="nav">
+
+                    <div class="navbar-collapse" id="steviesmenubar">
+                      <div style="float: left;;margin-left: 20px;">
+                        <ul class="nav navbar-nav">
+                          <li id="smallicon">
+<a class="small-nav-menu toggle-menu" href="#" title="Menu" style="color:unset;background-color:unset;transition: none;padding-right: 0px;">
+<img src="https://steviepoppe.net/images/logo2.png" style="border-radius: 50%;height: 25px;margin-top: -5px;margin-right: 5px;">
+</a>
+</li>
+<li class=" ">
+                            <a  href="/"><i class="icon-home icon-menu"></i>Blog</a>
+                            </li><li class=" dropdown">
+                            <a  class="dropdown-toggle" data-target="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="/blog/category/"><i class="icon-folder-close icon-menu"></i>Categories                              <span class="caret"></span>
+</a>
+                              <ul class="dropdown-menu" id="menu1" aria-labelledby="drop4"> 
+                                <li><a href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                                <li><a href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li> 
+                                <li><a href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+                              </ul> 
+                            </li><li >
+                            <a href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>                          </ul>
+                        </div>
+                        <div class="social">
+                          <ul class="socialnav socialonly social-icons-footer collapse">
+
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                          </ul>
+                          <ul class="socialnav rssonly social-icons-footer">
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" >
+                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input" style="width: 130px;"></form>
+                          </div>
+
+
+                        </div>
+
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div id="main">
+    <div class="container content padding-40 articleshadow" itemscope itemtype="http://schema.org/Article">
+    <div class="container header-wrapper banner">
+        <div class="row" style="background: linear-gradient(rgba(6, 6, 6, 0.60), rgba(0, 0, 0, 0.60)), url('https://steviepoppe.net/images/anki_header2.jpg'); background-position: center; background-size: cover;">
+              <div class="col-lg-12">
+                  <div class="header-content center">
+                      <h1 class="header-title nocount"><span itemprop="name">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 2: Basic Metrics & Graphs</span><sup id="fnref-footnote"><a class="footnote-ref imagesource" href="#fn-footnote" rel="footnote">1</a></sup></h1>
+                      <p class="header-date"><span itemprop="datePublished" content="2016-09-07">Fri 15 May 2020</span>, in category <a href="https://steviepoppe.net/blog/category/studies/"><span itemprop="articleSection">Studies</span></a></p>
+                      <div class="header-underline"></div>
+                      <div class="clearfix"></div>
+                      <p class="pull-right header-tags">
+                          <span class="icon-tags" aria-hidden="true"></span>
+<a href="https://steviepoppe.net/blog/tags/big-data/">Big Data</a>, <a href="https://steviepoppe.net/blog/tags/digital-humanities/">Digital Humanities</a>, <a href="https://steviepoppe.net/blog/tags/japanese/">Japanese</a>, <a href="https://steviepoppe.net/blog/tags/python/">Python</a>, <a href="https://steviepoppe.net/blog/tags/tutorial/">Tutorial</a>, <a href="https://steviepoppe.net/blog/tags/twitter/">Twitter</a>                      </p>
+                  </div>
+              </div>
+        </div>
+    </div>
+    <div class="container-main" itemprop="articleBody">
+<!--         <h1 style="text-align: center;" class="nocount">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 2: Basic Metrics & Graphs</h1>
+ -->
+            <nav class="toc-container">
+              <input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none">
+            <p class="toc_title">Table of Contents<span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></p>
+            <div class="toc">
+<ul>
+<li><a href="#context">Context</a></li>
+<li><a href="#preliminary-analysis">Preliminary analysis</a><ul>
+<li><a href="#datasource">Datasource</a></li>
+<li><a href="#processing-cleaning">Processing &amp; Cleaning</a></li>
+<li><a href="#pre-processing">Pre-processing</a><ul>
+<li><a href="#python-script">Python script</a></li>
+<li><a href="#technical-notes">Technical notes</a></li>
+</ul>
+</li>
+<li><a href="#metrics-graphs">Metrics &amp; Graphs</a><ul>
+<li><a href="#calculating-metrics-with-python">Calculating Metrics with Python</a></li>
+<li><a href="#spreadsheet-graphs">Spreadsheet Graphs</a><ul>
+<li><a href="#date-time-frequency">Date &amp; time frequency</a></li>
+<li><a href="#hashtag-frequency">Hashtag frequency</a></li>
+<li><a href="#user-data">User Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#automation-bringing-everything-together">Automation: Bringing Everything Together</a></li>
+<li><a href="#legal-and-ethical-caveats">Legal and Ethical Caveats</a></li>
+<li><a href="#wait-there-is-more">Wait! There is more!</a></li>
+</ul>
+</div>
+            </nav>
+        <p><em>This short series of blogs chronicles the bare-bones required to conduct a basic form of social media analysis on corpora of (Japanese) Tweets. It is primarily intended for </em><em>undergraduate and graduate students</em><em> whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle.</em></p>
+
+
+<p>The purpose of this second blog is two-fold: 1) to introduce the reader to some possibilities in regards to basic social media analysis (applicable almost immediately upon having <a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/">finished the previous guide</a>), and 2) to touch upon a crucial, yet sometimes ignored aspect of social media analysis: the legal and ethical caveats regarding privacy and informed content when researching user-generated content on social media.</p>
+<p>By using a concrete, real-world example, we will thus:</p>
+<ul>
+<li><i class="icon-check"></i> Think about how we might integrate Twitter analysis into our project,</li>
+<li><i class="icon-check"></i> Use the Python scripting language to further process our dataset to our needs and obtain relevant metrics,</li>
+<li><i class="icon-check"></i> Use spreadsheet software such as Openlibre or Excel to produce pivot tables and graphs,</li>
+<li><i class="icon-check"></i> Reflect on the ethical and legal ramifications of working with social media data in academic research.</li>
+</ul>
+
+<h1 id="context"><a class="toclink" href="#context">Context</a></h1>
+<p>I assisted several third-year BA students working on a group essay covering aspects of the COVID-19 virus and marital issues within a larger framework of hegemonic masculinity, femininity and gender hegemony in Japan. Their choice of incorporating an element of social network analysis was not ungrounded. Correlating to increased remote work measures taken in Japan as a COVID-19 precaution, several hashtags concerning marital issues began to trend on Japanese Twitter starting Mid-April 2020 and saw further acceleration after being promptly picked up on by several news outlets and tabloids both within- and outside of Japan (such as the Japanese hashtag #<em>coronadivorce</em>, #<em>koronarikon</em> #コロナ<span lang="ja"><ruby><rb>離婚</rb><rp>(</rp><rt>りこん</rt><rp>)</rp></ruby></span>).</p>
+<p>One of my research interests concerns the many ways the internet, as a cultural artifact, augments or subverts our personal reality. Of interest to this project, then, was how the explosion in usage of the above hashtags reifies in Japan a situation that is undoubtedly being felt worldwide among many (married) couples during the pandemic. Concretely we had several questions: how does Twitter (and general social media usage) fit within the lives of struggling couples trying to cope with the uncertainty of the Corona crisis and its amplification of internal relational struggles? Does the usage of those hashtags reveal any attempts on Twitter to interconnect with one another, form communities and to share advice or frustrations? If so; can we pinpoint particular group dynamics? Might we find a steady increase of Twitter users empowered enough to engage in discourse with each other, or is its usage mostly limited to a form of semi-public, anonymous diaries kept by a small, stable group of users venting frustration? Moreover, what are the common topics of these posts? Can they be further divided in larger categories of frustration (e.g. relating to parents-in-law, housework, finances, children, etc)? Finally, what can this, in a greater socio-cultural context, tell us about gender roles and marriage expectations in Japan?</p>
+<p>Those are the kind of questions for which quantitative analysis of social media datasets might inductively help to lead the researcher to new theories, or instead strengthen one’s existing hypotheses. Having completed the previous tutorial and given a bit more work outlined below, this blog post introduces the reader to some very basic metrics and graphs that could already assist us in shedding some light on the above questions.</p>
+<hr/>
+<h1 id="preliminary-analysis"><a class="toclink" href="#preliminary-analysis">Preliminary analysis</a></h1>
+<h2 id="datasource"><a class="toclink" href="#datasource">Datasource</a></h2>
+<p>For the purpose of both this article and the project highlighted above, one specific hashtag tying into the discourse of marital stress on Twitter was taken as the target of our analysis: #husbandstress (<em>dan’na sutoresu</em>, #<span lang="ja"><ruby><rb>旦那</rb><rp>(</rp><rt>だんな</rt><rp>)</rp></ruby></span>ストレス), using the archaic master / husband (dan’na, <span lang="ja"><ruby><rb>旦那</rb><rp>(</rp><rt>だんな</rt><rp>)</rp></ruby></span>) to refer to one’s husband.</p>
+<p>The dataset was obtained using our historical search script with the <code class="highlight"><span class="n">lang</span><span class="o">=</span><span class="s1">'ja'</span></code> option enabled (limiting tweets to the Japanese language) on the above hashtag; ran for the first time on 8 May, 2020 (right after an extended golden week), with subsequent runs on 15 May, 2020, 22 May, 2020 and 29 May, 2020 (with the <code>since_id</code> argument set to the ID of the last tweet in each preceding set). The first set includes 886 tweets and retweets from the period between Thu Apr 30 05:55:28 UTC and Fri May 08 14:25:30 UTC.<sup><a class="footnote-ref" href="#fn-1" id="fnref-1" rel="footnote">2</a></sup> The second set includes 1178 (re)tweets tweeted between Fri May 08 15:21:46 UTC and Fri May 15 01:04:47 UTC. The third set includes 857 (re)tweets between Fri May 22 15:34:06 UTC and Fri May 15 01:55:21 UTC. The fourth and final set includes 686 (re)tweets posted between Fri May 22 16:51:16 and Fri May 29 13:54:15 UTC.</p>
+<p>Note
+    It should again be noted that even in the case of a query that has relatively low usage, such as the one used here, the Twitter search API does not guarantee completeness and the results are thus indicators of trends among the engaging audience, rather than exhaustive resources. As stated on <a href="https://developer.twitter.com/en/docs/tweets/search/overview/standard">developer.twitter.com</a>: “The Twitter Search API searches against a sampling of recent Tweets published in the past 7 days. […] the standard search API is focused on relevance and not completeness. This means that some Tweets and users may be missing from search results.”</p>
+<h2 id="processing-cleaning"><a class="toclink" href="#processing-cleaning">Processing &amp; Cleaning</a></h2>
+<p>In order to built a clean dataset in CSV format, used to produce a variety of graphs, this blog provides a slightly edited variant of the parsing script from the previous tutorial. Some of the significant changes to the previous script are as follows:</p>
+<ul>
+<li>An option to exclude retweets, or to include more meta-information when opting to keep them</li>
+<li>The addition of <code>user_mention</code> information (i.e. other Twitter accounts tagged with @)</li>
+<li>An option to choose the CSV output filename</li>
+<li>An option to <strong>localize time</strong> to the suspected timezone</li>
+<li>An option to calculate the total amount of retweets in our dataset and save tweets predating our calculations that were nevertheless retweeted since</li>
+<li>An option to check for double entries</li>
+<li>Performance &amp; scalability: able to handle millions of rows and files taking up several gigabytes of disk space.</li>
+</ul>
+<h2 id="pre-processing"><a class="toclink" href="#pre-processing">Pre-processing</a></h2>
+<p>Our edited script (also available for download on <a href="https://github.com/steviepoppe/python_twitter_api_examples">GitHub</a>) thus look as follows:</p>
+<h3 id="python-script"><a class="toclink" href="#python-script">Python script</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">tweepy</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">ijson</span>
+<span class="kn">from</span> <span class="nn">pytz</span> <span class="kn">import</span> <span class="n">timezone</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span>
+
+<span class="k">def</span> <span class="nf">parse_tweets</span><span class="p">(</span><span class="n">sys_args</span><span class="p">):</span>
+
+    <span class="n">file_name</span> <span class="o">=</span> <span class="n">sys_args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">time_zone</span> <span class="o">=</span> <span class="n">sys_args</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="s2">"utc"</span>
+    <span class="n">keep_rt</span> <span class="o">=</span> <span class="n">sys_args</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="k">else</span> <span class="s2">"True"</span>
+    <span class="n">save_file_name</span> <span class="o">=</span> <span class="n">sys_args</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="k">else</span> <span class="p">(</span><span class="s1">'</span><span class="si">%s</span><span class="s1">_parsed'</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span>
+    <span class="n">add_totals</span> <span class="o">=</span> <span class="n">sys_args</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="k">else</span> <span class="s2">"False"</span>
+    <span class="n">check_duplicates</span> <span class="o">=</span> <span class="n">sys_args</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">6</span> <span class="k">else</span> <span class="s2">"False"</span>
+    <span class="n">count_tweets</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">'./results/</span><span class="si">%s</span><span class="s1">.csv'</span> <span class="o">%</span> <span class="n">save_file_name</span><span class="p">)</span>
+
+    <span class="n">tweet_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"./results/</span><span class="si">%s</span><span class="s2">.json"</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">tweet_data</span><span class="p">:</span>
+        <span class="n">tweets</span> <span class="o">=</span> <span class="n">ijson</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="n">tweet_data</span><span class="p">,</span> <span class="s1">'objects.item'</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">:</span>
+            <span class="n">entities</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"entities"</span><span class="p">]</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"user"</span><span class="p">]</span>
+            <span class="n">hashtags</span> <span class="o">=</span> <span class="p">()</span>
+            <span class="n">user_mentions</span> <span class="o">=</span> <span class="p">()</span>
+
+            <span class="k">if</span> <span class="s1">'user_mentions'</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">:</span>
+                <span class="n">user_mentions</span> <span class="o">=</span> <span class="p">(</span><span class="n">user_mention</span><span class="p">[</span><span class="s2">"screen_name"</span><span class="p">]</span> <span class="k">for</span> <span class="n">user_mention</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">[</span><span class="s2">"user_mentions"</span><span class="p">])</span>
+
+            <span class="n">tweet_row</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"tweet_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span>
+            <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span>
+            <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"hashtags"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span>
+            <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"user_mentions"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">','</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">user_mentions</span><span class="p">)</span>
+            <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"created_at"</span><span class="p">]</span> <span class="o">=</span> <span class="n">localize_utc_object</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"created_at"</span><span class="p">],</span><span class="n">time_zone</span><span class="p">)</span>
+
+            <span class="n">is_retweet</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"retweeted_status"</span> <span class="ow">in</span> <span class="n">tweet</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">keep_rt</span> <span class="o">==</span> <span class="s2">"True"</span><span class="p">:</span>
+                <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"is_retweet"</span><span class="p">]</span> <span class="o">=</span> <span class="n">is_retweet</span>
+                <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"retweet_id"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"retweet_created_at"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="k">if</span> <span class="n">keep_rt</span> <span class="o">==</span> <span class="s2">"True"</span> <span class="ow">and</span> <span class="n">is_retweet</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">retweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"retweeted_status"</span><span class="p">]</span>
+                <span class="n">re_entities</span> <span class="o">=</span> <span class="n">retweet</span><span class="p">[</span><span class="s2">"entities"</span><span class="p">]</span>
+                <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"retweet_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">retweet</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span>
+                <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"retweet_created_at"</span><span class="p">]</span> <span class="o">=</span> <span class="n">localize_utc_object</span><span class="p">(</span><span class="n">retweet</span><span class="p">[</span><span class="s2">"created_at"</span><span class="p">],</span><span class="n">time_zone</span><span class="p">)</span>
+
+                <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"RT @"</span> <span class="o">+</span> <span class="n">retweet</span><span class="p">[</span><span class="s2">"user"</span><span class="p">][</span><span class="s2">"screen_name"</span><span class="p">]</span> 
+                <span class="o">+</span> <span class="s2">": "</span> <span class="o">+</span> <span class="p">(</span><span class="n">retweet</span><span class="p">[</span><span class="s2">"extended_tweet"</span><span class="p">][</span><span class="s2">"full_text"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"extended_tweet"</span> <span class="ow">in</span> <span class="n">retweet</span>
+                    <span class="k">else</span> <span class="n">retweet</span><span class="p">[</span><span class="s2">"full_text"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"full_text"</span> <span class="ow">in</span> <span class="n">retweet</span> <span class="k">else</span> <span class="n">retweet</span><span class="p">[</span><span class="s2">"text"</span><span class="p">])</span>
+
+                <span class="k">if</span> <span class="s1">'hashtags'</span> <span class="ow">in</span> <span class="n">re_entities</span><span class="p">:</span>
+                    <span class="n">hashtags</span> <span class="o">=</span> <span class="p">(</span><span class="n">hashtag</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span> <span class="k">for</span> <span class="n">hashtag</span> <span class="ow">in</span> <span class="n">re_entities</span><span class="p">[</span><span class="s2">"hashtags"</span><span class="p">])</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">re_entities</span><span class="p">[</span><span class="s1">'user_mentions'</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">re_user_mentions</span> <span class="o">=</span> <span class="p">(</span><span class="n">re_user_mention</span><span class="p">[</span><span class="s2">"screen_name"</span><span class="p">]</span> 
+                        <span class="k">for</span> <span class="n">re_user_mention</span> <span class="ow">in</span> <span class="n">re_entities</span><span class="p">[</span><span class="s2">"user_mentions"</span><span class="p">]</span> <span class="k">if</span> 
+                        <span class="n">re_user_mention</span><span class="p">[</span><span class="s2">"screen_name"</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">user_mentions</span><span class="p">)</span>
+                    <span class="n">re_user_mentions</span> <span class="o">=</span> <span class="s1">','</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">re_user_mentions</span><span class="p">)</span>
+                    <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"user_mentions"</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="s2">","</span> <span class="o">+</span> <span class="n">re_user_mentions</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"extended_tweet"</span><span class="p">][</span><span class="s2">"full_text"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"extended_tweet"</span> <span class="ow">in</span> <span class="n">tweet</span> 
+                    <span class="k">else</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"full_text"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"full_text"</span> <span class="ow">in</span> <span class="n">tweet</span> <span class="k">else</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"text"</span><span class="p">])</span>
+
+                <span class="k">if</span> <span class="s1">'hashtags'</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">:</span>
+                    <span class="n">hashtags</span> <span class="o">=</span> <span class="p">(</span><span class="n">hashtag</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span> <span class="k">for</span> <span class="n">hashtag</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">[</span><span class="s2">"hashtags"</span><span class="p">])</span>
+
+            <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"hashtags"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">','</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hashtags</span><span class="p">)</span>
+            <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+            <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s2">"screen_name"</span><span class="p">]</span>
+            <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"user_description"</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s2">"description"</span><span class="p">]</span>
+            <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"user_following_count"</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s2">"friends_count"</span><span class="p">]</span>
+            <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"user_followers_count"</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s2">"followers_count"</span><span class="p">]</span>
+            <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"user_total_tweets"</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s2">"statuses_count"</span><span class="p">]</span>
+            <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"user_created_at"</span><span class="p">]</span> <span class="o">=</span> 
+            <span class="n">localize_utc_object</span><span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="s2">"created_at"</span><span class="p">],</span><span class="n">time_zone</span><span class="p">)</span>
+            <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"retweet_count_listed"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"retweet_count"</span><span class="p">]</span>
+            <span class="n">tweet_row</span><span class="p">[</span><span class="s2">"retweet_count_dataset"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="n">count_tweets</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">tweet_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tweet_row</span><span class="p">)</span>
+
+    <span class="c1">#these are memory intensive, do some garbage collecting</span>
+    <span class="k">del</span> <span class="n">tweets</span>
+    <span class="k">del</span> <span class="n">tweet_data</span>
+    <span class="n">tweet_json</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tweet_list</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./results/</span><span class="si">%s</span><span class="s1">.csv'</span> <span class="o">%</span> <span class="n">save_file_name</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'a'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">tweet_json</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="p">(</span><span class="ow">not</span> <span class="n">exists</span><span class="p">),</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">del</span> <span class="n">tweet_json</span>
+    <span class="k">del</span> <span class="n">file</span>
+
+    <span class="k">if</span> <span class="n">check_duplicates</span> <span class="o">==</span> <span class="s2">"True"</span><span class="p">:</span>
+        <span class="n">remove_duplicate_rows</span><span class="p">(</span><span class="n">save_file_name</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Finished processing </span><span class="si">%s</span><span class="s2"> tweets. Saved to ./results/</span><span class="si">%s</span><span class="s2">.csv"</span> <span class="o">%</span> <span class="p">(</span><span class="n">count_tweets</span><span class="p">,</span> <span class="n">save_file_name</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">add_totals</span> <span class="o">==</span> <span class="s2">"True"</span><span class="p">:</span>
+        <span class="n">get_retweet_count</span><span class="p">(</span><span class="n">save_file_name</span><span class="p">)</span>
+
+<span class="c1">#note, changing the timestring to match the location based on an estimation (by language filters for ex.) is sloppy:</span>
+<span class="c1">#-&gt; what about Japanese tweets posted abroad? Difficult to detect since utc_offset is no longer supported by Twitter</span>
+<span class="c1">#https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</span>
+<span class="k">def</span> <span class="nf">localize_utc_object</span><span class="p">(</span><span class="n">time_string</span><span class="p">,</span> <span class="n">time_zone</span><span class="p">):</span>
+    <span class="n">date_object</span> <span class="o">=</span>  <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">time_string</span><span class="p">,</span> <span class="s1">'</span><span class="si">%a</span><span class="s1"> %b </span><span class="si">%d</span><span class="s1"> %H:%M:%S %z %Y'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">time_zone</span> <span class="o">!=</span> <span class="s2">"utc"</span><span class="p">:</span>
+        <span class="n">date_object</span> <span class="o">=</span> <span class="n">date_object</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="p">(</span><span class="n">time_zone</span><span class="p">))</span> <span class="c1">#for example Asia/Tokyo</span>
+    <span class="k">return</span> <span class="n">date_object</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+
+<span class="c1"># Only way to find duplicates in CSV files that are too large too load in one time is to iterate by chunks</span>
+<span class="c1">#collecting doubles in the first iteration and removing them in the second one</span>
+<span class="k">def</span> <span class="nf">remove_duplicate_rows</span><span class="p">(</span><span class="n">save_fn</span><span class="p">):</span>
+    <span class="n">double_ids</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">chunksize</span> <span class="o">=</span> <span class="mi">100000</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'./results/</span><span class="si">%s</span><span class="s1">.csv'</span> <span class="o">%</span> <span class="n">save_fn</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="n">chunksize</span><span class="p">,</span> <span class="n">iterator</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">double_ids</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">chunk</span><span class="p">[</span><span class="s1">'tweet_id'</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+
+    <span class="c1">#Get list of double tweet_id</span>
+    <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">seen2</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">seen_add</span> <span class="o">=</span> <span class="n">seen</span><span class="o">.</span><span class="n">add</span>
+    <span class="n">seen2_add</span> <span class="o">=</span> <span class="n">seen2</span><span class="o">.</span><span class="n">append</span>
+    <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">double_ids</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+            <span class="n">seen2_add</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">seen_add</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">seen</span>
+
+    <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">"./results/</span><span class="si">%s</span><span class="s2">.csv"</span> <span class="o">%</span> <span class="n">save_fn</span><span class="p">,</span><span class="s2">"./results/</span><span class="si">%s</span><span class="s2">_temp.csv"</span> <span class="o">%</span> <span class="n">save_fn</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'./results/</span><span class="si">%s</span><span class="s1">_temp.csv'</span> <span class="o">%</span> <span class="n">save_fn</span>
+        <span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="n">chunksize</span><span class="p">,</span> <span class="n">iterator</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">chunk</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"tweet_id"</span><span class="p">]</span> <span class="ow">in</span> <span class="n">seen2</span><span class="p">:</span>
+                <span class="n">chunk</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">seen2</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"tweet_id"</span><span class="p">])</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">'Tweet ID: </span><span class="si">%s</span><span class="s1"> dropped from CSV.'</span> <span class="o">%</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"tweet_id"</span><span class="p">])</span>
+        <span class="n">chunk</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'./results/</span><span class="si">%s</span><span class="s1">.csv'</span> <span class="o">%</span> <span class="n">save_fn</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'a'</span><span class="p">)</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="si">%d</span><span class="s1"> duplicate row(s) removed.'</span> <span class="o">%</span> <span class="n">count</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">"./results/</span><span class="si">%s</span><span class="s2">_temp.csv"</span> <span class="o">%</span> <span class="n">save_fn</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_retweet_count</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+
+    <span class="n">chunksize</span> <span class="o">=</span> <span class="mi">100000</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">line_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Path</span><span class="p">(</span><span class="s2">"./results/metrics_</span><span class="si">%s</span><span class="s2">/"</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">"./results/</span><span class="si">%s</span><span class="s2">.csv"</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">,</span><span class="s2">"./results/</span><span class="si">%s</span><span class="s2">_temp.csv"</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'./results/</span><span class="si">%s</span><span class="s1">_temp.csv'</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">usecols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"retweet_id"</span><span class="p">])</span>
+    <span class="n">retweets</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'retweet_id'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+    <span class="k">if</span> <span class="mi">0</span> <span class="ow">in</span> <span class="n">retweets</span><span class="p">:</span>
+        <span class="k">del</span> <span class="n">retweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%s</span><span class="s2"> unique retweets found. Processing..."</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">retweets</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'./results/</span><span class="si">%s</span><span class="s1">_temp.csv'</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="n">chunksize</span><span class="p">,</span> <span class="n">iterator</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">chunk</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"tweet_id"</span><span class="p">]</span> <span class="ow">in</span> <span class="n">retweets</span><span class="p">:</span>
+                <span class="n">chunk</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span><span class="s1">'retweet_count_dataset'</span><span class="p">]</span> <span class="o">=</span> <span class="n">retweets</span><span class="p">[</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"tweet_id"</span><span class="p">]]</span>
+                <span class="k">del</span> <span class="n">retweets</span><span class="p">[</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"tweet_id"</span><span class="p">]]</span>
+        <span class="n">chunk</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'./results/</span><span class="si">%s</span><span class="s1">.csv'</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'a'</span><span class="p">)</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">"./results/</span><span class="si">%s</span><span class="s2">_temp.csv"</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%s</span><span class="s2"> retweets not in data set. Processing..."</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">retweets</span><span class="p">))</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./results/metrics_</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">_old_retweets.csv'</span> <span class="o">%</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'w'</span>
+        <span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">"tweet_id"</span><span class="p">,</span><span class="s2">"text"</span><span class="p">,</span> <span class="s2">"hashtags"</span><span class="p">,</span> <span class="s2">"user_screen_name"</span><span class="p">,</span>
+            <span class="s2">"user_mentions"</span><span class="p">,</span> <span class="s2">"created_at"</span><span class="p">,</span> <span class="s2">"retweet_count"</span><span class="p">,</span> <span class="s2">"url"</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'./results/</span><span class="si">%s</span><span class="s1">.csv'</span> <span class="o">%</span> <span class="n">file_name</span>
+            <span class="p">,</span> <span class="n">usecols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"tweet_id"</span><span class="p">,</span><span class="s2">"text"</span><span class="p">,</span> <span class="s2">"hashtags"</span><span class="p">,</span><span class="s2">"user_mentions"</span><span class="p">,</span> <span class="s2">"retweet_created_at"</span><span class="p">,</span> <span class="s2">"retweet_id"</span><span class="p">]</span>
+            <span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="n">chunksize</span><span class="p">,</span> <span class="n">iterator</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">chunk</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"retweet_id"</span><span class="p">]</span> <span class="ow">in</span> <span class="n">retweets</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"user_mentions"</span><span class="p">]):</span>
+                        <span class="n">user_mentions</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span>
+                            <span class="sa">r</span><span class="s1">'((?&lt;=^|(?&lt;=[^a-zA-Z0-9-\.]))(?&lt;=@)[a-zA-Z0-9\/_]+(?=[^a-zA-Z0-9-_\.]))'</span>
+                            <span class="p">,</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"text"</span><span class="p">])</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">user_mentions</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"user_mentions"</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
+                    <span class="n">screenname</span> <span class="o">=</span> <span class="n">user_mentions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">f_text</span> <span class="o">=</span> <span class="s2">"RT @</span><span class="si">%s</span><span class="s2">: "</span> <span class="o">%</span> <span class="n">screenname</span>
+                    <span class="c1">## There's a rare flaw in the Twitter API that doesn't return the user mention of the og tweeter</span>
+                    <span class="c1">## In such cases, use a regular expression</span>
+                    <span class="n">f_mentions</span> <span class="o">=</span> <span class="s2">","</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">user_mentions</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_mentions</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
+                    <span class="n">hashtags</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"hashtags"</span><span class="p">])</span> 
+                    <span class="k">else</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"hashtags"</span><span class="p">]</span>
+                    <span class="n">url</span> <span class="o">=</span> <span class="s2">"https://twitter.com/</span><span class="si">%s</span><span class="s2">/status/</span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">screenname</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"retweet_id"</span><span class="p">]))</span>
+                    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"retweet_id"</span><span class="p">]</span>
+                        <span class="p">,</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">f_text</span><span class="p">,</span><span class="s1">''</span><span class="p">),</span> <span class="n">hashtags</span><span class="p">,</span>
+                    <span class="n">screenname</span><span class="p">,</span> <span class="n">f_mentions</span><span class="p">,</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"retweet_created_at"</span><span class="p">],</span> <span class="n">retweets</span><span class="p">[</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"retweet_id"</span><span class="p">]],</span> <span class="n">url</span><span class="p">])</span>
+                    <span class="k">del</span> <span class="n">retweets</span><span class="p">[</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"retweet_id"</span><span class="p">]]</span>
+                    <span class="n">line_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Finished calculating total tweets. Processed </span><span class="si">%s</span><span class="s2"> old retweets."</span> <span class="o">%</span> <span class="n">line_count</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">parse_tweets</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The script above requires three new external libraries that need to be imported in our script (see <strong>lines 6 - 8</strong>): <strong><a href="https://pypi.org/project/pytz/">Pytz</a></strong> (used for date manipulation), <strong><a href="https://pypi.org/project/ijson/">ijson</a></strong> (used for reading large JSON files in chunks) and <strong><a href="https://pandas.pydata.org/">Pandas</a></strong> (a very powerful data manipulation and analysis library). Before doing so, first install them with the command prompt using <strong>pip</strong> (<code>pip install pytz</code>, <code>pip install ijson</code> and <code>pip install pandas</code>).</p>
+</div>
+<h3 id="technical-notes"><a class="toclink" href="#technical-notes">Technical notes</a></h3>
+<p>Some technical notes about the above script:</p>
+<ul>
+<li>Twitter adheres to the Coordinated Universal Time (UTC) time standard for date &amp; time information of objects such as tweets and user accounts. If we have strong reason to believe that the tweets in our dataset were tweeted within the same timezone, and if we intend to use that data for our work, we may localize the timezone of all tweets (and/or the Twitter accounts tweeting those) in our dataset (see <strong>lines 8, 15, 41, 53, 78</strong> and <strong>107-111</strong>). In regards to our current dataset, which is fairly limited in size, it is fair to assume that with the possibility of some negligible exceptions, the vast majority (if not all) of those tweets were created within the Japanese timezone.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Taking into account any daylight saving time adjustments, Pytz uses the UTC offsets of the desired <code>timezone</code> for its localization. The time_zone information we’re passing to the above <code>localize_utc_object</code> function should adhere to the <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">TZ database names</a> of the desired country (e.g. <strong>Asia/Tokyo</strong>).</p>
+</div>
+<ul>
+<li>By adjusting the <code>mode</code> argument of the <code>open</code> function to <code>a</code> (append), rather than <code>w</code> (write, which would overwrite any existing files), our script can append the results from a second JSON dataset to an existing CSV file. Furthermore, to ensure that we append results to the same output file every time we want to update our dataset over time, the script now takes an argument to define the filename of the CSV file our results will be written to (see <strong>lines 17</strong> and <strong>90</strong>).</li>
+<li>If we decide to include retweets in our set (useful for meta information on those who retweet content), we could calculate the amount of times tweets have been retweeted based on the amount of retweets of that tweet in our dataset. Using a temporary helper CSV file, the original CSV is then rewritten to include this information.<sup><a class="footnote-ref" href="#fn-2" id="fnref-2" rel="footnote">3</a></sup> Moreover, if our dataset contains retweets of original tweets that predate the earliest tweet data we possess, this script further generates a list of those original tweets (e.g. <strong>/metrics/#旦那ストレス_old_retweets.csv</strong>), including information such as tweet ID, text, hashtags, user name of the original tweeter, time of creation, amount of retweets and a direct URL to that tweet (see <strong>lines 16, 49-68, 101-102</strong> and <strong>150-199</strong>).</li>
+<li>When working with JSON data files compiled over a larger period of time, it is not unlikely duplications of tweets might have entered our dataset. In order to remove possible duplicate tweets, a helper function iterates through all rows of a CSV file, keeping track of the rows with a unique ID, and rewrites the output file based on those unique values (see <strong>lines 19, 96-97</strong> and <strong>115-148</strong>).<sup><a class="footnote-ref" href="#fn-3" id="fnref-3" rel="footnote">4</a></sup></li>
+<li>Both scripts on this page use the Pandas data manipulation library to read CSV files in chunks, which slightly impacts speed but drastically reduces memory consumption by iterating over an arbitrary amount of rows at a time (see <strong>lines 6, 89, 91, 159-160, 165-171</strong> and <strong>182-199</strong>).</li>
+</ul>
+<p>The script above thus takes several new optional arguments when run in command line. In order, they are:</p>
+<ul>
+<li>The timezone to localize Tweets by (defaults to <code>'utc'</code>)</li>
+<li>A boolean to decide whether or not to include retweets (defaults to <code>True</code>)</li>
+<li>The name of the output file (defaults to the name of the JSON file with <strong>’_parsed’</strong> attached to it)</li>
+<li>A boolean to decide whether or not to calculate retweets for unique tweets (defaults to <code>True</code>)</li>
+<li>A boolean to decide whether to check for doubles in CSV based on the tweet ID (defaults to <code>True</code>)</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The command in our command prompt (after first navigating to the correct folder using the change directory command <code>cd</code>) will therefore resemble something akin to: <code>python python_parse_tweet_ver2.py search_tweets_#旦那ストレス_20200515_030826 Asia/Tokyo True #旦那ストレス True True</code>. That command runs the above python script (<strong>python_parse_tweet_ver2.py</strong>) on a raw JSON file <strong>search_tweets_#旦那ストレス_20200515_030826.json</strong>, localizes the Tweets to Japanese Standard Time (JST), includes retweets, outputs to a CSV file called <strong>#旦那ストレス.csv</strong>, calculates the amount of times tweets have been retweeted since they were tweeted, and finally, checks for any duplicates in the CSV file.</p>
+</div>
+<h2 id="metrics-graphs"><a class="toclink" href="#metrics-graphs">Metrics &amp; Graphs</a></h2>
+<h3 id="calculating-metrics-with-python"><a class="toclink" href="#calculating-metrics-with-python">Calculating Metrics with Python</a></h3>
+<p>Based on our existing CSV we can now start calculating various metrics and produce graphs with our spreadsheet software of choice. As-is, there is plenty we could do already solely by importing the ‘master CSV’ file generated earlier and using pivot tables and graphs. This blog post, however, provides another script with a variety of helper methods to calculate and export some of the most prevalently used metrics in separate CSV files. This part will therefore, again, briefly elaborate on that python script, before proceeding to demonstrate the kind of visuals that can be extracted from the generated data and how it might fit into one’s research project. The script below thus contains four general helper functions:<sup><a class="footnote-ref" href="#fn-4" id="fnref-4" rel="footnote">5</a></sup></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Similar to before, the script below (available on <a href="https://github.com/steviepoppe/python_twitter_api_examples">GitHub</a>) should be saved in the folder we have used thus far to store the rest of our script files in (e.g. ‘<strong>C:/python_examples</strong>‘ → ‘<strong>python_metrics.py’</strong>).</p>
+<p>The next script take one argument: the name of the input CSV file generated with the script above. The commands used to execute our script could thus respectively look like: <code>python python_metrics.py #旦那ストレス</code> (output CSV files are stored in a new folder named after the input, e.g. ‘<strong>/metrics_#旦那ストレス</strong>/’).</p>
+</div>
+<ul>
+<li><strong>User data</strong>: generates a list of all unique users in our dataset, including 1) calculated fields such as the amount of tweets and retweets each user has contributed to our dataset or how many times their tweets were retweeted, and 2) general information such user name, description, account creation date, following/follower count and the total amount of tweets (taken at the time of the most recent contribution to our dataset).</li>
+<li><strong>Hashtag frequency</strong>: generates a list of each unique hashtag, the amount of times it appeared in (re)tweets and the amount of (re)tweeters having used that hashtag.</li>
+<li><strong>Date frequency</strong>: generates, for each day in our dataset, the amount of tweets, retweets, unique tweeters, retweeters and overlap between tweeters | retweeters in our dataset.</li>
+<li><strong>Time frequency</strong>: generates the same as above, filtered by hour.</li>
+</ul>
+<p>Essentially, this script iterates through each tweet in our input CSV file, storing the required information in python ‘dictionaries’. Upon finishing, it again iterates through each of those python dictionaries, writing the content to helper CSV files containing metrics for each of the four functions defined above.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">parse_tweets</span><span class="p">(</span><span class="n">sys_args</span><span class="p">):</span>
+
+    <span class="n">file_name</span> <span class="o">=</span> <span class="n">sys_args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">keep_rt</span> <span class="o">=</span> <span class="n">sys_args</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="s2">"True"</span>
+    <span class="n">chunksize</span> <span class="o">=</span> <span class="mi">100000</span>
+    <span class="n">hashtags</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">date_set</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">time_set</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">user_set</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">line_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">Path</span><span class="p">(</span><span class="s2">"./results/metrics_</span><span class="si">%s</span><span class="s2">/"</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'./results/</span><span class="si">%s</span><span class="s1">.csv'</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="n">chunksize</span><span class="p">,</span> <span class="n">iterator</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">chunk</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">line_count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">is_retweet</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"is_retweet"</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="n">hashtag_metrics</span><span class="p">(</span><span class="n">tweet</span><span class="p">,</span> <span class="n">hashtags</span><span class="p">,</span> <span class="n">is_retweet</span><span class="p">)</span>
+            <span class="n">date_metrics</span><span class="p">(</span><span class="n">tweet</span><span class="p">,</span> <span class="n">date_set</span><span class="p">,</span> <span class="n">is_retweet</span><span class="p">)</span>
+            <span class="n">time_metrics</span><span class="p">(</span><span class="n">tweet</span><span class="p">,</span> <span class="n">time_set</span><span class="p">,</span> <span class="n">is_retweet</span><span class="p">)</span>
+            <span class="n">user_metrics</span><span class="p">(</span><span class="n">tweet</span><span class="p">,</span> <span class="n">user_set</span><span class="p">,</span> <span class="n">is_retweet</span><span class="p">,</span> <span class="n">keep_rt</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Processed </span><span class="si">%s</span><span class="s1"> lines.'</span> <span class="o">%</span> <span class="n">line_count</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Processed total of </span><span class="si">%s</span><span class="s1"> lines.'</span> <span class="o">%</span> <span class="n">line_count</span><span class="p">)</span>
+    <span class="n">save_hashtag_metrics</span><span class="p">(</span><span class="n">hashtags</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+    <span class="n">save_date_metrics</span><span class="p">(</span><span class="n">date_set</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+    <span class="n">save_time_metrics</span><span class="p">(</span><span class="n">time_set</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+    <span class="n">save_user_metrics</span><span class="p">(</span><span class="n">user_set</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">hashtag_metrics</span><span class="p">(</span><span class="n">tweet</span><span class="p">,</span> <span class="n">hashtags</span><span class="p">,</span> <span class="n">is_retweet</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"hashtags"</span><span class="p">]):</span>
+        <span class="n">c_hashtags</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"hashtags"</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">",,"</span><span class="p">,</span><span class="s2">","</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">hashtag</span> <span class="ow">in</span> <span class="n">c_hashtags</span><span class="p">:</span>                      
+            <span class="k">if</span> <span class="n">hashtag</span> <span class="o">!=</span> <span class="s1">''</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">hashtag</span> <span class="ow">in</span> <span class="n">hashtags</span><span class="p">:</span>
+                    <span class="n">hashtags</span><span class="p">[</span><span class="n">hashtag</span><span class="p">][</span><span class="n">is_retweet</span><span class="p">]</span> <span class="o">=</span> <span class="n">hashtags</span><span class="p">[</span><span class="n">hashtag</span><span class="p">][</span><span class="n">is_retweet</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">retweet_status</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">retweet_status</span><span class="p">[</span><span class="n">is_retweet</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="n">retweet_status</span><span class="p">[</span><span class="ow">not</span> <span class="n">is_retweet</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">retweet_status</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">retweet_status</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="n">retweet_status</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="n">hashtags</span><span class="p">[</span><span class="n">hashtag</span><span class="p">]</span> <span class="o">=</span> <span class="n">retweet_status</span>
+                <span class="n">hashtags</span><span class="p">[</span><span class="n">hashtag</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="n">is_retweet</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">date_metrics</span><span class="p">(</span><span class="n">tweet</span><span class="p">,</span> <span class="n">date_set</span><span class="p">,</span> <span class="n">is_retweet</span><span class="p">):</span>
+    <span class="n">tweet_created_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"created_at"</span><span class="p">])</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%m/</span><span class="si">%d</span><span class="s2">/%Y"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">tweet_created_date</span> <span class="ow">in</span> <span class="n">date_set</span><span class="p">:</span>
+        <span class="n">retweet_status</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">retweet_status</span><span class="p">[</span><span class="n">is_retweet</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">retweet_status</span><span class="p">[</span><span class="ow">not</span> <span class="n">is_retweet</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">date_set</span><span class="p">[</span><span class="n">tweet_created_date</span><span class="p">]</span> <span class="o">=</span> <span class="n">retweet_status</span>
+        <span class="n">retweet_status</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">retweet_status</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">retweet_status</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">date_set</span><span class="p">[</span><span class="n">tweet_created_date</span><span class="p">][</span><span class="n">is_retweet</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">date_set</span><span class="p">[</span><span class="n">tweet_created_date</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="n">is_retweet</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">time_metrics</span><span class="p">(</span><span class="n">tweet</span><span class="p">,</span> <span class="n">time_set</span><span class="p">,</span> <span class="n">is_retweet</span><span class="p">):</span>
+    <span class="n">tweet_created_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"created_at"</span><span class="p">])</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%H"</span><span class="p">)</span> <span class="c1">#change to %I %p for AM/PM</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">tweet_created_time</span> <span class="ow">in</span> <span class="n">time_set</span><span class="p">:</span>
+        <span class="n">retweet_status</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">retweet_status</span><span class="p">[</span><span class="n">is_retweet</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">retweet_status</span><span class="p">[</span><span class="ow">not</span> <span class="n">is_retweet</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">time_set</span><span class="p">[</span><span class="n">tweet_created_time</span><span class="p">]</span> <span class="o">=</span> <span class="n">retweet_status</span>
+        <span class="n">retweet_status</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">retweet_status</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">retweet_status</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">time_set</span><span class="p">[</span><span class="n">tweet_created_time</span><span class="p">][</span><span class="n">is_retweet</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">time_set</span><span class="p">[</span><span class="n">tweet_created_time</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="n">is_retweet</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">user_metrics</span><span class="p">(</span><span class="n">tweet</span><span class="p">,</span> <span class="n">user_set</span><span class="p">,</span> <span class="n">is_retweet</span><span class="p">,</span> <span class="n">keep_rt</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="s2">"retweeted_status"</span> <span class="ow">in</span> <span class="n">tweet</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span> <span class="ow">or</span> <span class="n">keep_rt</span> <span class="o">==</span> <span class="s2">"True"</span><span class="p">:</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">user_set</span><span class="p">:</span>
+            <span class="n">user</span><span class="p">[</span><span class="s2">"screen_name"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">]</span>
+            <span class="n">user</span><span class="p">[</span><span class="s2">"description"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"user_description"</span><span class="p">]</span>
+            <span class="n">user</span><span class="p">[</span><span class="s2">"following_count"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"user_following_count"</span><span class="p">]</span>
+            <span class="n">user</span><span class="p">[</span><span class="s2">"followers_count"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"user_followers_count"</span><span class="p">]</span>
+            <span class="n">user</span><span class="p">[</span><span class="s2">"total_tweets"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"user_total_tweets"</span><span class="p">]</span>
+            <span class="n">user</span><span class="p">[</span><span class="s2">"created_at"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"user_created_at"</span><span class="p">]</span>
+            <span class="n">user</span><span class="p">[</span><span class="s2">"total_in_data_set"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">user</span><span class="p">[</span><span class="s2">"total_in_data_set"</span><span class="p">][</span><span class="n">is_retweet</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="c1">## Note, if full retweet count is preferred, replace "retweet_count_dataset" with "retweet_count_listed"</span>
+            <span class="k">if</span> <span class="s2">"retweet_count_dataset"</span> <span class="ow">in</span> <span class="n">tweet</span><span class="p">:</span>
+                <span class="n">user</span><span class="p">[</span><span class="s2">"total_times_retweeted_set"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"retweet_count_dataset"</span><span class="p">])</span>
+            <span class="n">user_set</span><span class="p">[</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">user</span>
+
+        <span class="k">else</span><span class="p">:</span>           
+            <span class="n">user_set</span><span class="p">[</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">]][</span><span class="s2">"total_in_data_set"</span><span class="p">][</span><span class="n">is_retweet</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="s2">"retweet_count_dataset"</span> <span class="ow">in</span> <span class="n">tweet</span><span class="p">:</span>
+                <span class="n">user_set</span><span class="p">[</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">]][</span><span class="s2">"total_times_retweeted_set"</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"retweet_count_dataset"</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"user_following_count"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">user_set</span><span class="p">[</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">]][</span><span class="s2">"following_count"</span><span class="p">]:</span>
+                <span class="n">user_set</span><span class="p">[</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">]][</span><span class="s2">"following_count"</span><span class="p">]</span> 
+            <span class="k">if</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"user_followers_count"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">user_set</span><span class="p">[</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">]][</span><span class="s2">"followers_count"</span><span class="p">]:</span>
+                <span class="n">user_set</span><span class="p">[</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">]][</span><span class="s2">"followers_count"</span><span class="p">]</span> 
+            <span class="k">if</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"user_total_tweets"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">user_set</span><span class="p">[</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">]][</span><span class="s2">"total_tweets"</span><span class="p">]:</span>
+                <span class="n">user_set</span><span class="p">[</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">]][</span><span class="s2">"total_tweets"</span><span class="p">]</span>
+
+        <span class="c1">#if tweet["user_screen_name"] not in unique_users[is_retweet]:</span>
+        <span class="c1">#   unique_users[is_retweet].append(tweet["user_screen_name"])</span>
+
+<span class="k">def</span> <span class="nf">save_hashtag_metrics</span><span class="p">(</span><span class="n">hashtags</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./results/metrics_</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">_hashtags.csv'</span> <span class="o">%</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> 
+        <span class="n">mode</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_hashtags</span><span class="p">:</span>
+        <span class="n">writer_hashtags</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">file_hashtags</span><span class="p">)</span>
+        <span class="n">writer_hashtags</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">"hashtag"</span><span class="p">,</span><span class="s2">"total_normal"</span><span class="p">,</span> <span class="s2">"total_retweet"</span><span class="p">,</span> 
+            <span class="s2">"total"</span><span class="p">,</span><span class="s2">"unique_tweeters"</span><span class="p">,</span> <span class="s2">"re_unique_tweeters"</span><span class="p">,</span> <span class="s2">"re_unique_tweeters_filtered"</span><span class="p">,</span> <span class="s2">"total"</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">hashtag</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">hashtags</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">normal</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">retweet</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">unique</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">retweet</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">normal</span><span class="p">]</span>
+            <span class="n">writer_hashtags</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">hashtag</span><span class="p">,</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">normal</span><span class="p">)),</span> 
+                <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">retweet</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unique</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">normal</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique</span><span class="p">))])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Finished. Saved to ./results/metrics_</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">_hashtags.csv"</span> <span class="o">%</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">save_date_metrics</span><span class="p">(</span><span class="n">date_set</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./results/metrics_</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">_date.csv'</span> <span class="o">%</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> 
+        <span class="n">mode</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_date</span><span class="p">:</span>
+        <span class="n">writer_date</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">file_date</span><span class="p">)</span>
+        <span class="n">writer_date</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">"date"</span><span class="p">,</span><span class="s2">"total_normal"</span><span class="p">,</span> <span class="s2">"total_retweet"</span><span class="p">,</span> <span class="s2">"total_tweets"</span><span class="p">,</span><span class="s2">"unique_normal_tweeters"</span><span class="p">,</span>
+            <span class="s2">"unique_retweeters_exist"</span><span class="p">,</span> <span class="s2">"unique_retweeters_filtered"</span><span class="p">,</span> <span class="s2">"unique_retweeters_total"</span><span class="p">,</span> 
+            <span class="s2">"total_tweeters"</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">date</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">date_set</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1">#unique_users[is_retweet]</span>
+
+            <span class="n">normal</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">retweet</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">unique</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">retweet</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">normal</span><span class="p">]</span>
+            <span class="n">writer_date</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">date</span><span class="p">,</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
+                <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">normal</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">retweet</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unique</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">retweet</span><span class="p">)),</span> 
+                <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">normal</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique</span><span class="p">))])</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Finished. Saved to ./results/metrics_</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">_date.csv"</span> <span class="o">%</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">save_time_metrics</span><span class="p">(</span><span class="n">time_set</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./results/metrics_</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">_time.csv'</span> <span class="o">%</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> 
+        <span class="n">mode</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_time</span><span class="p">:</span>
+        <span class="n">writer_time</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">file_time</span><span class="p">)</span>
+        <span class="n">writer_time</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">"time"</span><span class="p">,</span><span class="s2">"total_normal"</span><span class="p">,</span> <span class="s2">"total_retweet"</span><span class="p">,</span> <span class="s2">"total_tweets"</span><span class="p">,</span><span class="s2">"unique_tweeters"</span><span class="p">,</span> 
+            <span class="s2">"re_unique_tweeters"</span><span class="p">,</span> <span class="s2">"re_unique_tweeters_filtered"</span><span class="p">,</span> <span class="s2">"total_tweeters"</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">hour</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">time_set</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">normal</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">retweet</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">unique</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">retweet</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">normal</span><span class="p">]</span>
+            <span class="n">writer_time</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">hour</span><span class="p">,</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
+                <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">normal</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">retweet</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unique</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">normal</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">retweet</span><span class="p">))])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Finished. Saved to ./results/metrics_</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">_time.csv"</span> <span class="o">%</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">save_user_metrics</span><span class="p">(</span><span class="n">user_set</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./results/metrics_</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">_users.csv'</span> <span class="o">%</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> 
+        <span class="n">mode</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_users</span><span class="p">:</span>
+        <span class="n">writer_users</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">file_users</span><span class="p">)</span>
+
+
+        <span class="k">if</span> <span class="s2">"total_times_retweeted_set"</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">user_set</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">writer_users</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">"screen_name"</span><span class="p">,</span> <span class="s2">"total_posted_normal"</span><span class="p">,</span><span class="s2">"total_posted_retweets"</span><span class="p">,</span><span class="s2">"total_posted"</span><span class="p">,</span> 
+                <span class="s2">"user_description"</span><span class="p">,</span><span class="s2">"user_following_count"</span><span class="p">,</span> <span class="s2">"user_followers_count"</span><span class="p">,</span> <span class="s2">"user_total_tweets"</span><span class="p">,</span> 
+                <span class="s2">"total_times_retweeted_set"</span><span class="p">,</span><span class="s2">"user_created_at"</span><span class="p">])</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./results/metrics_</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">_old_retweets.csv'</span> <span class="o">%</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> 
+                <span class="n">mode</span><span class="o">=</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">old_retweets</span><span class="p">:</span>
+                <span class="n">csv_reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">old_retweets</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">csv_reader</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">]</span> <span class="ow">in</span> <span class="n">user_set</span><span class="p">:</span>
+                        <span class="n">user_set</span><span class="p">[</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"user_screen_name"</span><span class="p">]][</span><span class="s2">"total_times_retweeted_set"</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"retweet_count"</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">writer_users</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">"screen_name"</span><span class="p">,</span> <span class="s2">"total_posted_normal"</span><span class="p">,</span><span class="s2">"total_posted_retweets"</span><span class="p">,</span><span class="s2">"total_posted"</span><span class="p">,</span> 
+                <span class="s2">"user_description"</span><span class="p">,</span><span class="s2">"user_following_count"</span><span class="p">,</span> <span class="s2">"user_followers_count"</span><span class="p">,</span> <span class="s2">"user_total_tweets"</span><span class="p">,</span><span class="s2">"user_created_at"</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">user_set</span><span class="p">:</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">user_set</span><span class="p">[</span><span class="n">a</span><span class="p">]</span>
+            <span class="k">if</span> <span class="s2">"total_times_retweeted_set"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">user</span><span class="p">:</span>
+                <span class="n">writer_users</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">user</span><span class="p">[</span><span class="s2">"screen_name"</span><span class="p">],</span><span class="n">user</span><span class="p">[</span><span class="s2">"total_in_data_set"</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">user</span><span class="p">[</span><span class="s2">"total_in_data_set"</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> 
+                    <span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="s2">"total_in_data_set"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">user</span><span class="p">[</span><span class="s2">"total_in_data_set"</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span> <span class="n">user</span><span class="p">[</span><span class="s2">"description"</span><span class="p">],</span>
+                    <span class="n">user</span><span class="p">[</span><span class="s2">"following_count"</span><span class="p">],</span><span class="n">user</span><span class="p">[</span><span class="s2">"followers_count"</span><span class="p">],</span><span class="n">user</span><span class="p">[</span><span class="s2">"total_tweets"</span><span class="p">],</span><span class="n">user</span><span class="p">[</span><span class="s2">"created_at"</span><span class="p">]])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">writer_users</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">user</span><span class="p">[</span><span class="s2">"screen_name"</span><span class="p">],</span><span class="n">user</span><span class="p">[</span><span class="s2">"total_in_data_set"</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">user</span><span class="p">[</span><span class="s2">"total_in_data_set"</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> 
+                    <span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="s2">"total_in_data_set"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">user</span><span class="p">[</span><span class="s2">"total_in_data_set"</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span> <span class="n">user</span><span class="p">[</span><span class="s2">"description"</span><span class="p">],</span>
+                    <span class="n">user</span><span class="p">[</span><span class="s2">"following_count"</span><span class="p">],</span><span class="n">user</span><span class="p">[</span><span class="s2">"followers_count"</span><span class="p">],</span><span class="n">user</span><span class="p">[</span><span class="s2">"total_tweets"</span><span class="p">],</span>
+                    <span class="n">user</span><span class="p">[</span><span class="s2">"total_times_retweeted_set"</span><span class="p">],</span><span class="n">user</span><span class="p">[</span><span class="s2">"created_at"</span><span class="p">]])</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Finished. Saved to ./results/metrics_</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">_users.csv"</span> <span class="o">%</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="c1">#pass in the target filename without "json" as argument in command prompt.</span>
+    <span class="n">parse_tweets</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+<h3 id="spreadsheet-graphs"><a class="toclink" href="#spreadsheet-graphs">Spreadsheet Graphs</a></h3>
+<p>This section contains some graphs we might create upon importing the metric CSV files, generated with the script above, into a spreadsheet application.<sup><a class="footnote-ref" href="#fn-5" id="fnref-5" rel="footnote">6</a></sup></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The content of the Tweets and the description of the users remain as-is, including newlines, URLs, hashtags and emojis. Older versions of MS Excel, in particular, might have trouble correctly importing CSVs because of that. If using an older version of Excel is a must and importing the CSV results in faulty data, the best option would be to use OpenRefine to export the CSV as a valid Excel file (make sure that UTF-8 is selected for character encoding and that the radio button indicating columns are separated by commas is checked). Moreover, ensure that the Tweet ID columns are set to text rather than int64, in order to prevent Excel from cutting of digits in its conversion.</p>
+</div>
+<h4 id="date-time-frequency"><a class="toclink" href="#date-time-frequency">Date &amp; time frequency</a></h4>
+<p>The time-series graphs below represent changes over time and were made after importing the date frequency and time frequency CSV files in Excel 2019. Both <strong>Figure 2</strong> (a line chart measuring all occurrences over time) and <strong>figure 3</strong> (a stacked area chart showcasing the total amount of tweets of a daily timespan split in original tweets and retweets) reveal a strong peak in retweets on the 13 <sup>th</sup> of May. This spike obscures the visual effectiveness of the rest our graphs. A solution is thus to split the count of Tweets and retweets over two different horizontal axes (<strong>figure 4</strong>), or use a 100% stacked bar graph to view the relation between the total tweets and retweets (<strong>figure 5</strong>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Data for the first and last day in our set (respectively 04/30/2020 and 05/29/2020) contains data only up to a certain point of that day and has thus been left out of the following graphs.</p>
+</div>
+<div class="slider" style="margin: auto; text-align: center;">
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/day_graph_analysis_total_users_axis.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 883px; height: auto; max-width: 100%;"/><span><strong>Figure 1:</strong> Amount of daily active Twitter users (re)tweeting #旦那ストレス</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/day_graph_analysis_total.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 884px; height: auto; max-width: 100%;"/><span><strong>Figure 2:</strong> Total combined tweets containing #旦那ストレス</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/day_graph_analysis_total_split.png" style="margin: auto; max-width: 95%!important;margin-bottom: 10px;width: 885px; height: auto; max-width: 100%;"/><span><strong>Figure 3:</strong> Total tweets &amp; retweets Containing #旦那ストレス</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/day_graph_analysis_total_split_axis.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 883px; height: auto; max-width: 100%;"/><span><strong>Figure 4:</strong> Total tweets &amp; retweets Containing #旦那ストレス</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/day_graph_analysis_stacked_100.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 883px; height: auto; max-width: 100%;"/><span><strong>Figure 5:</strong> Tweet/retweet division of combined total containing #旦那ストレス per day</span></div>
+</div>
+<p>In regards to the question of a public sphere and interconnected discourse forming around this hashtag, we might be interested in knowing how many of those retweeters are actually actively writing similar Tweets themselves (and thus engaging with others connected by the hashtag) as well. In that case, we could use a mixed graph with stacked bars for visualizing retweeters in two groups (the right axis) and a line measure for the count original tweeters on the left (<strong>figure 1</strong>). One immediate takeaway is that only a very small number of retweeters have actually tweeted similar content themselves, suggesting that there might not be much engagement among active tweeters (and thus unlikely to develop into a public or community developed through this hashtag).<sup><a class="footnote-ref" href="#fn-6" id="fnref-6" rel="footnote">7</a></sup> From a glance it is furthermore clear that the amount of active tweeters practically doubled during the first couple of days of the extended holiday (golden week) in Japan, with gradual ups and down in activity since. The same goes for retweet activity, with a clear exception present around the period of May 13 (more on that below).</p>
+<p>Using the spreadsheet table overview of our full CSV data as well as spreadsheet pivot functionality helps bring clarity to this trend deviation. The deviation concerns several tweets of one particularly active user with thousands of followers, but with a nevertheless low amount of posts actually being retweeted or replied to. Although the most prominent Tweet (which accuses the husband of intending to hoard the cash handouts each household member would receive in light of the Corona virus) was made prior to the first Tweet in our set, it didn’t get picked up on until late May 12 (with an increase in pace after being retweeted by a prominent Twitter influencer with over 80.000 followers). Subsequent retweets more or less lasted until the early night of May 14.</p>
+<p>Moreover, the follower count of that Twitter user increased fifteen fold between the first and last raw JSON data files we obtained including that user’s Tweets. It should also be noted that although having frequently used both the husband stress and related hashtag <em>#husbanddeathnote</em> (<em>dan’na desunōto</em>, #<span lang="ja"><ruby><rb>旦那</rb><rp>(</rp><rt>だんな</rt><rp>)</rp></ruby></span>デスノート) before, the user has since such an increase in attention refrained from using them at all.</p>
+<p>The renewed peak in (original) Tweets and (unique) tweeters shortly after the initial retweet peak of May 13 suggests a brief reinvigorating effect after a period of stagnation. Nevertheless, it is recommended to conduct a closer content analysis (using quantitative and qualitative methods) of the Tweet content to deduce whether those Tweets are indeed signaling an increase in users utilizing the medium to discuss dissatisfaction in regards to their spouses, or are instead meta-conversations on the existence of those hashtags (as is so often the case with viral hashtags).</p>
+<div class="slider" style="margin: auto; text-align: center;">
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/time_graph_analysis_tweets.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 882px; height: auto; max-width: 100%;"/><span><strong>Figure 6:</strong> Total hourly (re)tweets containing #旦那ストレス</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/time_graph_analysis_tweeters.png" style="margin: auto; max-width: 95%!important;margin-bottom: 10px;width: 880px; height: auto; max-width: 100%;"/><span><strong>Figure 7:</strong> Total hourly (re)tweeters engaging with #旦那ストレス</span></div>
+</div>
+<p>Finally, while spreading the tweeting (<strong>figure 6</strong>) or tweeter (<strong>figure 7</strong>) rate on an hourly basis might have its benefits for specific use cases, it does not yield particularly surprising results when applied to our dataset. While it is not much of a stretch to assume that the vast majority of tweets in our dataset are posted by mothers<sup><a class="footnote-ref" href="#fn-7" id="fnref-7" rel="footnote">8</a></sup> with a particular rigid daily schedule, it is reasonable to believe that the peaks in activity in the late evening, as well as right before and after lunch are common among unrelated Twitter users as well.</p>
+<h4 id="hashtag-frequency"><a class="toclink" href="#hashtag-frequency">Hashtag frequency</a></h4>
+<p>These next graphs are based on the top ten hashtags sorted by frequency of appearance (excluding, of course, the hashtag we have used as the query to collect our data). With the exception of <strong>figure 10</strong> (which counts based on the total amount of unique Twitter users rather than total tweets) as demonstration of marginally different results, all are sorted by total combined (re)tweets. <strong>Figure 8</strong> is an English translation of <strong>Figure 9</strong>, and <strong>Figure 11</strong> juxtaposes the amount of tweeters and retweeters with the total amount of tweets and retweets per hashtag. It should be noted that these statistics are based on the individual occurrence of each hashtag and thus does not keep in mind the overlap of multiple such hashtags in one particular tweet (some tweets consisted of nothing more than several hashtags and an annexed image).</p>
+<p>The majority of the hashtags are idle complaints targeting the spouse with various levels of playfulness. The highest ranking hashtag, <em>#husbanddeathnote</em> (<em>dan’na desunōto</em>, #<span lang="ja"><ruby><rb>旦那</rb><rp>(</rp><rt>だんな</rt><rp>)</rp></ruby></span>デスノート), for example, refers to a popular 2000’s manga, anime and live action series (Death Note) and in particular to its eponymous notebook, which results in the death of every person whose name is penned down. The concept has since been juxtaposed with various demographics as an expression of anger or frustration. A google search suggests that this hashtag predates our targeted hashtag #<span lang="ja"><ruby><rb>旦那</rb><rp>(</rp><rt>だんな</rt><rp>)</rp></ruby></span>ストレス, with media attention dating all the way back to around 2017. Furthermore, the top result links to an anonymous bulletin board <strong>danna-shine.com</strong> (a transliteration of #<span lang="ja"><ruby><rb>旦那死</rb><rp>(</rp><rt>だんなし</rt><rp>)</rp></ruby></span>ね, <em>husband, die!</em>). A brief visit to that website reveals that it is, perhaps unsurprisingly, intended for posting anonymous complaints,<sup><a class="footnote-ref" href="#fn-8" id="fnref-8" rel="footnote">9</a></sup> claims to have over 180.000 monthly users and makes a visual reference to Twitter and that specific death note hashtag in its banner.<sup><a class="footnote-ref" href="#fn-9" id="fnref-9" rel="footnote">10</a></sup></p>
+<div class="slider" style="margin: auto; text-align: center;">
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/hashtags_freq_eng.png" style="margin: auto; max-width: 95%!important; margin-bottom: 10px;width: 1005px; height: auto; max-width: 100%;"/><span><strong>Figure 8:</strong> Top 10 used hashtags sorted by combined total (re)tweets containing #旦那ストレス (English translation)</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/hashtags_freq_total.png" style="margin: auto; max-width: 95%!important;margin-bottom: 10px;width: 1012px; height: auto; max-width: 100%;"/><span><strong>Figure 9:</strong> Top 10 used hashtags sorted by combined total (re)tweets containing #旦那ストレス</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/hashtags_freq_tweets.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 1011px; height: auto; max-width: 100%;"/><span><strong>Figure 10:</strong> Top 10 used hashtags sorted by original tweets containing #旦那ストレス</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/hashtags_freq_tweet_tweeters.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 874px; height: auto; max-width: 100%;"/><span><strong>Figure 11:</strong> Top 10 used hashtags original tweets containing #旦那ストレス</span></div>
+</div>
+<p>Other noteworthy hashtags are “<em>#coronadivorce</em>” (<em>Korona rikon</em>, #コロナ<span lang="ja"><ruby><rb>離婚</rb><rp>(</rp><rt>りこん</rt><rp>)</rp></ruby></span>), “<em>#emotionallyabusivehusband</em>” (<em>morahara otto</em>, モラハラ<span lang="ja"><ruby><rb>夫</rb><rp>(</rp><rt>おっと</rt><rp>)</rp></ruby></span>) and “#mother-in-lawstress” (<em>gibo sutoresu</em>, #<span lang="ja"><ruby><rb>義母</rb><rp>(</rp><rt>ぎぼ</rt><rp>)</rp></ruby></span>ストレス). The first, of course, refers to the greater discourse in which we situate this study, although actual references to the threat of divorce appear to be relatively low in our sample. The second refers to <em>morahara</em> (モラハラ, an abbreviation of the pseudo-Anglican Japanese term moral harassment), indicating a sociological concept of emotional and psychological abusive behavior through means of gas-lighting and humiliation. The last hashtag, “<em>#mother-in-law stress</em>”, then, is exceptional in that it is not just the only hashtag in our top ten not explicitly connected to the spouse, it is also the only one that has a disproportionate amount of retweets and retweeters.<sup><a class="footnote-ref" href="#fn-10" id="fnref-10" rel="footnote">11</a></sup></p>
+<h4 id="user-data"><a class="toclink" href="#user-data">User Data</a></h4>
+<p>Based on the generated user data CSV, we might use pivot functionality to build graphs visualizing the relation between things such as date of user registration and tweets.</p>
+<p><strong>Figure 13</strong>, for example, visualizes users, with at least one actively tweeted message containing #<span lang="ja"><ruby><rb>旦那</rb><rp>(</rp><rt>だんな</rt><rp>)</rp></ruby></span>ストレス, in a <em>pie of pie</em> chart on a yearly basis, demonstrating that 41% of such users were created in 2020. <strong>Figure 15</strong> further divides the period of 2018 to May 2020 by month, illustrating again that there is indeed a fairly consistent monthly increase since late 2019 in registered accounts utilizing Twitter to display marital problems.</p>
+<p>Based on those graphs, we can thus conclude that the majority of the Twitter users actively posting tweets containing this hashtag registered their account on Twitter extremely recently, most likely as a second, private account (often referred to as ura’aka, #<span lang="ja"><ruby><rb>裏垢</rb><rp>(</rp><rt>うらあか</rt><rp>)</rp></ruby></span>) created specifically for this purpose. In comparison then, <strong>figure 14</strong> suggest that there is less of a psychological barrier for Twitter users to retweet such content on existing accounts; a retweet might insinuate sympathy towards the original tweeter and/or personal engagement with the topic at hand, but enough distance remains to not be used negatively towards those retweeters. The fact that the green line (representing the total amount of Twitter users in our dataset) is almost consistent with the combine value of the stacked bars (total tweet &amp; retweet posters) further demonstrates that there is a very low tendency for users to both actively tweet content with this hashtag and simultaneously retweet the content of others.</p>
+<p>Taking a different angle to demonstrate the same thing, <strong>Figure 12</strong> displays the amount of (re)tweets posted on a yearly basis both separate and as running total. Again, this graph suggest that there is not anything particularly outstanding concerning the registration date for users retweeting such content, while simultaneously showing that the most actively tweeting accounts have all been created very recently.</p>
+<div class="slider" style="margin: auto; text-align: center;">
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/users_year_tweets.png" style="margin: auto; max-width: 95%!important; margin-bottom: 10px;width: 952px; height: auto; max-width: 100%;"/><span><strong>Figure 12:</strong> (Cumulative) totals of (re)tweets containing #旦那ストレス spread over date of account creation by year</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/users_year_creation.png" style="margin: auto; max-width: 95%!important; margin-bottom: 10px;width: 723px; height: auto; max-width: 100%;"/><span><strong>Figure 13:</strong> Year of creation of Twitter users in our dataset having posted more than one post containing #旦那ストレス</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/users_year_combined.png" style="margin: auto; max-width: 95%!important; margin-bottom: 10px;width: 722px; height: auto; max-width: 100%;"/><span><strong>Figure 14:</strong> Twitter users engaging with #旦那ストレス, sorted by account year of creation</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/users_year_creation_months.png" style="margin: auto; max-width: 95%!important; margin-bottom: 10px;width: 881px; height: auto; max-width: 100%;"/><span><strong>Figure 15:</strong> Registered accounts with active #旦那ストレス usage per month (2018 - 2020) </span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/users_sorted_original.png" style="margin: auto; max-width: 95%!important; margin-bottom: 10px;width: 883px; height: auto; max-width: 100%;"/><span><strong>Figure 16:</strong> Twitter users sorted by amount of original tweets containing #旦那ストレス </span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/users_sorted.png" style="margin: auto; max-width: 95%!important; margin-bottom: 10px;width: 886px; height: auto; max-width: 100%;"/><span><strong>Figure 16:</strong> Twitter users posting original tweets containing #旦那ストレス, sorted by followers and following count </span></div>
+</div>
+<p>Finally, the two ugliest graph on this blog (<strong>figure 16</strong> and <strong>figure 17</strong>) reveal more about the level of engagement of Twitter users actively posting themselves, as well as the possible reach and/or attempts to interconnect with others based on the amount of followers and ‘friends’ (i.e. their following count). About half of those users have tweeted content with the #<span lang="ja"><ruby><rb>旦那</rb><rp>(</rp><rt>だんな</rt><rp>)</rp></ruby></span>ストレス hashtag on a repeated basis within the timespan of our dataset and are thus likely to have a particular strong investment in the topic. It is not unlikely that there are those, among the other half of those users, who have no personal investment but rather feel some curiosity towards the actual hashtag and the discourse it itself represents.</p>
+<p>One such Twitter account, for example, has over 300.000 followers. By sorting the users table by followers, this was revealed to be the public account of Shinya Arino, a famous Japanese comedian who might have possibly come into contact after a particular tweet mentioned earlier went relatively viral on the 13<sup>th</sup> of May. By cross-referencing our full CSV table with this name, the content and date of creation of Shinya’s tweet was easily revealed: 「このハッシュタグは　#<span lang="ja"><ruby><rb>勉強</rb><rp>(</rp><rt>べんきょう</rt><rp>)</rp></ruby></span>になる #<span lang="ja"><ruby><rb>旦那</rb><rp>(</rp><rt>だんな</rt><rp>)</rp></ruby></span>ストレス」 (Kono hasshu tagu wa benkyō ni naru, Eng. “This hashtag is illuminating”), posted on 18 May, 2020. It is difficult to gouge what impact this ‘endorsement’ by a public media figure has or if it was perhaps intended mockingly, but at the very least <strong>figure 4</strong> reveals a stark drop rather than rise in accounts tweeting such messages right after his tweet.</p>
+<hr/>
+<h1 id="automation-bringing-everything-together"><a class="toclink" href="#automation-bringing-everything-together">Automation: Bringing Everything Together</a></h1>
+<p>In a research project that requires the collection of Twitter data over a long period of time, it is understandably a drag to manually update the preprocessed data (and its derisive metrics in CSV format) through various separate scripts run from the command line each time new data is to be collected. One method of simplifying those steps is to use a batch script<sup><a class="footnote-ref" href="#fn-11" id="fnref-11" rel="footnote">12</a></sup> that automatizes several or even all of the acts we have been doing manually. Upon saving and running the following script, for example, it will iterate through all the unprocessed JSON files with a filename matching the name of the batch file (e.g. <strong>#旦那ストレス.bat</strong> → all JSON files containing <strong>#旦那ストレス</strong>) and run them through <strong>python_parse_tweet_ver2.py</strong> with predefined options such as setting the timezone to “Asia/Tokyo” (keeping the total calculation and check for doubles until the final JSON has been processed). Finally, this batch script will run the preprocessed CSV file through the parsing metric script we have outlined in this article.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>@echo off
+
+:: Necessary <span class="k">for</span> Unicode support
+chcp <span class="m">65001</span> &gt;NUL
+
+<span class="nb">cd</span> /d C:<span class="se">\p</span>ython<span class="se">\</span>
+
+<span class="nb">set</span> <span class="nv">safe_csv</span><span class="o">=</span>%~n0
+<span class="nb">set</span> <span class="nv">time_zone</span><span class="o">=</span>Asia/Tokyo
+<span class="nb">set</span> <span class="nv">include_retweets</span><span class="o">=</span><span class="s2">"True"</span>
+<span class="nb">set</span> <span class="nv">add_totals</span><span class="o">=</span><span class="s2">"True"</span>
+<span class="nb">set</span> <span class="nv">double_check</span><span class="o">=</span><span class="s2">"True"</span>
+<span class="nb">set</span> <span class="nv">query</span><span class="o">=</span>%~n0
+<span class="nb">set</span> <span class="nv">since_id</span><span class="o">=</span><span class="s2">"None"</span>
+
+:: Count total amount of files
+<span class="k">for</span> /f %%A <span class="k">in</span> <span class="o">(</span><span class="s1">'dir /A:-D /B .\results\*%query%*.json ^| find /v /c ""'</span><span class="o">)</span> <span class="k">do</span> <span class="nb">set</span> <span class="nv">total</span><span class="o">=</span>%%A
+
+:: Necessary to count <span class="k">in</span> loop
+setlocal enabledelayedexpansion
+<span class="nb">set</span> <span class="nv">count</span><span class="o">=</span><span class="m">0</span>
+
+<span class="k">for</span> %%a <span class="k">in</span> <span class="o">(</span>results/*%query%*.json<span class="o">)</span> <span class="k">do</span> <span class="o">(</span>
+    :: Create CSV of all relevant query JSON
+    <span class="nb">echo</span> <span class="s2">"Pre-processing: %%a"</span>
+    <span class="nb">set</span> /a <span class="nv">count</span> <span class="o">+=</span> <span class="m">1</span>
+    IF !count!<span class="o">==</span>%total% <span class="o">(</span>
+            py python_parse_tweet_ver2.py %%~na %time_zone% %include_retweets% %safe_csv% %add_totals% %double_check%
+    <span class="o">)</span> <span class="k">else</span> <span class="o">(</span>
+    py python_parse_tweet_ver2.py %%~na %time_zone% %include_retweets% %safe_csv%
+    <span class="o">)</span>
+<span class="o">)</span>
+endlocal
+
+:: Create metrics CSV files
+<span class="nb">echo</span> <span class="s2">"Calculating metrics..."</span>
+py python_metrics.py %safe_csv%
+
+PAUSE
+</pre></div>
+</td></tr></table>
+<p>This script could be further edited to begin by first datamining new JSON data with any of the API scripts provided earlier, potentially using the Windows Registry to keep track op the <code>since_id</code> variable. If desired, we might also schedule this script to run periodically using the Windows schedule manager (e.g. to run the Search API script and its preprocessing and parsing scripts on a weekly basis, or even on a daily basis if daily updated statistics on account information, such as follower and following count, is preferred).</p>
+<p>If we are using spreadsheet software that maintains a connection with the CSV data sources for its tables and graphs, updating our graphs to reflect those changes is a matter of pressing a single update button (such as the Data → Refresh All button in MS Excel 2019).</p>
+<hr/>
+<h1 id="legal-and-ethical-caveats"><a class="toclink" href="#legal-and-ethical-caveats">Legal and Ethical Caveats</a></h1>
+<p>Having glanced over both the above tutorial and the provided graphs or data, the reader might have (with one exception) noticed a lack of direct references to concrete Tweets or users. Japanese Tweet content has either been translated to English without supplying any identification, or visualized through calculated metrics. Moreover, this series does not provide access to the original JSON files or to the preprocessed CSV files. This is done deliberately both according to Twitter API’s terms of service (which prohibits sharing raw, unprocessed Tweet data) and, from an ethical standpoint, to protect the identity of its users (regardless of the public accessibility of those users’ Tweets and the levels of anonymity their accounts provide). One jarring exception this article made is the explicit reference to Shinya Arino, a public figure who is using Twitter with the explicit purpose of reaching a large public. Verbatim quoting his tweet, then, was done purposefully to illustrate the ethical line one must thread when revealing personal information of social media users.</p>
+<p>Traditionally, informed consent, anonymity and confidentiality are crucial elements of research involving public opinion of private individuals. For over a decade, social media platforms has been providing (budding) researchers the opportunity to engage with an unprecedented amount of data representing public opinion, creating somewhat of a gray zone within academic research concerning the above elements. From a legal perspective, Twitter’s Privacy Policy does indeed inform its users that all public data could be used for the purpose of academic research. Yet, as Fiesler and Proferes (2018)<sup><a class="footnote-ref" href="#fn-12" id="fnref-12" rel="footnote">13</a></sup> rightly point out, social media users are often not aware of the extent their content on those platforms can be used. Instead, Fiesler and Proferes highlight several prominent examples of scandals or public outrage in regards to publications that have used such data, even if they did not break any legal boundaries.</p>
+<p>One could argue that this ethical boundary is highly individual. Data on platforms such as Twitter is explicitly open, more so when containing hashtags whose prime function is to reach a wider audience.<sup><a class="footnote-ref" href="#fn-13" id="fnref-13" rel="footnote">14</a></sup> Moreover, websites such as Buzzfeed have financially thrived on using tweets from private individuals for comical effect. In an era of meme-dominated pop culture, it is furthermore extremely common to find memefied tweets spreading across other media platforms.</p>
+<p>Especially in light of the recent Cambridge Analytica scandal, however, utter care must be taken that no risks befalls any individual whose social media content is part of one’s research data; especially when dealing with sensitive topics such as the one highlighted in this article. Generating quantitative data that does not pinpoint individual content (such as the statistics provided in this article, and text analytics such as frequency tables, sentiment analysis, etc) is but one specific part of social media-based research, and often goes hand in hand with qualitative readings of certain content. What if I published a paper on this topic that would later be cited by a major Japanese news outlet? If I had referenced a particular tweet by a user who had afterwards revealed personal information, could it not potentially endanger that Twitter user? This is of course highly unlikely, but nevertheless not impossible and something that should be kept in mind when taking a research angle dealing with such data.</p>
+<p>Although Woodfield (2017, ch.4)<sup><a class="footnote-ref" href="#fn-14" id="fnref-14" rel="footnote">15</a></sup> refers to a research project that took a similar stance as I did concerning the masking of individual user names and paraphrasing rather than quoting tweet content, Woodfield has also referred to another research project in which researchers retrospectively searched informed content of each Twitter account whose tweet content they would individually use in their publications. This might seem excessive, and on a purely legal basis not even required, but even in the case of a graduate thesis rather than a PhD thesis or academic publication, it is at the very least not unwise to contact the board of ethics of one’s university for clarity on how to best deal with data obtained from social media from an ethical point of view.</p>
+<hr/>
+<h1 id="wait-there-is-more"><a class="toclink" href="#wait-there-is-more">Wait! There is more!</a></h1>
+<p>Some of the graph examples and analyses in this article might appear overly excessive, especially when keeping in mind the limited scope of the highly specific hashtag analyzed.<sup><a class="footnote-ref" href="#fn-15" id="fnref-15" rel="footnote">16</a></sup> Nevertheless, it is my hope that those graphs served some purpose in illustrating how social network analysis and the methods outlined in this article might fit in research topics covering contemporary issues and public opinion expressed online.</p>
+<p>Throughout the next entries in our blog series, we will dive further into actual textual analysis of Japanese corpora. In the third blog, we will look into the Japanese computational linguistics tool KH Coder, the morphological parser MeCab and its extensions, as well as the various options they offer us in our quantitative text analysis. The fourth blog will expand on the script provided in this article, including options for animating changes over an arbitrary timespan.</p>
+<ul>
+<li><a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 1: Twitter Data Collection</a></li>
+<li><a href="https://steviepoppe.net/blog/2020/06/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-3/">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 3: Natural Language Processing With MeCab, Neologd and KH Coder</a></li>
+<li><a href="https://steviepoppe.net/blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 4: Natural Language Processing With MeCab, Neologd and NLTK</a></li>
+<li><a href="#">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 5: Advanced Metrics &amp; Graphs</a></li>
+</ul>
+<p><em>On a final note, it is my aim to write tutorials like these in such a way that they provide enough detail and (technical) information on the applied methodology to be useful in extended contexts, while still being accessible to less IT-savvy students. If anything is unclear, however, please do not hesitate to leave questions in the comment section below. <i class="icon-hand-down"></i></em></p>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn-footnote">
+<p>Still image from the 2012 Japanese animated film Wolf Children by Mamoru Hosoda, used under a Fair Use doctrine. <a class="footnote-backref" href="#fnref-footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn-1">
+<p>The Coordinated Universal Time (UTC) time standard; a universal standard <a href="https://www.timeanddate.com/time/gmt-utc-time.html">similar</a> to the Greenwich Mean Time (GMT) timezone. <a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn-2">
+<p>Although the original JSON tweet objects contain a <code>retweet_count</code> variable, this contains all the retweets of that post from its conception up to the point we first acquired it in our dataset. This is not sufficient for long term data mining projects. Unfortunately it’s quite taxing to calculate replies the same way, and the Twitter <code>reply_count</code> variable is only available to Premium and Enterprise Twitter API services. <a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+<li id="fn-3">
+<p>It’s important to check on tweet ID doubles rather than on unique rows because secondary data such as follower and following count of the user might have changed by the time we have obtained new data with some duplications. In other words, even if the Tweet itself is a duplication, the row in our CSV file wouldn’t be counted as such. <a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 4 in the text">↩</a></p>
+</li>
+<li id="fn-4">
+<p>While functional and rigidly tested through various use-cases, this script is far from optimized and not very <em>pythonic</em>. I will rewrite this in due time, using in particular the python package <strong>pandas</strong>. <a class="footnote-backref" href="#fnref-4" title="Jump back to footnote 5 in the text">↩</a></p>
+</li>
+<li id="fn-5">
+<p>It should be noted that some of the data we calculate by means of python could fairly easily have been derived from the base, preprocessed CSV file using pivot tables. About half of the data couldn’t, however, and centralizing everything in one script was a deliberate choice. <a class="footnote-backref" href="#fnref-5" title="Jump back to footnote 6 in the text">↩</a></p>
+</li>
+<li id="fn-6">
+<p>Another option to gouge this is by viewing overlap of followers and followings of the most active users (network analysis) over a certain timespan, which is what we will be doing in a next blog entry. <a class="footnote-backref" href="#fnref-6" title="Jump back to footnote 7 in the text">↩</a></p>
+</li>
+<li id="fn-7">
+<p>A glance over the description of all tweeters seems to suggest so (with language and emojis indicating one’s social identity as a mother or raising children), and could be further confirmed by textual analysis. <a class="footnote-backref" href="#fnref-7" title="Jump back to footnote 8 in the text">↩</a></p>
+</li>
+<li id="fn-8">
+<p>Or to be exact, death wishes. 💀 The slogan furthermore refers to the corona virus, demanding the spouse to get infected as fast as possible. <a class="footnote-backref" href="#fnref-8" title="Jump back to footnote 9 in the text">↩</a></p>
+</li>
+<li id="fn-9">
+<p>Indicating the limited nature of analyzing only one particular social media platform, since various platforms might perform together to form unique eco-systems on which discourse can thrive. <a class="footnote-backref" href="#fnref-9" title="Jump back to footnote 10 in the text">↩</a></p>
+</li>
+<li id="fn-10">
+<p>The social problem of toxic relations with parents-in-law was furthermore the topic of the bestseller 2016 novel The House on the Slope (<em>Saka no Tochū no Ie</em>, 『坂の途中の家』) by Mitsuyo Kakuta, and its 2019 live action adaption. Both reinvigorated public interest in contemporary marital issues in Japan and concluded with the possible importance of social media towards empowering women stuck in toxic marriages. <a class="footnote-backref" href="#fnref-10" title="Jump back to footnote 11 in the text">↩</a></p>
+</li>
+<li id="fn-11">
+<p>Short for computerized batch processing. <a class="footnote-backref" href="#fnref-11" title="Jump back to footnote 12 in the text">↩</a></p>
+</li>
+<li id="fn-12">
+<p><strong>Fiesler, Casey, and Nicholas Proferes</strong>. 2018. ‘“Participant” Perceptions of Twitter Research Ethics’. Social Media + Society 4 (1): 2056305118763366. <a href="https://doi.org/10.1177/2056305118763366">https://doi.org/10.1177/2056305118763366</a>. <a class="footnote-backref" href="#fnref-12" title="Jump back to footnote 13 in the text">↩</a></p>
+</li>
+<li id="fn-13">
+<p>Even though its usage might often be for aesthetic or comic purposes. <a class="footnote-backref" href="#fnref-13" title="Jump back to footnote 14 in the text">↩</a></p>
+</li>
+<li id="fn-14">
+<p><strong>Woodfield, Kandy</strong>. 2017. The Ethics of Online Research. Emerald Group Publishing. <a class="footnote-backref" href="#fnref-14" title="Jump back to footnote 15 in the text">↩</a></p>
+</li>
+<li id="fn-15">
+<p>Not withstanding the greater social relevance of the topic that encompasses this hashtag, either. <a class="footnote-backref" href="#fnref-15" title="Jump back to footnote 16 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+    <hr/>
+        </div>
+
+    <div class="comments">
+        <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'steviepoppe';
+                var disqus_identifier = 'blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/';
+                var disqus_url = 'https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+        <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+                <hr />
+        <div class="category">
+            <h2>Related posts</h2>
+            <dl class="dl-horizontal">
+                <dt>Sun 05 July 2020</dt>
+                <dd><a href="https://steviepoppe.net/blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 4: Natural Language Processing With MeCab, Neologd and NLTK</a></dd>
+                <dt>Fri 05 June 2020</dt>
+                <dd><a href="https://steviepoppe.net/blog/2020/06/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-3/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 3: Natural Language Processing With MeCab, Neologd and KH Coder</a></dd>
+                <dt>Wed 01 April 2020</dt>
+                <dd><a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 1: Twitter Data Collection</a></dd>
+                <dt>Tue 14 May 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/05/japanese-e-books-vocab-mining-drm-and-copyright-law/">Japanese E-books, vocab-mining, DRM and copyright law</a></dd>
+                <dt>Wed 17 April 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/">A <del>Quick</del> Guide on Using Anki 5: an efficient vocab mining set-up with Anki and Yomichan</a></dd>
+            </dl>
+            </div>
+        <hr />
+    </div>
+
+      <nav class="pagination">
+
+    <span id="older-nav">
+      <a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/">Older Posts
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="139,512 1024,512 1024,436 139,436 528,47 465,0 0,483 465,948 528,901 "></polygon></svg></a>
+    </span>
+
+    <span id="newer-nav">
+      <a href="https://steviepoppe.net/blog/2020/06/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-3/">
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="885,512 0,512 0,436 885,436 496,47 559,0 1024,483 559,948 496,901 "></polygon></svg> Newer Posts</a>
+    </span>
+  </nav>
+
+    <script src="https://steviepoppe.net/theme/js/youarehere.min.js"></script>
+    <!-- You can also customize the bar a bit -->
+                </div>
+
+                <footer id="footer" class="footer gradient-2">
+                  <div id="footercontent">
+                    <span itemprop="copyrightHolder">(ɔ) Stevie Poppe 2016 - 2021</span>
+                    <div>
+                      <ul class="footer-nav">                    
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/" class="footer-nav-middle-a footer-nav-first-a">Home</a></li>
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/blog/archives/" class="footer-nav-middle-a ">Archives</a></li>
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/blog/category/" class="footer-nav-middle-a ">Categories</a></li>
+                       <li class=" footer-nav-last ">
+                        <a href="https://steviepoppe.net/blog/tags/" class="footer-nav-middle-a ">Tagcloud</a></li>
+                      </ul>
+                    </div>
+                  </footer>
+                </div>
+
+      <div class="scroll-up" style="display: none;">
+        <a href="#main">&#xfe3f;</a>
+      </div>
+                <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/bootstrap.js"></script>
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/jquery.easing.1.3.js"></script>
+                <!-- <script type="text/javascript" src="https://steviepoppe.net/theme/js/parallax.min.js"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/clipboard.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/slick.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
+
+              </body>
+              </html>

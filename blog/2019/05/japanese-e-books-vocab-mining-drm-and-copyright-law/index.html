@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <!-- Stylesheets -->
+  <link href="https://steviepoppe.net/theme/css/bootstrap.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/nest.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/icons.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/pygment.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+
+  <link href="https://steviepoppe.net//theme/css/magnific-popup.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/admonition.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/keys.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/slick.css" rel="stylesheet">
+  <style>
+    @import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+    @import 'https://fonts.googleapis.com/css?family=Poiret+One|Quicksand';
+  </style>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js">
+  </script>
+  <!-- /Stylesheets -->
+
+  <script type="text/javascript">
+    var host = "steviepoppe.net";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+      window.location.protocol = "https";
+  </script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The E-book industry in Japan is gaining momentum. Both contemporary releases and more popular classics are seeing an increase in digital publication alongside physical distribution. Through their kindle service Amazon.co.jp has a particularly strong hold on this market, and their extensive catalog could offer good news for any intermediate or advanced Japanese language learner. It is easier to look up new vocabulary from digital media than it is to look something up from print media, and both physical Kindles as Kindle for Windows are surprisingly feature-rich, including in-built dictionaries and flashcard options. In prior blogs I’ve described my method of reading digital texts as HTML files through a web-browser; using pop-up dictionaries such as Rikaisama or Yomichan in combination with flashcard application Anki for ‘vocab mining’ native materials. This blog describes options of combining that method with kindle E-books, as well summing up several other alternative sources of E-books. Conclusively it is possible to efficiently utilize the Japanese kindle market for study purposes, but doing requires a bit of technical prowess and borders on technical illegality. Amazon Kindle For the past two years or so I’ve often relied on Amazon.co.jp’s Kindle service for both academic purposes and as leisure, especially while living in Japan. Their selection of Japanese language material is immense, with Kodansha-published E-books alone accounting for over 40.000 titles in their library. Having relied on above-mentioned study method for a while now I looked into my options of doing so with Kindle E-books as well. Through Browsers The first option would be to open Kindle E-books with my browser and use Rikaisama or Yomichan to import vocabulary into Anki. When purchasing an E-book on Amazon, one specifically purchases the right to read the E-book and download an amazon proprietary file through the Kindle software (the .AZW format). This proprietary format is practically identical to the .MOBI format (which again is basically a more highly compressed HTML file, specifically using the Ebook HTML syntax) with additional DRM-protection on commercial releases as attempt to counter copyright infringement. Both Chrome and Firefox have plug-ins for parsing those two formats, but these plug-ins are frankly not sufficient for our purposes, and for obvious reasons don’t support files with DRM. One option would be removing the DRM through software and converting the Kindle .AZW format to a ZHTML format, which is …">
+  <meta name="keywords" content="Anki, Japanese, Studying, Tutorial">
+  <meta name="author" content="Stevie Poppe">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="shortcut icon" sizes="196x196" href="https://steviepoppe.net/favicon-192.png">
+
+<link rel="icon" href="https://steviepoppe.net/favicon-32.png" sizes="32x32">
+<link rel="icon" href="https://steviepoppe.net/favicon-96.png" sizes="96x96">
+<link rel="icon" href="https://steviepoppe.net/favicon-128.png" sizes="128x128">
+<link rel="icon" href="https://steviepoppe.net/favicon-192.png" sizes="192x192">
+
+  <title>Japanese E-books, vocab-mining, DRM and copyright law | Onoreto</title>
+<link rel="canonical" href="https://steviepoppe.net/blog/2019/05/japanese-e-books-vocab-mining-drm-and-copyright-law/">
+
+
+<!--               <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+              <script>
+                 WebFont.load({
+                  google: {
+                    families: ['Poiret+One', 'Quicksand']
+                  }
+                });
+              </script> -->
+
+
+
+              <!-- RSS Feeds -->
+              <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
+              <link href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
+              <link href="http://localhost:8000/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
+              <!-- /RSS Feeds -->
+
+              <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <![endif]-->
+
+
+
+          <link rel="author" href="https://plus.google.com/112676714486792414615"/>
+   
+
+<meta name="robots" content="index">        </head>
+
+        <body>
+
+    <!-- OVERLAY MENU -->
+    <div id="overlay-menu" class="overlay-menu">
+
+      <a href="#" id="overlay-menu-hide" class="navigation-hide"><button title="Close (Esc)" type="button" class="mfp-close">×</button></a>
+
+      <div class="overlay-menu-inner">
+        <nav class="overlay-menu-nav">
+
+          <ul id="overflow-nav">
+            <li>
+              <a class="link" href="https://steviepoppe.net"><i class="icon-home icon-menu"></i>Home</a>
+            </li>
+
+            <li class="slidedown"><a href="#"><i class="icon-folder-close icon-menu"></i>Categories</a>
+              <ul>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+              </ul>
+            </li>
+
+<li >
+                            <a class="link" href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a class="link" href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>          </ul>
+        </nav>
+      </div>
+
+      <div class="overlay-navigation-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+                          <ul class="socialnav2 social-icons-footer" style="width: auto;display: inline-block;float: none;">
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          </div>
+            <div class="col-sm-12 text-center">
+              <p class="copyright font-alt m-b-0">(ɔ) Stevie Poppe 2016 - 2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /OVERLAY MENU -->
+
+          <div id="wrapper">
+
+            <div class="master scrollingnav">
+              <div class="head-container">
+
+                <header class="page-header">
+                  <a href="https://steviepoppe.net" class="avatar-container pull-left show-overlay toggle-menu" title="Menu">
+                    <div class="avatar">
+                      <div class="side"><img src="https://steviepoppe.net/images/logo2.png" class="img-responsive"/></div>
+                    </div>
+                  </a>
+                  <h1 id="onoreto" title="Onoreto" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">noreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
+                </header>
+
+                <div id="nav-wrapper">
+                  <nav class="navbar navbar-default scrollingnav" id="nav">
+
+                    <div class="navbar-collapse" id="steviesmenubar">
+                      <div style="float: left;;margin-left: 20px;">
+                        <ul class="nav navbar-nav">
+                          <li id="smallicon">
+<a class="small-nav-menu toggle-menu" href="#" title="Menu" style="color:unset;background-color:unset;transition: none;padding-right: 0px;">
+<img src="https://steviepoppe.net/images/logo2.png" style="border-radius: 50%;height: 25px;margin-top: -5px;margin-right: 5px;">
+</a>
+</li>
+<li class=" ">
+                            <a  href="/"><i class="icon-home icon-menu"></i>Blog</a>
+                            </li><li class=" dropdown">
+                            <a  class="dropdown-toggle" data-target="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="/blog/category/"><i class="icon-folder-close icon-menu"></i>Categories                              <span class="caret"></span>
+</a>
+                              <ul class="dropdown-menu" id="menu1" aria-labelledby="drop4"> 
+                                <li><a href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                                <li><a href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li> 
+                                <li><a href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+                              </ul> 
+                            </li><li >
+                            <a href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>                          </ul>
+                        </div>
+                        <div class="social">
+                          <ul class="socialnav socialonly social-icons-footer collapse">
+
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                          </ul>
+                          <ul class="socialnav rssonly social-icons-footer">
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" >
+                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input" style="width: 130px;"></form>
+                          </div>
+
+
+                        </div>
+
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div id="main">
+    <div class="container content padding-40 articleshadow" itemscope itemtype="http://schema.org/Article">
+    <div class="container header-wrapper banner">
+        <div class="row" style="background: linear-gradient(rgba(6, 6, 6, 0.60), rgba(0, 0, 0, 0.60)), url('https://steviepoppe.net/images/header_study.jpg'); background-position: center; background-size: cover;">
+              <div class="col-lg-12">
+                  <div class="header-content center">
+                      <h1 class="header-title nocount"><span itemprop="name">Japanese E-books, vocab-mining, DRM and copyright law</span><sup id="fnref-footnote"><a class="footnote-ref imagesource" href="#fn-footnote" rel="footnote">1</a></sup></h1>
+                      <p class="header-date"><span itemprop="datePublished" content="2016-09-07">Tue 14 May 2019</span>, in category <a href="https://steviepoppe.net/blog/category/studies/"><span itemprop="articleSection">Studies</span></a></p>
+                      <div class="header-underline"></div>
+                      <div class="clearfix"></div>
+                      <p class="pull-right header-tags">
+                          <span class="icon-tags" aria-hidden="true"></span>
+<a href="https://steviepoppe.net/blog/tags/anki/">Anki</a>, <a href="https://steviepoppe.net/blog/tags/japanese/">Japanese</a>, <a href="https://steviepoppe.net/blog/tags/studying/">Studying</a>, <a href="https://steviepoppe.net/blog/tags/tutorial/">Tutorial</a>                      </p>
+                  </div>
+              </div>
+        </div>
+    </div>
+    <div class="container-main" itemprop="articleBody">
+<!--         <h1 style="text-align: center;" class="nocount">Japanese E-books, vocab-mining, DRM and copyright law</h1>
+ -->
+            <nav class="toc-container">
+              <input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none">
+            <p class="toc_title">Table of Contents<span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></p>
+            <div class="toc">
+<ul>
+<li><a href="#amazon-kindle">Amazon Kindle</a><ul>
+<li><a href="#through-browsers">Through Browsers</a></li>
+<li><a href="#legality">Legality</a><ul>
+<li><a href="#usa">USA</a></li>
+<li><a href="#eu">EU</a></li>
+<li><a href="#japan">Japan</a></li>
+<li><a href="#tldr">TL;DR</a></li>
+</ul>
+</li>
+<li><a href="#through-the-kindle-application">Through the Kindle Application</a></li>
+<li><a href="#geo-blocking">Geo-blocking</a></li>
+<li><a href="#aozora">Aozora</a></li>
+</ul>
+</li>
+<li><a href="#other">Other</a></li>
+</ul>
+</div>
+            </nav>
+        
+
+<p>The E-book industry in Japan is gaining momentum. Both contemporary releases and more popular classics are seeing an increase in digital publication alongside physical distribution. Through their kindle service Amazon.co.jp has a particularly strong hold on this market, and their extensive catalog could offer good news for any intermediate or advanced Japanese language learner. It is easier to look up new vocabulary from digital media than it is to look something up from print media, and both physical Kindles as Kindle for Windows are surprisingly feature-rich, including in-built dictionaries and flashcard options.</p>
+
+<p>In <a href="https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/">prior blogs</a> I’ve described my method of reading digital texts as HTML files through a web-browser; using pop-up dictionaries such as Rikaisama or Yomichan in combination with flashcard application Anki for ‘vocab mining’<sup><a class="footnote-ref" href="#fn-1" id="fnref-1" rel="footnote">2</a></sup> native materials.<sup><a class="footnote-ref" href="#fn-2" id="fnref-2" rel="footnote">3</a></sup> This blog describes options of combining that method with kindle E-books, as well summing up several other alternative sources of E-books. Conclusively it is possible to efficiently utilize the Japanese kindle market for study purposes, but doing requires a bit of technical prowess and borders on technical illegality.</p>
+<h1 id="amazon-kindle"><a class="toclink" href="#amazon-kindle">Amazon Kindle</a></h1>
+<p>For the past two years or so I’ve often relied on Amazon.co.jp’s Kindle service for both academic purposes and as leisure, especially while living in Japan.<sup><a class="footnote-ref" href="#fn-3" id="fnref-3" rel="footnote">4</a></sup> Their selection of Japanese language material is immense, with Kodansha-published E-books alone accounting for over 40.000 titles in their library. Having relied on above-mentioned study method for a while now I looked into my options of doing so with Kindle E-books as well.</p>
+<h2 id="through-browsers"><a class="toclink" href="#through-browsers">Through Browsers</a></h2>
+<p>The first option would be to open Kindle E-books with my browser and use Rikaisama or Yomichan to import vocabulary into Anki. When purchasing an E-book on Amazon, one specifically purchases the right to read the E-book and download an amazon proprietary file through the Kindle software (the <code>.AZW</code> format). This proprietary format is practically identical to the <code>.MOBI</code> format (which again is basically a more highly compressed HTML file, specifically using the Ebook HTML syntax) with additional DRM-protection on commercial releases as attempt to counter copyright infringement.</p>
+<p>Both Chrome and Firefox have plug-ins for parsing those two formats, but these plug-ins are frankly not sufficient for our purposes, and for obvious reasons don’t support files with DRM. One option would be removing the DRM through software and converting the Kindle <code>.AZW</code> format to a <code>ZHTML</code> format, which is quite is literally a compressed (zipped-up) HTML format; unzipping the <code>.ZHTML</code> file and opening the resulting HTML page with your browser of choice is all it takes to achieve our goal of simultaneously reading and vocab Kindle E-books with Yomichan or Rikaisama.</p>
+<p>Converting an E-book is a simple process done with the popular open-source tool <strong><a href="https://en.wikipedia.org/wiki/Calibre_(software)">Calibre</a></strong>. Calibre supports third-party plug-ins, including one used to bypass E-book DRM. While the process would thus be as simple as locating your legally purchased Kindle E-book in <code>.AZW</code> format with Calibre, converting the book to ZHTML, extracting the ZHTML and opening the content with a browser,<sup><a class="footnote-ref" href="#fn-4" id="fnref-4" rel="footnote">5</a></sup> I had some interest in the legal aspects of bypassing DRM and converting E-books for such fair-use purposes. International copyright law in the digital age is an ever-changing field, and I am not a legal expert by any stretch, but I will briefly summarize my understanding of the current-day situation.</p>
+<h2 id="legality"><a class="toclink" href="#legality">Legality</a></h2>
+<p>Kindle E-books are protected by DRM (Digital Rights Management), a form of Technological Protection Mechanisms (TPM) to prevent copyright infringement on a digital level (i.e. piracy). DRM is a controversial topic and while some industries, such as the music industry, are backing away from DRM (no doubt due a rise in streaming services), DRM mechanisms are still inherent to the E-book industry. Regardless of one’s ethical principles, the legality of fair use DRM stripping (i.e. <strong>place shifting</strong> as means of back-up, or <strong>format shifting</strong> as described in this article) should be touched upon. If one has for example a large, expensive library of DRM-protected E-books and its distributor goes out-of-service, or the tools to read those E-books with are no longer supported, what options remain for the customer to enjoy their legally-obtained works?<sup><a class="footnote-ref" href="#fn-5" id="fnref-5" rel="footnote">6</a></sup></p>
+<p>Technically, removal of digital copy protection mechanisms such as DRM fall under anti-circumvention laws. Now, laws might differ depending on the region, and although laws could directly forbid the removal of digital copy protection mechanisms, others might contradictory permit shifting of formats or creating back-ups for personal use.<sup><a class="footnote-ref" href="#fn-6" id="fnref-6" rel="footnote">7</a></sup> Nevertheless, most countries today are members of the World Intellectual Property Organization (<strong>WIPO</strong>) and adopt the World Intellectual Property Organization Copyright Treaty (WIPO Copyright Treaty or <strong>WCT</strong>). While specific implementations of the WCT differ on its member states, WIPO (a United Nations agency) <a href="https://www.wipo.int/ip-outreach/en/ipday/2016/ip_digital.html">explicitly states</a> the general act of DRM-removal as illegal.</p>
+<h3 id="usa"><a class="toclink" href="#usa">USA</a></h3>
+<p>The anti-circumvention of the WCT-inspired <strong>DCMA</strong> for example, as upheld in the United States, explicitly states that while circumvention of <strong>copy-control measures</strong><sup><a class="footnote-ref" href="#fn-7" id="fnref-7" rel="footnote">8</a></sup> is not illegal, circumvention of <strong>access-control measures</strong> very much is. The latter (quite literally measures to control which platform can access the media) applies to E-books as well, and thus format-shifting, <strong>regardless of fair-use intent</strong>,<sup><a class="footnote-ref" href="#fn-8" id="fnref-8" rel="footnote">9</a></sup> does fall under this category. Unfortunately, the reality is that most DRM implementations contain both measures. Furthermore a controversial 1999 ruling held the very act of linking to pages hosting circumvention software as illegal trafficking. There is however a more recent legal case concerning this topic, in which an E-book store, contractually obliged to sell E-books with DRM, was sued after closing down and disclosing information on how to remove this DRM. Although they were sued for inducement of contributory infringement, a federal judge in New York ruled that A) Abbey House did not induce infringement as there was no factual direct knowledge of infringement, and B) the infringement referred to was of illegal redistribution, not of DRM removal.<sup><a class="footnote-ref" href="#fn-9" id="fnref-9" rel="footnote">10</a></sup></p>
+<h3 id="eu"><a class="toclink" href="#eu">EU</a></h3>
+<p>The European Union implements WCT through the <strong>Copyright Directive</strong> (also known as the <strong>InfoSoc Directive</strong>), which had a controversial update just weeks before this post (26 March 2019).<sup><a class="footnote-ref" href="#fn-10" id="fnref-10" rel="footnote">11</a></sup> DRM falls under the 2001-era Article 6(3) and Article 7(2), and while member states of the European Union have again different interpretations and implementations of these articles, there are little to no practical exceptions protecting the individual in the actual Copyright Directive.<sup><a class="footnote-ref" href="#fn-11" id="fnref-11" rel="footnote">12</a></sup>‘<sup><a class="footnote-ref" href="#fn-12" id="fnref-12" rel="footnote">13</a></sup></p>
+<h3 id="japan"><a class="toclink" href="#japan">Japan</a></h3>
+<p>Japan too implements WCT as WIPO member. Although copying media for back-up purposes itself is legal, it is not just the illegal distribution of copyrighted material on-line, but downloading of music and movies that are considered offenses under criminal law as well.<sup><a class="footnote-ref" href="#fn-13" id="fnref-13" rel="footnote">14</a></sup>‘<sup><a class="footnote-ref" href="#fn-14" id="fnref-14" rel="footnote">15</a></sup> As for Technological Protection Measures, the topic of DRM in particular falls under Copyright Act Article 2.1 Clause 20 (著作権法2条1項20号) and Article 2 Section 7 of the Unfair Competition Prevention Act (不正競争防止法2条7項).<sup><a class="footnote-ref" href="#fn-15" id="fnref-15" rel="footnote">16</a></sup> Circumvention (「技術的保護手段の回避」) of both copy-control measures and access-control measures are from a legal point of view criminal offenses.</p>
+<p>On a final note, when someone purchases media such as Kindle E-books through a distributor such as Amazon, they gain limited rights of access, just as a distributor has limited rights of distribution. These rights are, unlike digital media in physical formats (such as CDs), determined through a contract with the distributor. Regardless of the applicable law, removal of DRM is foremost a breach of the Terms of Service one signs when signing up with Amazon and the Terms of Service does generally uphold in court.</p>
+<h3 id="tldr"><a class="toclink" href="#tldr">TL;DR</a></h3>
+<p>To throw in my own two cents, I believe the technical implementations of anti-circumvention law are outdated and do not accurately represent the role of digital data in our lives. Furthermore these laws imply circumvention of copyrighted protection to be done solely for the purpose of illegal redistribution. Having said that, I also sincerely doubt anyone to actually face legal consequences for such benign personal fair-use purposes such as converting a Japanese language E-book to an HTML format for vocab-mining purposes (as implied in this article), and as of this article’s date there are no such legal precedences (not to mention the lack of traceability when done in private spheres). From a legal perspective however, bypassing DRM is illegal in WIPO countries and punishable by the legal framework of the country one resides in, with at least the possibility of termination of services if detected.</p>
+<h2 id="through-the-kindle-application"><a class="toclink" href="#through-the-kindle-application">Through the Kindle Application</a></h2>
+<p>With above-mentioned issues of legality, detractors of that that method could opt for another method: creating flashcards based on using your Kindle hardware and/or the Kindle application itself.</p>
+<p>While reading a novel, one can look up words using in-built dictionaries (e.g. J - E, or J - J). These “look ups” will be saved in a vocabulary file and in case you’re using Kindle hardware, synced to your desktop Kindle application: a vocab.db file. Using the service on <a href="https://fluentcards.com/kindle">https://fluentcards.com/kindle</a>, one can then convert the <code>vocab.db</code> file client-side and import the result into Anki. To add example sentences, you’d be required to convert the Anki note-type to the one we’ve been using prior and use the bulk-edit feature of the Example Sentence Anki plug-in.</p>
+<p>Unfortunately adding audio is a bit more complicated. One could rely on text-to-speech services like the Anki plug-in AwesomeTTS. Another option would be to bulk-edit cards to import audio from Jpod101’s database, just like Rikaisama and Yomichan do. Unfortunately there is no such plug-in yet. I will look into it myself at a later time.</p>
+<h2 id="geo-blocking"><a class="toclink" href="#geo-blocking">Geo-blocking</a></h2>
+<p>For those not currently residing in Japan, I should also mention that there are some (legal) limitations to purchasing Kindle E-books outside of Japan. As of yet, Amazon has due licensing and logistical reasons not yet opened its E-book market to the international E-market, and similar to how video-streaming services as Netflix and Prime Video block content based on region (<strong>geo-blocking</strong>), kindle has certain technical limitations as well. Those without an official address in Japan would require at minimum an Amazon.co.jp account with existing Japanese address, and kindle E-book downloads abroad, while not blocked, are at the very least limited in frequency one can purchase Interestingly, Japanese E-book competitors <a href="https://honto.jp/">https://honto.jp/</a> and <a href="https://www.ebookjapan.jp/ebj/">https://www.ebookjapan.jp/ebj/</a>, while obviously enforcing DRM, do not employ such geo-restrictions.</p>
+<p>While outside the scope of this article, googling these topics reveal many threads on bypassing geo-blocks to purchase digital contents abroad and offers an interesting case-study within the concept of economics of digitization. The European Commission has voted in favor of a <strong>Digital Single Market</strong> for countries already belong to the <strong>European Common Market</strong>, but as far as I’m aware the concept of an international digital single market crossing existing market boundaries seems unlikely for now.</p>
+<h2 id="aozora"><a class="toclink" href="#aozora">Aozora</a></h2>
+<p>Several years ago it was still a challenge finding native materials on-line. One option remains <a href="http://www.aozora.gr.jp/">Aozora</a> — the Japanese answer to the <a href="https://www.gutenberg.org/">Project Gutenberg</a>, which freely hosts tons of public-domain books online.<sup><a class="footnote-ref" href="#fn-17" id="fnref-17" rel="footnote">18</a></sup>‘<sup><a class="footnote-ref" href="#fn-18" id="fnref-18" rel="footnote">19</a></sup> Due the nature of public domain literature, these might not be that accessible or entertaining even for the casual intermediate-level learner; but regardless there are some absolute classics such as Natsume Soseki’s <a href="http://www.aozora.gr.jp/cards/000148/files/752_14964.html">Botchan (坊っちゃん)</a> and Tanizaki Jun’ichiro’s <a href="https://www.aozora.gr.jp/cards/001383/card56642.html">In Praise of Shadows (陰翳礼讃)</a> which both content-wise and length-wise are actually quite doable after just several years of studying the language.</p>
+<p>While you can read Aozora novels as-is online using Yomichan or Rikaisama, I personally recommend downloading the file and formatting the text-file using Jnovelformatter to be more comfortable on the eyes.<sup><a class="footnote-ref" href="#fn-19" id="fnref-19" rel="footnote">20</a></sup></p>
+<h1 id="other"><a class="toclink" href="#other">Other</a></h1>
+<p>I should write a more extensive blog on this topic at some point, but while not enjoying the same popularity as approximately 15 years ago, the <strong>cellphone novel</strong> genre is still very much alive and many successful releases still find their way to the physical world. Many of these are romantic of nature or deal with daily life issues as seen from the perspective of teenage girls or young adult women. The genre’s target audience is evident when accessing the most popular platform, <a href="https://novel.maho.jp/">Maho i-Land</a>, greeting the visitor with a slogan claiming to be 「日本最大級のガールズポータルサイト」 (Japan’s largest girls portal site). Due their very nature these works are quite accessible even for early intermediate students, and can be read on-line using my suggested method.</p>
+<p>Another interesting source of literature is the Japan P.E.N. Club Digital Library, an international association of progressive intellectual writers. The Japanese movement has strong ties to important Japanese writers as Endō Shūsaku and Kawabata Yasunari, and is part of a larger association with ties to Belgian Nobel prize winner Maurice Maeterlinck, Heinrich Böll, Jorge Luis Borges and even J.K. Rowling to name a few. I recommend Kawabata’s <a href="http://bungeikan.jp/domestic/detail/242/">One Arm (片腕)</a>.</p>
+<p>Piracy of Japanese media is widespread, and while some argue piracy has led to the success of Japanese animation in the west in the first place, the argument that piracy is killing the industry has led to harsh crackdowns on piracy in Japan. Nevertheless, there does seem to be an active piracy scene in Japan, spreading digital versions, formatted in as .TXT file, of more popular modern literature; such as light novels. For obvious reasons I can’t provide any sources, but this could make a good topic for a future article, perhaps.</p>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn-footnote">
+<p>Image taken from the 2012 Japanese animated film Wolf Children by Mamoru Hosoda, used under Fair Use doctrine. <a class="footnote-backref" href="#fnref-footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn-1">
+<p>The practice of accumulating not yet learned vocabulary for creating flashcards. <a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn-2">
+<p>Several years later this is still my go to method. While the amount of new definitions I actually add to my Anki-sets has of course drastically decreased over time, the learning process never really stops and I still encounter new expressions or technical jargon on a daily basis; especially while reading non-fiction texts related to my study-field. <a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+<li id="fn-3">
+<p>Amazon’s business controversial practices aside, the free Amazon Prime student account is indeed extremely convenient and offers free access to Kindle Prime Reading and Prime Video. <a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 4 in the text">↩</a></p>
+</li>
+<li id="fn-4">
+<p>Or alternatively, to a .TXT format for further processing with <a href="http://forum.koohii.com/post-113458.html">Jnovelformatter</a>. The end-result will be kinder to the eyes. JNovelFormatter is a neat little tool by the developer of Rikaisama that converts Japanese literature formatted as .TXT into cleanly parsed HTML-files. Layout is fairly customizable, although I think the original settings are easy on the eye enough as-is (I like dark backgrounds when reading for hours at a time, makes me feel less like I’m gazing straight into a light-bulb). End of Sentence dots are turned into book-markable anchors so you won’t lose track of your progress. <a class="footnote-backref" href="#fnref-4" title="Jump back to footnote 5 in the text">↩</a></p>
+</li>
+<li id="fn-5">
+<p>Several start-ups are playing with the idea of using blockchain technology to counter some of the problems inherently tied to E-book DRM. An interesting read: <a href="https://www.forbes.com/sites/billrosenblatt/2018/08/18/can-blockchains-disrupt-the-E-book-market-two-startups-will-find-out/#5d7a84435a0b">https://www.forbes.com/sites/billrosenblatt/2018/08/18/can-blockchains-disrupt-the-E-book-market-two-startups-will-find-out/#5d7a84435a0b</a>.Another solution is watermarking, allowing the user more ownership over the E-book. <a href="https://copyrightandtechnology.com/2016/10/05/E-book-retail-platform-offers-choice-of-watermarking-or-drm/">https://copyrightandtechnology.com/2016/10/05/E-book-retail-platform-offers-choice-of-watermarking-or-drm/</a>.
+Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as well. <a href="https://www.ccn.com/sony-files-for-blockchain-fueled-drm-patent">https://www.ccn.com/sony-files-for-blockchain-fueled-drm-patent</a> <a class="footnote-backref" href="#fnref-5" title="Jump back to footnote 6 in the text">↩</a></p>
+</li>
+<li id="fn-6">
+<p>While specific implementation of these laws differ on region, the World Intellectual Property Organization (WIPO) explicitly states the general act of DRM-removal as illegal <a href="https://www.wipo.int/ip-outreach/en/ipday/2016/ip_digital.html">https://www.wipo.int/ip-outreach/en/ipday/2016/ip_digital.html</a>. <a class="footnote-backref" href="#fnref-6" title="Jump back to footnote 7 in the text">↩</a></p>
+</li>
+<li id="fn-7">
+<p>Thus under this provision of the DCMA, it would be legal to bypass copy-control measures for private back-up purposes. <a href="http://www.dmlp.org/legal-guide/circumventing-copyright-controls">http://www.dmlp.org/legal-guide/circumventing-copyright-controls</a> <a class="footnote-backref" href="#fnref-7" title="Jump back to footnote 8 in the text">↩</a></p>
+</li>
+<li id="fn-8">
+<p>&lt;https://info.legalzoom.com/dmca-backup-copyrighted-content-22827.html <a href="https://www.wired.com/2010/03/dmca-muscle-strong-arms-dvd-copying/">https://www.wired.com/2010/03/dmca-muscle-strong-arms-dvd-copying/</a> <a class="footnote-backref" href="#fnref-8" title="Jump back to footnote 9 in the text">↩</a></p>
+</li>
+<li id="fn-9">
+<p>Abbey House Media v. Apple Inc. Gizmodo has a brief piece on this at <a href="https://gizmodo.com/its-perfectly-legal-to-tell-people-how-to-remove-drm-1670223538">https://gizmodo.com/its-perfectly-legal-to-tell-people-how-to-remove-drm-1670223538</a>. <a class="footnote-backref" href="#fnref-9" title="Jump back to footnote 10 in the text">↩</a></p>
+</li>
+<li id="fn-10">
+<p>Directive Article 17 (known as Draft Article 13) makes on-line platforms directly liable for copyright infringement by its users and could lead to implementation of filters to remove copyrighted material on most big on-line platforms. Directive Article 15 (known as Draft Article 11) will effectively limit social media and search engines in their capability of aggregating and hot-linking. Both articles are widely criticized controversy lies in the (solid) assumption this article will lead to a decrease in creative content and limit access to information, but member states have another two years to implements these measures and it is yet to see how social media platforms will reply. On a positive note, the EU did at least implement an exception in copyright law for scientific text and data mining (TDM) purposes. ¯\<em>(ツ)</em>/¯ <a href="https://www.wired.co.uk/article/what-is-article-13-article-11-european-directive-on-copyright-explained-meme-ban">https://www.wired.co.uk/article/what-is-article-13-article-11-european-directive-on-copyright-explained-meme-ban</a> <a href="https://copyrightandtechnology.com/2018/09/13/eu-parliament-approves-watered-down-copyright-directive/">https://copyrightandtechnology.com/2018/09/13/eu-parliament-approves-watered-down-copyright-directive/</a> <a class="footnote-backref" href="#fnref-10" title="Jump back to footnote 11 in the text">↩</a></p>
+</li>
+<li id="fn-11">
+<p>This absurd <a href="https://www.coe.int/en/web/octopus/blog/-/blogs/circumvention-of-technological-protection-measures-as-a-cybercrime">2013 Wired article</a> even goes so far to suggest that the technological prowess of circumventing DRM should be interpreted as a form of cyber crime and thus fall under criminal law, rather than seen as a potential civil offense. <a class="footnote-backref" href="#fnref-11" title="Jump back to footnote 12 in the text">↩</a></p>
+</li>
+<li id="fn-12">
+<p>Although some member states distanced themselves from implementing any specific measures, such as Poland and Portugal <a href="https://www.communia-association.org/2017/10/11/european-parliament-talking-drm-right-now/">https://www.communia-association.org/2017/10/11/european-parliament-talking-drm-right-now/</a>. <a class="footnote-backref" href="#fnref-12" title="Jump back to footnote 13 in the text">↩</a></p>
+</li>
+<li id="fn-13">
+<p>Recently proposed and highly controversial changes to Japanese copyright law would extent that scope to any copyrighted material without permission, as an attempt specifically meant to counter piracy of Japanese comics. As is, the implications of this for regular Internet users could however be quite severe, with little legal ground to stand on, and are often compared to the EU’s implementation of Draft Article 11 and 13. Prime Minister Abe has decided to postpone the bill for now. <a href="https://japantoday.com/category/crime/digital-dilemma-japan-flirts-with-overly-aggressive-online-copyright-law">https://japantoday.com/category/crime/digital-dilemma-japan-flirts-with-overly-aggressive-online-copyright-law</a> <a class="footnote-backref" href="#fnref-13" title="Jump back to footnote 14 in the text">↩</a></p>
+</li>
+<li id="fn-14">
+<p>Although to be fair, there is quite some leeway in Japanese Copyright Law when it comes to the industry of derivative works (二次創作 <em>nijisosaku</em> or 同人誌 <em>dojinshi</em>). <a class="footnote-backref" href="#fnref-14" title="Jump back to footnote 15 in the text">↩</a></p>
+</li>
+<li id="fn-15">
+<p>English translations of both are available respectively at <a href="http://www.cric.or.jp/english/clj/cl1.html">http://www.cric.or.jp/english/clj/cl1.html</a> and <a href="http://www.japaneselawtranslation.go.jp/law/detail_main?id=83&amp;vm=2&amp;re=">http://www.japaneselawtranslation.go.jp/law/detail_main?id=83&amp;vm=2&amp;re=</a>. <a class="footnote-backref" href="#fnref-15" title="Jump back to footnote 16 in the text">↩</a></p>
+</li>
+<li id="fn-16">
+<p>From a technical point of view, this is based on one’s IP address. Although methods such as using VPNs or dynamic IP addresses have been popular means of bypassing (<strong>spoofing</strong>) geo-locks, many streaming services are aggressively blocking access through such means. <a class="footnote-backref" href="#fnref-16" title="Jump back to footnote 17 in the text">↩</a></p>
+</li>
+<li id="fn-17">
+<p>According to Wikipedia, they host over 10.000 works including both out-of-copyright works or those made freely available by the authors. Read more: <a href="https://en.wikipedia.org/wiki/Aozora_Bunko">https://en.wikipedia.org/wiki/Aozora_Bunko</a> <a class="footnote-backref" href="#fnref-17" title="Jump back to footnote 18 in the text">↩</a></p>
+</li>
+<li id="fn-18">
+<p>Although the Trans-Pacific Partnership (TPP) trade-agreement did not take effect after a United States withdrawal, discussions on copyright law concerning the TPP did however lead to a new definition of what concerns public domain in Japan. As a result, rather than 50 years, literature now falls into PD 70 years after the death of the author. This has led to a massive removal of literature on Aozora. <a class="footnote-backref" href="#fnref-18" title="Jump back to footnote 19 in the text">↩</a></p>
+</li>
+<li id="fn-19">
+<p>While the Aozora-recommended web-application <a href="https://www.satokazzz.com/airzoshi/">airzoshi</a> is an attractive alternative, its formatting effectively blocks the usage of Yomichan or Rikaisama, rendering the whole exercise pointless. <a class="footnote-backref" href="#fnref-19" title="Jump back to footnote 20 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+    <hr/>
+        </div>
+
+    <div class="comments">
+        <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'steviepoppe';
+                var disqus_identifier = 'blog/2019/05/japanese-e-books-vocab-mining-drm-and-copyright-law/';
+                var disqus_url = 'https://steviepoppe.net/blog/2019/05/japanese-e-books-vocab-mining-drm-and-copyright-law/';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+        <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+                <hr />
+        <div class="category">
+            <h2>Related posts</h2>
+            <dl class="dl-horizontal">
+                <dt>Wed 17 April 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/">A <del>Quick</del> Guide on Using Anki 5: an efficient vocab mining set-up with Anki and Yomichan</a></dd>
+                <dt>Sat 15 October 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/10/anki-add-on-japanese-translations-for-korean-vocabulary/">Anki Add-on: Japanese translations for Korean vocabulary</a></dd>
+                <dt>Sun 02 October 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/10/a-quick-guide-on-using-anki-4-making-the-switch-j-j-definitions-in-your-vocab-cards/">A <del>Quick</del> Guide on Using Anki 4: Making the switch - J-J definitions in your vocab cards</a></dd>
+                <dt>Sat 17 September 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">A <del>Quick</del> Guide on Using Anki 3: contextualize your vocab cards with example sentences</a></dd>
+                <dt>Thu 08 September 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
+            </dl>
+            </div>
+        <hr />
+    </div>
+
+      <nav class="pagination">
+
+    <span id="older-nav">
+      <a href="https://steviepoppe.net/blog/2019/05/travels-hong-kong-macau/">Older Posts
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="139,512 1024,512 1024,436 139,436 528,47 465,0 0,483 465,948 528,901 "></polygon></svg></a>
+    </span>
+
+    <span id="newer-nav">
+      <a href="https://steviepoppe.net/blog/2019/05/several-tips-for-exchange-students-living-in-japan-tokyo/">
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="885,512 0,512 0,436 885,436 496,47 559,0 1024,483 559,948 496,901 "></polygon></svg> Newer Posts</a>
+    </span>
+  </nav>
+
+    <script src="https://steviepoppe.net/theme/js/youarehere.min.js"></script>
+    <!-- You can also customize the bar a bit -->
+                </div>
+
+                <footer id="footer" class="footer gradient-2">
+                  <div id="footercontent">
+                    <span itemprop="copyrightHolder">(ɔ) Stevie Poppe 2016 - 2021</span>
+                    <div>
+                      <ul class="footer-nav">                    
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/" class="footer-nav-middle-a footer-nav-first-a">Home</a></li>
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/blog/archives/" class="footer-nav-middle-a ">Archives</a></li>
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/blog/category/" class="footer-nav-middle-a ">Categories</a></li>
+                       <li class=" footer-nav-last ">
+                        <a href="https://steviepoppe.net/blog/tags/" class="footer-nav-middle-a ">Tagcloud</a></li>
+                      </ul>
+                    </div>
+                  </footer>
+                </div>
+
+      <div class="scroll-up" style="display: none;">
+        <a href="#main">&#xfe3f;</a>
+      </div>
+                <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/bootstrap.js"></script>
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/jquery.easing.1.3.js"></script>
+                <!-- <script type="text/javascript" src="https://steviepoppe.net/theme/js/parallax.min.js"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/clipboard.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/slick.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
+
+              </body>
+              </html>

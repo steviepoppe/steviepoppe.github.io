@@ -4,7 +4,17 @@
 
 <head>
   <!-- Stylesheets -->
-  <link href="https://steviepoppe.net/theme/css/all.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/bootstrap.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/nest.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/icons.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/pygment.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+
+  <link href="https://steviepoppe.net//theme/css/magnific-popup.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/admonition.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/keys.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/slick.css" rel="stylesheet">
   <style>
     @import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
     @import 'https://fonts.googleapis.com/css?family=Poiret+One|Quicksand';
@@ -22,16 +32,19 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="As anyone browsing my blog might have guessed, I’m pretty fond of using Anki for assisting in vocab acquisition, and thus use it for Korean vocabulary as well, using both existing sets and my own based on our textbooks2. Having a broad base in Japanese, I thought it would be more efficient having a link between the two languages in my flashcards. In order to assist myself and other learners of both Japanese and Korean, I wrote an Anki add-on that adds Japanese translations of Korean expressions.">
+  <meta name="description" content="I have recently started studying Korean as part of the minor I took up at my university. While browsing the internet for helpful resources I found that, like us, a remarkable amount of students of the Korean language have knowledge of Japanese and/or study both simultaneously. As anyone browsing my blog might have guessed, I’m pretty fond of using Anki for assisting in vocab acquisition, and thus use it for Korean vocabulary as well, using both existing sets and my own based on our textbooks. Having a broad base in Japanese, I thought it would be more efficient having a link between the two languages in my flashcards. In order to assist myself and other learners of both Japanese and Korean, I wrote an Anki add-on that adds Japanese translations of Korean expressions. Similar to my previous Anki posts, this blog post serves as a brief tutorial on setting up the add-on and adding Japanese translations to our cards. We’ll install an Anki add-on, alter our card-layout to display the Japanese expressions in a fashionable manner, and finally bulk-edit our existing cards to actually add them. Anki Korean-Japanese add-on The add-on scrapes Weblio’s online Korean-Japanese dictionary for all translations aside from the usually present character decomposition. The expression 개 (transcribed as gae or kae and means either dog or is used as a particular counter), for example, results in the following page: (If I feel like it, or if there’s some demand for it, I’ll expand the add-on to scrape the example sentences as seen above as well) Download The Japanese Definitions for Korean Vocabulary add-on has a page on Ankiweb’s plug-in page, but as usual we’ll install the plug-in using the Desktop Anki application. Go to Tools → Add-ons → Browse &amp; Install, and copy-paste 553926167 in the pop-up dialog. Restart the application to complete the installation. Set-up The add-on expects two things: The field containing your Korean expression should be called: Korean The note-type should contain a field called Japanese which will contain the Japanese translations (Both names can be edited in the JapaneseDefinitionsKoreanVoc.py file by opening it with a text-editor and changing the names listed in the beginning. The file can be found on the Anki’s add-on folder on your computer (e.g. C:\Users\your_username\Documents\Anki\addons)) To create a new field Japanese, open the …">
   <meta name="keywords" content="Anki, Korean, Tutorial, Japanese, Japan, Korea, Study">
   <meta name="author" content="Stevie Poppe">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="https://steviepoppe.net/favicon.ico">
 
-  <link rel="shortcut icon" type="image/png" href="https://steviepoppe.net/images/icons/favicon.png">
-  <link rel="shortcut icon" type="image/x-icon" href="https://steviepoppe.net/favicon.ico">
+<link rel="shortcut icon" sizes="196x196" href="https://steviepoppe.net/favicon-192.png">
+
+<link rel="icon" href="https://steviepoppe.net/favicon-32.png" sizes="32x32">
+<link rel="icon" href="https://steviepoppe.net/favicon-96.png" sizes="96x96">
+<link rel="icon" href="https://steviepoppe.net/favicon-128.png" sizes="128x128">
+<link rel="icon" href="https://steviepoppe.net/favicon-192.png" sizes="192x192">
 
   <title>Anki Add-on: Japanese translations for Korean vocabulary | Onoreto</title>
 <link rel="canonical" href="https://steviepoppe.net/blog/2016/10/anki-add-on-japanese-translations-for-korean-vocabulary/">
@@ -49,11 +62,11 @@
 
 
               <!-- RSS Feeds -->
-              <link href="https://steviepoppe.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
-              <link href="https://steviepoppe.net/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
-              <link href="https://steviepoppe.net/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
-              <link href="https://steviepoppe.net/feeds/studies.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
-              <link href="https://steviepoppe.net/feeds/studies.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
+              <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
+              <link href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
+              <link href="http://localhost:8000/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
               <!-- /RSS Feeds -->
 
               <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -69,29 +82,110 @@
 
 <meta name="robots" content="index">        </head>
 
-        <body style="background-repeat: repeat; background-position: top left; background-attachment: scroll; background-image: url('https://steviepoppe.net/images/asanoha-400px.png');">
+        <body>
+
+    <!-- OVERLAY MENU -->
+    <div id="overlay-menu" class="overlay-menu">
+
+      <a href="#" id="overlay-menu-hide" class="navigation-hide"><button title="Close (Esc)" type="button" class="mfp-close">×</button></a>
+
+      <div class="overlay-menu-inner">
+        <nav class="overlay-menu-nav">
+
+          <ul id="overflow-nav">
+            <li>
+              <a class="link" href="https://steviepoppe.net"><i class="icon-home icon-menu"></i>Home</a>
+            </li>
+
+            <li class="slidedown"><a href="#"><i class="icon-folder-close icon-menu"></i>Categories</a>
+              <ul>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+              </ul>
+            </li>
+
+<li >
+                            <a class="link" href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a class="link" href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>          </ul>
+        </nav>
+      </div>
+
+      <div class="overlay-navigation-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+                          <ul class="socialnav2 social-icons-footer" style="width: auto;display: inline-block;float: none;">
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          </div>
+            <div class="col-sm-12 text-center">
+              <p class="copyright font-alt m-b-0">(ɔ) Stevie Poppe 2016 - 2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /OVERLAY MENU -->
+
           <div id="wrapper">
 
-            <div class="master">
+            <div class="master scrollingnav">
               <div class="head-container">
 
-                <div class="page-header">
-                  <a href="https://steviepoppe.net" class="avatar-container pull-left">
+                <header class="page-header">
+                  <a href="https://steviepoppe.net" class="avatar-container pull-left show-overlay toggle-menu" title="Menu">
                     <div class="avatar">
                       <div class="side"><img src="https://steviepoppe.net/images/logo2.png" class="img-responsive"/></div>
                     </div>
                   </a>
-                  <h1 style="font-size: 28px; letter-spacing: 1px;"><a href="https://steviepoppe.net">Onoreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
-                </div>
+                  <h1 id="onoreto" title="Onoreto" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">noreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
+                </header>
 
                 <div id="nav-wrapper">
-                  <nav class="navbar navbar-default" id="nav">
+                  <nav class="navbar navbar-default scrollingnav" id="nav">
 
                     <div class="navbar-collapse" id="steviesmenubar">
-                      <div style="float: left;">
+                      <div style="float: left;;margin-left: 20px;">
                         <ul class="nav navbar-nav">
+                          <li id="smallicon">
+<a class="small-nav-menu toggle-menu" href="#" title="Menu" style="color:unset;background-color:unset;transition: none;padding-right: 0px;">
+<img src="https://steviepoppe.net/images/logo2.png" style="border-radius: 50%;height: 25px;margin-top: -5px;margin-right: 5px;">
+</a>
+</li>
 <li class=" ">
-                            <a  href="/"><img id="smallicon" src="https://steviepoppe.net/images/logosmall2.png"><i class="icon-home icon-menu"></i>Blog</a>
+                            <a  href="/"><i class="icon-home icon-menu"></i>Blog</a>
                             </li><li class=" dropdown">
                             <a  class="dropdown-toggle" data-target="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="/blog/category/"><i class="icon-folder-close icon-menu"></i>Categories                              <span class="caret"></span>
 </a>
@@ -111,6 +205,11 @@
                               <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
                                 <i class="icon-linkedin" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
                             </li>
                             <li>
                               <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
@@ -137,8 +236,8 @@
                               </a>
                             </li>
                           </ul>
-                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" > 
-                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input"></form>
+                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" >
+                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input" style="width: 130px;"></form>
                           </div>
 
 
@@ -151,12 +250,12 @@
 
 
                 <div id="main">
-    <div class="container content padding-40" itemscope itemtype="http://schema.org/Article">
-    <div class="container header-wrapper banner" style="background: linear-gradient(rgba(6, 6, 6, 0.61), rgba(0, 0, 0, 0.46)), url('https://steviepoppe.net/images/korean_anki_banner.jpg'); background-position: center; background-size: cover;">
-        <div class="row">
+    <div class="container content padding-40 articleshadow" itemscope itemtype="http://schema.org/Article">
+    <div class="container header-wrapper banner">
+        <div class="row" style="background: linear-gradient(rgba(6, 6, 6, 0.60), rgba(0, 0, 0, 0.60)), url('https://steviepoppe.net/images/korean_anki_banner.jpg'); background-position: center; background-size: cover;">
               <div class="col-lg-12">
                   <div class="header-content center">
-                      <h1 class="header-title nocount"><span itemprop="name">Anki Add-on: Japanese translations for Korean vocabulary</span><sup id="fnref:footnote"><a class="footnote-ref imagesource" href="#fn:footnote" rel="footnote">1</a></sup></h1>
+                      <h1 class="header-title nocount"><span itemprop="name">Anki Add-on: Japanese translations for Korean vocabulary</span><sup id="fnref-footnote"><a class="footnote-ref imagesource" href="#fn-footnote" rel="footnote">1</a></sup></h1>
                       <p class="header-date"><span itemprop="datePublished" content="2016-09-07">Sat 15 October 2016</span>, in category <a href="https://steviepoppe.net/blog/category/studies/"><span itemprop="articleSection">Studies</span></a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
@@ -170,8 +269,9 @@
     <div class="container-main" itemprop="articleBody">
 <!--         <h1 style="text-align: center;" class="nocount">Anki Add-on: Japanese translations for Korean vocabulary</h1>
  -->
-            <nav class="toc">
-            <p class="toc_title">Table of Contents</p>
+            <nav class="toc-container">
+              <input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none">
+            <p class="toc_title">Table of Contents<span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></p>
             <div class="toc">
 <ul>
 <li><a href="#anki-korean-japanese-add-on">Anki Korean-Japanese add-on</a><ul>
@@ -186,47 +286,55 @@
 </div>
             </nav>
         
-<p>I’ve recently started studying Korean as part of the minor I took up at university. While browsing the internet for helpful resources I found that, like myself and my classmates, a remarkable amount of students of the Korean language have knowledge of Japanese and/or study both simultaneously. </p>
+<p>I have recently started studying Korean as part of the minor I took up at my university. While browsing the internet for helpful resources I found that, like us, a remarkable amount of students of the Korean language have knowledge of Japanese and/or study both simultaneously.</p>
 
-<p>As anyone browsing my blog might have guessed, I’m pretty fond of using Anki for assisting in vocab acquisition, and thus use it for Korean vocabulary as well, using both existing sets and my own based on our textbooks<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">2</a></sup>. Having a broad base in Japanese, I thought it would be more efficient having a link between the two languages in my flashcards. In order to assist myself and other learners of both Japanese and Korean, I wrote an Anki add-on that adds Japanese translations of Korean expressions. </p>
+<p>As anyone browsing my blog might have guessed, I’m pretty fond of using Anki for assisting in vocab acquisition, and thus use it for Korean vocabulary as well, using both existing sets and my own based on our textbooks.<sup><a class="footnote-ref" href="#fn-1" id="fnref-1" rel="footnote">2</a></sup> Having a broad base in Japanese, I thought it would be more efficient having a link between the two languages in my flashcards. In order to assist myself and other learners of both Japanese and Korean, I wrote an Anki add-on that adds Japanese translations of Korean expressions.</p>
 
-<p>Similar to my previous Anki posts, this blogpost serves as a brief tutorial on setting up the add-on and adding Japanese translations to our cards. We’ll install an Anki add-on, alter our card-layout to display the Japanese expressions in a fashionable manner, and finally bulk-edit our existing cards to actually add them.</p>
+<p>Similar to my previous Anki posts, this blog post serves as a brief tutorial on setting up the add-on and adding Japanese translations to our cards. We’ll install an Anki add-on, alter our card-layout to display the Japanese expressions in a fashionable manner, and finally bulk-edit our existing cards to actually add them.</p>
 <h1 id="anki-korean-japanese-add-on"><a class="toclink" href="#anki-korean-japanese-add-on">Anki Korean-Japanese add-on</a></h1>
-<p>The add-on scrapes Weblio’s online Korean-Japanese dictionary for all translations aside from the usually present character decomposition. The expression 개 (transcribed as <em>gae</em><sup id="fnref-2"><a class="footnote-ref" href="#fn-2">3</a></sup> or <em>kae</em><sup id="fnref-3"><a class="footnote-ref" href="#fn-3">4</a></sup> and means either dog or is used as a particular counter), for example, results in the <a href="http://kjjk.weblio.jp/content/%EA%B0%9C">following page</a>:</p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/korean/weblio.jpg" style="width: 350px; height: auto; max-width: 100%;"/></p>
-<p>(If I feel comfortable enough, or there’s enough request, I’ll expand the add-on to scrape the example sentences as seen above as well)</p>
+<p>The add-on scrapes Weblio’s online Korean-Japanese dictionary for all translations aside from the usually present character decomposition. The expression 개 (transcribed as <em>gae</em><sup><a class="footnote-ref" href="#fn-2" id="fnref-2" rel="footnote">3</a></sup> or <em>kae</em><sup><a class="footnote-ref" href="#fn-3" id="fnref-3" rel="footnote">4</a></sup> and means either dog or is used as a particular counter), for example, results in the <a href="http://kjjk.weblio.jp/content/%EA%B0%9C">following page</a>:</p>
+<p><img alt="weblio" class="fborder fcenter" src="https://steviepoppe.net/images/korean/weblio.jpg" title="weblio"/></p>
+<p>(If I feel like it, or if there’s some demand for it, I’ll expand the add-on to scrape the example sentences as seen above as well)</p>
 <h2 id="download"><a class="toclink" href="#download">Download</a></h2>
-<p>The <strong>Japanese Definitions for Korean Vocabulary</strong> add-on has a page on Ankiweb’s <a href="https://ankiweb.net/shared/info/553926167">plug-in page</a>, but as usual we’ll install the plug-in using the Desktop Anki application. Go to <strong>Tools</strong> → <strong>Add-ons</strong> → <strong>Browse &amp; Install</strong>, and copypaste <strong>553926167</strong> in the pop-up dialog. Restart the application to complete the installation.</p>
+<p>The <strong>Japanese Definitions for Korean Vocabulary</strong> add-on has a page on Ankiweb’s <a href="https://ankiweb.net/shared/info/553926167">plug-in page</a>, but as usual we’ll install the plug-in using the Desktop Anki application. Go to <strong>Tools</strong> → <strong>Add-ons</strong> → <strong>Browse &amp; Install</strong>, and copy-paste <strong>553926167</strong> in the pop-up dialog. Restart the application to complete the installation.</p>
 <h2 id="set-up"><a class="toclink" href="#set-up">Set-up</a></h2>
 <p>The add-on expects two things:</p>
 <ul>
 <li>The field containing your Korean expression should be called: <code>Korean</code></li>
-<li>The notetype should contain a field called <code>Japanese</code> which will contain the japanese translations</li>
+<li>The note-type should contain a field called <code>Japanese</code> which will contain the Japanese translations</li>
 </ul>
-<p>(Both names can be editted in the <code>JapaneseDefinitionsKoreanVoc.py</code> file by opening it with a text-editor and changing the names listed in the beginning. The file can be found on the Anki’s add-on folder on your computer (eg. <code>C:\Users\your_username\Documents\Anki\addons</code>))</p>
-<p>To create a new field <code>Japanese</code>, open the desktop Anki application and press <kbd>CTRL-SHIFT-N</kbd> (or click <strong>Tools</strong> → <strong>Manage Note Types</strong>) to enter the notetype management screen. Select the notetype of the cards you’d like to contain example sentences and click <strong>fields</strong>.</p>
-<p>On the next screen, click <strong>add</strong> and call the field <code>Japanese</code>. Now close this screen. On the previous notetype management screen, click <strong>cards</strong>. We’ll edit our lay-out and display the new field in our cards.</p>
+<p>(Both names can be edited in the <code>JapaneseDefinitionsKoreanVoc.py</code> file by opening it with a text-editor and changing the names listed in the beginning. The file can be found on the Anki’s add-on folder on your computer (e.g. <code>C:\Users\your_username\Documents\Anki\addons</code>))</p>
+<p>To create a new field <code>Japanese</code>, open the desktop Anki application and press <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-n">N</kbd></span> (or click <strong>Tools</strong> → <strong>Manage Note Types</strong>) to enter the note-type management screen. Select the note-type of the cards you’d like to contain example sentences and click <strong>fields</strong>.</p>
+<p>On the next screen, click <strong>add</strong> and call the field <code>Japanese</code>. Now close this screen. On the previous note-type management screen, click <strong>cards</strong>. We’ll edit our lay-out and display the new field in our cards.</p>
 <h2 id="anki-note-lay-out"><a class="toclink" href="#anki-note-lay-out">Anki Note Lay-out</a></h2>
 <p>(this is a suggested Anki layout as seen in the screenshot below. Feel free to skip if you’d like to do this yourself.)</p>
 <p><strong>Lay-out</strong></p>
-<p>Add below’s CSS code to the shared style screen of your note’s card-type template.</p>
-<div class="codehilite"><pre><span></span><span class="p">.</span><span class="nc">title</span> <span class="p">{</span><span class="k">color</span><span class="p">:</span> <span class="mh">#999999</span><span class="p">;</span> <span class="k">font-size</span><span class="p">:</span><span class="mi">80</span><span class="kt">%</span><span class="p">;}</span>
+<p>Add the following CSS code to the shared style screen of your note’s card-type template.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">title</span> <span class="p">{</span><span class="k">color</span><span class="p">:</span> <span class="mh">#999999</span><span class="p">;</span> <span class="k">font-size</span><span class="p">:</span><span class="mi">80</span><span class="kt">%</span><span class="p">;}</span>
 <span class="p">.</span><span class="nc">notes</span> <span class="p">{</span><span class="k">color</span><span class="p">:</span> <span class="mh">#449933</span><span class="p">;</span> <span class="k">font-size</span><span class="p">:</span> <span class="mi">80</span><span class="kt">%</span><span class="p">}</span>
 </pre></div>
+</td></tr></table>
 <p><strong>Templates</strong></p>
 <p>Add the following code to the bottom of all your different card templates’ back template.</p>
-<div class="codehilite"><pre><span></span>{{#Japanese}}
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>{{#Japanese}}
 <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">'text-align: left; '</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span> <span class="s">"title"</span><span class="p">&gt;</span>Additional Information:<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">notes</span><span class="p">&gt;</span>{{Japanese}}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{/Japanese}}
 </pre></div>
+</td></tr></table>
 <hr/>
 <h2 id="bulk-edit"><a class="toclink" href="#bulk-edit">Bulk-edit</a></h2>
-<p>Open anki’s browser (by pressing <kbd>b</kbd> or clicking <strong>Browse</strong> from the main window). The left of this browser has an overview of all your different sets and tags. Select the deck or tag containing the cards you’d like to edit. Press <kbd>ctrl-a</kbd> to select all of those and click <strong>Edit</strong> → <strong>Regenerate JK Expression</strong>. It will crawl the internet for each new definition and scrape the HTML so if you have thousands of cards this might take an hour or two.</p>
+<p>Open Anki’s browser (by pressing <span class="keys"><kbd class="key-b">B</kbd></span> or clicking <strong>Browse</strong> from the main window). The left of this browser has an overview of all your different sets and tags. Select the deck or tag containing the cards you’d like to edit. Press <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-a">A</kbd></span> to select all of those and click <strong>Edit</strong> → <strong>Regenerate JK Expression</strong>. It will crawl the internet for each new definition and scrape the HTML so if you have thousands of cards this might take an hour or two.</p>
 <h2 id="result"><a class="toclink" href="#result">Result</a></h2>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/korean/result.jpg" style="width: 250px; height: auto; max-width: 100%;"/></p>
+<p><img alt="result" class="fborder fcenter" src="https://steviepoppe.net/images/korean/result.jpg" title="result"/></p>
 <div class="footnote">
 <hr/>
 <ol>
@@ -234,13 +342,13 @@
 <p>Screenshot of <strong>JapaneseDefinitionsKoreanVoc.py</strong> code from Sublime Text’s editor. <a class="footnote-backref" href="#fnref-footnote" title="Jump back to footnote 1 in the text">↩</a></p>
 </li>
 <li id="fn-1">
-<p>Cho, Young-mee Yu, red. 2010. Integrated Korean: Beginning. 2nd ed. KLEAR Textbooks in Korean Language. Honolulu: University of Hawaii Press <a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 2 in the text">↩</a></p>
+<p><strong>Cho, Young-mee Yu, red</strong>. 2010. Integrated Korean: Beginning. 2<sup>nd</sup> ed. KLEAR Textbooks in Korean Language. Honolulu: University of Hawaii Press <a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 2 in the text">↩</a></p>
 </li>
 <li id="fn-2">
 <p>According to the official Korean <a href="https://en.wikipedia.org/wiki/Revised_Romanization_of_Korean">Revised Romanization</a> <a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
 <li id="fn-3">
-<p>According to the widely used <a href="https://en.wikipedia.org/wiki/McCune%E2%80%93Reischauer">McCune-Reischauer</a> romanization system, which tries not to transliterate but rather represent the phonetic pronunciation. <a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 4 in the text">↩</a></p>
+<p>According to the widely used <a href="https://en.wikipedia.org/wiki/McCune%E2%80%93Reischauer">McCune-Reischauer</a> transliteration system, which tries not to transliterate but rather represent the phonetic pronunciation. <a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 4 in the text">↩</a></p>
 </li>
 </ol>
 </div>
@@ -265,25 +373,43 @@
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
+                <dt>Tue 14 May 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/05/japanese-e-books-vocab-mining-drm-and-copyright-law/">Japanese E-books, vocab-mining, DRM and copyright law</a></dd>
+                <dt>Wed 17 April 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/">A <del>Quick</del> Guide on Using Anki 5: an efficient vocab mining set-up with Anki and Yomichan</a></dd>
                 <dt>Sun 02 October 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/10/a-quick-guide-on-using-anki-4-making-the-switch-j-j-definitions-in-your-vocab-cards/">A <del>Quick</del> Guide on Using Anki 4: Making the switch - J-J definitions in your vocab cards</a></dd>
                 <dt>Sat 17 September 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">A <del>Quick</del> Guide on Using Anki 3: contextualize your vocab cards with example sentences</a></dd>
                 <dt>Thu 08 September 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
-                <dt>Wed 07 September 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
-                <dt>Tue 19 September 2017</dt>
-                <dd><a href="https://steviepoppe.net/blog/2017/09/going-abroad-as-a-research-student/">Going Abroad as a Research Student</a></dd>
             </dl>
             </div>
         <hr />
     </div>
+
+      <nav class="pagination">
+
+    <span id="older-nav">
+      <a href="https://steviepoppe.net/blog/2016/10/a-quick-guide-on-using-anki-4-making-the-switch-j-j-definitions-in-your-vocab-cards/">Older Posts
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="139,512 1024,512 1024,436 139,436 528,47 465,0 0,483 465,948 528,901 "></polygon></svg></a>
+    </span>
+
+    <span id="newer-nav">
+      <a href="https://steviepoppe.net/blog/2016/10/narrating-newspapers-weekly-vlogging-as-a-japanese-renshu/">
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="885,512 0,512 0,436 885,436 496,47 559,0 1024,483 559,948 496,901 "></polygon></svg> Newer Posts</a>
+    </span>
+  </nav>
+
+    <script src="https://steviepoppe.net/theme/js/youarehere.min.js"></script>
+    <!-- You can also customize the bar a bit -->
                 </div>
 
                 <footer id="footer" class="footer gradient-2">
                   <div id="footercontent">
-                    <span itemprop="copyrightHolder">&copy; Stevie Poppe 2017</span>
+                    <span itemprop="copyrightHolder">(ɔ) Stevie Poppe 2016 - 2021</span>
                     <div>
                       <ul class="footer-nav">                    
                        <li class=" footer-nav-middle ">
@@ -296,38 +422,19 @@
                         <a href="https://steviepoppe.net/blog/tags/" class="footer-nav-middle-a ">Tagcloud</a></li>
                       </ul>
                     </div>
-                    <div style="margin-top: -95px; margin-right:15px; float: right;">
-                      <h5><a id="backtotop" href="#">Back to top ↑</a></h5>
-                    </div>
                   </footer>
                 </div>
 
-
-                <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-
+      <div class="scroll-up" style="display: none;">
+        <a href="#main">&#xfe3f;</a>
+      </div>
                 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
-                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
                 <script type="text/javascript" src="https://steviepoppe.net/theme/js/bootstrap.js"></script>
-                <script>
-                  $(function() {
-                    $('#nav-wrapper').height($("#nav").height());
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/jquery.easing.1.3.js"></script>
+                <!-- <script type="text/javascript" src="https://steviepoppe.net/theme/js/parallax.min.js"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/clipboard.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/slick.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
 
-                    $('#nav').affix({
-                      offset: { top: $('#nav').offset().top }
-                    });
-                  });
-                </script>
-
-                <!-- Google Analytics -->
-                <script>
-                  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                  ga('create', 'UA-82857115-1', 'auto');
-                  ga('send', 'pageview');
-                </script>
-                <!-- /Google Analytics -->
               </body>
               </html>

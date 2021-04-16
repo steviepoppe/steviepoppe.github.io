@@ -4,7 +4,17 @@
 
 <head>
   <!-- Stylesheets -->
-  <link href="https://steviepoppe.net/theme/css/all.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/bootstrap.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/nest.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/icons.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/pygment.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+
+  <link href="https://steviepoppe.net//theme/css/magnific-popup.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/admonition.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/keys.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/slick.css" rel="stylesheet">
   <style>
     @import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
     @import 'https://fonts.googleapis.com/css?family=Poiret+One|Quicksand';
@@ -22,16 +32,19 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Rikaichan, and it’s Chrome variant Rikaikun, have already been widely established as incredibly helpful tools for reading Japanese online. Nevertheless, one major function remained missing still: a seamless integration with Anki for efficient vocabulary mining. A recent extension of the original Rikaichan, aptly named Rikaisama (it’s a pun!), adds several new features including communication with the Anki API, Sanseido Web Dictionary‘s J-J dictionary definitions, access to J-Pod101‘s2 audiofiles, and several more3. Concretely, this means audio playback of tens of thousands of words and expressions as well as easy integration of new vocab into Anki. Despite these incredibly useful features, Rikaisama remains fairly unknown and unblogged about. To counter that, this blog serves as a brief tutorial on setting up a Rikaisama/Anki environment as well as demonstrating some useful real-life appliances.">
+  <meta name="description" content="UPDATE 2018~: Rikaisama has been rendered obsolete since 2018 updates broke Firefox’ support of unsigned XUL-based add-ons. Nevertheless, this guide can still prove useful in two ways: further use of Rikaisama through XUL-supporting Firefox-derivatives such as Waterfox, Pale Moon and Basilisk, as well as the list of applications for Browser/Anki-integration listed in the second half of this guide. As I personally use Waterfox, I’ll refer to Waterfox as main option hereafter. Another option is to use Yomichan for Chrome, described in this updated blog. So you want to: read a Japanese novel without ending up crying yourself to sleep realizing you know nothing, Jon Snow? learn Japanese by watching anime, but like, for real? create beautiful Anki sets filled with handpicked vocabulary, hidden furigana reading-aids, AND crystal-clear audio pronunciations, all without spending days of mind-numbing copy-pasting? Welcome to the lovely world of Integrated Anki &amp; Rikaisama! The hove-over Japanese dictionary plug-in Rikaichan and its Chrome variant Rikaikun have already been widely established as incredibly helpful tools for reading Japanese online. Nevertheless, one major function remained missing still: a seamless integration with Anki for efficient vocabulary mining. A recent expansion of the original Rikaichan, aptly named Rikaisama (it’s a pun!), adds several new features including communication with the Anki API, Sanseido Web Dictionary‘s J-J dictionary definitions, access to J-Pod101‘s audio-files, and more. Concretely, this means audio playback of tens of thousands of words and expressions as well as easy integration of new vocab into Anki. Despite these incredibly useful features, Rikaisama remains fairly about. To counter that, this blog serves as a brief tutorial on setting up a Rikaisama/Anki environment as well as demonstrating some useful real-life use-cases. Rikaisama Download Like Rikaichan, Rikaisama is a Firefox Waterfox plugin, available for download on their sourceforge download page (free, of course). If you’re an avid Chrome supporter, this one might be worth switching for. After installation you’ll have two new buttons at your disposal, either already visible at the top-right of your menubar, or in Firefox Waterfox’s toolbar. The left one activates Rikaisama. I just leave it permanently open. The right one switches the Rikaisama lookupbar. I don’t use this one often so I hide it in the toolbox myself, but for now we’ll need it to access Rikaisama’s settings. Open the toolbar and click the right-most icon to open …">
   <meta name="keywords" content="Anki, Rikaisama, Rikaichan, Rikai, Tutorial, Japanese, Japan, Study, Animelon, Jnovelformatter, Visual novels">
   <meta name="author" content="Stevie Poppe">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="https://steviepoppe.net/favicon.ico">
 
-  <link rel="shortcut icon" type="image/png" href="https://steviepoppe.net/images/icons/favicon.png">
-  <link rel="shortcut icon" type="image/x-icon" href="https://steviepoppe.net/favicon.ico">
+<link rel="shortcut icon" sizes="196x196" href="https://steviepoppe.net/favicon-192.png">
+
+<link rel="icon" href="https://steviepoppe.net/favicon-32.png" sizes="32x32">
+<link rel="icon" href="https://steviepoppe.net/favicon-96.png" sizes="96x96">
+<link rel="icon" href="https://steviepoppe.net/favicon-128.png" sizes="128x128">
+<link rel="icon" href="https://steviepoppe.net/favicon-192.png" sizes="192x192">
 
   <title>A Quick Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama | Onoreto</title>
 <link rel="canonical" href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">
@@ -49,11 +62,11 @@
 
 
               <!-- RSS Feeds -->
-              <link href="https://steviepoppe.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
-              <link href="https://steviepoppe.net/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
-              <link href="https://steviepoppe.net/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
-              <link href="https://steviepoppe.net/feeds/studies.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
-              <link href="https://steviepoppe.net/feeds/studies.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
+              <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
+              <link href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
+              <link href="http://localhost:8000/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
               <!-- /RSS Feeds -->
 
               <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -69,29 +82,110 @@
 
 <meta name="robots" content="index">        </head>
 
-        <body style="background-repeat: repeat; background-position: top left; background-attachment: scroll; background-image: url('https://steviepoppe.net/images/asanoha-400px.png');">
+        <body>
+
+    <!-- OVERLAY MENU -->
+    <div id="overlay-menu" class="overlay-menu">
+
+      <a href="#" id="overlay-menu-hide" class="navigation-hide"><button title="Close (Esc)" type="button" class="mfp-close">×</button></a>
+
+      <div class="overlay-menu-inner">
+        <nav class="overlay-menu-nav">
+
+          <ul id="overflow-nav">
+            <li>
+              <a class="link" href="https://steviepoppe.net"><i class="icon-home icon-menu"></i>Home</a>
+            </li>
+
+            <li class="slidedown"><a href="#"><i class="icon-folder-close icon-menu"></i>Categories</a>
+              <ul>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+              </ul>
+            </li>
+
+<li >
+                            <a class="link" href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a class="link" href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>          </ul>
+        </nav>
+      </div>
+
+      <div class="overlay-navigation-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+                          <ul class="socialnav2 social-icons-footer" style="width: auto;display: inline-block;float: none;">
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          </div>
+            <div class="col-sm-12 text-center">
+              <p class="copyright font-alt m-b-0">(ɔ) Stevie Poppe 2016 - 2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /OVERLAY MENU -->
+
           <div id="wrapper">
 
-            <div class="master">
+            <div class="master scrollingnav">
               <div class="head-container">
 
-                <div class="page-header">
-                  <a href="https://steviepoppe.net" class="avatar-container pull-left">
+                <header class="page-header">
+                  <a href="https://steviepoppe.net" class="avatar-container pull-left show-overlay toggle-menu" title="Menu">
                     <div class="avatar">
                       <div class="side"><img src="https://steviepoppe.net/images/logo2.png" class="img-responsive"/></div>
                     </div>
                   </a>
-                  <h1 style="font-size: 28px; letter-spacing: 1px;"><a href="https://steviepoppe.net">Onoreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
-                </div>
+                  <h1 id="onoreto" title="Onoreto" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">noreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
+                </header>
 
                 <div id="nav-wrapper">
-                  <nav class="navbar navbar-default" id="nav">
+                  <nav class="navbar navbar-default scrollingnav" id="nav">
 
                     <div class="navbar-collapse" id="steviesmenubar">
-                      <div style="float: left;">
+                      <div style="float: left;;margin-left: 20px;">
                         <ul class="nav navbar-nav">
+                          <li id="smallicon">
+<a class="small-nav-menu toggle-menu" href="#" title="Menu" style="color:unset;background-color:unset;transition: none;padding-right: 0px;">
+<img src="https://steviepoppe.net/images/logo2.png" style="border-radius: 50%;height: 25px;margin-top: -5px;margin-right: 5px;">
+</a>
+</li>
 <li class=" ">
-                            <a  href="/"><img id="smallicon" src="https://steviepoppe.net/images/logosmall2.png"><i class="icon-home icon-menu"></i>Blog</a>
+                            <a  href="/"><i class="icon-home icon-menu"></i>Blog</a>
                             </li><li class=" dropdown">
                             <a  class="dropdown-toggle" data-target="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="/blog/category/"><i class="icon-folder-close icon-menu"></i>Categories                              <span class="caret"></span>
 </a>
@@ -111,6 +205,11 @@
                               <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
                                 <i class="icon-linkedin" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
                             </li>
                             <li>
                               <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
@@ -137,8 +236,8 @@
                               </a>
                             </li>
                           </ul>
-                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" > 
-                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input"></form>
+                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" >
+                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input" style="width: 130px;"></form>
                           </div>
 
 
@@ -151,12 +250,12 @@
 
 
                 <div id="main">
-    <div class="container content padding-40" itemscope itemtype="http://schema.org/Article">
-    <div class="container header-wrapper banner" style="background: linear-gradient(rgba(6, 6, 6, 0.61), rgba(0, 0, 0, 0.46)), url('https://steviepoppe.net/images/anki_header2.jpg'); background-position: center; background-size: cover;">
-        <div class="row">
+    <div class="container content padding-40 articleshadow" itemscope itemtype="http://schema.org/Article">
+    <div class="container header-wrapper banner">
+        <div class="row" style="background: linear-gradient(rgba(6, 6, 6, 0.60), rgba(0, 0, 0, 0.60)), url('https://steviepoppe.net/images/anki_header2.jpg'); background-position: center; background-size: cover;">
               <div class="col-lg-12">
                   <div class="header-content center">
-                      <h1 class="header-title nocount"><span itemprop="name">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</span><sup id="fnref:footnote"><a class="footnote-ref imagesource" href="#fn:footnote" rel="footnote">1</a></sup></h1>
+                      <h1 class="header-title nocount"><span itemprop="name">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</span><sup id="fnref-footnote"><a class="footnote-ref imagesource" href="#fn-footnote" rel="footnote">1</a></sup></h1>
                       <p class="header-date"><span itemprop="datePublished" content="2016-09-07">Thu 08 September 2016</span>, in category <a href="https://steviepoppe.net/blog/category/studies/"><span itemprop="articleSection">Studies</span></a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
@@ -170,8 +269,9 @@
     <div class="container-main" itemprop="articleBody">
 <!--         <h1 style="text-align: center;" class="nocount">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</h1>
  -->
-            <nav class="toc">
-            <p class="toc_title">Table of Contents</p>
+            <nav class="toc-container">
+              <input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none">
+            <p class="toc_title">Table of Contents<span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></p>
             <div class="toc">
 <ul>
 <li><a href="#rikaisama">Rikaisama</a><ul>
@@ -201,49 +301,65 @@
 </ul>
 </div>
             </nav>
-        
+        <p>UPDATE 2018~: Rikaisama has been rendered obsolete since 2018 updates broke Firefox’ support of unsigned XUL-based add-ons. Nevertheless, this guide can still prove useful in two ways: further use of Rikaisama through XUL-supporting Firefox-derivatives such as Waterfox, Pale Moon and Basilisk, as well as the list of applications for Browser/Anki-integration listed in the second half of this guide. As I personally use Waterfox, I’ll refer to Waterfox as main option hereafter. Another option is to use Yomichan for Chrome, described <a href="https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/">in this updated blog</a>.</p>
+
 <p>So you want to:</p>
 <ul>
 <li><i class="icon-check"></i> read a Japanese novel without ending up crying yourself to sleep realizing you know <em>nothing</em>, Jon Snow?</li>
 <li><i class="icon-check"></i> learn Japanese by watching anime, but like, for real?</li>
-<li><i class="icon-check"></i> create beautiful Anki sets filled with handpicked vocabulary, hidden furigana reading aids, AND crystal-clear audio pronunciations, all without spending days of mindnumbing copypasting?</li>
+<li><i class="icon-check"></i> create beautiful Anki sets filled with handpicked vocabulary, hidden <em>furigana</em> reading-aids, AND crystal-clear audio pronunciations, all without spending days of mind-numbing copy-pasting?</li>
 </ul>
 <p>Welcome to the lovely world of <code>Integrated Anki &amp; Rikaisama</code>!</p>
 <hr/>
 
-<p><strong>Rikaichan</strong>, and it’s Chrome variant <strong>Rikaikun</strong>, have already been widely established as incredibly helpful tools for reading Japanese online. Nevertheless, one major function remained missing still: a seamless integration with Anki for efficient vocabulary mining. A recent extension of the original Rikaichan, aptly named <strong>Rikaisama</strong> (it’s a <em>pun</em>!), adds several new features including communication with the Anki API, <em>Sanseido Web Dictionary</em>‘s J-J dictionary definitions, access to <em>J-Pod101</em>‘s<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">2</a></sup> audiofiles, and several more<sup id="fnref-2"><a class="footnote-ref" href="#fn-2">3</a></sup>. Concretely, this means audio playback of tens of thousands of words and expressions as well as easy integration of new vocab into Anki. Despite these incredibly useful features, Rikaisama remains fairly unknown and unblogged about. To counter that, this blog serves as a brief tutorial on setting up a Rikaisama/Anki environment as well as demonstrating some useful real-life appliances.</p>
+<p>The hove-over Japanese dictionary plug-in <strong>Rikaichan</strong> and its Chrome variant <strong>Rikaikun</strong> have already been widely established as incredibly helpful tools for reading Japanese online. Nevertheless, one major function remained missing still: a seamless integration with Anki for efficient vocabulary mining. A recent expansion of the original Rikaichan, aptly named <strong>Rikaisama</strong> (it’s a <em>pun</em>!), adds several new features including communication with the Anki API, <em>Sanseido Web Dictionary</em>‘s J-J dictionary definitions, access to <em>J-Pod101</em>‘s audio-files,<sup><a class="footnote-ref" href="#fn-1" id="fnref-1" rel="footnote">2</a></sup> and more.<sup><a class="footnote-ref" href="#fn-2" id="fnref-2" rel="footnote">3</a></sup> Concretely, this means audio playback of tens of thousands of words and expressions as well as easy integration of new vocab into Anki. Despite these incredibly useful features, Rikaisama remains fairly  about. To counter that, this blog serves as a brief tutorial on setting up a Rikaisama/Anki environment as well as demonstrating some useful real-life use-cases.</p>
 
 <h1 id="rikaisama"><a class="toclink" href="#rikaisama">Rikaisama</a></h1>
 <h2 id="download"><a class="toclink" href="#download">Download</a></h2>
-<p>Like Rikaichan, Rikaisama is a Firefox plugin, available for download on their <a href="https://sourceforge.net/projects/rikaisama/files/">sourceforge download page</a> (free, of course). If you’re an avid Chrome supporter, this one might be worth switching for.</p>
-<p class="right"><img alt="right" src="https://steviepoppe.net/images/anki/rikaisama.png" style="width: 76px; height: auto; max-width: 100%;"/></p>
-<p>After installation you’ll have two new buttons at your disposal, either already visible at the top-right of your menubar, or in firefox’ toolbar.</p>
+<p>Like Rikaichan, Rikaisama is a <del>Firefox</del> Waterfox plugin, available for download on their <a href="https://sourceforge.net/projects/rikaisama/files/">sourceforge download page</a> (free, of course). If you’re an avid Chrome supporter, this one might be worth switching for.</p>
+<p><img alt="rikaisama" class="right" src="https://steviepoppe.net/images/anki/rikaisama.jpg" title="rikaisama"/></p>
+<p>After installation you’ll have two new buttons at your disposal, either already visible at the top-right of your menubar, or in <del>Firefox</del> Waterfox’s toolbar.</p>
 <p>The left one activates Rikaisama. I just leave it permanently open. The right one switches the Rikaisama lookupbar. I don’t use this one often so I hide it in the toolbox myself, but for now we’ll need it to access Rikaisama’s settings. Open the toolbar and click the right-most icon to open those (after we’re done, click the leftmost icon to deactivate the toolbar).</p>
-<p class="center"><img alt="center" src="https://steviepoppe.net/images/anki/rikaisamatool.png" style="width: 305px; height: auto; max-width: 100%;"/></p>
+<p><img alt="rikaisamatool" class="border fcenter" src="https://steviepoppe.net/images/anki/rikaisamatool.png" title="rikaisamatool"/></p>
 <p>Rikaisama’s base settings are pretty self-explanatory, and I’ve left most of them to their default values. For our purpose, the Clipboard &amp; Save and Anki tabs will be the most relevant.</p>
 <h2 id="set-up"><a class="toclink" href="#set-up">Set-up</a></h2>
-<p><a href="http://rikaisama.sourceforge.net/">Rikaisama’s homepage</a> contains a crude, bare-bones set-up guide covering the basics of linking Rikaisama with Anki. It does however expect technical knowledge of it’s readers, which I feel will averse some. I try to simplify things while still explaining <em>why</em> we’re doing things, since it really is pretty easy to set-up. If you’d rather get straight to the point, just ignore the reasoning parts (or skip to <a href="#usage">1.2.4. Usage</a> to download a premade ankiset with matching notetype: all you’ll have to do then is to change a few Rikaisama settings).</p>
+<p><a href="http://rikaisama.sourceforge.net/">Rikaisama’s homepage</a> contains a crude, bare-bones set-up guide covering the basics of linking Rikaisama with Anki. It does however expect technical knowledge of it’s readers, which I feel will averse some. I try to simplify things while still explaining <em>why</em> we’re doing things, since it really is pretty easy to set-up. If you’d rather get straight to the point, just ignore the reasoning parts (or skip to <a href="#usage">1.2.4. Usage</a> to download a pre-made Anki-set with matching note-type: all you’ll have to do then is to change a few Rikaisama settings).</p>
 <h3 id="anki"><a class="toclink" href="#anki">Anki</a></h3>
-<p>First, Anki will need an additional add-on as well in order to allow real-time import. It’s ‘available’ at Ankiweb’s <a href="https://ankiweb.net/shared/info/2512410601">plug-in page</a>, although actual installation is done in-app. Open Anki on your desktop, go to <strong>Tools</strong> → <strong>Add-ons</strong> → <strong>Browse &amp; Install</strong>, and copypaste <strong>2512410601</strong> in the pop-up dialogue.</p>
-<p>Now, we’ll create a new set to contain your Rikaisama-powered cards, a new note-type with fields corresponding to the info you’d like out of rikaisama, and finally a few card-types to test us on on visual recognition, on oral recognition, and on production.<sup id="fnref-3"><a class="footnote-ref" href="#fn-3">4</a></sup> Start by creating a new set, eg. <code>rikai-vocab</code><sup id="fnref-4"><a class="footnote-ref" href="#fn-4">5</a></sup>. On Windows, press <kbd>CTRL-SHIFT-N</kbd>, or click <strong>Tools</strong> → <strong>Manage Note Types</strong>, to enter the notetype management screen. Click <strong>add</strong>, then <strong>ok</strong> on the next screen, to create a new note type. Call it <code>Rikai</code> (do note my excellent graphical skills as seen in the screenshot below ( ͡° ͜ʖ ͡°) )!</p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-notetypes-s.jpg" style="width: 400px; height: auto; max-width: 100%;"/></p>
+<p>First, Anki will need an additional add-on as well in order to allow real-time import. It’s ‘available’ at Ankiweb’s <a href="https://ankiweb.net/shared/info/2512410601">plug-in page</a>, although actual installation is done in-app. Open Anki on your desktop, go to <strong>Tools</strong> → <strong>Add-ons</strong> → <strong>Browse &amp; Install</strong>, and copy-paste <strong>2512410601</strong> in the pop-up dialog.</p>
+<p>Now, we’ll create a new set to contain your Rikaisama-powered cards, a new note-type with fields corresponding to the info you’d like out of rikaisama, and finally a few card-types to test us on on visual recognition, on oral recognition, and on production.<sup><a class="footnote-ref" href="#fn-3" id="fnref-3" rel="footnote">4</a></sup> Start by creating a new set, e.g. <code>rikai-vocab</code><sup><a class="footnote-ref" href="#fn-4" id="fnref-4" rel="footnote">5</a></sup>. On Windows, press <kbd>CTRL-SHIFT-N</kbd>, or click <strong>Tools</strong> → <strong>Manage Note Types</strong>, to enter the note-type management screen. Click <strong>add</strong>, then <strong>ok</strong> on the next screen, to create a new note type. Call it <code>Rikai</code> (do note my excellent graphical skills as seen in the screenshot below ( ͡° ͜ʖ ͡°) )!</p>
+<p><img alt="anki-notetypes-s" class="border fcenter" src="https://steviepoppe.net/images/anki/anki-notetypes-s.jpg" title="anki-notetypes-s"/></p>
 <p>Next, select the new Rikai note-type and click <strong>Fields</strong>. We’ll rename the current front and backside as <code>Expression</code> and <code>Meaning</code>, and add two new Fields <code>Audio</code> and <code>Notes</code> (this one could be used for personal notes or example sentences). If you’re interested in pitch accents, add a fifth field <code>Pitch</code>. Next, close this screen and click on <strong>Cards</strong>. We’ll manage the different cards this note generates as well as it’s make-up.</p>
-<p>We’ll start with some basic layout. Add the following lines to the bottom of the middle Shared Style screen. For optimal learning, we’ll keep word readings in kana as furigana displayed on touch/hover. This way learners are less likely to use them as a crutch.</p>
-<div class="codehilite"><pre><span></span><span class="nt">ruby</span> <span class="nt">rt</span> <span class="p">{</span> <span class="k">visibility</span><span class="p">:</span> <span class="kc">hidden</span><span class="p">;</span> <span class="p">}</span>
+<p>We’ll start with some basic layout. Add the following lines to the bottom of the middle Shared Style screen. For optimal learning, we’ll keep word readings in <em>kana</em> as <em>furigana</em> displayed on touch/hover. This way learners are less likely to use them as a crutch.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">ruby</span> <span class="nt">rt</span> <span class="p">{</span> <span class="k">visibility</span><span class="p">:</span> <span class="kc">hidden</span><span class="p">;</span> <span class="p">}</span>
 <span class="nt">ruby</span><span class="p">:</span><span class="nd">hover</span> <span class="nt">rt</span> <span class="p">{</span> <span class="k">visibility</span><span class="p">:</span> <span class="kc">visible</span><span class="p">;</span> <span class="p">}</span>
 </pre></div>
+</td></tr></table>
 <p>Next, click the <code>+</code> button twice to create two more card-templates. Next, rename (by clicking <strong>More</strong> → <strong>Rename</strong>) templates <strong>Card 1</strong>, <strong>Card 2</strong> and <strong>Card 3</strong> respectively as <code>Recognition</code>, <code>Production</code>, and <code>Audio</code>.</p>
 <p>Finally, let’s wrap up our Anki set-up by creating the actual card’s templates. Each card will question you on one field (the Japanese expression, the English translation and the Audio) and show the answer on the backside along with audio and any potential notes, if present. Your card’s templates should look as follows:</p>
 <p><strong>Recognition</strong></p>
 <ul>
 <li><strong>Front Template</strong></li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="p">{{</span><span class="n">furigana</span><span class="p">:</span><span class="n">Expression</span><span class="p">}}</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="n">furigana</span><span class="p">:</span><span class="n">Expression</span><span class="p">}}</span>
 </pre></div>
+</td></tr></table>
 <ul>
 <li><strong>Back Template</strong></li>
 </ul>
-<div class="codehilite"><pre><span></span>{{FrontSide}}
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>{{FrontSide}}
 
 <span class="p">&lt;</span><span class="nt">hr</span> <span class="na">id</span><span class="o">=</span><span class="s">answer</span><span class="p">&gt;</span>
 
@@ -257,16 +373,30 @@
 <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>{{furigana:Notes}}
 {{/Notes}}
 </pre></div>
+</td></tr></table>
 <p><strong>Production</strong></p>
 <ul>
 <li><strong>Front Template</strong></li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="p">{{</span><span class="n">Meaning</span><span class="p">}}</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="n">Meaning</span><span class="p">}}</span>
 </pre></div>
+</td></tr></table>
 <ul>
 <li><strong>Back Template</strong></li>
 </ul>
-<div class="codehilite"><pre><span></span>{{FrontSide}}
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>{{FrontSide}}
 
 <span class="p">&lt;</span><span class="nt">hr</span> <span class="na">id</span><span class="o">=</span><span class="s">answer</span><span class="p">&gt;</span>
 
@@ -280,16 +410,30 @@
 <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>{{furigana:Notes}}
 {{/Notes}}
 </pre></div>
+</td></tr></table>
 <p><strong>Audio</strong></p>
 <ul>
 <li><strong>Front Template</strong></li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="p">{{</span><span class="n">Audio</span><span class="p">}}</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="n">Audio</span><span class="p">}}</span>
 </pre></div>
+</td></tr></table>
 <ul>
 <li><strong>Back Template</strong></li>
 </ul>
-<div class="codehilite"><pre><span></span>{{FrontSide}}
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>{{FrontSide}}
 
 <span class="p">&lt;</span><span class="nt">hr</span> <span class="na">id</span><span class="o">=</span><span class="s">answer</span><span class="p">&gt;</span>
 
@@ -303,6 +447,7 @@
 <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>{{furigana:Notes}}
 {{/Notes}}
 </pre></div>
+</td></tr></table>
 <hr/>
 <p>If you added a fifth field <strong>Pitch</strong>, add <code>&lt;br&gt;&lt;br&gt;{{Pitch}}</code> to the back templates of those cards.</p>
 <h3 id="mapping"><a class="toclink" href="#mapping">Mapping</a></h3>
@@ -326,61 +471,66 @@
 <p><strong>Field names</strong>:<code>Expression Meaning Audio Pitch</code></p>
 </li>
 </ul>
-<p>Make sure to mark the save audio checkbox <i class="icon-check"></i>.</p>
-<p>The <strong>field names</strong> field is pretty forward, it contains the field names of the note we just created in Anki. The <strong>Save format</strong> field however is a bit more complicated. It’ll contain <em>tokens</em> or variables (similar to fields in your Anki note) available for each Japanese word hoverable through Rikaisama. Each field name must have both a corresponding token, marked by a dollar sign and a single letter (eg. <code>Expression</code> → <code>$d</code>) as well as a token for empty spaces in between. To get our furigana, the kana reading must be encapsulated next to our expression (eg. <code>$d[$r]</code>). The <code>$a</code> token contains just the mp3 filename. To get it to play in our cards, we require a correct format (eg. <code>[sound:ちょうつがい - 蝶番.mp3]</code>), hence the <code>[sound:$a]</code>.</p>
+<p>Make sure to mark the save audio check-box <i class="icon-check"></i>.</p>
+<p>The <strong>field names</strong> field is pretty forward, it contains the field names of the note we just created in Anki. The <strong>Save format</strong> field however is a bit more complicated. It’ll contain <em>tokens</em> or variables (similar to fields in your Anki note) available for each Japanese word hover-able through Rikaisama. Each field name must have both a corresponding token, marked by a dollar sign and a single letter (eg. <code>Expression</code> → <code>$d</code>) as well as a token for empty spaces in between. To get our <em>furigana</em>, the <em>kana</em> reading must be encapsulated next to our expression (eg. <code>$d[$r]</code>). The <code>$a</code> token contains just the MP3 filename. To get it to play in our cards, we require a correct format (e.g. <code>[sound:ちょうつがい - 蝶番.mp3]</code>), hence the <code>[sound:$a]</code>.</p>
 <hr/>
 <p><strong>Clipboard &amp; Save tab</strong></p>
-<p>Anki keeps all of it’s assets, like audio or images, in a specific folder. Thus, we’ll have to adjust the path these audiofiles are saved in rikaisama’s settings as well. On a clean Anki install on windows, this folder will probably be something like <code>C:\Users\your_name\Documents\Anki\anki_username\collection.media</code>. When located, use that folder’s path for your <strong>Saved Audio</strong> path.</p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-rikai-clip-s.jpg" style="width: 500px; height: auto; max-width: 100%;"/></p>
+<p>Anki keeps all of its assets, like audio or images, in a specific folder. Thus, we’ll have to adjust the path these audiofiles are saved in rikaisama’s settings as well. On a clean Anki install on windows, this folder will probably be something like <code>C:\Users\your_name\Documents\Anki\anki_username\collection.media</code>. When located, use that folder’s path for your <strong>Saved Audio</strong> path.</p>
+<p><img alt="anki-rikai-clip-s" class="border fcenter" src="https://steviepoppe.net/images/anki/anki-rikai-clip-s.jpg" title="anki-rikai-clip-s"/></p>
 <p>We’ll also have to confirm our save format again in this tab. Just copy/paste the one you used in the other tab.</p>
-<p>I personally tag all rikai-created ankicards as such, this isn’t necessary but it might come of use in your anki’s browser one day.</p>
+<p>I personally tag all rikai-created ankicards as such, this isn’t necessary but it might come of use in your Anki’s browser one day.</p>
 <hr/>
 <h3 id="dictionaries"><a class="toclink" href="#dictionaries">Dictionaries</a></h3>
-<p>A final step in case you haven’t used Rikaichan before, is to install some dictionaries files, available at <a href="http://www.polarcloud.com/getrcx/">Rikaichan’s homepage</a>. I personally use the <strong>Japanese - Dutch</strong>,<sup id="fnref-5"><a class="footnote-ref" href="#fn-5">6</a></sup> <strong>Japanese English</strong> and <strong>Japanese Names</strong> dictionaries, and sort them in those order in Rikaisama’s configuration.</p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/rikaisamadict.jpg" style="width: 500px; height: auto; max-width: 100%;"/></p>
+<p>A final step in case you haven’t used Rikaichan before, is to install some dictionaries files, available at <a href="http://www.polarcloud.com/getrcx/">Rikaichan’s homepage</a>. I personally use the <strong>Japanese - Dutch</strong>,<sup><a class="footnote-ref" href="#fn-5" id="fnref-5" rel="footnote">6</a></sup> <strong>Japanese English</strong> and <strong>Japanese Names</strong> dictionaries, and sort them in those order in Rikaisama’s configuration.</p>
+<p><img alt="rikaisamadict" class="border fcenter" src="https://steviepoppe.net/images/anki/rikaisamadict.jpg" title="rikaisamadict"/></p>
 <h3 id="usage"><a class="toclink" href="#usage">Usage</a></h3>
 <p>Now let’s test our set-up!</p>
-<p>For Rikaisama to recognize which Anki set and which notes to use, we’ll have to open anki and enter our set everytime we’re on hunting spree. If you get a mismatch error, just click <strong>add</strong> and ensure that the selected type is <code>Rikai</code> by clicking on the current type and selecting the proper one (just click close again afterwards).</p>
-<p>Hover over these two words. A rikai pop with definitions should appear. </p>
+<p>For Rikaisama to recognize which Anki set and which notes to use, we’ll have to open anki and enter our set every time we’re on hunting spree. If you get a mismatch error, just click <strong>add</strong> and ensure that the selected type is <code>Rikai</code> by clicking on the current type and selecting the proper one (just click close again afterwards).</p>
+<p>Hover over these two words. A rikai pop with definitions should appear.</p>
 <p><span lang="ja"><ruby><rb>理解</rb><rp>(</rp><rt>りかい</rt><rp>)</rp></ruby></span> | <span lang="ja"><ruby><rb>暗記</rb><rp>(</rp><rt>あんき</rt><rp>)</rp></ruby></span> (I’m not obsessed, I swear~)</p>
-<p>Now, while still hovering over them, type <kbd>r</kbd> (the <em>Real-Time Import</em> key) to import these words into your set. Hoorah! Note that Rikaisama by default does not allow duplicates, so if you try to add an earlier added word, you’ll get an error message.</p>
+<p>Now, while still hovering over them, type <kbd>r</kbd> (the <em>Real-Time Import</em> key) to import these words into your set. Great! (Note that Rikaisama by default does not allow duplicates, so if you try to add an already added word, you’ll get an error message.)</p>
 <p>I’ve exported my own copy of this example and uploaded if you want to compare or save yourself the work of creating the note template manually:</p>
 <ul>
 <li><strong>Download</strong>: <a href="https://www.dropbox.com/s/xnj67hqj3cubfn2/Rikai%20vocab.apkg?dl=0">Example set Rikai <i class="icon-download-alt"></i></a></li>
 </ul>
-<p>If there’s one downside to this method, it’s that an audio reference will be added to your cards regardless if there’s an existant audio recording online. This is especially the case with lesser known words or idoms: while reading Harry Potter I’ve added a few hundred of such cards. To remove these, just open Anki on your desktop computer and select <strong>Tools</strong> → <strong>Control Media</strong>. It will clear all the non-existant audio entries from your cards’ Audio fields. Afterwards, click <strong>Tools</strong> → <strong>Empty Cards</strong> to remove all the empty oral-recognition cards.</p>
+<p>If there’s one downside to this method, it’s that an audio reference will be added to your cards regardless if there’s a preexisting audio recording online. This is particularly the case with lesser known words or idioms: while reading Harry Potter I’ve added a few hundred of such cards. To remove these, just open Anki on your desktop computer and select <strong>Tools</strong> → <strong>Control Media</strong>. It will clear all the non-existent audio entries from your cards’ Audio fields. Afterwards, click <strong>Tools</strong> → <strong>Empty Cards</strong> to remove all the empty oral-recognition cards.</p>
 <h1 id="appliances"><a class="toclink" href="#appliances">Appliances</a></h1>
 <h2 id="internet"><a class="toclink" href="#internet">Internet</a></h2>
-<p>This one goes without saying as that’s pretty much the prime objective of this tutorial. If you’re a relatively new learner, NHK provides simplified news articles and videos at <a href="http://www3.nhk.or.jp/news/easy/">NHK Easy News</a>. I used these a lot near the end of my first year studying, and it’s a neat way to stay up to date with what’s going in Japan, or more generally in the world (frankly it’s a bit awkward if you don’t as student in cultural or social sciences).</p>
+<p>This one goes without saying as that’s pretty much the prime objective of this tutorial. If you’re a relatively new learner, NHK provides simplified news articles and videos at <a href="http://www3.nhk.or.jp/news/easy/">NHK Easy News</a>. I used these a lot near the end of my first year studying, and it’s a neat way to stay up to date with what’s going in Japan, or more generally in the world (frankly speaking in this time and age it’s best to arm yourself with knowledge anyway).</p>
 <h2 id="novels"><a class="toclink" href="#novels">Novels</a></h2>
 <blockquote>
-<p><span lang="ja">「言い方がまちがってるわ。ウィン、ガー・デイアム　レヴィ・オーサ。『ガー』と長一くきれいに言わなくちゃ」</span><sup id="fnref-6"><a class="footnote-ref" href="#fn-6">7</a></sup></p>
+<p><span lang="ja">「言い方がまちがってるわ。ウィン、ガー・デイアム　レヴィ・オーサ。『ガー』と長一くきれいに言わなくちゃ」</span><sup><a class="footnote-ref" href="#fn-6" id="fnref-6" rel="footnote">7</a></sup></p>
 </blockquote>
 <h3 id="jnovelformatter"><a class="toclink" href="#jnovelformatter">JNovelFormatter</a></h3>
-<p><a href="http://forum.koohii.com/post-113458.html">JNovelFormatter</a> is a neat little tool by the developer of Rikaisama<sup id="fnref-7"><a class="footnote-ref" href="#fn-7">8</a></sup> that converts japanese literature in .txt format into clean parsed HTML files. Layout is fairly customizable, although I think the original settings are easy on the eye as-is (I like dark backgrounds when reading for hours at a time, makes me feel less like I’m gazing straight into a lightbulb). End of sentence dots get turned into bookmarkable anchors so you won’t lose track of your progress.</p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-jnovel.jpg" style="width: 380px; height: auto; max-width: 100%;"/></p>
+<p><a href="http://forum.koohii.com/post-113458.html">JNovelFormatter</a> is a neat little tool by the developer of Rikaisama<sup><a class="footnote-ref" href="#fn-7" id="fnref-7" rel="footnote">8</a></sup> that converts Japanese literature in .txt format into clean parsed HTML files. Layout is fairly customizable, although I think the original settings are easy on the eye as-is (I like dark backgrounds when reading for hours at a time, makes me feel less like I’m gazing straight into a light-bulb). End of sentence dots get turned into book-markable anchors so you won’t lose track of your progress.</p>
+<p><img alt="anki-jnovel" class="border fcenter" src="https://steviepoppe.net/images/anki/anki-jnovel.jpg" title="anki-jnovel"/></p>
 <p>I highly recommend this method! I’ve used this approach while reading <em>The Girl Who Leapt Through Time</em> (<span lang="ja"><ruby><rb>時</rb><rp>(</rp><rt>とき</rt><rp>)</rp></ruby>をかける<ruby><rb>少女</rb><rp>(</rp><rt>しょうじょ</rt><rp>)</rp></ruby></span>) during our <span lang="ja"><ruby><rb>読書</rb><rp>(</rp><rt>どくしょ</rt><rp>)</rp></ruby>クラブ</span>‘s book-reading sessions and just last week, as a kind of summer project, worked my way through the first <em>Harry Potter</em> (a surprisingly high difficulty but I know the original by heart so that helped heaps context-wise).</p>
-<p>As for resources, there’s plenty to be found online. Light novels are commonly uploaded in text format and probably a good starting point for the more advanced learner.<sup id="fnref-8"><a class="footnote-ref" href="#fn-8">9</a></sup> I’ve heard <em>Zero no Tsukaima</em> (<span lang="ja">ゼロの<ruby><rb>使魔</rb><rp>(</rp><rt>つかいま</rt><rp>)</rp></ruby></span>) and <em>Kino no Tabi</em> (<span lang="ja">キノの<ruby><rb>旅</rb><rp>(</rp><rt>たび</rt><rp>)</rp></ruby></span>) are relatively easy reads, for example.<sup id="fnref-9"><a class="footnote-ref" href="#fn-9">10</a></sup></p>
+<p>As for resources, there’s plenty to be found online. Light novels are commonly uploaded in text format and probably a good starting point for the more advanced learner.<sup><a class="footnote-ref" href="#fn-8" id="fnref-8" rel="footnote">9</a></sup> I’ve heard <em>Zero no Tsukaima</em> (<span lang="ja">ゼロの<ruby><rb>使魔</rb><rp>(</rp><rt>つかいま</rt><rp>)</rp></ruby></span>) and <em>Kino no Tabi</em> (<span lang="ja">キノの<ruby><rb>旅</rb><rp>(</rp><rt>たび</rt><rp>)</rp></ruby></span>) are relatively easy reads, for example.<sup><a class="footnote-ref" href="#fn-9" id="fnref-9" rel="footnote">10</a></sup></p>
 <h3 id="aozora"><a class="toclink" href="#aozora">Aozora</a></h3>
-<p><a href="http://www.aozora.gr.jp/">Aozora</a>, pretty much the Japanese Gutenberg project, freely hosts tons of public-domain books online.<sup id="fnref-10"><a class="footnote-ref" href="#fn-10">11</a></sup> Check out Natsume Soseki’s classic Botchan as <a href="http://www.aozora.gr.jp/cards/000148/files/752_14964.html">example</a>. Their literary standards are a bit higher as the typical light novel so it’s quite an adjustment, but great for those who’re looking for easy-to-find, legally obtainable literature.</p>
+<p><a href="http://www.aozora.gr.jp/">Aozora</a>, pretty much the Japanese Gutenberg project, freely hosts tons of public-domain books online.<sup><a class="footnote-ref" href="#fn-10" id="fnref-10" rel="footnote">11</a></sup> Check out Natsume Soseki’s classic Botchan as <a href="http://www.aozora.gr.jp/cards/000148/files/752_14964.html">example</a>. Their literary standards are a bit higher as the typical light novel so it’s quite an adjustment, but great for those who’re looking for easy-to-find, legally obtainable literature.</p>
 <h2 id="anime"><a class="toclink" href="#anime">Anime</a></h2>
 <p>A really cool concept recently released is Animelon’s multi-layer subtitled anime streaming web-app, akin to the <a href="https://www.erin.ne.jp/en/">Erin’s Challenge</a> video’s (except with arguably way more interesting content: as of date there are over 60 series hosted, mostly all big names ranging from more recent hits as SAO and Attack on Titan to classics as Fullmetal Alchemist: Brotherhood and Clannad).</p>
-<p>If I were to recommend one to start with, I’d definitely pick Clannad.<sup id="fnref-11"><a class="footnote-ref" href="#fn-11">12</a></sup> The high-school setting means relatively easy and casual vocabulary (as opposed to, for example, SAO’s highly technical and fantasy-related vocab you’ll barely ever encounter in real life), while the voice acting’s pacing is calm enough to pick up as relative beginner, and devoid of difficult accents. </p>
+<p>If I were to recommend one to start with, I might pick Clannad.<sup><a class="footnote-ref" href="#fn-11" id="fnref-11" rel="footnote">12</a></sup> The high-school setting means relatively easy and casual vocabulary (as opposed to, for example, SAO’s highly technical and fantasy-related vocab you’ll barely ever encounter in real life), while the voice-acting’s pacing is calm enough to pick up as relative beginner, and devoid of difficult accents.</p>
 <p>Check out their video demonstration below to see the various possibilities:</p>
-<iframe allowfullscreen="" frameborder="0" height="270" src="https://www.youtube.com/embed/meUmHCcjlcQ?feature=oembed" width="480"></iframe>
-<p><br/>
-What bothers me a bit is the legality of it all. They’re currently keeping this site up as proof-of-concept in search of potential buyers but meanwhile they’re hosting full series in HD quality “for educational purposes only”. I’m not complaining but I hope they survive, since this service is golden, really.</p>
+<p><span class="videobox">
+<iframe allowfullscreen="" frameborder="0" height="390" mozallowfullscreen="" src="https://www.youtube.com/embed/meUmHCcjlcQ" webkitallowfullscreen="" width="640">
+</iframe>
+</span></p>
+<p>What bothers me a bit is the legality of it all. They’re currently keeping this site up as proof-of-concept in search of potential buyers but meanwhile they’re hosting full series in HD quality “for educational purposes only”.</p>
 <h2 id="gaming"><a class="toclink" href="#gaming">Gaming</a></h2>
-<p>This one’s a bit tricky still. The new web-possibilities since the implementation of the latest HTML-standard, HTML5, have given rise to a broad range of games running natively in your browser without the need of additional clutter such as Adobe Flash. Especially visual novels, a big thing in Japan, would be most suitable for our purpose, considering the large amounts of text. Except so far the online playable ones I’ve found were either already translated into English, or else of the early ’90s abandonware eroge kind, so not what I was looking for (you’ll easily find that online if that’s your cup of tea).</p>
+<p>This one’s a bit tricky still. The new web-possibilities since the implementation of the latest HTML-standard, HTML5, have given rise to a broad range of games running natively in your browser without the need for additional clutter such as Adobe Flash. Visual novels, in particular, would be most suitable for our purpose considering the dense amount of words in each game. Unfortunately so far the online playable ones I’ve found were either already translated into English, or else of the early ’90s <em>abandonware</em> <em>eroge</em> kind, so not what I was looking for (you’ll easily find that online if that’s your cup of tea).</p>
 <p>Another option is to set up your gaming environment in such a way it enables you to use these features. There’s an active community of technically capable Japanese learners at <a href="https://www.reddit.com/r/visualnovels/wiki/vnhooking">Reddit</a> and <a href="http://forum.koohii.com/thread-10386.html">Koohii</a> who came up with such a thing. I’ve yet to try this myself, and honestly, it’s a bit bloated, but if you’re dying to play visual novels and learn Japanese at the same time, this’ll do the trick:</p>
 <ol>
 <li>Get <a href="http://sakuradite.com/wiki/en/vnr">Visual Novel Reader</a>: it appears to be a mask to be run over an already installed visual novel, using OCR to capture Japanese text, parse it, and run it through some dictionaries (<a href="http://sakuradite.com/wiki/en/VNR/Tutorial">Tutorial</a>).</li>
-<li>Use the <a href="https://addons.mozilla.org/nl/firefox/addon/furigana-inserter/">Firgana Inserter</a> Firefox Plug-in to automatically copy-paste dialogue from your clipboard, obtained dynamically through OCR by above means, to an empty Firefox screen.</li>
+<li>Use the <a href="https://addons.mozilla.org/nl/firefox/addon/furigana-inserter/">Furigana Inserter</a> Firefox Plug-in to automatically copy-paste dialog from your clipboard, obtained dynamically through OCR by above means, to an empty Firefox screen.</li>
 </ol>
 <p>If you’re running Firefox and your game side-by-side you’ll be able to max up your visual novel ankisets in no time, just like this guy!</p>
-<iframe allowfullscreen="" frameborder="0" height="270" src="https://www.youtube.com/embed/7djqr-RG26s?feature=oembed" width="480"></iframe>
+<p><span class="videobox">
+<iframe allowfullscreen="" frameborder="0" height="390" mozallowfullscreen="" src="https://www.youtube.com/embed/7djqr-RG26s" webkitallowfullscreen="" width="640">
+</iframe>
+</span></p>
 <h1 id="wait-there-is-more"><a class="toclink" href="#wait-there-is-more">Wait! There is more!</a></h1>
-<p>The main goal of this post was to introduce a less known, but highly useful, Anki functionality by linking Rikaisama’s excellent<sup id="fnref-12"><a class="footnote-ref" href="#fn-12">13</a></sup> pop-up dictionary with Anki’s API, as well as show several possible appliances. If you’ve any further questions, feel free to check out the other articles in this series on Anki, or to leave a comment below.</p>
+<p>The main goal of this post was to introduce a less known, but highly useful, Anki functionality by linking Rikaisama’s excellent<sup><a class="footnote-ref" href="#fn-12" id="fnref-12" rel="footnote">13</a></sup> pop-up dictionary with Anki’s API, as well as show several possible appliances. If you’ve any further questions, feel free to check out the other articles in this series on Anki, or to leave a comment below.</p>
 <ul>
 <li><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></li>
 <li><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">Using Anki’s API to contextualize your vocab cards with example sentences</a></li>
@@ -389,7 +539,7 @@ What bothers me a bit is the legality of it all. They’re currently keeping thi
 <h1 id="further-reading"><a class="toclink" href="#further-reading">Further reading</a></h1>
 <ul>
 <li><a href="https://ankiatts.appspot.com/">AwesomeTTS for Anki</a>: My approach uses JapanesePod101’s vast audio library. Occasionally however I encounter words or expressions that have no native spoken audio recorded. If you want audio-completion, this open-source tool allows for text-to-speech in your Anki cards. I use this occasionally on full sentences or korean vocabulary, but the quality of the free TTS engines remains fairly primitive, so your mileage might vary.</li>
-<li><a href="http://www.nihongonobaka.com/learn-japanese-through-video-games/">Learn Japanese Through Videogames</a>: speaking of videogames, you could also look up videogame scripts (<span lang="ja">セリフ<ruby><rb>集</rb><rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby></span>) and vocab-mine from those. This guy wrote a decent blog on that. The recent Phoenix Wright spin-off Dai Gyakuten Saiban (a series I’m particularly fond of) has yet to be confirmed to receive a western release, so I’ll have to brush up my legal vocab this way before playing. </li>
+<li><a href="http://www.nihongonobaka.com/learn-japanese-through-video-games/">Learn Japanese Through Videogames</a>: speaking of videogames, you could also look up videogame scripts (<span lang="ja">セリフ<ruby><rb>集</rb><rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby></span>) and vocab-mine from those. This guy wrote a decent blog on that. The recent Phoenix Wright spin-off <em>Dai Gyakuten Saiban</em> (a series I’m particularly fond of) has yet to be confirmed to receive a western release, so I’ll have to brush up my legal vocab this way before playing.</li>
 </ul>
 <div class="footnote">
 <hr/>
@@ -456,25 +606,43 @@ What bothers me a bit is the legality of it all. They’re currently keeping thi
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
+                <dt>Wed 17 April 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/">A <del>Quick</del> Guide on Using Anki 5: an efficient vocab mining set-up with Anki and Yomichan</a></dd>
+                <dt>Tue 14 May 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/05/japanese-e-books-vocab-mining-drm-and-copyright-law/">Japanese E-books, vocab-mining, DRM and copyright law</a></dd>
                 <dt>Sat 15 October 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/10/anki-add-on-japanese-translations-for-korean-vocabulary/">Anki Add-on: Japanese translations for Korean vocabulary</a></dd>
                 <dt>Sun 02 October 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/10/a-quick-guide-on-using-anki-4-making-the-switch-j-j-definitions-in-your-vocab-cards/">A <del>Quick</del> Guide on Using Anki 4: Making the switch - J-J definitions in your vocab cards</a></dd>
                 <dt>Sat 17 September 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">A <del>Quick</del> Guide on Using Anki 3: contextualize your vocab cards with example sentences</a></dd>
-                <dt>Wed 07 September 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a></dd>
-                <dt>Tue 19 September 2017</dt>
-                <dd><a href="https://steviepoppe.net/blog/2017/09/going-abroad-as-a-research-student/">Going Abroad as a Research Student</a></dd>
             </dl>
             </div>
         <hr />
     </div>
+
+      <nav class="pagination">
+
+    <span id="older-nav">
+      <a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">Older Posts
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="139,512 1024,512 1024,436 139,436 528,47 465,0 0,483 465,948 528,901 "></polygon></svg></a>
+    </span>
+
+    <span id="newer-nav">
+      <a href="https://steviepoppe.net/blog/2016/09/waarom-japanologie/">
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="885,512 0,512 0,436 885,436 496,47 559,0 1024,483 559,948 496,901 "></polygon></svg> Newer Posts</a>
+    </span>
+  </nav>
+
+    <script src="https://steviepoppe.net/theme/js/youarehere.min.js"></script>
+    <!-- You can also customize the bar a bit -->
                 </div>
 
                 <footer id="footer" class="footer gradient-2">
                   <div id="footercontent">
-                    <span itemprop="copyrightHolder">&copy; Stevie Poppe 2017</span>
+                    <span itemprop="copyrightHolder">(ɔ) Stevie Poppe 2016 - 2021</span>
                     <div>
                       <ul class="footer-nav">                    
                        <li class=" footer-nav-middle ">
@@ -487,38 +655,19 @@ What bothers me a bit is the legality of it all. They’re currently keeping thi
                         <a href="https://steviepoppe.net/blog/tags/" class="footer-nav-middle-a ">Tagcloud</a></li>
                       </ul>
                     </div>
-                    <div style="margin-top: -95px; margin-right:15px; float: right;">
-                      <h5><a id="backtotop" href="#">Back to top ↑</a></h5>
-                    </div>
                   </footer>
                 </div>
 
-
-                <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-
+      <div class="scroll-up" style="display: none;">
+        <a href="#main">&#xfe3f;</a>
+      </div>
                 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
-                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
                 <script type="text/javascript" src="https://steviepoppe.net/theme/js/bootstrap.js"></script>
-                <script>
-                  $(function() {
-                    $('#nav-wrapper').height($("#nav").height());
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/jquery.easing.1.3.js"></script>
+                <!-- <script type="text/javascript" src="https://steviepoppe.net/theme/js/parallax.min.js"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/clipboard.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/slick.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
 
-                    $('#nav').affix({
-                      offset: { top: $('#nav').offset().top }
-                    });
-                  });
-                </script>
-
-                <!-- Google Analytics -->
-                <script>
-                  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                  ga('create', 'UA-82857115-1', 'auto');
-                  ga('send', 'pageview');
-                </script>
-                <!-- /Google Analytics -->
               </body>
               </html>

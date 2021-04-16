@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <!-- Stylesheets -->
+  <link href="https://steviepoppe.net/theme/css/bootstrap.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/nest.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/icons.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/pygment.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+
+  <link href="https://steviepoppe.net//theme/css/magnific-popup.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/admonition.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/keys.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/slick.css" rel="stylesheet">
+  <style>
+    @import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+    @import 'https://fonts.googleapis.com/css?family=Poiret+One|Quicksand';
+  </style>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js">
+  </script>
+  <!-- /Stylesheets -->
+
+  <script type="text/javascript">
+    var host = "steviepoppe.net";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+      window.location.protocol = "https";
+  </script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="As an undergraduate student relying heavily on Anki for both theoretical courses and for studying Japanese, I wrote several blog-posts throughout 2016 on how I’ve personally integrated Anki in my daily life. One of those entries extensively documented how I’ve connected Anki with Firefox to vocab-mine Japanese texts in my browser with JPod101 audio-readings, example-sentences (a method crucial to my language-acquisition) and Japanese dictionary definitions. Although I’ve had little time to update my blog throughout 2018, those specific posts became somewhat high-ranking when googling things concerning Anki. Unfortunately, Firefox-updates led to Anki-integrated Firefox pop-up dictionary Rikaisama (the plug-in I’ve relied on for years) becoming obsolete. Thus it was high time to update my humble guide to reflect the current state of affairs on the elusive ‘browser + Anki’ integration-methods available today. So it’s 20XX, wasting valuable time on automatable processes bores you and you’re keen on integrating technology more efficiently in your Japanese language-acquisition. Concretely you want to: Vocab-mine Japanese texts you’re reading both on- and off-line using Chrome or Firefox. Improve your retention-rate with hidden furigana reading-aids and crystal-clear audio-readings. Contextualize your cards with Japanese example sentences. Rely not just solely on foreign-language translations, but use Japanese dictionary definitions for optimized studying. Basically, you want cards like this: What options are available then, sans going all the way and developing said tools yourself? If you’ve previously used the Rikaisama pop-up dictionary and followed my previous guides, you can continue doing so using a Firefox-derived browser. I still recommend this method for longer texts such as novels. Head to section Rikaisama. If you’re new to this site or method, use the Chrome / Firefox add-on Yomichan. It’s user-friendly, highly adjustable and has tons of features. Head to section Yomichan. Yomichan Developed by Foosoft Productions - a household name amongst the Anki-utilizing on-line learning community - Yomichan originated as a stand-alone bookreader with Anki-integration, until it in its current form became the most complete alternative available for Rikaisama. In similar fashion to Rikaisama, we’ll use Yomichan to vocab-mine Japanese texts and generate extensive Anki-cards with Jpod101 audio-readings, example sentences, furigana, and Japanese definitions. Furthermore, for ex-Rikaisama users, Yomichan definitely has the upper hand concerning user-friendliness and adaptability. Set-up Another benefit of this plug-in is that it’s cross-platform, available both on Firefox and Chrome. Pick your platform of choice and after …">
+  <meta name="keywords" content="Anki, Rikaisama, Rikaichan, Rikai, Yomichan, Tutorial, Japanese, Japan, Study">
+  <meta name="author" content="Stevie Poppe">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="shortcut icon" sizes="196x196" href="https://steviepoppe.net/favicon-192.png">
+
+<link rel="icon" href="https://steviepoppe.net/favicon-32.png" sizes="32x32">
+<link rel="icon" href="https://steviepoppe.net/favicon-96.png" sizes="96x96">
+<link rel="icon" href="https://steviepoppe.net/favicon-128.png" sizes="128x128">
+<link rel="icon" href="https://steviepoppe.net/favicon-192.png" sizes="192x192">
+
+  <title>A Quick Guide on Using Anki 5: an efficient vocab mining set-up with Anki and Yomichan | Onoreto</title>
+<link rel="canonical" href="https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/">
+
+
+<!--               <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+              <script>
+                 WebFont.load({
+                  google: {
+                    families: ['Poiret+One', 'Quicksand']
+                  }
+                });
+              </script> -->
+
+
+
+              <!-- RSS Feeds -->
+              <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
+              <link href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
+              <link href="http://localhost:8000/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
+              <!-- /RSS Feeds -->
+
+              <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <![endif]-->
+
+
+
+          <link rel="author" href="https://plus.google.com/112676714486792414615"/>
+   
+
+<meta name="robots" content="index">        </head>
+
+        <body>
+
+    <!-- OVERLAY MENU -->
+    <div id="overlay-menu" class="overlay-menu">
+
+      <a href="#" id="overlay-menu-hide" class="navigation-hide"><button title="Close (Esc)" type="button" class="mfp-close">×</button></a>
+
+      <div class="overlay-menu-inner">
+        <nav class="overlay-menu-nav">
+
+          <ul id="overflow-nav">
+            <li>
+              <a class="link" href="https://steviepoppe.net"><i class="icon-home icon-menu"></i>Home</a>
+            </li>
+
+            <li class="slidedown"><a href="#"><i class="icon-folder-close icon-menu"></i>Categories</a>
+              <ul>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+              </ul>
+            </li>
+
+<li >
+                            <a class="link" href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a class="link" href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>          </ul>
+        </nav>
+      </div>
+
+      <div class="overlay-navigation-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+                          <ul class="socialnav2 social-icons-footer" style="width: auto;display: inline-block;float: none;">
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          </div>
+            <div class="col-sm-12 text-center">
+              <p class="copyright font-alt m-b-0">(ɔ) Stevie Poppe 2016 - 2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /OVERLAY MENU -->
+
+          <div id="wrapper">
+
+            <div class="master scrollingnav">
+              <div class="head-container">
+
+                <header class="page-header">
+                  <a href="https://steviepoppe.net" class="avatar-container pull-left show-overlay toggle-menu" title="Menu">
+                    <div class="avatar">
+                      <div class="side"><img src="https://steviepoppe.net/images/logo2.png" class="img-responsive"/></div>
+                    </div>
+                  </a>
+                  <h1 id="onoreto" title="Onoreto" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">noreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
+                </header>
+
+                <div id="nav-wrapper">
+                  <nav class="navbar navbar-default scrollingnav" id="nav">
+
+                    <div class="navbar-collapse" id="steviesmenubar">
+                      <div style="float: left;;margin-left: 20px;">
+                        <ul class="nav navbar-nav">
+                          <li id="smallicon">
+<a class="small-nav-menu toggle-menu" href="#" title="Menu" style="color:unset;background-color:unset;transition: none;padding-right: 0px;">
+<img src="https://steviepoppe.net/images/logo2.png" style="border-radius: 50%;height: 25px;margin-top: -5px;margin-right: 5px;">
+</a>
+</li>
+<li class=" ">
+                            <a  href="/"><i class="icon-home icon-menu"></i>Blog</a>
+                            </li><li class=" dropdown">
+                            <a  class="dropdown-toggle" data-target="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="/blog/category/"><i class="icon-folder-close icon-menu"></i>Categories                              <span class="caret"></span>
+</a>
+                              <ul class="dropdown-menu" id="menu1" aria-labelledby="drop4"> 
+                                <li><a href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                                <li><a href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li> 
+                                <li><a href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+                              </ul> 
+                            </li><li >
+                            <a href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>                          </ul>
+                        </div>
+                        <div class="social">
+                          <ul class="socialnav socialonly social-icons-footer collapse">
+
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                          </ul>
+                          <ul class="socialnav rssonly social-icons-footer">
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" >
+                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input" style="width: 130px;"></form>
+                          </div>
+
+
+                        </div>
+
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div id="main">
+    <div class="container content padding-40 articleshadow" itemscope itemtype="http://schema.org/Article">
+    <div class="container header-wrapper banner">
+        <div class="row" style="background: linear-gradient(rgba(6, 6, 6, 0.60), rgba(0, 0, 0, 0.60)), url('https://steviepoppe.net/images/anki_header2.jpg'); background-position: center; background-size: cover;">
+              <div class="col-lg-12">
+                  <div class="header-content center">
+                      <h1 class="header-title nocount"><span itemprop="name">A <del>Quick</del> Guide on Using Anki 5: an efficient vocab mining set-up with Anki and Yomichan</span><sup id="fnref-footnote"><a class="footnote-ref imagesource" href="#fn-footnote" rel="footnote">1</a></sup></h1>
+                      <p class="header-date"><span itemprop="datePublished" content="2016-09-07">Wed 17 April 2019</span>, in category <a href="https://steviepoppe.net/blog/category/studies/"><span itemprop="articleSection">Studies</span></a></p>
+                      <div class="header-underline"></div>
+                      <div class="clearfix"></div>
+                      <p class="pull-right header-tags">
+                          <span class="icon-tags" aria-hidden="true"></span>
+<a href="https://steviepoppe.net/blog/tags/anki/">Anki</a>, <a href="https://steviepoppe.net/blog/tags/japanese/">Japanese</a>, <a href="https://steviepoppe.net/blog/tags/rikaisama/">Rikaisama</a>, <a href="https://steviepoppe.net/blog/tags/studying/">Studying</a>, <a href="https://steviepoppe.net/blog/tags/tutorial/">Tutorial</a>, <a href="https://steviepoppe.net/blog/tags/yomichan/">Yomichan</a>                      </p>
+                  </div>
+              </div>
+        </div>
+    </div>
+    <div class="container-main" itemprop="articleBody">
+<!--         <h1 style="text-align: center;" class="nocount">A <del>Quick</del> Guide on Using Anki 5: an efficient vocab mining set-up with Anki and Yomichan</h1>
+ -->
+            <nav class="toc-container">
+              <input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none">
+            <p class="toc_title">Table of Contents<span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></p>
+            <div class="toc">
+<ul>
+<li><a href="#yomichan">Yomichan</a><ul>
+<li><a href="#set-up">Set-up</a><ul>
+<li><a href="#dictionaries">Dictionaries</a></li>
+<li><a href="#integrating-anki">Integrating Anki</a></li>
+<li><a href="#mapping">Mapping</a></li>
+<li><a href="#testing">Testing</a></li>
+</ul>
+</li>
+<li><a href="#japanese-example-sentences">Japanese Example Sentences</a><ul>
+<li><a href="#download">Download</a></li>
+<li><a href="#set-up_1">Set-up</a><ul>
+<li><a href="#card-lay-out">Card Lay-out</a></li>
+<li><a href="#usage-with-yomichan-anki-connect">Usage with Yomichan / Anki-Connect</a></li>
+</ul>
+</li>
+<li><a href="#usage">Usage</a><ul>
+<li><a href="#contextualizing-existing-cards">Contextualizing existing cards</a></li>
+<li><a href="#contextualizing-imported-cards">Contextualizing imported cards</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#example-set">Example Set</a></li>
+<li><a href="#sanseido-japanese-definitions">Sanseido Japanese Definitions</a><ul>
+<li><a href="#download_1">Download</a></li>
+<li><a href="#set-up_2">Set-up</a><ul>
+<li><a href="#anki-note-lay-out">Anki Note Lay-out</a></li>
+<li><a href="#bulk-edit">Bulk-edit</a></li>
+<li><a href="#usage-with-yomichan-anki-connect_1">Usage with Yomichan / Anki-Connect</a></li>
+<li><a href="#imported-cards">Imported cards</a></li>
+</ul>
+</li>
+<li><a href="#download-example-set">Download Example Set</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#applications">Applications</a></li>
+<li><a href="#rikaisama">Rikaisama</a><ul>
+<li><a href="#set-up_3">Set-up</a></li>
+</ul>
+</li>
+<li><a href="#wait-there-is-more">Wait! There is more!</a></li>
+</ul>
+</div>
+            </nav>
+        <p>As an undergraduate student relying heavily on Anki<sup><a class="footnote-ref" href="#fn-1" id="fnref-1" rel="footnote">2</a></sup> for both theoretical courses and for studying Japanese, I wrote several blog-posts throughout 2016 on how I’ve personally integrated Anki in my daily life. One of those entries extensively documented how I’ve connected Anki with Firefox to vocab-mine Japanese texts in my browser with JPod101 audio-readings, example-sentences (a method crucial to my language-acquisition) and Japanese dictionary definitions. Although I’ve had little time to update my blog throughout 2018, those specific posts became somewhat high-ranking when googling things concerning Anki. Unfortunately, Firefox-updates led to Anki-integrated Firefox pop-up dictionary Rikaisama (the plug-in I’ve relied on for years) becoming obsolete. Thus it was high time to update my humble guide to reflect the current state of affairs on the elusive ‘browser + Anki’ integration-methods available today.</p>
+
+<hr/>
+
+<p>So it’s 20<strong>XX</strong>, wasting valuable time on automatable processes bores you and you’re keen on integrating technology more efficiently in your Japanese language-acquisition. Concretely you want to:</p>
+<ul>
+<li><i class="icon-check"></i> Vocab-mine Japanese texts you’re reading both on- and off-line using Chrome or Firefox.</li>
+<li><i class="icon-check"></i> Improve your retention-rate with hidden <strong>furigana</strong> reading-aids and crystal-clear audio-readings.</li>
+<li><i class="icon-check"></i> Contextualize your cards with Japanese example sentences.</li>
+<li><i class="icon-check"></i> Rely not just solely on foreign-language translations, but use Japanese dictionary definitions for optimized studying.</li>
+</ul>
+
+<p>Basically, you want cards like this:</p>
+<p><img alt="ankiexample" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/anki/ankiexample.gif" title="ankiexample"/></p>
+<p>What options are available then, sans going all the way and developing said tools yourself?</p>
+<ol>
+<li>If you’ve previously used the Rikaisama pop-up dictionary and followed my previous guides, you can continue doing so using a Firefox-derived browser. I still recommend this method for longer texts such as novels. Head to section <a href="#rikaisama">Rikaisama</a>.</li>
+<li>If you’re new to this site or method, use the Chrome / Firefox add-on Yomichan. It’s user-friendly, highly adjustable and has tons of features. Head to section <a href="#yomichan">Yomichan</a>.</li>
+</ol>
+<h1 id="yomichan"><a class="toclink" href="#yomichan">Yomichan</a></h1>
+<p>Developed by <a href="https://foosoft.net/">Foosoft Productions</a> - a household name amongst the Anki-utilizing on-line learning community - Yomichan originated as a stand-alone bookreader with Anki-integration,<sup><a class="footnote-ref" href="#fn-2" id="fnref-2" rel="footnote">3</a></sup> until it in its current form became the most complete alternative available for Rikaisama.</p>
+<p>In similar fashion to Rikaisama, we’ll use Yomichan to vocab-mine Japanese texts and generate extensive Anki-cards with Jpod101 audio-readings, example sentences, <em>furigana</em>, and Japanese definitions. Furthermore, for ex-Rikaisama users, Yomichan definitely has the upper hand concerning user-friendliness and adaptability.</p>
+<h2 id="set-up"><a class="toclink" href="#set-up">Set-up</a></h2>
+<p>Another benefit of this plug-in is that it’s cross-platform, available both on <a href="https://sourceforge.net/projects/rikaisama/files/">Firefox</a> and <a href="https://sourceforge.net/projects/rikaisama/files/">Chrome</a>. Pick your platform of choice and after installing we’ll start the initial set-up.</p>
+<p>It’s worth checking out <a href="https://foosoft.net/projects/yomichan/">Yomichan’s homepage</a> as it contains an extensive manual. This guide will focus purely on connecting Yomichan to Anki, setting up a proper template for our cards, and integrate generation of example sentences and Japanese definitions.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Yomichan can’t parse off-line files out-of-the-box. If you’re inclined to use Yomichan with off-line files (when reading HTML-formatted novels for example), just head to the Chrome/Firefox <strong>settings → extensions</strong> page and manually allow the add-on to access file URLs.</p>
+</div>
+<h3 id="dictionaries"><a class="toclink" href="#dictionaries">Dictionaries</a></h3>
+<p>First, download the <a href="https://foosoft.net/projects/yomichan/">libraries</a> to your liking and add them in the Yomichan settings page.</p>
+<h3 id="integrating-anki"><a class="toclink" href="#integrating-anki">Integrating Anki</a></h3>
+<p>To integrate Yomichan into Anki, we’ll need to install <a href="https://foosoft.net/projects/anki-connect/index.html">Anki-Connect</a>, an Anki plug-in specifically tailored to Yomichan. Open Anki on your desktop, go to <strong>Tools → Add-ons → Browse &amp; Install</strong>, and copy-paste 2512410601 in the pop-up dialog.</p>
+<p>Now, we’ll create a new set to contain our Yomichan-powered cards. We want cards containing the expression (and hover-able <em>furigana</em> reading), its definition in our language of choice, audio readings and example sentences. For this, we’ll create a new <strong>‘note-type’</strong> with fields corresponding to the info we’d like to see in our cards. We probably want to be tested both on the Japanese expression (visual recognition), on its meaning (production) and finally on the audio (oral recognition). To achieve this, we’ll add three <strong>‘card-types’</strong> to our ‘note-type’.</p>
+<p>Start by creating a new ‘set’, eg. <code>yomi-vocab</code>. On Windows, press <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-n">N</kbd></span>, or click <strong>Tools → Manage Note Types</strong>, to enter the ‘note-type’ management screen. Click <strong>add → ok</strong> to create a new ‘note-type’. Call it <code>Yomichan</code>.</p>
+<p><img alt="anki-notetypes-s" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/anki/anki-notetypes-s.jpg" title="anki-notetypes-s"/></p>
+<p>Next, select the new Yomichan ‘note-type’ and click <strong>Fields</strong>. We’ll rename the current front and backside as <code>Expression</code> and <code>Meaning</code>, and add three new ‘fields’ <code>Audio</code>, <code>Examples</code> and <code>Notes</code> (that latter one could be used for personal notes). Close this screen and select <strong>Cards</strong>. We’ll manage the different cards this note generates as well as its make-up.</p>
+<p>We’ll start with a basic layout. Add the following lines to the bottom of the middle Shared Style screen. For optimal learning, we’ll keep kana-readings as furigana displayed only touch/hover. This way learners are less likely to use them as a crutch.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">ruby</span> <span class="nt">rt</span> <span class="p">{</span> <span class="k">visibility</span><span class="p">:</span> <span class="kc">hidden</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">ruby</span><span class="p">:</span><span class="nd">hover</span> <span class="nt">rt</span> <span class="p">{</span> <span class="k">visibility</span><span class="p">:</span> <span class="kc">visible</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</td></tr></table>
+<p>Next, click the <code>+</code> button at the top of the screen twice to create two more card-templates. Rename (by clicking <strong>More → Rename</strong>) those templates (<strong>Card 1</strong>, <strong>Card 2</strong> and <strong>Card 3</strong>) respectively as <code>Recognition</code>, <code>Production</code>, and <code>Audio</code>.</p>
+<p>Finally, let’s wrap up our Anki set-up by creating the actual card’s templates. Each card will question you on one field (the Japanese expression, the English translation and the Audio) and show the answer on the backside along with audio and any potential notes, if present. Your card’s templates should look as follows:</p>
+<p><strong>Recognition</strong></p>
+<ul>
+<li><strong>Front Template</strong></li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nt">div</span> <span class="nt">lang</span><span class="o">=</span><span class="s2">"ja"</span><span class="o">&gt;</span><span class="p">{</span><span class="err">{</span><span class="n">furigana</span><span class="p">:</span><span class="n">Expression</span><span class="p">}</span><span class="err">}</span><span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table>
+<ul>
+<li><strong>Back Template</strong></li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">{</span><span class="err">{FrontSide</span><span class="p">}</span><span class="err">}</span>
+
+<span class="o">&lt;</span><span class="nt">hr</span> <span class="nt">id</span><span class="o">=</span><span class="nt">answer</span><span class="o">&gt;</span>
+
+<span class="p">{</span><span class="err">{</span><span class="n">furigana</span><span class="p">:</span><span class="n">Meaning</span><span class="p">}</span><span class="err">}</span><span class="o">&lt;</span><span class="nt">br</span><span class="o">/&gt;</span>
+
+<span class="p">{</span><span class="err">{#Notes</span><span class="p">}</span><span class="err">}</span>
+<span class="o">&lt;</span><span class="nt">br</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="nt">b</span><span class="o">&gt;</span><span class="nt">Notes</span><span class="o">:&lt;/</span><span class="nt">b</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nt">br</span><span class="o">&gt;</span><span class="p">{</span><span class="err">{</span><span class="n">furigana</span><span class="p">:</span><span class="n">Notes</span><span class="p">}</span><span class="err">}</span>
+<span class="p">{</span><span class="err">{/Notes</span><span class="p">}</span><span class="err">}</span>
+
+<span class="p">{</span><span class="err">{Audio</span><span class="p">}</span><span class="err">}</span><span class="o">&lt;</span><span class="nt">br</span><span class="o">/&gt;</span>
+</pre></div>
+</td></tr></table>
+<p><strong>Production</strong></p>
+<ul>
+<li><strong>Front Template</strong></li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">{</span><span class="err">{</span><span class="n">furigana</span><span class="p">:</span><span class="n">Meaning</span><span class="p">}</span><span class="err">}</span><span class="o">&lt;</span><span class="nt">br</span><span class="o">/&gt;</span>
+</pre></div>
+</td></tr></table>
+<ul>
+<li><strong>Back Template</strong></li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">{</span><span class="err">{FrontSide</span><span class="p">}</span><span class="err">}</span>
+
+<span class="o">&lt;</span><span class="nt">hr</span> <span class="nt">id</span><span class="o">=</span><span class="nt">answer</span><span class="o">&gt;</span>
+
+<span class="p">{</span><span class="err">{</span><span class="n">furigana</span><span class="p">:</span><span class="n">Expression</span><span class="p">}</span><span class="err">}</span>
+<span class="o">&lt;</span><span class="nt">br</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="err">{Audio</span><span class="p">}</span><span class="err">}</span>
+
+<span class="p">{</span><span class="err">{#Notes</span><span class="p">}</span><span class="err">}</span>
+<span class="o">&lt;</span><span class="nt">br</span><span class="o">&gt;&lt;</span><span class="nt">br</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nt">b</span><span class="o">&gt;</span><span class="nt">Notes</span><span class="o">:&lt;/</span><span class="nt">b</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nt">br</span><span class="o">&gt;</span><span class="p">{</span><span class="err">{</span><span class="n">furigana</span><span class="p">:</span><span class="n">Notes</span><span class="p">}</span><span class="err">}</span>
+<span class="p">{</span><span class="err">{/Notes</span><span class="p">}</span><span class="err">}</span>
+</pre></div>
+</td></tr></table>
+<p><strong>Audio</strong></p>
+<ul>
+<li><strong>Front Template</strong></li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">Listen</span><span class="o">.&lt;/</span><span class="nt">br</span><span class="o">&gt;</span><span class="p">{</span><span class="err">{Audio</span><span class="p">}</span><span class="err">}</span>
+</pre></div>
+</td></tr></table>
+<ul>
+<li><strong>Back Template</strong></li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">{</span><span class="err">{FrontSide</span><span class="p">}</span><span class="err">}</span>
+<span class="o">&lt;</span><span class="nt">hr</span> <span class="nt">id</span><span class="o">=</span><span class="nt">answer</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="nt">div</span> <span class="nt">lang</span><span class="o">=</span><span class="s2">"ja"</span><span class="o">&gt;</span><span class="p">{</span><span class="err">{</span><span class="n">furigana</span><span class="p">:</span><span class="n">Expression</span><span class="p">}</span><span class="err">}</span><span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;&lt;</span><span class="nt">br</span><span class="o">/&gt;</span>
+
+<span class="p">{</span><span class="err">{</span><span class="n">furigana</span><span class="p">:</span><span class="n">Meaning</span><span class="p">}</span><span class="err">}</span><span class="o">&lt;</span><span class="nt">br</span><span class="o">/&gt;</span>
+
+<span class="p">{</span><span class="err">{#Notes</span><span class="p">}</span><span class="err">}</span>
+<span class="o">&lt;</span><span class="nt">br</span><span class="o">&gt;&lt;</span><span class="nt">br</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nt">b</span><span class="o">&gt;</span><span class="nt">Notes</span><span class="o">:&lt;/</span><span class="nt">b</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nt">br</span><span class="o">&gt;</span><span class="p">{</span><span class="err">{</span><span class="n">furigana</span><span class="p">:</span><span class="n">Notes</span><span class="p">}</span><span class="err">}</span>
+<span class="p">{</span><span class="err">{/Notes</span><span class="p">}</span><span class="err">}</span>
+</pre></div>
+</td></tr></table>
+<hr/>
+<h3 id="mapping"><a class="toclink" href="#mapping">Mapping</a></h3>
+<p>When you’re finished, don’t close Anki just yet. Our final step for now is to map our Firefox or Chrome Yomichan settings to Anki so that our generated cards will be using the correct card-template and imported data gets saved to within correct set. Open the Yomichan options; scroll down to the ‘Anki Options’ category and change accordingly: <strong>Deck</strong> → <strong>Yomichan</strong>, <strong>Model</strong> → <strong>yomichan</strong>, <strong>Field Expression</strong> → <strong>{furigana-plain}</strong>, <strong>Meaning</strong> → <strong>{glossary-brief}</strong>, <strong>Audio</strong> → <strong>{audio}</strong>.</p>
+<h3 id="testing"><a class="toclink" href="#testing">Testing</a></h3>
+<p>Now let’s try out our new set-up!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Anki has to remain open whenever we vocab-mine using Yomichan, so just keep Anki opened in the background for now.</p>
+</div>
+<p>Press and hold <span class="keys"><kbd class="key-shift">Shift</kbd></span> or your <span class="keys"><kbd>middle-mouse-button</kbd></span> and hover over the words below. A yomichan pop-up should appear.</p>
+<blockquote>
+<p><span lang="ja"><ruby><rb>理解</rb><rp>(</rp><rt>りかい</rt><rp>)</rp></ruby></span> | <span lang="ja"><ruby><rb>暗記</rb><rp>(</rp><rt>あんき</rt><rp>)</rp></ruby></span> (I’m not obsessed, I swear~)</p>
+</blockquote>
+<p>Just press the green Add Expression icon on the pop-up or use the key short-cut <span class="keys"><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-e">E</kbd></span> to import these words into your set.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>(I’ll add my copy soon, promise)
+
+I've exported my own copy of this example and uploaded if you want to compare or save yourself the work of creating the note template manually:
+
+* **Download**: [Example set Yomichan &lt;i class="icon-download-alt"&gt;&lt;/i&gt;](https://www.dropbox.com/s
+</pre></div>
+</td></tr></table>
+<h2 id="japanese-example-sentences"><a class="toclink" href="#japanese-example-sentences">Japanese Example Sentences</a></h2>
+<p>Our current set-up is pretty useful already, but as seen in the GIF at the top of the page, some further effort will allow us to add proper example sentences and their translations to our mined vocabulary on-the-fly.</p>
+<p>We’ll use an existing Anki add-on called <strong>Japanese Example Sentences</strong> to add Japanese sentences taken from <a href="https://tatoeba.org/eng/">Tatoeba.org</a>, a “collaborative, open, free and even addictive” community on producing example sentences (the Internet is can at times be a wonderful environment).</p>
+<h3 id="download"><a class="toclink" href="#download">Download</a></h3>
+<p>The Japanese Example Sentences add-on has a page on Ankiweb’s <a href="https://ankiweb.net/shared/info/2413435972">plug-in page</a>, but as usual we’ll install the plug-in using the Desktop Anki application. Go to Tools → Add-ons → Browse &amp; Install, and copy-paste <strong>2413435972</strong> in the pop-up dialog. Restart the application to complete the installation.</p>
+<p>This example-set is fairly outdated. Follow <a href="https://ankiweb.net/shared/info/2413435972">the instructions</a> left in the plug-in comment section to update to the most recent set.</p>
+<h3 id="set-up_1"><a class="toclink" href="#set-up_1">Set-up</a></h3>
+<p>In its current stage, this plug-in can contextualize existing cards using <strong>Edit → Bulk-add examples</strong>. There are two requirements so-far: the ‘note-type’ should have both an examples field and expression field, and the expression should be just the Japanese expression without square brackets containing <em>furigana</em>. If those requirements are met, we can contextualize existing cards using <strong>Edit → Bulk-add examples</strong> from the card-browser, or contextualize new cards when creating a new card of a note-type that contains the <strong>examples</strong> and <strong>expression</strong> fields.</p>
+<p>However, we <em>do</em> have square brackets containing <em>furigana</em> in our expression fields, and contextualizing cards generated using Yomichan is not yet possible. Thus  finally, we want to alter out cards’ lay-out to display our example sentences in a responsible manner. We’ll need some further edits outlined below.</p>
+<h4 id="card-lay-out"><a class="toclink" href="#card-lay-out">Card Lay-out</a></h4>
+<p>Add the code below to the bottom of the middle lay-out screen. It’ll display the example sentences to the left of your cards.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>.examples {font-size:75%; text-align: left;}
+.title {font-size:16px; color: #999999;}
+</pre></div>
+</td></tr></table>
+<ul>
+<li><strong>Back Template</strong></li>
+</ul>
+<p>Add the HTML code below to the bottom of your different cards’ back templates.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>{{#Examples}}
+<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"examples"</span> <span class="na">lang</span><span class="o">=</span><span class="s">"ja"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span> <span class="s">"title"</span><span class="p">&gt;</span>Sentences:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+{{furigana:Examples}}
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Examples}}
+</pre></div>
+</td></tr></table>
+<p><img alt="anki-notetype-back" class="hwimportant border fcenter" src="https://steviepoppe.net/images/anki/anki-notetype-back.jpg" title="anki-notetype-back"/></p>
+<h4 id="usage-with-yomichan-anki-connect"><a class="toclink" href="#usage-with-yomichan-anki-connect">Usage with Yomichan / Anki-Connect</a></h4>
+<p>For proper integration with Yomichan, I’ve made some adjustments to both its Anki-Connect add-on and the Japanese_Examples add-on. I’ve added the edited files on a <a href="https://github.com/steviepoppe/anki_addon_edits/tree/master/context_tutorial">new repository on my GitHub</a> so go ahead and replace the existing add-on files on your Anki’s add-on folder on your computer (e.g. <code>C:\Users\USER_NAME\Documents\Anki\addons</code> or <code>C:\Users\USER_NAME\AppData\Roaming\Anki2\addons</code>) with the ones on there. I’ve described all my edits below in case you’d prefer to do this manually. Feel free to skip this part if you’re not technically inclined.</p>
+<p><strong>japanese_examples.py</strong></p>
+<p>We’ve set up our notes to show <em>furigana</em> on our vocabulary. This requires square brackets (eg. <code>気象庁[きしょうちょう]</code>). The Anki plug-in for Japanese examples however does not support this out of the box. For that reason, I’ve added a regular expression to only use the contents up to the first square bracket as expression.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">searched</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'^[^\[]+'</span><span class="p">,</span><span class="n">expression</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">searched</span><span class="p">:</span>
+    <span class="n">expression</span> <span class="o">=</span> <span class="n">searched</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+<p>If you’d like to edit this yourself, add that piece of code to the <code>find_examples</code> class right after it defined examples as a list. it should be around line 139 (<code class="highlight"><span class="k">def</span> <span class="nf">find_examples</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">maxitems</span><span class="p">):</span> <span class="n">examples</span> <span class="o">=</span> <span class="p">[]</span></code>).</p>
+<p>Secondly, I’ve edited the mark-up of the example sentences to hide the English translations unless hovered above (or on press on smart-phones).</p>
+<p>Locate the <code>examples.append</code> call in the <code>find_examples</code> method. You’ll want to replace it (I commented it out) with the code below. It’ll be around line 174.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">examples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"&lt;div id='eng_test'&gt;</span><span class="si">%s</span><span class="s2">&lt;span id='eng_sentence'&gt;</span><span class="si">%s</span><span class="s2">&lt;/span&gt;&lt;/div&gt;"</span> <span class="o">%</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">example</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\t</span><span class="s1">'</span><span class="p">)))</span>
+</pre></div>
+</td></tr></table>
+<p>In the <code>find_examples_multiple</code> method (around line 214), replace the current return with the line below. We’ll want just one break between example sentences.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="s2">"&lt;br&gt;"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">examples</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+<p><strong>Anki-Connect.py</strong></p>
+<p>This extension calls on Anki’s API to create new notes. All my edit does is call japanese_examples at run-time.</p>
+<p>First, we’ll have to import the japanese_examples extension to be able to call its methods. If you’re doing this set-up manually, add the line below near the top, along with the other includes (around line 30).</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">japanese_examples</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</td></tr></table>
+<p>Next, I’ve written a few lines in the <code>addNote</code> method to call Japanese-examples’ find method at run-time and, if examples were found and our note-type has the correct destination field, add these to our newly created card. This should come before <code class="highlight"><span class="n">collection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">collection</span><span class="p">()</span></code> around line 700.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># for use with Japanese examples</span>
+<span class="n">examples</span> <span class="o">=</span> <span class="n">find_examples_multiple</span><span class="p">(</span><span class="n">ankiNote</span><span class="p">,</span> <span class="n">MAX_PERMANENT</span><span class="p">)</span>
+
+<span class="c1"># if field is empty and examples exist</span>
+<span class="k">if</span> <span class="n">examples</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">ankiNote</span><span class="p">[</span><span class="n">DEST_FIELD</span><span class="p">]:</span>
+    <span class="n">ankiNote</span><span class="p">[</span><span class="n">DEST_FIELD</span><span class="p">]</span> <span class="o">=</span> <span class="n">examples</span>
+</pre></div>
+</td></tr></table>
+<p><code>DEST_FIELD</code> is a global variable defined in <code>japanese_examples.py</code>. If Anki gives an error, there might be a mismatch in naming. Check the naming in <code>japanese_examples.py</code> and change <code>DEST_FIELD</code> accordingly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For this to work, you’ll need to make an edit in your note template’s layout. As usual enter the note-type management screen by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-n">N</kbd></span>, or click <strong>Tools → Manage Note Types</strong>. Select the note-type of the cards you’d like to contain example sentences and click <strong>fields</strong>. From there, select the <code>Yomichan</code> note, click <strong>cards</strong> and add the following CSS-code to the bottom of the shared lay-out screen in the middle.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">eng_sentence</span> <span class="p">{</span> <span class="k">display</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">#</span><span class="nn">eng_test</span><span class="p">:</span><span class="nd">hover</span> <span class="p">#</span><span class="nn">eng_sentence</span><span class="p">{</span> <span class="k">display</span><span class="p">:</span> <span class="kc">inherit</span><span class="p">;</span> <span class="k">color</span><span class="p">:</span> <span class="mh">#eb4c42</span><span class="p">;}</span>
+</pre></div>
+</td></tr></table>
+</div>
+<h3 id="usage"><a class="toclink" href="#usage">Usage</a></h3>
+<h4 id="contextualizing-existing-cards"><a class="toclink" href="#contextualizing-existing-cards">Contextualizing existing cards</a></h4>
+<p>If you’ve set up Yomichan to include <em>‘yomichan’</em> as tag on new cards, this should be a breeze. Open Anki’s card-browser (by clicking <strong>Browse</strong> or pressing <span class="keys"><kbd class="key-b">B</kbd></span>), select the yomichan tag in the left column, and press <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-a">A</kbd></span> to select all your cards. Next, click Edit <strong>→ Bulk-add examples</strong>.</p>
+<h4 id="contextualizing-imported-cards"><a class="toclink" href="#contextualizing-imported-cards">Contextualizing imported cards</a></h4>
+<p>If you’ve followed above steps, every time you add a new word on-line, it’ll automatically contain example sentences as well.</p>
+<p>Try it out on our next “<strong>Words of the Day</strong>”: <span lang="ja"><ruby><rb>文脈</rb><rp>(</rp><rt>ぶんみゃく</rt><rp>)</rp></ruby></span> | <span lang="ja"><ruby><rb>語彙</rb><rp>(</rp><rt>ごい</rt><rp>)</rp></ruby></span></p>
+<h2 id="example-set"><a class="toclink" href="#example-set">Example Set</a></h2>
+<p>COMING SOON!</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>As usual, I've exported my own copy of this tutorial and uploaded it in case you'd like to compare or save yourself the work of editing the note template yourself.
+
+* **Download**: [Example set Sentences &lt;i class="icon-download-alt"&gt;&lt;/i&gt;](https://www.dropbox.com/s/2lq0d7cn2rqywih/Rikai%20vocab_context.apkg?dl=0)
+</pre></div>
+</td></tr></table>
+<hr/>
+<h2 id="sanseido-japanese-definitions"><a class="toclink" href="#sanseido-japanese-definitions">Sanseido Japanese Definitions</a></h2>
+<p>Note: if you’re using Anki 2.1+, this feature is unsupported yet.</p>
+<p>Support for on-line monolingual dictionary definitions is a feature often requested of Yomichan. Right now, Japanese EPWING dictionaries are supported out-of-box, but these are propriety software and not easy to get a hold of. The author has however expressed some reluctance to adding support for such on-line dictionaries due the instable nature of accessing definitions: through web-scraping. The slightest update to the structure of an on-line dictionary would render the feature unusable.</p>
+<p>That said, I’ve being doing exactly that, automatically web-scraping Japanese dictionary <a href="http://www.sanseido.net/">Sanseido</a> when vocab-mining with Rikaisama / Yomichan, for the past three years without any issues. This part of my post will guide you through setting this up; technically it’s incredibly similar to the Example Sentences sub-guide, so if you’ve come this far it should be a breeze. The result of our work will look as follows:</p>
+<p><img alt="anki-gyakuten" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/anki/anki-gyakuten.jpg" title="anki-gyakuten"/></p>
+<h3 id="download_1"><a class="toclink" href="#download_1">Download</a></h3>
+<p>Again we’ll use an existing Anki add-on: <strong><a href="https://ankiweb.net/shared/info/1967553085">Sanseido Definitions</a></strong>. As usual we’ll install the plug-in using the Desktop Anki application. Go to <strong>Tools → Add-ons → Browse &amp; Install</strong>, and copy-paste <strong>1967553085</strong> in the pop-up dialog. Restart the application to complete the installation.</p>
+<h3 id="set-up_2"><a class="toclink" href="#set-up_2">Set-up</a></h3>
+<p>The ‘note-types’ of the vocabulary you want Japanese definitions for will need a new field to contain the definition. On the desktop Anki application, press <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-n">N</kbd></span>, or click <strong>Tools → Manage Note Types</strong>, to enter the ‘note-type’ management screen. Select the ‘note-type’ of the cards you’d like to contain example sentences and click <strong>fields</strong>.</p>
+<p><img alt="anki-notetype-select" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/anki/anki-notetype-select.jpg" title="anki-notetype-select"/></p>
+<p>On the next screen, click <strong>add</strong> and call the field <code>Sanseido</code>. Now close this screen. On the previous ‘note-type’ management screen, click <strong>cards</strong>. We’ll edit our lay-out and display the new field in our cards.</p>
+<h4 id="anki-note-lay-out"><a class="toclink" href="#anki-note-lay-out">Anki Note Lay-out</a></h4>
+<p><strong>Lay-out</strong></p>
+<p>Add the following CSS code to the shared style screen of your note’s ‘card-type’ template.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">title</span> <span class="p">{</span><span class="k">font-size</span><span class="p">:</span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span> <span class="k">color</span><span class="p">:</span> <span class="mh">#999999</span><span class="p">;}</span>
+</pre></div>
+</td></tr></table>
+<p><strong>Templates</strong></p>
+<p>Add the following code below the line displaying your vocab expression’s definition (e.g. <code>{{Meaning}}</code>). You’ll do this in <strong>Expression → Back Template</strong>, <strong>Meaning → Front Template</strong> and <strong>Audio → Back Template</strong>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>{{#Sanseido}}
+<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"japanese_meaning"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span> <span class="s">"title"</span><span class="p">&gt;</span>Japanese:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span> <span class="s">"japanese"</span> <span class="na">class</span><span class="o">=</span><span class="s">"sanseido"</span><span class="p">&gt;</span>
+{{furigana:Sanseido}}<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Sanseido}}
+</pre></div>
+</td></tr></table>
+<h4 id="bulk-edit"><a class="toclink" href="#bulk-edit">Bulk-edit</a></h4>
+<p>Open Anki’s browser (by pressing <span class="keys"><kbd class="key-b">B</kbd></span> or clicking <strong>Browse</strong> from the main window). The left of this browser has an overview of all your different sets and tags. Select the deck or tag containing the cards you’d like to edit. Press <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-a">A</kbd></span> to select all of those and click <strong>Edit → Regenerate Sanseido Expression</strong>. It will crawl the Internet for each new definition so this might take quite a while.</p>
+<p><img alt="anki-browser2" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/anki/anki-browser2.jpg" title="anki-browser2"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The plug-in expects your vocabulary to be contained in a field called <code>Word</code>. If your field is called Expression, you’ll have to edit this in the plug-in’s python file on your Anki’s add-on folder (e.g. <code>C:\Users\YOUR_USERERNAME\Documents\Anki\addons\sanseidoDefsForAnki.py</code>). Open it with your text-editor of choice and change <code>expressionField = 'Word'</code> to <code>expressionField = 'Expression'</code>.</p>
+</div>
+<p>Finally, as of July 2017, Sanseido’s domain-name changed from .net to .biz. You’ll have to manually edit <strong>sanseidoDefsForAnki.py</strong> again; just search for <code>sanseido.net</code> (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-f">F</kbd></span>) and replace it with <code>sanseido.biz</code>. Alternatively, replace the file with the one on my github repository linked below. <i class="icon-hand-down"></i></p>
+<h4 id="usage-with-yomichan-anki-connect_1"><a class="toclink" href="#usage-with-yomichan-anki-connect_1">Usage with Yomichan / Anki-Connect</a></h4>
+<p>As with the section on example sentences, a drawback to this plug-in when used in combination with our set-up is that it does not support vocabulary formatted to use <em>furigana</em>, and neither can Japanese definitions be added automatically on adding new cards with Yomichan. We’ll have to make some further adjustments.</p>
+<p>I’ve added the edited files on a <a href="https://github.com/steviepoppe/anki_addon_edits/tree/master/yomichan">new repository on my GitHub</a> so go ahead and replace the existing add-on files on your Anki’s add-on folder on your computer (e.g. <code>C:\Users\YOUR_NAME\Documents\Anki\addons</code>) with the ones on there. I’ve described all my edits below in case you’d prefer to do this manually. Feel free to skip this part if you’re not technically inclined.</p>
+<p><strong>sanseidoDefsForAnki.py</strong></p>
+<p>We’ve set up our notes to show <strong>furigana</strong> on our vocabulary. This requires square brackets (e.g. <code>気象庁[きしょうちょう]</code>). The Anki plug-in for Sanseido definitions however does not support this out of the box. For that reason, I’ve added a single line of code that uses a regular expression to only use the contents up to the first square bracket as expression.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">term</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'^[^\[]+'</span><span class="p">,</span><span class="n">term</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+<p>If you’d like to edit this yourself, add the following code as first line in the <code>fetchDef</code> class - it should be around line 27 (<code class="highlight"><span class="k">def</span> <span class="nf">fetchDef</span><span class="p">(</span><span class="n">term</span><span class="p">):</span></code>).</p>
+<p><strong>Anki-Connect.py</strong></p>
+<p>Again, Anki-Connect will run sanseidoDefsForAnki at the point of creating new cards. First, we’ll have to import that extension to be able to call it’s methods. If you’re doing this set-up manually, add the following line near the top, with the other includes (around line 30).</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sanseidoDefsForAnki</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</td></tr></table>
+<p>Next, I’ve written a few lines in the <code>addNote</code> method to call sanseidoDefsForAnki’s glossNote method at run-time and, if examples were found and our ‘note-type’ has the correct destination field, add these to our new card. Again this should come before <code class="highlight"><span class="n">collection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">collection</span><span class="p">()</span></code> around line 700.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># Create sanseido definitions</span>
+<span class="k">try</span><span class="p">:</span> <span class="n">glossNote</span><span class="p">(</span> <span class="n">ankiNote</span> <span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">QMessageBox</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">(),</span> <span class="s1">'AnkiConnect'</span><span class="p">,</span> <span class="s1">'Error, could not create sanseido definition.'</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="n">e</span>
+<span class="k">try</span><span class="p">:</span> <span class="n">ankiNote</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">QMessageBox</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">(),</span> <span class="s1">'AnkiConnect'</span><span class="p">,</span> <span class="s1">'Error, could not create sanseido definition.'</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="n">e</span>
+</pre></div>
+</td></tr></table>
+<h4 id="imported-cards"><a class="toclink" href="#imported-cards">Imported cards</a></h4>
+<p>If you’ve followed above steps, every time you add a new word with Yomichan, it’ll automatically contain a Sanseido dictionary definition as well.</p>
+<p>Try it out on our next “<strong>Words of the Day</strong>”!</p>
+<p><span lang="ja"><ruby><rb>逆転</rb><rp>(</rp><rt>ぎゃくてん</rt><rp>)</rp></ruby></span> | <span lang="ja"><ruby><rb>裁判</rb><rp>(</rp><rt>さいばん</rt><rp>)</rp></ruby></span></p>
+<h3 id="download-example-set"><a class="toclink" href="#download-example-set">Download Example Set</a></h3>
+<p>As usual, I’ve exported my own Anki copy of this tutorial and uploaded it in case you’d like to compare or save yourself the work of editing the note template yourself. This one follow up on the last parts of the guide and is identical to the template I’m using myself.</p>
+<p>COMING SOON</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>**Download**: [Example set Sanseido &lt;i class="icon-download-alt"&gt;&lt;/i&gt;](https://www.dropbox.com/s/9wrpciaawfxeuo5/Rikai%20vocab_jj.apg)
+</pre></div>
+</td></tr></table>
+<h1 id="applications"><a class="toclink" href="#applications">Applications</a></h1>
+<p>I’ve covered several ways of using these tools back in <a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-Anki-and-rikaisama/">2016</a>. Rikaisama and Yomichan cover any format that displays actual Japanese text on your browser. This goes from reading news-articles, social media or HTML-formatted novels (I personally use this method to read Kindle-bought literature), but also HTML5 video-games, or viewing anime on Animelon’s multi-layer subtitled streaming web-app (no affiliation, its free and I just think it’s a pretty cool service).</p>
+<h1 id="rikaisama"><a class="toclink" href="#rikaisama">Rikaisama</a></h1>
+<p>Rikaisama is dead, long live Rikaisama!</p>
+<p>While Firefox broke support of (unsigned) XUL-based add-ons and thus Rikaisama, further usage is still possible through XUL-supporting Firefox-derivatives such as Waterfox, Pale Moon and Basilisk.<sup><a class="footnote-ref" href="#fn-3" id="fnref-3" rel="footnote">4</a></sup></p>
+<p>For day-to-day practices, installing an additional browser seems like an unnecessary bloated approach, but despite its wonderful successor, I’m still quite partial to Rikaisama solely for reading longer texts such as Japanese novels, since Rikaisama’s one-button solution to importing cards into Anki is frankly just more time-efficient as Yomichan. Finally, if you’ve already painstakingly gone through my previous tutorials, this method will require the least amount of additional effort.</p>
+<h2 id="set-up_3"><a class="toclink" href="#set-up_3">Set-up</a></h2>
+<p>All this step requires is downloading one of those Firefox-derivatives and following my prior guides (I’ve gone through them again while setting up Waterfox and they’re still applicable). Personally, I use Yomichan with Chrome on a day-to-day basis, and Rikaisama in combination with Waterfox while reading large texts.</p>
+<p>As for the previous guides on Rikaisama, I’ve added links in the next section. <i class="icon-hand-down"></i></p>
+<h1 id="wait-there-is-more"><a class="toclink" href="#wait-there-is-more">Wait! There is more!</a></h1>
+<p>Although I’ve extensively covered Anki/browser-integration in my 2016 blog series, Rikaisama’s status as legacy software rendered some of my previous writings rather obsolete and it was thus high time for an update. While I’m still keen on Rikaisama using Firefox-alternative Waterfox in certain situations (namely, handling large texts such as novels), I’ve switched to using Yomichan in day-to-day situations. Along with this new post, I’ve slightly updated my previous posts and still recommend them to the completionist. If you’ve any further questions, feel free to check out the other articles in this series on Anki, or to leave a comment below.</p>
+<ul>
+<li><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a>
+<a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">Setting up a perfect vocab-mining environment with Anki and Rikaisama</a></li>
+<li><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">Using Anki’s API to contextualize your vocab cards with example sentences</a></li>
+<li><a href="https://steviepoppe.net/blog/2016/10/a-quick-guide-on-using-anki-4-making-the-switch-j-j-definitions-in-your-vocab-cards/">Making the switch: J-J definitions in your vocab cards</a></li>
+</ul>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn-footnote">
+<p>Image taken from the 2012 Japanese animated film Wolf Children by Mamoru Hosoda, used under Fair Use doctrine. <a class="footnote-backref" href="#fnref-footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn-1">
+<p>If you’re relatively new to the application, I recommend my 2016 post <a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</a>. Although visually bare-bones, Anki has vast possibilities and is both extremely versatile and, due to its many user-made plug-ins, adjustable. <a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn-2">
+<p>Granted, the off-line Yomichan-application that predated the current Yomichan Chrome plug-in covered most of these bases, but in my opinion reading novels on Yomichan was less as ideal and the project has been rendered obsolete since development of the Chrome plug-in took off. <a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+<li id="fn-3">
+<p>It must be said that there’s <a href="https://www.howtogeek.com/335712/update-why-you-shouldnt-use-waterfox-pale-moon-or-basilisk/">benefits and downfalls</a> to each of those derivatives and I don’t specifically recommend you to replace your current browser with one of these unless you know what you’re doing. <a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 4 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+    <hr/>
+        </div>
+
+    <div class="comments">
+        <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'steviepoppe';
+                var disqus_identifier = 'blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/';
+                var disqus_url = 'https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+        <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+                <hr />
+        <div class="category">
+            <h2>Related posts</h2>
+            <dl class="dl-horizontal">
+                <dt>Thu 08 September 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
+                <dt>Tue 14 May 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/05/japanese-e-books-vocab-mining-drm-and-copyright-law/">Japanese E-books, vocab-mining, DRM and copyright law</a></dd>
+                <dt>Sat 15 October 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/10/anki-add-on-japanese-translations-for-korean-vocabulary/">Anki Add-on: Japanese translations for Korean vocabulary</a></dd>
+                <dt>Sun 02 October 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/10/a-quick-guide-on-using-anki-4-making-the-switch-j-j-definitions-in-your-vocab-cards/">A <del>Quick</del> Guide on Using Anki 4: Making the switch - J-J definitions in your vocab cards</a></dd>
+                <dt>Sat 17 September 2016</dt>
+                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">A <del>Quick</del> Guide on Using Anki 3: contextualize your vocab cards with example sentences</a></dd>
+            </dl>
+            </div>
+        <hr />
+    </div>
+
+      <nav class="pagination">
+
+    <span id="older-nav">
+      <a href="https://steviepoppe.net/blog/2018/09/study-trip-around-fukushima-with-chuo-flp-seminar-fukushima-hope-tour/">Older Posts
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="139,512 1024,512 1024,436 139,436 528,47 465,0 0,483 465,948 528,901 "></polygon></svg></a>
+    </span>
+
+    <span id="newer-nav">
+      <a href="https://steviepoppe.net/blog/2019/05/travels-taiwan/">
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="885,512 0,512 0,436 885,436 496,47 559,0 1024,483 559,948 496,901 "></polygon></svg> Newer Posts</a>
+    </span>
+  </nav>
+
+    <script src="https://steviepoppe.net/theme/js/youarehere.min.js"></script>
+    <!-- You can also customize the bar a bit -->
+                </div>
+
+                <footer id="footer" class="footer gradient-2">
+                  <div id="footercontent">
+                    <span itemprop="copyrightHolder">(ɔ) Stevie Poppe 2016 - 2021</span>
+                    <div>
+                      <ul class="footer-nav">                    
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/" class="footer-nav-middle-a footer-nav-first-a">Home</a></li>
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/blog/archives/" class="footer-nav-middle-a ">Archives</a></li>
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/blog/category/" class="footer-nav-middle-a ">Categories</a></li>
+                       <li class=" footer-nav-last ">
+                        <a href="https://steviepoppe.net/blog/tags/" class="footer-nav-middle-a ">Tagcloud</a></li>
+                      </ul>
+                    </div>
+                  </footer>
+                </div>
+
+      <div class="scroll-up" style="display: none;">
+        <a href="#main">&#xfe3f;</a>
+      </div>
+                <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/bootstrap.js"></script>
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/jquery.easing.1.3.js"></script>
+                <!-- <script type="text/javascript" src="https://steviepoppe.net/theme/js/parallax.min.js"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/clipboard.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/slick.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
+
+              </body>
+              </html>

@@ -4,7 +4,17 @@
 
 <head>
   <!-- Stylesheets -->
-  <link href="https://steviepoppe.net/theme/css/all.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/bootstrap.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/nest.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/icons.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/pygment.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+
+  <link href="https://steviepoppe.net//theme/css/magnific-popup.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/admonition.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/keys.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/slick.css" rel="stylesheet">
   <style>
     @import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
     @import 'https://fonts.googleapis.com/css?family=Poiret+One|Quicksand';
@@ -22,16 +32,19 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Those who know me might accuse me of preaching the memorization tool Anki as the best thing that’s ever happened to studying, and they wouldn’t be that far off. Over the past year I’ve extensively integrated this software in my studies, with (to me personally) remarkable results in both productivity and academic grades. There are however, some pitfalls for the casual user to take heed of, and getting the full benefit of your time requires cultivating a proper mindset. As I mention Anki a great deal on this site, I decided on writing my own short guide on setting up and using Anki, as well as describe how I personally integrate it into my studies.">
+  <meta name="description" content="Those who know me well might accuse me of preaching popular memorization tool Anki as a revolution in studying, and they wouldn’t be that far off. Over the past year I have extensively integrated this software in my studies, with (to me personally) remarkable results in both productivity and academic grades. There are, however, some pitfalls for the casual user to take heed of, and getting the full benefit of your time requires cultivating a proper mindset. Considering the amounts of time I mention Anki abundantly on this site, I decided to write my own short guide on setting up and using Anki efficiently, as well as describe how I’ve personally integrated Anki in my studies. Anyone with an interest in studying Japanese will surely have heard of Anki. It’s covered extensively on all major learning resources on-line, and the canonical self learner’s beginner path seems to be that of Heisig’s Kanji method, Tae Kim’s online Grammar Guide, and Core 2K/6K/10K, all three heavily relying on Anki. Language acquisition certainly remains Anki’s most popular usage, although the software has become broad enough to find it’s way in various other branches (it’s become an integrated routine for medical students, for example, as well as math students thanks to LaTeX support). While it sounds like I’m being paid to advertise Anki, the application remains free and open source (and if you don’t like synchronizing your Anki progress over Anki’s servers you could even set that up on your own as well). What is Anki? Why is Anki?! How is Anki?!? To recap: Anki is an extremely customizable application designed for memorization, available for free on nearly all the major devices as well as being accessible online. Being able to study on the road (I commute by train, taking me up to three hours of total traveling time every day) and synchronizing your progress at home is a major boon on using your time practically. There are plenty of studies on methods for efficient learning, and not surprisingly, classic late-night cramming, along passive studying methods as extensive marking and rereading of texts don’t score very high. On the other hand, active recall testing (questioning yourself by actively trying to come up with the answer to a question) and spaced learning (spreading information absorption over long …">
   <meta name="keywords" content="Anki, Tutorial, Japanese, Japan, Study, SRS, Spaced Repetition System">
   <meta name="author" content="Stevie Poppe">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="https://steviepoppe.net/favicon.ico">
 
-  <link rel="shortcut icon" type="image/png" href="https://steviepoppe.net/images/icons/favicon.png">
-  <link rel="shortcut icon" type="image/x-icon" href="https://steviepoppe.net/favicon.ico">
+<link rel="shortcut icon" sizes="196x196" href="https://steviepoppe.net/favicon-192.png">
+
+<link rel="icon" href="https://steviepoppe.net/favicon-32.png" sizes="32x32">
+<link rel="icon" href="https://steviepoppe.net/favicon-96.png" sizes="96x96">
+<link rel="icon" href="https://steviepoppe.net/favicon-128.png" sizes="128x128">
+<link rel="icon" href="https://steviepoppe.net/favicon-192.png" sizes="192x192">
 
   <title>A Quick Guide on Using Anki (effectively) (in an academic context) | Onoreto</title>
 <link rel="canonical" href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-effectively-in-an-academic-context/">
@@ -49,11 +62,11 @@
 
 
               <!-- RSS Feeds -->
-              <link href="https://steviepoppe.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
-              <link href="https://steviepoppe.net/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
-              <link href="https://steviepoppe.net/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
-              <link href="https://steviepoppe.net/feeds/studies.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
-              <link href="https://steviepoppe.net/feeds/studies.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
+              <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
+              <link href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
+              <link href="http://localhost:8000/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
               <!-- /RSS Feeds -->
 
               <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -69,29 +82,110 @@
 
 <meta name="robots" content="index">        </head>
 
-        <body style="background-repeat: repeat; background-position: top left; background-attachment: scroll; background-image: url('https://steviepoppe.net/images/asanoha-400px.png');">
+        <body>
+
+    <!-- OVERLAY MENU -->
+    <div id="overlay-menu" class="overlay-menu">
+
+      <a href="#" id="overlay-menu-hide" class="navigation-hide"><button title="Close (Esc)" type="button" class="mfp-close">×</button></a>
+
+      <div class="overlay-menu-inner">
+        <nav class="overlay-menu-nav">
+
+          <ul id="overflow-nav">
+            <li>
+              <a class="link" href="https://steviepoppe.net"><i class="icon-home icon-menu"></i>Home</a>
+            </li>
+
+            <li class="slidedown"><a href="#"><i class="icon-folder-close icon-menu"></i>Categories</a>
+              <ul>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+              </ul>
+            </li>
+
+<li >
+                            <a class="link" href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a class="link" href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>          </ul>
+        </nav>
+      </div>
+
+      <div class="overlay-navigation-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+                          <ul class="socialnav2 social-icons-footer" style="width: auto;display: inline-block;float: none;">
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          </div>
+            <div class="col-sm-12 text-center">
+              <p class="copyright font-alt m-b-0">(ɔ) Stevie Poppe 2016 - 2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /OVERLAY MENU -->
+
           <div id="wrapper">
 
-            <div class="master">
+            <div class="master scrollingnav">
               <div class="head-container">
 
-                <div class="page-header">
-                  <a href="https://steviepoppe.net" class="avatar-container pull-left">
+                <header class="page-header">
+                  <a href="https://steviepoppe.net" class="avatar-container pull-left show-overlay toggle-menu" title="Menu">
                     <div class="avatar">
                       <div class="side"><img src="https://steviepoppe.net/images/logo2.png" class="img-responsive"/></div>
                     </div>
                   </a>
-                  <h1 style="font-size: 28px; letter-spacing: 1px;"><a href="https://steviepoppe.net">Onoreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
-                </div>
+                  <h1 id="onoreto" title="Onoreto" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">noreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
+                </header>
 
                 <div id="nav-wrapper">
-                  <nav class="navbar navbar-default" id="nav">
+                  <nav class="navbar navbar-default scrollingnav" id="nav">
 
                     <div class="navbar-collapse" id="steviesmenubar">
-                      <div style="float: left;">
+                      <div style="float: left;;margin-left: 20px;">
                         <ul class="nav navbar-nav">
+                          <li id="smallicon">
+<a class="small-nav-menu toggle-menu" href="#" title="Menu" style="color:unset;background-color:unset;transition: none;padding-right: 0px;">
+<img src="https://steviepoppe.net/images/logo2.png" style="border-radius: 50%;height: 25px;margin-top: -5px;margin-right: 5px;">
+</a>
+</li>
 <li class=" ">
-                            <a  href="/"><img id="smallicon" src="https://steviepoppe.net/images/logosmall2.png"><i class="icon-home icon-menu"></i>Blog</a>
+                            <a  href="/"><i class="icon-home icon-menu"></i>Blog</a>
                             </li><li class=" dropdown">
                             <a  class="dropdown-toggle" data-target="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="/blog/category/"><i class="icon-folder-close icon-menu"></i>Categories                              <span class="caret"></span>
 </a>
@@ -111,6 +205,11 @@
                               <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
                                 <i class="icon-linkedin" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
                             </li>
                             <li>
                               <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
@@ -137,8 +236,8 @@
                               </a>
                             </li>
                           </ul>
-                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" > 
-                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input"></form>
+                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" >
+                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input" style="width: 130px;"></form>
                           </div>
 
 
@@ -151,12 +250,12 @@
 
 
                 <div id="main">
-    <div class="container content padding-40" itemscope itemtype="http://schema.org/Article">
-    <div class="container header-wrapper banner" style="background: linear-gradient(rgba(6, 6, 6, 0.61), rgba(0, 0, 0, 0.46)), url('https://steviepoppe.net/images/anki_header2.jpg'); background-position: center; background-size: cover;">
-        <div class="row">
+    <div class="container content padding-40 articleshadow" itemscope itemtype="http://schema.org/Article">
+    <div class="container header-wrapper banner">
+        <div class="row" style="background: linear-gradient(rgba(6, 6, 6, 0.60), rgba(0, 0, 0, 0.60)), url('https://steviepoppe.net/images/anki_header2.jpg'); background-position: center; background-size: cover;">
               <div class="col-lg-12">
                   <div class="header-content center">
-                      <h1 class="header-title nocount"><span itemprop="name">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</span><sup id="fnref:footnote"><a class="footnote-ref imagesource" href="#fn:footnote" rel="footnote">1</a></sup></h1>
+                      <h1 class="header-title nocount"><span itemprop="name">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</span><sup id="fnref-footnote"><a class="footnote-ref imagesource" href="#fn-footnote" rel="footnote">1</a></sup></h1>
                       <p class="header-date"><span itemprop="datePublished" content="2016-09-07">Wed 07 September 2016</span>, in category <a href="https://steviepoppe.net/blog/category/studies/"><span itemprop="articleSection">Studies</span></a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
@@ -170,8 +269,9 @@
     <div class="container-main" itemprop="articleBody">
 <!--         <h1 style="text-align: center;" class="nocount">A <del>Quick</del> Guide on Using Anki (effectively) (in an academic context)</h1>
  -->
-            <nav class="toc">
-            <p class="toc_title">Table of Contents</p>
+            <nav class="toc-container">
+              <input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none">
+            <p class="toc_title">Table of Contents<span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></p>
             <div class="toc">
 <ul>
 <li><a href="#what-is-anki-why-is-anki-how-is-anki">What is Anki? Why is Anki?! How is Anki?!?</a></li>
@@ -197,37 +297,39 @@
             </nav>
         
 
-<p>Those who know me might accuse me of preaching the memorization tool <strong>Anki</strong> as the best thing that’s ever happened to studying, and they wouldn’t be that far off. Over the past year I’ve extensively integrated this software in my studies, with (to me personally) remarkable results in both productivity and academic grades. There are however, some pitfalls for the casual user to take heed of, and getting the full benefit of your time requires cultivating a proper mindset. As I mention Anki a great deal on this site, I decided on writing my own <del><em>short</em></del> guide on setting up and using Anki, as well as describe how I personally integrate it into my studies.</p>
+<p>Those who know me well might accuse me of preaching popular memorization tool <strong>Anki</strong> as a revolution in studying, and they wouldn’t be that far off. Over the past year I have extensively integrated this software in my studies, with (to me personally) remarkable results in both productivity and academic grades. There are, however, some pitfalls for the casual user to take heed of, and getting the full benefit of your time requires cultivating a proper mindset. Considering the amounts of time I mention Anki abundantly on this site, I decided to write my own  <del><em>short</em></del> guide on setting up and using Anki efficiently, as well as describe how I’ve personally integrated Anki in my studies.</p>
 
-<p>Anyone with an interest in studying Japanese will surely already have heard of Anki. It’s covered extensively on all the major learning resources online, and the canonical self learner’s beginner path seems to be <a href="https://en.wikipedia.org/wiki/Remembering_the_Kanji_and_Remembering_the_Hanzi#Heisig.27s_method">Heisig’s Kanji method</a>, Tae Kim’s online <a href="http://www.guidetojapanese.org/learn/grammar">Grammar Guide</a> and Core 2K/6K/10K<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">2</a></sup>, all three heavily relying on Anki. Language acquisition certainly remains Anki’s most popular usage, but lately, the software’s become broad enough to find it’s way in various other branches (it’s become an integrated routine for medical students, for example, as well as math students thanks to LaTeX support). So far this sounds like I’m paid to advertise Anki. Except the software’s <strong>free and open source</strong>, and if you don’t like synchronizing your anki progress over Anki’s servers you could even set that up on your own as well<sup id="fnref-2"><a class="footnote-ref" href="#fn-2">3</a></sup>.</p>
+<p>Anyone with an interest in studying Japanese will surely have heard of Anki. It’s covered extensively on all major learning resources on-line, and the canonical self learner’s beginner path seems to be that of <a href="https://en.wikipedia.org/wiki/Remembering_the_Kanji_and_Remembering_the_Hanzi#Heisig.27s_method">Heisig’s Kanji method</a>, Tae Kim’s online <a href="http://www.guidetojapanese.org/learn/grammar">Grammar Guide</a>, and Core 2K/6K/10K,<sup><a class="footnote-ref" href="#fn-1" id="fnref-1" rel="footnote">2</a></sup> all three heavily relying on Anki. Language acquisition certainly remains Anki’s most popular usage, although the software has become broad enough to find it’s way in various other branches (it’s become an integrated routine for medical students, for example, as well as math students thanks to LaTeX support). While it sounds like I’m being paid to advertise Anki, the application remains <strong>free and open source</strong> (and if you don’t like synchronizing your Anki progress over Anki’s servers you could even set that up on your own as well).<sup><a class="footnote-ref" href="#fn-2" id="fnref-2" rel="footnote">3</a></sup></p>
 <h1 id="what-is-anki-why-is-anki-how-is-anki"><a class="toclink" href="#what-is-anki-why-is-anki-how-is-anki"><em>What</em> is Anki? <em>Why</em> is Anki?! <em>How</em> is Anki?!?</a></h1>
-<p>To recap: Anki is an extremely customizable application designed for memorization, available for free on nearly all the major platforms<sup id="fnref-3"><a class="footnote-ref" href="#fn-3">4</a></sup> as well as being accessable online. Being able to study on the road (I commute by train, taking me up to 3 hours total traveling time every day) and synchronizing your progress at home is a major boon on using your time practically.</p>
-<p>There are plenty of studies on methods for efficient learning, and unsurprisingly, classic late-night cramming, and passive studying methods as extensive marking and rereading of texts don’t score very high. On the other hand, <em><code>active recall testing</code></em> (questioning yourself by actively trying to come up with the answer to a question) and <em><code>spaced learning</code></em> (spreading information absorption over long periods of time) are concidered key<sup id="fnref-4"><a class="footnote-ref" href="#fn-4">5</a></sup>. Anki is an application that achieves both through the means of timed flashcards. The concept is simple: the front of the card asks you a question and the backside displays the answer. After showing the answer, <em>you</em> decide whether you got it wrong or right, and to what degree. This determines when you’ll be confronted by this card again.</p>
+<p>To recap: Anki is an extremely customizable application designed for memorization, available for free on nearly all the major devices<sup><a class="footnote-ref" href="#fn-3" id="fnref-3" rel="footnote">4</a></sup> as well as being accessible online. Being able to study on the road (I commute by train, taking me up to three hours of total traveling time every day) and synchronizing your progress at home is a major boon on using your time practically.</p>
+<p>There are plenty of studies on methods for efficient learning, and not surprisingly, classic late-night cramming, along passive studying methods as extensive marking and rereading of texts don’t score very high. On the other hand, <em><code>active recall testing</code></em> (questioning yourself by actively trying to come up with the answer to a question) and <em><code>spaced learning</code></em> (spreading information absorption over long periods of time) are considered key instruments.<sup><a class="footnote-ref" href="#fn-4" id="fnref-4" rel="footnote">5</a></sup> Anki is an application that achieves both through timed flashcards. The concept is simple: the front of the card displays a question and the backside displays the answer. After showing the answer, you decide whether, and to what extent, you’ve passed. A highly optimized algorithm uses said information to determine the card’s next appearance.</p>
 <h1 id="the-guide"><a class="toclink" href="#the-guide">The Guide</a></h1>
 <h2 id="setting-up"><a class="toclink" href="#setting-up">Setting up!</a></h2>
 <h3 id="download-install"><a class="toclink" href="#download-install">Download &amp; Install</a></h3>
-<p class="right"><img alt="right" src="https://steviepoppe.net/images/anki/anki-download.png" style="width: 274px; height: auto; max-width: 100%;"/></p>
-<p>Download the application for whatever system you’d like it on <a href="http://ankisrs.net/">Anki’s homepage</a> and follow the installer’s steps. I highly recommend purchasing a lower-end smartphone if you’re still using a brick as cellphone. It’s somewhat of a steep investment, but worth it in the long run (not just for Anki but plenty of other learning tools such as dictionaries or OCR tools<sup id="fnref-5"><a class="footnote-ref" href="#fn-5">6</a></sup>). Anki’s layout, especially the desktop application, is pretty barebones but functional and self-explanatory enough to get used to in a couple of minutes.</p>
+<p><img alt="anki-download" class="right" src="https://steviepoppe.net/images/anki/anki-download.png" title="anki-download"/></p>
+<p>Download the application for whatever system you’d like on <a href="http://ankisrs.net/">Anki’s homepage</a> and follow the installer’s steps. I highly recommend investing into a lower-end smart-phone if you don’t own one already and installing a mobile variant of Anki as well. Might be somewhat of a steep investment, but I believe it’s definitely worth the cost in the long run (not just for Anki but plenty of other learning tools such as dictionaries or OCR tools).<sup><a class="footnote-ref" href="#fn-5" id="fnref-5" rel="footnote">6</a></sup> Anki’s layout, especially the desktop application, is pretty bare-bones (although functional and self-explanatory enough to get used to in a couple of minutes).</p>
 <h3 id="account-syncing"><a class="toclink" href="#account-syncing">Account &amp; Syncing</a></h3>
-<p>To be able to syncronize your progress over different devices you’ll have to register an account at Anki’s <a href="https://ankiweb.net/account/register">web service</a> (I definitely encourage doing this regardless: just imagine the horror if your device breaks down after 3 years of having intensively studied flashcards).</p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/ankiweb-reg.jpg" style="width: 250px; height: auto; max-width: 100%;"/></p>
-<p>In your desktop Anki, open <strong>Settings</strong> → <strong>Preferences</strong> from the menu, then select the <strong>Network</strong> tab and insert your user credidentials. From the Anki’s main menu, select the <em>syncing</em> icon to try it out.</p>
-<p>Now do the same on your mobile device. On Ankidroid this is <strong>Settings</strong> → <strong>AnkiDroid</strong> → <strong>AnkiWeb Account</strong>. Make sure the “<strong>Download Media</strong>” checkbox below “<strong>Synchronize</strong>” is marked <i class="icon-check"></i>!</p>
-<p>Now try syncing from this device as well. If everything goes well, we’ll start with our first set.</p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/ankipc-sync.jpg" style="width: 370px; height: auto; max-width: 100%;"/></p>
+<p>To synchronize your progress over different devices you’ll have to register an account on Anki’s <a href="https://ankiweb.net/account/register">web service</a> (I definitely encourage doing this regardless: just imagine the horror if your device breaks down after 3 years of having intensively studied thousands upon thousands of flashcards).</p>
+<p><img alt="ankiweb" class="border fcenter" src="https://steviepoppe.net/images/anki/ankiweb-reg.jpg" title="ankiweb"/></p>
+<p>On your desktop Anki, open <strong>Settings</strong> → <strong>Preferences</strong> from the menu, then select the <strong>Network</strong> tab and insert your user credentials. From the Anki’s main menu, select the <em>syncing</em> icon.</p>
+<p>Now do the same on your mobile device. On Ankidroid this is <strong>Settings</strong> → <strong>AnkiDroid</strong> → <strong>AnkiWeb Account</strong>. Make sure the “<strong>Download Media</strong>” check-box below “<strong>Synchronize</strong>” is marked <i class="icon-check"></i>!</p>
+<p>Now try syncing from this device as well. If everything goes well, we’ll start with our first set right away.</p>
+<p><img alt="anki-ankipc-sync" class="border fcenter" src="https://steviepoppe.net/images/anki/ankipc-sync.jpg" title="anki-ankipc-sync"/></p>
 <h2 id="creating-your-first-set-and-cards"><a class="toclink" href="#creating-your-first-set-and-cards">Creating your first set and cards!</a></h2>
-<p>It’s best to consider Anki’s main interface as a container for your decks (also called sets) of flashcards. There’s no content yet on a fresh install, aside from a filler deck called <code>Default</code>. Feel free to remove this (set-specific options are available through the icon on the right of each set). There’s a lot of premade content on the internet, but in order to get used to the interface and learn some of the base features, we’ll create a small set, set up a template for our notes, and create some cards - <em>all by ourselves</em>. Don’t worry if the terminology doesn’t make sense yet, we’ll cover that over this guide. </p>
-<p>As an example we’ll create a deck containing some important dates, events and notables in Japanese history. Start by clicking the <strong>Create Deck</strong> button in the bottom bar, and name it <code>Japanese History</code> or something. We’ll create two more decks, <code>0 - Important dates</code> and <code>1 - Meiji</code>. Click and drag these right under the original Japanese History set to make subdecks out of them, as shown below. Anki orders sets alphabetically, so I often use numbers to realize my intended structure.</p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-main.jpg" style="width: 331px; height: auto; max-width: 100%;"/></p>
+<p>It’s best to consider Anki’s main interface as a container for your decks (also called sets) of flashcards. Aside from a filler deck called <code>Default</code>, there’s no content as to speak of yet on a fresh install. Feel free to remove that one (set-specific options such as deletion are accessible through the icon on the right of each set). There’s a lot of pre-made content on the internet, but in order to get used to the interface and learn some of the base features, we’ll create a small set, set up a template for our notes, and create some cards <em>all by ourselves</em>. Don’t worry if the terminology doesn’t make sense yet, we’ll cover that over this guide.</p>
+<p>To demonstrate, we’ll create a set containing some important dates, events and notables in Japanese history. Click the Create Set button in the bottom bar, and feel free to name it something along <code>Japanese History 101</code>. We’ll create two more sets, <code>0 - Important dates</code> and <code>1 - Meiji</code>. Click and drag these right below the original Japanese History set to make ‘sub-decks’ (child-nodes) out of them, as shown below. Anki orders sets alphabetically, so I often use numbers to realize my intended structure.</p>
+<p><img alt="ankimain" class="border fcenter" src="https://steviepoppe.net/images/anki/anki-main.jpg" title="ankimain"/></p>
 <p>Now click on <em>“1 - Meiji”</em> to enter that set. As there’s no content yet you’ll get an appropriate congratulatory message. Doesn’t matter, we’re on a different mission now, <em>on a mission to create</em>. Click on <strong>Add</strong> to start on your first card. This is how it will look like in the end.</p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-itocard.jpg" style="width: 250px; height: auto; max-width: 100%;"/></p>
-<p>Before starting, it’s a good thing to note you’ll never actually create your own cards directly. Instead, what you’re actually making in this screen is a <strong>note</strong>, a kind of blueprint containing all information relevant to a certain subject. This is useful because you’ll often want different kinds of cards on the same subject. A note on a particular foreign word might contain the original, the translation, an audio file and an example sentence. If notes are blueprints for cards, note-types are blueprints for notes. Using this data, you could set up the note-type to generate three cards: one on visual recognition, one on oral recognition, and one on production, all three containing the example sentence along the answer. I made a brief, crude diagram trying to visualize the result of this tutorial. It’s not 100% correct but as I’m trying to keep it simple, it should be sufficient.</p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-diagram.jpg" style="width: 500px; height: auto; max-width: 100%;"/></p>
-<p>A set or subset contains notes. As mentioned above, those notes have a note-type and include settings like the amount of fields it contains. In a note-type, you’ll also specify card-types. Card-types serve as blueprint for the actual cards you’ll study: it determines things like which fields are shown and the actual layout. Thus when you create a new note, it’ll generate cards based on the card-types contained in your note’s note-type. If this doesn’t make sense yet, don’t worry, you’ll get it doing this tutorial.</p>
-<p class="right border"><img alt="right border" src="https://steviepoppe.net/images/anki/anki-ito.jpg" style="width: 75px; height: auto; max-width: 100%;"/></p>
-<p><code>Type:Basic</code> means we’ll create, unsurprisingly, a note of the <code>basic</code> type. These notes have only two fields (a front and back), and only one generated card: one that shows you the front as query, and the back as response. We’ll create a new note-type in a second, but for our first note this is fine: a card on <strong>Ito Hirobumi</strong>, an important figure in the modernization of Japan during the 19th century, using below’s explanation. Inserting images is easily done by copy/paste. As example, copy Ito’s portrait on the right and paste it in your <em>Create Note</em> screen.</p>
+<p><img alt="itocard" class="border fcenter" src="https://steviepoppe.net/images/anki/anki-itocard.jpg" title="itocard"/></p>
+<p>While it might sound somewhat contradictory, I should mention you’ll never actually create ‘cards’ (at least, in Anki-jargon) directly. Instead, what you’re actually making now is a <strong>‘note’</strong>, a kind of blueprint containing all information relevant to a certain topic. This is useful because you’ll often want different cards questioning you on the same subject. A so-called ‘note’ on a particular foreign word might contain said foreign word, its translation, an audio reading and an example sentence. Based on this note, you’d be able to generate several cards questioning based on the foreign word, on the translation, or on the audio.</p>
+<p>This requires more jargon. Following my explanation, ‘notes’ are blueprints for creating cards and so-called <strong>note-types</strong> are blueprints for ‘notes’. If we want ‘notes’ with data on a foreign word, as well as its translation, an audio reading and an example sentence, we’ll need a note-blueprint (note-type) with four fields: ‘term’, ‘translation’, ‘audio’ and ‘example sentence’. Based on this note-type, we’ll be able to create notes on foreign vocabulary to our heart’s extent.</p>
+<p>Generation and styling of the actual ‘cards’ will also be set up in said ‘note-type’. Following through our language example, we might want to generate three cards: one questioning you on visual recognition (a certain term), one on oral recognition (audio), and one on production (translation), with all three displaying an example sentence along your answer. I made a brief, crude diagram trying to visualize the result of this tutorial.</p>
+<p><img alt="anki-diagram" class="border fcenter" src="https://steviepoppe.net/images/anki/anki-diagram.jpg" title="anki-diagram"/></p>
+<p>We’re almost done. Earlier, we made a ‘set’. A ‘set’ (or it’s child-set) contains ‘notes’. As mentioned above, those ‘notes’ belong to a certain note-type and include settings like the amount of fields it contains. In a ‘note-type’, you’ll also specify <strong>‘card-types’</strong>. ‘Card-types’ serve as blueprint for the actual ‘cards’ you’ll study: they determine the lay-out side of things: which fields are shown and how are they made up. To summarize in this article’s most confusing sentence to date: when create a new <strong>‘note’</strong>, it will generate <strong>‘cards’</strong> based on the ‘card-types’ contained in your note’s <strong>‘note-type’</strong>. If this doesn’t make sense yet, don’t worry, you’ll get it soon enough by doing this tutorial.</p>
+<p><img alt="anki-ito" class="border right" src="https://steviepoppe.net/images/anki/anki-ito.jpg" title="anki-ito"/></p>
+<p><code>Type:Basic</code> means we’ll create, unsurprisingly, a note of the <code>basic</code> type. These notes have only two fields (a ‘front’ and ‘back’), and only one generated card: one that shows you the ‘front’ as query, and the ‘back’ as response. We’ll create a new note-type in a second, but for our first note this is fine: a card on <strong>Ito Hirobumi</strong>, an important figure in the modernization of Japan during the 19<sup>th</sup> century, using the brief summary below. Inserting images is through copy-pasting. As example, copy Ito’s portrait on the right and paste it in your <em>Create Note</em> screen.</p>
 <blockquote>
-<p><strong>Who</strong> </p>
+<p><strong>Who</strong></p>
 <p>Lower-rank Samurai in Choshu - politician - <strong>4x PM</strong> -  Resident-General of (protectorate) Korea - <em>founding father of Modern Japan</em> - assassinated by a Korean nationalist.</p>
 <p><strong>When</strong></p>
 <p>1841 - 1909</p>
@@ -236,45 +338,51 @@
 <p><strong>What</strong></p>
 <p>Originally a <strong>sonno joi</strong> movement member before foreign studies. On return, warned Japan against Shimonoseki passage war. Set up a cabinet and tax system, became prime minister and set up <strong>Meiji Constitution</strong>. Also important for the removal of several Unequal Treaties.</p>
 </blockquote>
-<p class="right border"><img alt="right border" src="https://steviepoppe.net/images/anki/anki-firstcard.jpg" style="width: 350px; height: auto; max-width: 100%;"/></p>
-<p>It’s a good practice to properly tag your cards as well. You can add multiple tags, separating them with spaces. This allows for quick sorting in Anki’s card browser. You’ll end up with something like the screenshot to the right. Now finish up by clicking <strong>add</strong>. Congrats, keep this up and you’ll breeze through your exams!</p>
+<p><img alt="firstcard" class="hwimportant border right" src="https://steviepoppe.net/images/anki/anki-firstcard.jpg" title="firstcard"/></p>
+<p>It’s a good practice to properly ‘tag’ your cards as well. You can add multiple tags, separating them with spaces. This allows for quick sorting in Anki’s card browser. You’ll end up with something like the screen-shot to the right. Finish up by clicking <strong>add</strong>. Congrats, keep this up and you’ll be breezing through your exams in no time!</p>
 <h3 id="creating-your-own-cards-efficiently"><a class="toclink" href="#creating-your-own-cards-efficiently">Creating your own cards… <em>Efficiently</em>!</a></h3>
-<p>Our first ‘efficient’ card will be one on a tipping point in recent Japanese history: the <strong>Meiji Restoration</strong> in <strong>1868</strong>. We’ll create a new note type that generates two cards, and finally, alter the basic template to allow furigana displayal on touch. This one’s meant to get a feeling on Anki’s diverse extension options. You’ll end up with these cards:</p>
-<p class="center border center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-meiji1.jpg" style="width: 250px; height: auto; max-width: 100%;"/>
-<img alt="center border" src="https://steviepoppe.net/images/anki/anki-meiji2.jpg" style="width: 250px; height: auto; max-width: 100%;"/></p>
+<p>Our first ‘efficient’ card will be one on what is considered a tipping point in recent Japanese history: the <strong>Meiji Restoration</strong> in <strong>1868</strong>. First we’ll create a new ‘note-type’ to generate two ‘cards’, and next, alter the basic template of the ‘card-type’ belonging to the ‘note-type’ to allow pop-up <em>furigana</em> on touch. This one’s meant to get a feeling on Anki’s diverse extension options. You’ll end up with these cards:</p>
+<p class="hwimportant center border hwimportant center border"><img alt="hwimportant center border" src="https://steviepoppe.net/images/anki/anki-meiji1.jpg" style="width: 250px; height: auto; max-width: 100%;"/>
+<img alt="hwimportant center border" src="https://steviepoppe.net/images/anki/anki-meiji2.jpg" style="width: 250px; height: auto; max-width: 100%;"/></p>
 <p>First, switch sets to the ‘<em>0 - Important dates</em>‘ subset. If you’re still on the previous add-screen, switch sets by clicking on the corresponding set button near the top right.</p>
-<p>There are various ways of creating a new note type. For now, just click on the <strong>basic</strong> type, then <strong>manage</strong> on your next dialogue screen, and <strong>add</strong> on the one thereafter. Select the first option, and name it something like <code>DateEventDetail</code>. Return and select this new type as your active note type.</p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-newtype.jpg" style="width: 365px; height: auto; max-width: 100%;"/></p>
-<p>Next up, you’ll be editting this note’s fields. You’ll want a note that: </p>
+<p>There are various ways of creating a new ‘note-type’. For now, just click on the <em>basic</em> type, then <em>manage</em> on your next dialog screen, and add on the one thereafter. Select the first option, and name it something like <code>DateEventDetail</code>. Return and select this new type as your active ‘note-type’.</p>
+<p><img alt="newtype" class="border fcenter" src="https://steviepoppe.net/images/anki/anki-newtype.jpg" title="newtype"/></p>
+<p>Next up, you’ll be editing the this note-type to contain three fields. You’ll want a ‘note’ that:</p>
 <ol>
-<li>contains the event’s specific <em>date</em> (<code>1868</code>), </li>
-<li>the event’s <em>name</em> (<code>Meiji Restoration</code>) </li>
-<li>a field for more <em>detailed information</em>. </li>
+<li>contains the event’s specific <em>date</em> (<code>1868</code>),</li>
+<li>the event’s <em>name</em> (<code>Meiji Restoration</code>)</li>
+<li>a field for more <em>detailed information</em>.</li>
 </ol>
-<p>Thus in the field screen, add a new field called <code>Detail</code>, and <strong>rename</strong> (don’t delete) the other two to <code>Date</code> and <code>Event</code>.</p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-newfield.jpg" style="width: 367px; height: auto; max-width: 100%;"/></p>
-<p>Go ahead and add data in our fields. For the detail field, copy-paste below’s text. Copy-pasting doesn’t include below’s layout however, so you’ll have to do this manually using the toolbar demonstrated in below’s screenshot (or using classic shortcuts as <kbd>ctrl-b</kbd> used in other text-editors). When finished, don’t click on <strong>add</strong> just yet!</p>
-<p class="center"><img alt="center" src="https://steviepoppe.net/images/anki/anki-layout.png" style="width: 257px; height: auto; max-width: 100%;"/></p>
+<p>Thus in the field screen, add a new field called <code>Detail</code>, and <strong>rename</strong> the other two to <code>Date</code> and <code>Event</code>.</p>
+<p><img alt="newfield" class="border fcenter" src="https://steviepoppe.net/images/anki/anki-newfield.jpg" title="newfield"/></p>
+<p>Let’s close this screen and add same data to our fields. For the <code>Detail</code> field, copy-paste the following text. Copy-pasting doesn’t include our preferred layout yet; we’ll do this manually using the tool-bar demonstrated in the screen-shot below (or using classic shortcuts as <kbd>ctrl-b</kbd> used in other text-editors). <code>Date</code> and <code>Event</code> will respectively contain <code>1868</code> and <code>Meiji Restoration</code>. When finished, don’t click on <strong>add</strong> just yet!</p>
+<p><img alt="layout" class="border fcenter" src="https://steviepoppe.net/images/anki/anki-layout.png" title="layout"/></p>
 <blockquote>
 <p><strong>Cause</strong></p>
 <p>Commodore <strong>Matthew C. Perry</strong> (Convention of Kanagawa) - unequal treaties (Harris Treaty) - <strong>sonno joi</strong> movement</p>
 <p><strong>Rise</strong></p>
-<p>Satsuma-Choshu Alliance - resignation of <strong>Tokugawa Yoshinobu</strong> (15th and last Tokugawa Shogun) - Boshin War</p>
+<p>Satsuma-Choshu Alliance - resignation of <strong>Tokugawa Yoshinobu</strong> (15<sup>th</sup> and last Tokugawa Shogun) - Boshin War</p>
 <p><strong>Key points</strong></p>
 <ol>
 <li><em>Restoration of imperial rule</em>: return of the Emperor’s practical abilities</li>
 <li><em>The end of Sakoku policy</em>, as well as the Bushi dominated Bakufu, and 265 years of rule by Tokugawa Shogunate</li>
 <li><em>Five Charter Oath</em> promulgated at Emperor Meiji’s enthronement.</li>
-<li>“<em>one reign, one era name</em>” (<span lang="ja"><ruby><rb>一世一元</rb><rp>(</rp><rt>いっせいいちげん</rt><rp>)</rp></ruby></span> ) system adopted: the start of eras named after their emperor. </li>
+<li>“<em>one reign, one era name</em>” (<span lang="ja"><ruby><rb>一世一元</rb><rp>(</rp><rt>いっせいいちげん</rt><rp>)</rp></ruby></span> ) system adopted: the start of eras named after their emperor.</li>
 </ol>
 <p><strong>Effect</strong></p>
-<p><strong>Meiji constititution</strong> (<em>Ito Hirobumi</em>, 1890) - abolition of the han system  (<span lang="ja"><ruby><rb>廃藩置県</rb><rp>(</rp><rt>はいはんちけん</rt><rp>)</rp></ruby></span>) - abolition of the four class system (<span lang="ja"><ruby><rb>士農工商</rb><rp>(</rp><rt>しのうこうしょう</rt><rp>)</rp></ruby></span>) - land and tax reforms - nationwide subscription - <strong>satsuma rebellion</strong> - Rapid industrialization - <span lang="ja"><ruby><rb>富国強兵</rb><rp>(</rp><rt>ふこくきょうへい</rt><rp>)</rp></ruby></span> and militarization </p>
+<p><strong>Meiji constititution</strong> (<em>Ito Hirobumi</em>, 1890) - abolition of the han system  (<span lang="ja"><ruby><rb>廃藩置県</rb><rp>(</rp><rt>はいはんちけん</rt><rp>)</rp></ruby></span>) - abolition of the four class system (<span lang="ja"><ruby><rb>士農工商</rb><rp>(</rp><rt>しのうこうしょう</rt><rp>)</rp></ruby></span>) - land and tax reforms - nationwide subscription - <strong>satsuma rebellion</strong> - Rapid industrialization - <span lang="ja"><ruby><rb>富国強兵</rb><rp>(</rp><rt>ふこくきょうへい</rt><rp>)</rp></ruby></span> and militarization</p>
 </blockquote>
-<p>Finally, we’ll change the cards generated out of this note. Click on the <strong>Cards</strong> button and take a good look around. Terms in double brackets (eg. <code>{{Event}}</code>) are variables and represent either your note’s fields or its front/backside (eg. <code>{{FrontSide}}</code>). Through tags as <code>&lt;br&gt;</code> and <code>&lt;hr&gt;</code>, you might notice cards use HTML (the markup language used in webdevelopment), while the style-screen in the middle defines your card’s style using CSS (the same standard used for layouting in webdesign): stuff like colors, font-types, etc. Note that, while it could help, you really don’t need any experience in these to make nice cards.</p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-cardtype.jpg" style="width: 393px; height: auto; max-width: 100%;"/></p>
-<p>Start by editting your current card. Name it <code>date</code> by clicking <strong>more</strong> → <strong>rename</strong>. </p>
+<p>Finally, we’ll change the ‘cards’ generated out of this ‘note’. Click on the <strong>Cards</strong> button and take a look around. Terms in double brackets (eg. <code>{{Detail}}</code> or <code>{{Date}}</code>) are variables and represent either your note’s fields or its front/backside (eg. <code>{{FrontSide}}</code>). Through tags as <code>&lt;br&gt;</code> and <code>&lt;hr&gt;</code>, you might notice cards use HTML (a markup language used in web-development), and the style-screen in the middle of the window defines your card’s style using CSS (a language standard for web design): colors, font-types, etc. Note that although it could help, you really don’t need any experience in these to make useful cards.</p>
+<p><img alt="cardtype" class="border fcenter" src="https://steviepoppe.net/images/anki/anki-cardtype.jpg" title="cardtype"/></p>
+<p>Start by editing your current card. Name it <code>date</code> by clicking <strong>more</strong> → <strong>rename</strong>.</p>
 <p>Next you’ll want to add the contents of your detail field to your backside’s template. <code>&lt;br&gt;&lt;br&gt;</code> creates two line breaks in HTML, adding sufficient room between the content of the two fields.</p>
-<div class="codehilite"><pre><span></span>    {{FrontSide}}
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    {{FrontSide}}
 
     <span class="p">&lt;</span><span class="nt">hr</span> <span class="na">id</span><span class="o">=</span><span class="s">answer</span><span class="p">&gt;</span>
 
@@ -282,17 +390,22 @@
     <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
     {{Detail}}
 </pre></div>
-<p>Now click on the <code>+</code> button in the upper-right corner to add a new card. Name it <code>Event</code>. This time you’ll edit the templates of the front and back to question you on the event’s date along the details by switching the <code>{{Event}}</code> and <code>{{Date}}</code> variables around (there’s a button for that, but try it manually to get a feel on variables / templates). Give if a shot.</p>
-<p class="right border"><img alt="right border" src="https://steviepoppe.net/images/anki/anki-secondcard.jpg" style="width: 327px; height: auto; max-width: 100%;"/></p>
-<p>When finished, you should now have something similar to the screenshot on the left. If you’re still with me, I’d like to introduce you one last useful feature (for now). This one might be less relevant for those not studying Japanese, but honestly, it’s a neat one to keep in mind when designing your cards (I occasionally use it outside language-learning as well). Remember those kanji up there? They had furigana<sup id="fnref-6"><a class="footnote-ref" href="#fn-6">7</a></sup> on top. We’d probably want this in our cards as well. Luck goes it setting this up is extremely simple and support comes out-of-the-box: just add <code>furigana:</code> (all lower-caps) in front of your field variables in the card-note template screen you’re in, eg. <code>{{Detail}}</code> becomes <code>{{furigana:Detail}}</code> (you won’t see any visible changes yet as we haven’t added the actual furigana in our text itself yet). </p>
-<p>Actually, to accomodate Japanese learners, we’ll take away the crutches of kana reading aids and let it display only on touch. Add the CSS below to the bottom of your note’s style (the one in the middle). This hides all furigana (or rather, ruby annotations) by default and displays them upon touch or hover.</p>
-<div class="codehilite"><pre><span></span><span class="nt">ruby</span> <span class="nt">rt</span> <span class="p">{</span> <span class="k">visibility</span><span class="p">:</span> <span class="kc">hidden</span><span class="p">;</span> <span class="p">}</span>
+</td></tr></table>
+<p>This card will question you on the date: What happened in 1868? That’s right, the Meiji Period. Have some extra information!</p>
+<p>Now click on the <code>+</code> button in the upper-right corner to add a new card to generate. Name it <code>Event</code>. This time you’ll edit the templates of the front and back by switching the <code>{{Event}}</code> and <code>{{Date}}</code> variables around; this will question you what happened on the event’s date. Meiji Period? Oh yeah, 1868.</p>
+<p><img alt="secondcard" class="hwimportant border right" src="https://steviepoppe.net/images/anki/anki-secondcard.jpg" title="secondcard"/></p>
+<p>When finished, you should now have something similar to the screen-shot on the left. Useful, right? That’s just the start of how extensible this tool really is!</p>
+<p>If you’re still with me, I’d like to introduce you one last useful feature (for now). This one might be less relevant for those not studying Japanese, but honestly, it’s a neat one to keep in mind when designing your cards (I occasionally use it outside language-learning as well). Remember those Japanese characters up there? They had <em>furigana</em><sup><a class="footnote-ref" href="#fn-6" id="fnref-6" rel="footnote">7</a></sup> on top. We’d probably want this in our cards as well. Luck goes it setting this up is extremely simple and support comes out-of-the-box: just add <code>furigana</code>: (all lower-caps) in front of your field variables in the card-note template screen you’re in, eg. <code>{{Detail}}</code> becomes <code>{{furigana:Detail}}</code> (you won’t see any visible changes yet as we haven’t added the actual <em>furigana</em> in our text itself yet).</p>
+<p>Actually, to accommodate Japanese learners, we’ll take away the crutches of kana-reading aids and let it display only on click/touch. Add the CSS below to the bottom of your note’s style (the one in the middle). This hides all <em>furigana</em> (or rather, ruby annotations) by default and displays them upon touch or hover.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">ruby</span> <span class="nt">rt</span> <span class="p">{</span> <span class="k">visibility</span><span class="p">:</span> <span class="kc">hidden</span><span class="p">;</span> <span class="p">}</span>
 <span class="nt">ruby</span><span class="p">:</span><span class="nd">hover</span> <span class="nt">rt</span> <span class="p">{</span> <span class="k">visibility</span><span class="p">:</span> <span class="kc">visible</span><span class="p">;</span> <span class="p">}</span>
 </pre></div>
-<p>Now, add the actual furigana, contained in square brackets, next to their respective words: eg. <code>一世一元[いっせいいちげん]</code>, <code>廃藩置県[はいはんちけん]</code>, <code>士農工商[しのうこうしょう]</code>, and <code>富国強兵[ふこくきょうへい]</code>. When done, let’s wrap things up by clicking <strong>add</strong>.</p>
+</td></tr></table>
+<p>Now, add the actual <em>furigana</em> (contained in square brackets) next to their respective words: eg. <code>一世一元[いっせいいちげん]</code>, <code>廃藩置県[はいはんちけん]</code>, <code>士農工商[しのうこうしょう]</code>, and <code>富国強兵[ふこくきょうへい]</code>. When done, let’s wrap things up by clicking <strong>add</strong>.</p>
 <hr/>
-<p>Now that you’ve created your first set(s) and a couple of cards, I <strong>highly recommend</strong> changing the studying settings tied to your sets as well. Out of the box, <strong>Anki will add 20 new cards and allow only 100 repetitions a day</strong>. This is highly inefficient. We’ll want to remove the top barrier and be in control of the amount of new cards we study.</p>
-<p class="center border"><img alt="center border" src="https://steviepoppe.net/images/anki/anki-decksettings.jpg" style="width: 294px; height: auto; max-width: 100%;"/></p>
+<p>Now you’ve created your first set(s) and a couple of cards, I <strong>highly recommend</strong> changing the studying settings tied to your sets as well. Out of the box, <strong>Anki will add 20 new cards and allow only 100 repetitions a day</strong>. This is highly inefficient. We’ll want to remove the top barrier and be in control of the amount of new cards we study.</p>
+<p><img alt="decksettings" class="border fcenter" src="https://steviepoppe.net/images/anki/anki-decksettings.jpg" title="decksettings"/></p>
 <p>Open your main deck’s settings by clicking the icon to the right and selecting settings. Don’t worry, these settings pertain all sets fixed to this “option group”, so you won’t have to do this manually for all your new sets. Edit these three elements:</p>
 <ul>
 <li><strong>New Cards</strong>: new cards/day -&gt; <code>0</code></li>
@@ -305,43 +418,42 @@
 <li><strong>Download</strong>: <a href="https://www.dropbox.com/s/4xtfwgzgg752y7f/Japanese%20History.apkg?dl=0">Example set Japanese History <i class="icon-download-alt"></i></a></li>
 </ul>
 <h3 id="your-first-set-efficiently"><a class="toclink" href="#your-first-set-efficiently">Your first set…  <em>Efficiently</em>!</a></h3>
-<p>If you’re starting on a new language, you’ll probably want to start by learning basic vocabulary common in every language (eg. words such as “person”, “name”, etc). If that’s the case, there’s no need to reinvent the wheel: look for premade decks and eventually adjust the card lay-out to your own liking. Anki’s own <a href="https://ankiweb.net/shared/decks/">shared deck repository</a> is a good place to start.</p>
-<p>If there’s no premade decks to your liking, but you have access to large data files such as large word lists, another solution would be to import CSV<sup id="fnref-7"><a class="footnote-ref" href="#fn-7">8</a></sup> files or other forms of text seperated by tabs or semicolons and mapping the contents to your note’s fields. An added benefit of this approach is it’s suitability for group (or class) work, by setting up a googledoc sheet, and through a joint-effort creating a large spreadsheet everyone could export as CSV. If there’s demand, I could hack up a small (we’ll see) guide on setting this up.</p>
-<p>Personally, I’ve set up my environment to import any new Japanese word I encounter online and would like to study straight into anki with audio and dictionary definitions. As this goes beyond the scope of this article, I’ve written <a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">another tutorial</a> on that, and definitely recommend that approach for Japanese learners.</p>
+<p>If you’re starting on a new language, you’ll probably want to start by learning basic vocabulary common in every language (eg. words such as “person”, “name”, etc). If that’s the case, there’s no need to reinvent the wheel: look for pre-made decks and if you will, adjust the card lay-out to your own liking. Anki’s own <a href="https://ankiweb.net/shared/decks/">shared deck repository</a> is a good place to start.</p>
+<p>If there are no pre-made decks to your liking, but you have access to large data files such as large word lists, another solution would be to import CSV<sup><a class="footnote-ref" href="#fn-7" id="fnref-7" rel="footnote">8</a></sup> files or other forms of text separated by tabs or semicolons and mapping the contents to your note’s fields. An added benefit of this approach is it’s suitability for group (or class) work, by setting up a googledoc sheet, and through a joint-effort creating a large spreadsheet everyone could export as CSV. If there’s demand, I could hack up a small (we’ll see) guide on setting this up.</p>
+<p>Personally, I’ve set up my environment to import any new Japanese word I encounter on-line and would like to study straight into Anki with audio and dictionary definitions. As this goes beyond the scope of this article, I’ve written <a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">another tutorial</a> on that, and definitely recommend that approach for Japanese learners.</p>
 <h2 id="structuring-data"><a class="toclink" href="#structuring-data">Structuring Data</a></h2>
 <ul>
 <li>“<em>But Stevie</em>”, I hear you ask, “<em>how do I study less structured information with Anki?</em>“</li>
 </ul>
-<p>Good question. This involves some thinking on your part: what is it that you’d like to reproduce? What information would you like to memorize? Think creatively on your course and in what different ways you could structure it in bite-sized pieces to feed your ankiset<sup id="fnref-8"><a class="footnote-ref" href="#fn-8">9</a></sup>. Courses are designed with a certain logic in mind, after all. You could start off by making subsets on each of the big chapters of your textbook, or create the answer to potential questions first, mark the important data next, and ankify<sup id="fnref-9"><a class="footnote-ref" href="#fn-9">10</a></sup> this. This processing is <strong>an important step in grasping the big picture</strong> and <strong>part of the actual studying</strong>. This is the exact reason why I’m reluctant to share some of my own sets that don’t involve the need for just rote memorization.</p>
-<p>Over the past two years at university I’ve devised and adjusted my own method to structuring and creating ankisets. Feel free to try it yourself (your mileage might vary). It goes somewhat as follows:</p>
+<p>Good question. This involves some thinking on your part: what is it that you’d like to reproduce? What information would you like to memorize? If you’re a student, think creatively on your course and how you could structure its contents in bite-sized pieces to feed your Ankiset.<sup><a class="footnote-ref" href="#fn-8" id="fnref-8" rel="footnote">9</a></sup> Courses are designed with a certain logic in mind, after all. You could start off by making subsets on each of the big chapters of your textbook, or create the answer to potential questions first, mark the important data next, and <em>Ankify</em><sup><a class="footnote-ref" href="#fn-9" id="fnref-9" rel="footnote">10</a></sup> this. This process is <strong>an important step in grasping the big picture and part of the actual studying</strong>. This is the exact reason why I’m reluctant to share some of my own sets that don’t involve the need for just rote memorization.</p>
+<p>Over the past two years at university I’ve devised and adjusted my own method to structure and create Anki-sets. Feel free to try it yourself (your mileage might vary). It goes somewhat as follows:</p>
 <ol>
-<li><strong>Structure</strong>: create a structure based on the course’s one (this could be as simple as copying the Table of Contents) or on repeating elements (certain theories, models, periods in time, artists, their works, etc). If the content of a single class is relatively self-containing, this is even easier. Use this as template for your set.</li>
-<li><strong>Analyse</strong>: analyse all your available sources: your textbook, own notes, powerpoint presentations, etc. Find repeating elements, highlighted or marked parts, and everything that strikes as important. There’s a reason for this and these should be given priority on memorization.</li>
-<li><strong>Devide</strong>: try to devide and rephrase these into flashcard suitable questions. Use the <em>Five Ws</em><sup id="fnref-10"><a class="footnote-ref" href="#fn-10">11</a></sup> as guideline if stuck (What, Who, When, Where, Why). Try to remain brief in the backside of the flashcard: I often break this rule myself, but, if you have to scroll down, it’s usually too long.</li>
-<li><strong>Style</strong>: Different information requires different styling. Alter your templates and note types to reflect these by using graphical elements, cloze-encounter, audio, different directions, etc. A simple example: to memorize important dates, I use a card with three fields (Year, Event, Information) and generate two notes on these: one displaying the year in front, one displaying the event. Both show further details on the back.</li>
-<li><strong>Study</strong>: You’ve analyzed the contents. Congratulations. Get started on these new cards.</li>
+<li><strong>Structure</strong>: create a structure based on the course’s structure (this could be as simple as copying the Table of Contents) or on repeating elements (certain theories, models, periods in time, artists, their works, etc). If the content of a single class is relatively self-containing, this is even easier. Use this as template for your set.</li>
+<li><strong>Analyze</strong>: analyze all your available sources: your textbook, own notes, power-point presentations, etc. Find repeating elements, highlighted or marked parts, and everything that strikes as important. There’s a reason for that and those should be given priority on memorization.</li>
+<li><strong>Divide</strong>: try to divide and rephrase that information into questions suitable for flashcards. Use the <em>Five Ws</em><sup><a class="footnote-ref" href="#fn-10" id="fnref-10" rel="footnote">11</a></sup> as guideline if stuck (What, Who, When, Where, Why). Try to remain brief in the backside of the flashcard: I often break this rule myself, but, if you have to scroll down through your card it’s usually too long.</li>
+<li><strong>Style</strong>: Different information requires different styling. Alter your templates and note types to reflect these by using graphical elements, cloze-encounter, audio, different directions, etc. A simple example. To memorize important dates, I use a card with three fields (Year, Event, Information) and generate two notes on these: one displaying the year in front, one displaying the event. Both show further details on the back.</li>
+<li><strong>Study</strong>: You’ve analyzed and processed the contents in a self-containing Anki-set and thus done half the studying already. Congratulations. Now get started on those new cards and <strong>drill that knowledge</strong>.</li>
 </ol>
-<p>If I studied something marketing-oriented I’d probably call this the <strong><code>SADSS-model</code></strong> and write an e-book called “<strong>5 Steps To Master All Knowledge (and make you a succesful and better person along the road)</strong>”, free of charge if you subscribe to my non-existent newsletters. If I were a social media marketeer I’d add “<em>Number 5 will shock you!</em>” as subtitle. (Don’t worry. I won’t do either.)</p>
+<p>If I studied something marketing-oriented I’d probably call this the <strong><code>SADSS-model</code></strong> and write an e-book called “<strong>5 Steps To Master All Knowledge (and make you a more successful person in life)</strong>”, free of charge if you subscribe to my non-existent newsletters. If I were a social media marketeer I’d add “Number 5 will shock you!” as subtitle. (Don’t worry. I won’t do either.)</p>
 <h2 id="spaced-learning"><a class="toclink" href="#spaced-learning">Spaced Learning</a></h2>
 <ul>
 <li>“<em>Stevie! If I’m a college student studying one, or several, language(s) alongside other theoretical classes (and I most likely am since I’m reading this blog), won’t this mean I get to repeat hundreds to thousands of cards every single day?!</em>“</li>
 </ul>
 <p>Yes. Yes it does mean that.</p>
-<p>Think of it this way. You’ll have to study either way. <span data-pullquote="Language acquisition comes with it's sacrifices: you can't just stop studying for a few weeks and expect to come out unharmed.">Language acquisition comes with it’s sacrifices: you can’t just stop studying for a few weeks and expect to come out unharmed.</span> Building up an internal dictionary containing tens of thousands of words you recognize on sight or produce actively, utilizing grammatical structures on the spot (often under severe pressure), or comprehending speech at real-time; all of these require an effort not just to memorize but to maintain as well. Same goes for any other class, you can’t cram your way through university. What this method offers is a way of structuring your data and studying efficiently: paradoxically by studying <em>more</em> you’ll actually <em>save</em> time, as there’s no need to repeat what you already know. If you’re utilizing Spaced Repetition<sup id="fnref-11"><a class="footnote-ref" href="#fn-11">12</a></sup>, the data you need to know will be served (roughly) the moment you’re about to forget it.</p>
+<p>Think of it this way. You’ll have to study either way. <span data-pullquote="Language acquisition comes with it's sacrifices: you can't just stop studying for a few weeks and expect to come out unharmed.">Language acquisition comes with it’s sacrifices: you can’t just stop studying for a few weeks and expect to come out unharmed.</span> Building up an internal dictionary containing tens of thousands of words you recognize on sight or produce actively, utilizing grammatical structures on the spot (often under severe pressure), or comprehending speech at real-time; all of these require an effort not just to memorize, but to maintain as well. Same goes for any other class, you can’t cram your way through university. What this method offers is a way of structuring your data and studying efficiently: paradoxically by studying more you’ll actually save time, as there’s no need to repeat what you already know. If you’re utilizing Spaced Repetition<sup><a class="footnote-ref" href="#fn-11" id="fnref-11" rel="footnote">12</a></sup>, the data you need to know will be served (roughly) the moment you’re about to forget it.</p>
 <ul>
 <li>“<em>Even if I’m on a holiday? This makes me very sad! :( I’ll just pretend this method of studying is not suitable for me and dismiss anki forever!</em>“</li>
 </ul>
 <p>Sadly, this does mean maintaining your cards even when you’d prefer spending your day in a different way. There’s no pause button to put your cards on hold, so if you fail to go through them several days in row, you’ll have piled up all those lost days and take forever to get through them again.</p>
-<p>Of course, once the set has finished it’s purpose (usually preparing for an exam), you could just as well delete it. It does feel as a waste (after all, what’s the point of studying in the first place?), but sadly it’s just unsustainable to maintain <em>everything</em>, all of this deep knowledge, till the end of times. Another approach here would be to suspend the more trivial cards and just stick on the broad outlines. <em>The choice lies in your own hands!</em>™
-I spent about a month on a road trip in the USA this summer; unforgettable memories aside I <em>did</em> maintain my Ankisets the whole time. But as I removed all of my non-Japanese sets and maintained the <a href="https://youtu.be/9ogQ0uge06o">bare necessities</a> of vocab and kanji, this meant only about half an hour of studying each day. That’s not too bad, huh?</p>
-<p>Anyway. As I’ve said earlier, you’ll have to study either way. It is entirely possible that the way Anki and it’s spaced repetition work don’t work for you, <strong>but don’t lie to yourself either</strong>.<sup id="fnref-12"><a class="footnote-ref" href="#fn-12">13</a></sup> Find another way that <em>does</em> work for you. There are plenty of studying methods that could be suitable, including some interesting new ones<sup id="fnref-13"><a class="footnote-ref" href="#fn-13">14</a></sup> gaining popularity, but more likely as not, reading and marking your textbook a few times and cramming a summary the night before an exam is not one of them.</p>
+<p>Of course, once the set has finished it’s purpose (usually after preparing for an exam), you could just as well delete it. It does feel as a waste (after all, what’s the point of studying in the first place?), but sadly it’s just unsustainable to maintain everything, all of this deep knowledge, till the end of times. Another approach here would be to suspend the more trivial cards and just stick on the broad outlines. The choice lies in your own hands!™ I spent about a month on a road trip in the USA this summer; unforgettable memories aside I did maintain my Ankisets the whole time. But as I removed all of my non-Japanese sets and maintained the <a href="https://youtu.be/9ogQ0uge06o">bare necessities</a> of studying the language, this meant only about half an hour of studying each day. That’s not too bad, huh?</p>
+<p>Anyway. As stated earlier, actively studying will be unavoidable as a student. It is entirely possible that the method Anki and it’s spaced repetition provide don’t actually work for you, <strong>but just don’t lie to yourself either</strong>.<sup><a class="footnote-ref" href="#fn-12" id="fnref-12" rel="footnote">13</a></sup> Find another way that <em>does</em> work for you. There are plenty of studying methods that could be suitable (including some interesting new ones<sup><a class="footnote-ref" href="#fn-13" id="fnref-13" rel="footnote">14</a></sup> gaining popularity), but more likely than not, reading through your textbook a few times and cramming a summary the night ahead of an exam won’t be one of them.</p>
 <ul>
 <li>“<em>But wait Stevie hold up, if I get this right, I’ll be forced to use Anki, like, forever? Won’t I ever be able to just quit and bask in my new-found fluency?</em>“</li>
 </ul>
-<p>This one’s a bit difficult. I’ve heard of people using Anki <strong>for over 8 years</strong>, applying it solely as a language maintenance tool and only very occasionally adding new vocab cards when appropriate. This rings more true to me. Spaced learning means they’re only getting like 5 - 10 mins worth of repeating old cards by now anyway so why not? If there’s ever a time, however, when you’re comfortable enough to process media as-is, and you feel you’ve been a slave to software for far too long, don’t let me stop you uninstalling Anki and breaking out in some form of freedom dance. Just… don’t let all that progress go to waste! Maintain your language skills!</p>
+<p>This one’s a bit difficult. I’ve heard of people using Anki <strong>for over 8 years</strong>, applying it solely as a language maintenance tool and only very occasionally adding new vocab cards when appropriate. This rings more true to me. Spaced learning means they’re only getting like 5 - 10 minutes worth of repeating old cards by now anyway so why not? If there’s ever a time, however, when you’re comfortable enough to process media as-is, and you feel you’ve been a slave to Anki for far too long, don’t let me stop you; uninstall Anki and bask in your newfound freedom! Just… don’t let all that progress go to waste! Maintain your language skills!</p>
 <h1 id="wait-there-is-more"><a class="toclink" href="#wait-there-is-more">Wait! There is more!</a></h1>
 <p>The main goal of this post was to introduce Anki both in it’s core usage as well as the wide range of appliances in the field of both linguistic and academic studies. If you’ve any further questions, feel free to leave a comment below.</p>
-<p>That being said, Anki is customizable to the point books have been written on it. Thus trying to contain everything in a single post (hence “<strong>A <del>quick</del> guide to Anki</strong>”) is a mission impossible. There are several other features I feel are useful (and underrepresented) enough in mainstream language blogs to warrant further writing though (namely Anki’s API, statistics, useful plug-ins, and integrating Rikaisama and J-pod101’s audio). Check these out in my next blogs:</p>
+<p>That being said, Anki is customizable to the point books have been written on the topic. Trying to contain everything in a single post (“<strong>A <del>quick</del> guide to Anki</strong>”) is an impossible mission. There are several other features I feel are useful (and underrepresented) enough in mainstream language blogs to warrant further writing though (namely Anki’s API, statistics, useful plug-ins, and integrating Rikaisama and J-pod101’s audio). Check these out in my next blogs:</p>
 <ul>
 <li><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">Setting up a perfect vocab-mining environment with Anki and Rikaisama</a></li>
 <li><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">Using Anki’s API to contextualize your vocab cards with example sentences</a></li>
@@ -351,7 +463,7 @@ I spent about a month on a road trip in the USA this summer; unforgettable memor
 <ul>
 <li><a href="http://ankisrs.net/docs/manual.html">Anki Manual</a>: the official Anki manual. If you’re into that kind of thing, theirs is excellent and very comprehensive. I recommend saving these for after you’ve gotten used to the software a bit.</li>
 <li><a href="http://japaneselevelup.com/">Japaneselevelup.com</a>: one of the most popular Japanese self-learner resources out there, themed after a roleplaying videogame (a bit gimmicky but there’s a large audience for that stuff). Probably mentions Anki more as I do (<em>my god</em>).</li>
-<li><a href="https://www.supermemo.com/en/articles/20rules">Twenty rules of formulating knowledge</a>: an article on making quality flashcards by <a href="http://super-memory.com/english/company/wozniak.htm">Dr Piotr Wozniak</a>, the author of the very first SRS algorithm as used in Anki predecessor <strong>SuperMemo</strong>.  </li>
+<li><a href="https://www.supermemo.com/en/articles/20rules">Twenty rules of formulating knowledge</a>: an article on making quality flashcards by <a href="http://super-memory.com/english/company/wozniak.htm">Dr Piotr Wozniak</a>, the author of the very first SRS algorithm as used in Anki predecessor <strong>SuperMemo</strong>.</li>
 <li><a href="https://alexvermeer.com/anki-essentials/">Anki Essentials</a>: a 100+ page guide on using Anki. Told you there were books written on Anki. I’m not much of a fan on the downloadable self-help e-book hype but for what I’ve read, this one’s surprisingly good.</li>
 </ul>
 <div class="footnote">
@@ -367,7 +479,7 @@ I spent about a month on a road trip in the USA this summer; unforgettable memor
 <p>This is for more technical users and there really is no reason not to use AnkiWeb’s servers, unless they’re permanently down for some reason. Read more on <a href="https://github.com/dsnopek/anki-sync-server">https://github.com/dsnopek/anki-sync-server</a>. <a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
 <li id="fn-3">
-<p>Except if you’re on iPhone, but if you’re able to afford Apple products that shouldn’t be much of a problem. Aside from donations that’s the only income the developers get anyway, and it’s license is peanuts compared to buying any triple-A videogame on current-gen consoles. <a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 4 in the text">↩</a></p>
+<p>Except if you’re on iPhone, but if you’re able to afford Apple products that shouldn’t be much of a problem. Aside from donations that’s the only income the developers get anyway, and it’s license is peanuts compared to buying any triple-A video game on current-gen consoles. <a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 4 in the text">↩</a></p>
 </li>
 <li id="fn-4">
 <p>Karpicke, Jeffrey D., en Henry L. Roediger. 2008. “The Critical Importance of Retrieval for Learning”. Science 319 (5865): 966–68. <a class="footnote-backref" href="#fnref-4" title="Jump back to footnote 5 in the text">↩</a></p>
@@ -376,10 +488,10 @@ I spent about a month on a road trip in the USA this summer; unforgettable memor
 <p><strong>OCR</strong>: <strong>O</strong>ptical <strong>C</strong>haracter <strong>R</strong>ecognition: basically recognizing text or characters through an image (like a scan or photograph taken with your cellphone). I recently found this free manga reader for Android with OCR and dictionary which looks pretty cool. Check it out at <a href="http://ocrmangareaderforandroid.sourceforge.net/">http://ocrmangareaderforandroid.sourceforge.net/</a> <a class="footnote-backref" href="#fnref-5" title="Jump back to footnote 6 in the text">↩</a></p>
 </li>
 <li id="fn-6">
-<p>A Japanese reading aid by printing the word’s pronunciation in syllabic characters above the original word. A more general term for this is ruby, and such annotations are commonly used to romanize other languages as well. Read more: <a href="https://en.wikipedia.org/wiki/Ruby_character">https://en.wikipedia.org/wiki/Ruby_character</a> <a class="footnote-backref" href="#fnref-6" title="Jump back to footnote 7 in the text">↩</a></p>
+<p>A Japanese reading aid by printing the word’s pronunciation in syllabic characters above the original word. A more general term for this is ruby, and such annotations are commonly used for the romanization of other languages as well. Read more: <a href="https://en.wikipedia.org/wiki/Ruby_character">https://en.wikipedia.org/wiki/Ruby_character</a> <a class="footnote-backref" href="#fnref-6" title="Jump back to footnote 7 in the text">↩</a></p>
 </li>
 <li id="fn-7">
-<p><strong>C</strong>omma-<strong>S</strong>eperated <strong>V</strong>alue files: plain text containing data formatted as table by seperating them through commas. <a class="footnote-backref" href="#fnref-7" title="Jump back to footnote 8 in the text">↩</a></p>
+<p><strong>C</strong>omma-<strong>S</strong>eperated <strong>V</strong>alue files: plain text containing data formatted as table by separating them through commas. <a class="footnote-backref" href="#fnref-7" title="Jump back to footnote 8 in the text">↩</a></p>
 </li>
 <li id="fn-8">
 <p>The danger in this is learning information loose from it’s context. Be sure to structure your ankiset accordingly as well to remain aware of the big picture. <a class="footnote-backref" href="#fnref-8" title="Jump back to footnote 9 in the text">↩</a></p>
@@ -422,25 +534,43 @@ I spent about a month on a road trip in the USA this summer; unforgettable memor
         <div class="category">
             <h2>Related posts</h2>
             <dl class="dl-horizontal">
+                <dt>Tue 14 May 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/05/japanese-e-books-vocab-mining-drm-and-copyright-law/">Japanese E-books, vocab-mining, DRM and copyright law</a></dd>
+                <dt>Wed 17 April 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/">A <del>Quick</del> Guide on Using Anki 5: an efficient vocab mining set-up with Anki and Yomichan</a></dd>
                 <dt>Sat 15 October 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/10/anki-add-on-japanese-translations-for-korean-vocabulary/">Anki Add-on: Japanese translations for Korean vocabulary</a></dd>
                 <dt>Sun 02 October 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/10/a-quick-guide-on-using-anki-4-making-the-switch-j-j-definitions-in-your-vocab-cards/">A <del>Quick</del> Guide on Using Anki 4: Making the switch - J-J definitions in your vocab cards</a></dd>
                 <dt>Sat 17 September 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-3-contextualize-your-vocab-cards-with-example-sentences/">A <del>Quick</del> Guide on Using Anki 3: contextualize your vocab cards with example sentences</a></dd>
-                <dt>Thu 08 September 2016</dt>
-                <dd><a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">A <del>Quick</del> Guide on Using Anki 2: an efficient vocab mining set-up with Anki and Rikaisama</a></dd>
-                <dt>Tue 19 September 2017</dt>
-                <dd><a href="https://steviepoppe.net/blog/2017/09/going-abroad-as-a-research-student/">Going Abroad as a Research Student</a></dd>
             </dl>
             </div>
         <hr />
     </div>
+
+      <nav class="pagination">
+
+    <span id="older-nav">
+      <a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Older Posts
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="139,512 1024,512 1024,436 139,436 528,47 465,0 0,483 465,948 528,901 "></polygon></svg></a>
+    </span>
+
+    <span id="newer-nav">
+      <a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/">
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="885,512 0,512 0,436 885,436 496,47 559,0 1024,483 559,948 496,901 "></polygon></svg> Newer Posts</a>
+    </span>
+  </nav>
+
+    <script src="https://steviepoppe.net/theme/js/youarehere.min.js"></script>
+    <!-- You can also customize the bar a bit -->
                 </div>
 
                 <footer id="footer" class="footer gradient-2">
                   <div id="footercontent">
-                    <span itemprop="copyrightHolder">&copy; Stevie Poppe 2017</span>
+                    <span itemprop="copyrightHolder">(ɔ) Stevie Poppe 2016 - 2021</span>
                     <div>
                       <ul class="footer-nav">                    
                        <li class=" footer-nav-middle ">
@@ -453,38 +583,19 @@ I spent about a month on a road trip in the USA this summer; unforgettable memor
                         <a href="https://steviepoppe.net/blog/tags/" class="footer-nav-middle-a ">Tagcloud</a></li>
                       </ul>
                     </div>
-                    <div style="margin-top: -95px; margin-right:15px; float: right;">
-                      <h5><a id="backtotop" href="#">Back to top ↑</a></h5>
-                    </div>
                   </footer>
                 </div>
 
-
-                <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-
+      <div class="scroll-up" style="display: none;">
+        <a href="#main">&#xfe3f;</a>
+      </div>
                 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
-                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
                 <script type="text/javascript" src="https://steviepoppe.net/theme/js/bootstrap.js"></script>
-                <script>
-                  $(function() {
-                    $('#nav-wrapper').height($("#nav").height());
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/jquery.easing.1.3.js"></script>
+                <!-- <script type="text/javascript" src="https://steviepoppe.net/theme/js/parallax.min.js"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/clipboard.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/slick.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
 
-                    $('#nav').affix({
-                      offset: { top: $('#nav').offset().top }
-                    });
-                  });
-                </script>
-
-                <!-- Google Analytics -->
-                <script>
-                  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                  ga('create', 'UA-82857115-1', 'auto');
-                  ga('send', 'pageview');
-                </script>
-                <!-- /Google Analytics -->
               </body>
               </html>

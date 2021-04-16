@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <!-- Stylesheets -->
+  <link href="https://steviepoppe.net/theme/css/bootstrap.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/nest.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/icons.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/pygment.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+
+  <link href="https://steviepoppe.net//theme/css/magnific-popup.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/admonition.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/keys.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/slick.css" rel="stylesheet">
+  <style>
+    @import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+    @import 'https://fonts.googleapis.com/css?family=Poiret+One|Quicksand';
+  </style>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js">
+  </script>
+  <!-- /Stylesheets -->
+
+  <script type="text/javascript">
+    var host = "steviepoppe.net";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+      window.location.protocol = "https";
+  </script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="This short series of blogs chronicles the bare-bones required to conduct a basic form of social media analysis on corpora of (Japanese) Tweets. It is primarily intended for undergraduate and graduate students whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle. This fourth blog follows up on the MeCab + NEologd set-up described in the third part of this series, and introduces the reader to some of possibilities when working with python-based NLP tools such as NLTK. Concretely, we will: Import the python wrapper mecab-python, necessary to use MeCab in our python scripts, Learn about NLP tools like NLTK, Perform a basic sentiment analysis on a corpus of Japanese tweets. Set-up MeCab python binding Having set-up MeCab, we now require a python binding in order to use MeCab in our python scripts. As usual, install the required python library using pip in the command prompt: pip install mecab. Upon installation, let’s test our set-up by using the python command in the command prompt and copy-pasting the code examples below. Example 1: 1 2 3 4 5import MeCab tagger = MeCab.Tagger() parsed = tagger.parse(&#34;お母さんが作ってくれた魚フライ定食を食べてみたいです。&#34;) print(parsed) The MeCab.Tagger function accepts several arguments we can pass to MeCab: -d: path to one or more tokenizer dictionaries. -E: Which escape sequence to use at the end of the parsed string (tabs: \t, backspaces: \b, newlines: \n, etc; don’t forget to escape the backslash with an additional backslash). -O: Quick-formatting options. Wakati (short for wakachi-gaki, 分かち書き), for example, is a tokenizer option for returning a string with only the surface form of each token, separated by spaces. -F: Grants us more control over the output formatting. Adding -F%m:\\t\\t%f[0]\\n, for example, will format the outcome as seen in figure 4: the token surface form and the first element of the ‘features‘ array (part-of-speech), separated by tab spaces. –unk-feature: set the return value of the part-of-speech column for unknown words (e.g. to unknown or to 未知語). Example 2: 1 2 3 4 5import MeCab tagger = MeCab.Tagger(&#34;-F%m:\\t%f[0]\\n -E\\n --unk-feature 未知語&#34;) text = &#34;うわー！母が作ってくれた魚フライ定食は素敵だったな～！？ウェーーーーイイイイイイイイィ！&#34; parsed = tagger.parse(text) print(parsed) Normalizing Japanese text with Neologdn (optional) This small library consists of …">
+  <meta name="keywords" content="Big Data, Digital Humanities, Japanese, Python, Tutorial,  Twitter, Japanese, Japan, Study">
+  <meta name="author" content="Stevie Poppe">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="shortcut icon" sizes="196x196" href="https://steviepoppe.net/favicon-192.png">
+
+<link rel="icon" href="https://steviepoppe.net/favicon-32.png" sizes="32x32">
+<link rel="icon" href="https://steviepoppe.net/favicon-96.png" sizes="96x96">
+<link rel="icon" href="https://steviepoppe.net/favicon-128.png" sizes="128x128">
+<link rel="icon" href="https://steviepoppe.net/favicon-192.png" sizes="192x192">
+
+  <title>A Quick Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 4: Natural Language Processing With MeCab, Neologd and NLTK | Onoreto</title>
+<link rel="canonical" href="https://steviepoppe.net/blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/">
+
+
+<!--               <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+              <script>
+                 WebFont.load({
+                  google: {
+                    families: ['Poiret+One', 'Quicksand']
+                  }
+                });
+              </script> -->
+
+
+
+              <!-- RSS Feeds -->
+              <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
+              <link href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
+              <link href="http://localhost:8000/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
+              <!-- /RSS Feeds -->
+
+              <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <![endif]-->
+
+
+
+          <link rel="author" href="https://plus.google.com/112676714486792414615"/>
+   
+
+<meta name="robots" content="index">        </head>
+
+        <body>
+
+    <!-- OVERLAY MENU -->
+    <div id="overlay-menu" class="overlay-menu">
+
+      <a href="#" id="overlay-menu-hide" class="navigation-hide"><button title="Close (Esc)" type="button" class="mfp-close">×</button></a>
+
+      <div class="overlay-menu-inner">
+        <nav class="overlay-menu-nav">
+
+          <ul id="overflow-nav">
+            <li>
+              <a class="link" href="https://steviepoppe.net"><i class="icon-home icon-menu"></i>Home</a>
+            </li>
+
+            <li class="slidedown"><a href="#"><i class="icon-folder-close icon-menu"></i>Categories</a>
+              <ul>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+              </ul>
+            </li>
+
+<li >
+                            <a class="link" href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a class="link" href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>          </ul>
+        </nav>
+      </div>
+
+      <div class="overlay-navigation-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+                          <ul class="socialnav2 social-icons-footer" style="width: auto;display: inline-block;float: none;">
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          </div>
+            <div class="col-sm-12 text-center">
+              <p class="copyright font-alt m-b-0">(ɔ) Stevie Poppe 2016 - 2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /OVERLAY MENU -->
+
+          <div id="wrapper">
+
+            <div class="master scrollingnav">
+              <div class="head-container">
+
+                <header class="page-header">
+                  <a href="https://steviepoppe.net" class="avatar-container pull-left show-overlay toggle-menu" title="Menu">
+                    <div class="avatar">
+                      <div class="side"><img src="https://steviepoppe.net/images/logo2.png" class="img-responsive"/></div>
+                    </div>
+                  </a>
+                  <h1 id="onoreto" title="Onoreto" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">noreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
+                </header>
+
+                <div id="nav-wrapper">
+                  <nav class="navbar navbar-default scrollingnav" id="nav">
+
+                    <div class="navbar-collapse" id="steviesmenubar">
+                      <div style="float: left;;margin-left: 20px;">
+                        <ul class="nav navbar-nav">
+                          <li id="smallicon">
+<a class="small-nav-menu toggle-menu" href="#" title="Menu" style="color:unset;background-color:unset;transition: none;padding-right: 0px;">
+<img src="https://steviepoppe.net/images/logo2.png" style="border-radius: 50%;height: 25px;margin-top: -5px;margin-right: 5px;">
+</a>
+</li>
+<li class=" ">
+                            <a  href="/"><i class="icon-home icon-menu"></i>Blog</a>
+                            </li><li class=" dropdown">
+                            <a  class="dropdown-toggle" data-target="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="/blog/category/"><i class="icon-folder-close icon-menu"></i>Categories                              <span class="caret"></span>
+</a>
+                              <ul class="dropdown-menu" id="menu1" aria-labelledby="drop4"> 
+                                <li><a href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                                <li><a href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li> 
+                                <li><a href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+                              </ul> 
+                            </li><li >
+                            <a href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>                          </ul>
+                        </div>
+                        <div class="social">
+                          <ul class="socialnav socialonly social-icons-footer collapse">
+
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                          </ul>
+                          <ul class="socialnav rssonly social-icons-footer">
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" >
+                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input" style="width: 130px;"></form>
+                          </div>
+
+
+                        </div>
+
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div id="main">
+    <div class="container content padding-40 articleshadow" itemscope itemtype="http://schema.org/Article">
+    <div class="container header-wrapper banner">
+        <div class="row" style="background: linear-gradient(rgba(6, 6, 6, 0.60), rgba(0, 0, 0, 0.60)), url('https://steviepoppe.net/images/anki_header2.jpg'); background-position: center; background-size: cover;">
+              <div class="col-lg-12">
+                  <div class="header-content center">
+                      <h1 class="header-title nocount"><span itemprop="name">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 4: Natural Language Processing With MeCab, Neologd and NLTK</span><sup id="fnref-footnote"><a class="footnote-ref imagesource" href="#fn-footnote" rel="footnote">1</a></sup></h1>
+                      <p class="header-date"><span itemprop="datePublished" content="2016-09-07">Sun 05 July 2020</span>, in category <a href="https://steviepoppe.net/blog/category/studies/"><span itemprop="articleSection">Studies</span></a></p>
+                      <div class="header-underline"></div>
+                      <div class="clearfix"></div>
+                      <p class="pull-right header-tags">
+                          <span class="icon-tags" aria-hidden="true"></span>
+<a href="https://steviepoppe.net/blog/tags/big-data/">Big Data</a>, <a href="https://steviepoppe.net/blog/tags/digital-humanities/">Digital Humanities</a>, <a href="https://steviepoppe.net/blog/tags/japanese/">Japanese</a>, <a href="https://steviepoppe.net/blog/tags/python/">Python</a>, <a href="https://steviepoppe.net/blog/tags/tutorial/">Tutorial</a>, <a href="https://steviepoppe.net/blog/tags/twitter/">Twitter</a>                      </p>
+                  </div>
+              </div>
+        </div>
+    </div>
+    <div class="container-main" itemprop="articleBody">
+<!--         <h1 style="text-align: center;" class="nocount">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 4: Natural Language Processing With MeCab, Neologd and NLTK</h1>
+ -->
+            <nav class="toc-container">
+              <input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none">
+            <p class="toc_title">Table of Contents<span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></p>
+            <div class="toc">
+<ul>
+<li><a href="#set-up">Set-up</a><ul>
+<li><a href="#mecab-python-binding">MeCab python binding</a></li>
+<li><a href="#normalizing-japanese-text-with-neologdn-optional">Normalizing Japanese text with Neologdn (optional)</a></li>
+</ul>
+</li>
+<li><a href="#using-mecab-with-nltk">Using MeCab with NLTK</a><ul>
+<li><a href="#frequency-distribution">Frequency distribution</a></li>
+<li><a href="#stop-words-optional">Stop-words (optional)</a></li>
+<li><a href="#sentiment-analysis">Sentiment analysis</a></li>
+</ul>
+</li>
+<li><a href="#bringing-it-all-together-processing-tweets">Bringing it all together: processing tweets</a></li>
+<li><a href="#wait-there-is-more">Wait! There is more!</a></li>
+</ul>
+</div>
+            </nav>
+        <p><em>This short series of blogs chronicles the bare-bones required to conduct a basic form of social media analysis on corpora of (Japanese) Tweets. It is primarily intended for </em><em>undergraduate and graduate students</em><em> whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle.</em></p>
+
+
+<p>This fourth blog follows up on the MeCab + NEologd set-up described in the third part of this series, and introduces the reader to some of possibilities when working with python-based NLP tools such as NLTK. Concretely, we will:</p>
+<ul>
+<li><i class="icon-check"></i> Import the python wrapper mecab-python, necessary to use MeCab in our python scripts,</li>
+<li><i class="icon-check"></i> Learn about NLP tools like NLTK,</li>
+<li><i class="icon-check"></i> Perform a basic sentiment analysis on a corpus of Japanese tweets.</li>
+</ul>
+
+<h1 id="set-up"><a class="toclink" href="#set-up">Set-up</a></h1>
+<h2 id="mecab-python-binding"><a class="toclink" href="#mecab-python-binding">MeCab python binding</a></h2>
+<p>Having set-up MeCab, we now require a python binding in order to use MeCab in our python scripts. As usual, install the required python library using <strong>pip</strong> in the command prompt: <code>pip install mecab</code>.<sup><a class="footnote-ref" href="#fn-1" id="fnref-1" rel="footnote">2</a></sup> Upon installation, let’s test our set-up by using the <code>python</code> command in the command prompt and copy-pasting the code examples below.</p>
+<p><strong>Example 1:</strong></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">MeCab</span>
+
+<span class="n">tagger</span> <span class="o">=</span> <span class="n">MeCab</span><span class="o">.</span><span class="n">Tagger</span><span class="p">()</span>
+<span class="n">parsed</span> <span class="o">=</span> <span class="n">tagger</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">"お母さんが作ってくれた魚フライ定食を食べてみたいです。"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parsed</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+<p>The MeCab.Tagger function accepts several arguments we can pass to MeCab:</p>
+<ul>
+<li><code>-d</code>: path to one or more tokenizer dictionaries.</li>
+<li><code>-E</code>: Which escape sequence to use at the end of the parsed string (tabs: \t, backspaces: \b, newlines: \n, etc; don’t forget to escape the backslash with an additional backslash).</li>
+<li><code>-O</code>: Quick-formatting options. Wakati (short for <em>wakachi-gaki</em>, 分かち書き), for example, is a tokenizer option for returning a string with only the surface form of each token, separated by spaces.<sup><a class="footnote-ref" href="#fn-2" id="fnref-2" rel="footnote">3</a></sup></li>
+<li><code>-F</code>: Grants us more control over the output formatting. Adding <code>-F%m:\\t\\t%f[0]\\n</code>, for example, will format the outcome as seen in <strong>figure 4</strong>: the token surface form and the first element of the ‘<a href="https://en.wikipedia.org/wiki/Feature_(machine_learning)">features</a>‘ array (part-of-speech), separated by tab spaces.</li>
+<li><code>–unk-feature</code>: set the return value of the part-of-speech column for unknown words (e.g. to <em>unknown</em> or to 未知語).</li>
+</ul>
+<p><strong>Example 2:</strong></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">MeCab</span>
+<span class="n">tagger</span> <span class="o">=</span> <span class="n">MeCab</span><span class="o">.</span><span class="n">Tagger</span><span class="p">(</span><span class="s2">"-F%m:</span><span class="se">\\</span><span class="s2">t</span><span class="si">%f</span><span class="s2">[0]</span><span class="se">\\</span><span class="s2">n -E</span><span class="se">\\</span><span class="s2">n --unk-feature 未知語"</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">"うわー！母が作ってくれた魚フライ定食は素敵だったな～！？ウェーーーーイイイイイイイイィ！"</span>
+<span class="n">parsed</span> <span class="o">=</span> <span class="n">tagger</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parsed</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+<h2 id="normalizing-japanese-text-with-neologdn-optional"><a class="toclink" href="#normalizing-japanese-text-with-neologdn-optional">Normalizing Japanese text with Neologdn (optional)</a></h2>
+<p><a href="https://github.com/ikegami-yukino/neologdn">This</a> small library consists of several regular expressions helpful in normalizing common tendencies of Japanese text on social media, such as converting half-width characters to full-width and removing dramatizing hyphens. As always, install with <strong>pip</strong>: <code>pip install neologdn</code>, and try out the script below as example or read the documentation for further usage.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">MeCab</span>
+<span class="kn">import</span> <span class="nn">neologdn</span>
+<span class="n">tagger</span> <span class="o">=</span> <span class="n">MeCab</span><span class="o">.</span><span class="n">Tagger</span><span class="p">(</span><span class="s2">"-O wakati"</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">" ﾊﾝｶｸｶﾅっ　　　ウェーーーーイイイイイイイイィっ！？"</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">neologdn</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">parsed</span> <span class="o">=</span> <span class="n">tagger</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parsed</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+<h1 id="using-mecab-with-nltk"><a class="toclink" href="#using-mecab-with-nltk">Using MeCab with NLTK</a></h1>
+<p>Having set up the above, we can now further integrate this into one of the python NLP libraries. With its focus on speed and efficiency, SpaCy is popular for real-life applications while NLTK (Natural Language Toolkit) remains a popular for experimentation among students and researchers. The choice for NLTK was fairly arbitrary and the examples below are easily accomplished in both libraries. To install NLTK, use <strong>pip</strong> from the command line: <code>pip install NLTK</code>.</p>
+<h2 id="frequency-distribution"><a class="toclink" href="#frequency-distribution">Frequency distribution</a></h2>
+<p>The script below combines the steps we have taken thus far with the common NLP practice of calculating and analyzing the frequency distribution of texts, something we have done using KH Coder in the previous article. For visualization, we will be using the external Python library <strong><a href="https://matplotlib.org/">matplotlib</a></strong>. As always, we will have to install such libraries with <strong>pip</strong>: <code>pip install matplotlib</code>. Running the script below will generate a graph with the 10 most frequent lemmas in the text provided, as seen in <strong>figure 1</strong>.</p>
+<div class="slider" style="margin: auto; text-align: center;">
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/mecab_math.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 560px; height: auto; max-width: 100%;"/><span><strong>Figure 1:</strong> Frequency distribution (filtered).</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/mecab_math2.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 561px; height: auto; max-width: 100%;"/><span><strong>Figure 2:</strong> Frequency distribution (unfiltered).</span></div>
+</div>
+<p>The script below takes several further steps to removing noise by filtering tokens based on their POS-tags (thus excluding particles, conjugations in the form of auxiliary verbs, pronouns, pre- and suffixes, symbols, exclamations, etc). Moreover, the script below uses, if available, the dictionary form of segmented words. <strong>Figure 2</strong> is an illustration of the outcome when that step is not taken.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># coding=utf-8</span>
+
+<span class="kn">import</span> <span class="nn">MeCab</span>
+<span class="kn">import</span> <span class="nn">neologdn</span>
+<span class="c1">#Using tabs to separate lemmas and then tokenizing by splitting on tabs retains proper nouns separated by half-width spaces </span>
+<span class="n">tagger</span> <span class="o">=</span> <span class="n">MeCab</span><span class="o">.</span><span class="n">Tagger</span><span class="p">(</span><span class="s2">"-F%m</span><span class="se">\\</span><span class="s2">t --unk-feature 未知語"</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">nltk.probability</span> <span class="kn">import</span> <span class="n">FreqDist</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">'font.family'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'sans-serif'</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">'font.sans-serif'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Hiragino Maru Gothic Pro'</span><span class="p">,</span> <span class="s1">'Yu Gothic'</span><span class="p">,</span> <span class="s1">'Meirio'</span><span class="p">,</span> <span class="s1">'Takao'</span><span class="p">,</span> <span class="s1">'IPAexGothic'</span><span class="p">,</span> <span class="s1">'IPAPGothic'</span><span class="p">,</span> <span class="s1">'VL PGothic'</span><span class="p">,</span> <span class="s1">'Noto Sans CJK JP'</span><span class="p">]</span>
+
+<span class="n">CONTENT_WORD_POS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"名詞"</span><span class="p">,</span> <span class="s2">"動詞"</span><span class="p">,</span> <span class="s2">"形容詞"</span><span class="p">,</span> <span class="s2">"副詞"</span><span class="p">,</span> <span class="s2">"未知語"</span><span class="p">)</span>
+<span class="n">IGNORE</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"接尾"</span><span class="p">,</span> <span class="s2">"非自立"</span><span class="p">,</span> <span class="s2">"代名詞"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">is_content_word</span><span class="p">(</span><span class="n">feature</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">feature</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">CONTENT_WORD_POS</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="n">f</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">IGNORE</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">feature</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)[:</span><span class="mi">6</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s2">"１９２３年の関東大震災が起こった時、ベルギー人がためらわず、救援活動を行ったり資金集めをしたりしたのは、この友好的な日本との関係のためだと言えます。王族と、新たに設立されたベルギー国内委員会が協力して大規模な救援活動を実施しました。私の故郷アントワープを含むベルギーの全国各地でも教会と戦争の退役軍人が協力して「Japan Day」という催しを行いました。他にも、ベルギー人の芸術家達が作品を集めたり新作を発表したりして特別な貢献をしました。まずはブリュッセルで、次に日本で作品の展示発売や展覧会を開催し、売り上げや入場料の利益は全て救援活動のために寄付されました。日本の展覧会だけでも3万５千人もの観客が訪れたと報告されていて、その上、日本の皇太子様と皇后様が30点もの芸術品をご購入されたと聞いております。"</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">neologdn</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1">#some more noise removal</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">text</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span> <span class="ow">or</span> <span class="n">i</span><span class="o">.</span><span class="n">isspace</span><span class="p">()])</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">tagger</span><span class="o">.</span><span class="n">parseToNode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="n">content_words</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="n">result</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">is_content_word</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">feature</span><span class="p">):</span>
+            <span class="n">lemma</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)[</span><span class="mi">6</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">6</span> <span class="ow">and</span> <span class="n">result</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)[</span><span class="mi">6</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="s2">"*"</span> <span class="k">else</span> <span class="n">result</span><span class="o">.</span><span class="n">surface</span>
+            <span class="n">content_words</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">lemma</span><span class="p">))</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">next</span>
+    <span class="n">fdist</span> <span class="o">=</span> <span class="n">FreqDist</span><span class="p">(</span><span class="n">content_words</span><span class="p">)</span>
+    <span class="n">fdist</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">cumulative</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When dealing with Japanese text directly within a python environment, a declaration of text-encoding is required as first or second line (as seen in <strong>line 1</strong>). Furthermore, <strong>Lines 10 &amp; 11</strong> are required to display Japanese text in the generated mathlib graph.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note 2</p>
+<p>The text example above uses a paragraph from a Japanese speech I wrote several years ago, published on this blog. It refers to a particular historical event, “Japan Day”, which is clearly split into two distinct lemmas. Furthermore, and although there are specific rules for that, ベルギー<span lang="ja"><ruby><rb>人</rb><rp>(</rp><rt>じん</rt><rp>)</rp></ruby></span> and <span lang="ja"><ruby><rb>芸術家</rb><rp>(</rp><rt>げいじゅつか</rt><rp>)</rp></ruby></span> are both split in two lemmas while <span lang="ja"><ruby><rb>芸術品</rb><rp>(</rp><rt>げいじゅつひん</rt><rp>)</rp></ruby></span> is taken as one lemma. To make matters worse, <span lang="ja"><ruby><rb>人</rb><rp>(</rp><rt>じん</rt><rp>)</rp></ruby></span> and <span lang="ja"><ruby><rb>家</rb><rp>(</rp><rt>か</rt><rp>)</rp></ruby></span> are correctly seen as suffixes in this context and thus removed from our bag of words based on our filtering. In other words, if we want more coarse-grained results, manual normalization is required.</p>
+</div>
+<h2 id="stop-words-optional"><a class="toclink" href="#stop-words-optional">Stop-words (optional)</a></h2>
+<p>Stop-words refers to the most commonly used words in natural language; words we might want to filter out of our corpora depending on the context. NLTK has stop-word functionality and comes with lists of stop-words for 16 different languages. Those do not include Japanese, however, and we will have to add that manually.</p>
+<p>An NLTK stop-word list is merely a text-file of words separated by newlines and stored in nltk_data\corpora\stopwords by their language (without the .txt extension).<sup><a class="footnote-ref" href="#fn-3" id="fnref-3" rel="footnote">4</a></sup> For now I recommend <a href="https://github.com/stopwords-iso/stopwords-ja/blob/master/stopwords-ja.txt">this one</a> (the same one we have used in the previous guide). Save this in the NLTK stopwords folder as ‘Japanese’, without .txt extension. <strong>figure 3</strong> displays the result of running an edited python script filtering out stop-words.</p>
+<div class="slider" style="margin: auto; text-align: center;">
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/mecab_math3.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 640px; height: auto; max-width: 100%;"/><span><strong>Figure 3:</strong> Frequency distribution (filtered with stop-word list).</span></div>
+<div><img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/twitter/cmd_nltk_stopwords.png" style="margin: auto; max-width: 95% !important;margin-bottom: 10px;width: 1103px; height: auto; max-width: 100%;"/><span><strong>Figure 4:</strong> Comparison of English and Japanese stop-word lists.</span></div>
+</div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># coding=utf-8</span>
+
+<span class="kn">import</span> <span class="nn">MeCab</span>
+<span class="kn">import</span> <span class="nn">neologdn</span>
+<span class="n">tagger</span> <span class="o">=</span> <span class="n">MeCab</span><span class="o">.</span><span class="n">Tagger</span><span class="p">(</span><span class="s2">"-F%m</span><span class="se">\\</span><span class="s2">t --unk-feature 未知語"</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">nltk.probability</span> <span class="kn">import</span> <span class="n">FreqDist</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">'font.family'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'sans-serif'</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">'font.sans-serif'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Hiragino Maru Gothic Pro'</span><span class="p">,</span> <span class="s1">'Yu Gothic'</span><span class="p">,</span> <span class="s1">'Meirio'</span><span class="p">,</span> <span class="s1">'Takao'</span><span class="p">,</span> <span class="s1">'IPAexGothic'</span><span class="p">,</span> <span class="s1">'IPAPGothic'</span><span class="p">,</span> <span class="s1">'VL PGothic'</span><span class="p">,</span> <span class="s1">'Noto Sans CJK JP'</span><span class="p">]</span>
+
+<span class="n">CONTENT_WORD_POS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"名詞"</span><span class="p">,</span> <span class="s2">"動詞"</span><span class="p">,</span> <span class="s2">"形容詞"</span><span class="p">,</span> <span class="s2">"副詞"</span><span class="p">,</span> <span class="s2">"未知語"</span><span class="p">)</span>
+<span class="n">IGNORE</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"接尾"</span><span class="p">,</span> <span class="s2">"非自立"</span><span class="p">,</span> <span class="s2">"代名詞"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">is_content_word</span><span class="p">(</span><span class="n">feature</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">feature</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">CONTENT_WORD_POS</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="n">f</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">IGNORE</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">feature</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)[:</span><span class="mi">6</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s2">"１９２３年の関東大震災が起こった時、ベルギー人がためらわず、救援活動を行ったり資金集めをしたりしたのは、この友好的な日本との関係のためだと言えます。王族と、新たに設立されたベルギー国内委員会が協力して大規模な救援活動を実施しました。私の故郷アントワープを含むベルギーの全国各地でも教会と戦争の退役軍人が協力して「Japan Day」という催しを行いました。他にも、ベルギー人の芸術家達が作品を集めたり新作を発表したりして特別な貢献をしました。まずはブリュッセルで、次に日本で作品の展示発売や展覧会を開催し、売り上げや入場料の利益は全て救援活動のために寄付されました。日本の展覧会だけでも3万５千人もの観客が訪れたと報告されていて、その上、日本の皇太子様と皇后様が30点もの芸術品をご購入されたと聞いております。"</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">neologdn</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">text</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span> <span class="ow">or</span> <span class="n">i</span><span class="o">.</span><span class="n">isspace</span><span class="p">()])</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">tagger</span><span class="o">.</span><span class="n">parseToNode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">'japanese'</span><span class="p">)</span>
+    <span class="n">content_words</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">while</span> <span class="n">result</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">is_content_word</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">feature</span><span class="p">):</span>
+            <span class="n">lemma</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)[</span><span class="mi">6</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">6</span> <span class="ow">and</span> <span class="n">result</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)[</span><span class="mi">6</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"*"</span> <span class="k">else</span> <span class="n">result</span><span class="o">.</span><span class="n">surface</span>
+            <span class="k">if</span> <span class="n">lemma</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">:</span>
+                <span class="n">content_words</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">lemma</span><span class="p">))</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">next</span>
+
+    <span class="n">fdist</span> <span class="o">=</span> <span class="n">FreqDist</span><span class="p">(</span><span class="n">content_words</span><span class="p">)</span>
+    <span class="n">fdist</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">cumulative</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+<h2 id="sentiment-analysis"><a class="toclink" href="#sentiment-analysis">Sentiment analysis</a></h2>
+<p>[Coming soon: Sentiment analysis]</p>
+<h1 id="bringing-it-all-together-processing-tweets"><a class="toclink" href="#bringing-it-all-together-processing-tweets">Bringing it all together: processing tweets</a></h1>
+<p>[Let’s apply this on a real-world example]</p>
+<hr/>
+<h1 id="wait-there-is-more"><a class="toclink" href="#wait-there-is-more">Wait! There is more!</a></h1>
+<p>The next guide in this series will expand on the methods outlined in the second guide, paying particular attention to the most common actors related to a certain keyword as well as their network.</p>
+<ul>
+<li><a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 1: Twitter Data Collection</a></li>
+<li><a href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 2: Basic Metrics &amp; Graphs</a></li>
+<li><a href="https://steviepoppe.net/blog/2020/06/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-3/">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 3: Natural Language Processing With MeCab, Neologd and KH Coder</a></li>
+<li><a href="#">A <del>Quick</del> Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 5: Advanced Metrics &amp; Graphs</a></li>
+</ul>
+<p><em>On a final note, it is my aim to write tutorials like these in such a way that they provide enough detail and (technical) information on the applied methodology to be useful in extended contexts, while still being accessible to less IT-savvy students. If anything is unclear, however, please do not hesitate to leave questions in the comment section below. <i class="icon-hand-down"></i></em></p>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn-footnote">
+<p>Still image from the 2012 Japanese animated film Wolf Children by Mamoru Hosoda, used under a Fair Use doctrine. <a class="footnote-backref" href="#fnref-footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn-1">
+<p>For more information on the MeCab python library, see the <a href="https://pypi.org/project/mecab/">pypi project page</a> or the <a href="https://qiita.com/yukinoi/items/990b6933d9f21ba0fb43">developer’s page</a> (Japanese). <a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn-2">
+<p>The other options are “-O chasen” (to display the POS tagged tokens in ChaSen format), “-O yomi” (for displaying the reading of the token) and -“O dump” (the default options, dumps all information). <a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+<li id="fn-3">
+<p>When unsure what the NLTK path is, simply run <code>nltk.download()</code> in python and the NLTK download manager will pop up, for me it was “C:\Users\stevie\AppData\Roaming\nltk_data\corpora\stopwords”. <a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 4 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+    <hr/>
+        </div>
+
+    <div class="comments">
+        <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'steviepoppe';
+                var disqus_identifier = 'blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/';
+                var disqus_url = 'https://steviepoppe.net/blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+        <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+                <hr />
+        <div class="category">
+            <h2>Related posts</h2>
+            <dl class="dl-horizontal">
+                <dt>Fri 05 June 2020</dt>
+                <dd><a href="https://steviepoppe.net/blog/2020/06/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-3/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 3: Natural Language Processing With MeCab, Neologd and KH Coder</a></dd>
+                <dt>Fri 15 May 2020</dt>
+                <dd><a href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 2: Basic Metrics & Graphs</a></dd>
+                <dt>Wed 01 April 2020</dt>
+                <dd><a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 1: Twitter Data Collection</a></dd>
+                <dt>Tue 14 May 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/05/japanese-e-books-vocab-mining-drm-and-copyright-law/">Japanese E-books, vocab-mining, DRM and copyright law</a></dd>
+                <dt>Wed 17 April 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/">A <del>Quick</del> Guide on Using Anki 5: an efficient vocab mining set-up with Anki and Yomichan</a></dd>
+            </dl>
+            </div>
+        <hr />
+    </div>
+
+      <nav class="pagination">
+
+    <span id="older-nav">
+      <a href="https://steviepoppe.net/blog/2020/06/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-3/">Older Posts
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="139,512 1024,512 1024,436 139,436 528,47 465,0 0,483 465,948 528,901 "></polygon></svg></a>
+    </span>
+
+
+    <script src="https://steviepoppe.net/theme/js/youarehere.min.js"></script>
+    <!-- You can also customize the bar a bit -->
+                </div>
+
+                <footer id="footer" class="footer gradient-2">
+                  <div id="footercontent">
+                    <span itemprop="copyrightHolder">(ɔ) Stevie Poppe 2016 - 2021</span>
+                    <div>
+                      <ul class="footer-nav">                    
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/" class="footer-nav-middle-a footer-nav-first-a">Home</a></li>
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/blog/archives/" class="footer-nav-middle-a ">Archives</a></li>
+                       <li class=" footer-nav-middle ">
+                        <a href="https://steviepoppe.net/blog/category/" class="footer-nav-middle-a ">Categories</a></li>
+                       <li class=" footer-nav-last ">
+                        <a href="https://steviepoppe.net/blog/tags/" class="footer-nav-middle-a ">Tagcloud</a></li>
+                      </ul>
+                    </div>
+                  </footer>
+                </div>
+
+      <div class="scroll-up" style="display: none;">
+        <a href="#main">&#xfe3f;</a>
+      </div>
+                <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/bootstrap.js"></script>
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/jquery.easing.1.3.js"></script>
+                <!-- <script type="text/javascript" src="https://steviepoppe.net/theme/js/parallax.min.js"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/clipboard.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/slick.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
+
+              </body>
+              </html>

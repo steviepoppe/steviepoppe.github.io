@@ -4,7 +4,17 @@
 
 <head>
   <!-- Stylesheets -->
-  <link href="https://steviepoppe.net/theme/css/all.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/bootstrap.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/nest.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/icons.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/pygment.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+
+  <link href="https://steviepoppe.net//theme/css/magnific-popup.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/admonition.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/keys.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/slick.css" rel="stylesheet">
   <style>
     @import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
     @import 'https://fonts.googleapis.com/css?family=Poiret+One|Quicksand';
@@ -22,16 +32,19 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Hello! I’m Stevie, a Belgian graduate student at the University of Leuven and currently studying at Chuo University in Tokyo, Japan. This page serves as a brief biographical introduction, as well as to explain the aims and origin of this blog. Having formerly attained a BA in Applied Informatics, I’m currently pursuing a Master’s degree in Japan studies at the University of Leuven; a radical switch, but one through which I’m able to combine both my strong interest in humanities as in the country of Japan and East Asia. Growing up in a poor Antwerp neighbourhood as the only kid at school of a supposed Belgian origin, and later onwards as a technical school (TSO) student, I have seen, and been confronted with, all kinds of discrimination. This has led me to an interest in (and questioning of) the notion of national identity and nationalism itself, as well as more broadly, an interest in the fields of sociology and politics. That aside, I’ve become particularly drawn to Digital Humanities, a domain that feels, through several years of fostering technical skills, right at home as a perfect synthesis of both my former and current studies. On a personal note, I’m fairly passionate about music. I’ve spent the better part of my life taking piano classes or playing in bands, and despite an ever shrinking lack of free time, enjoy spending most of it on composing.">
+  <meta name="description" content="#About me Hello! I’m Stevie, a Belgian PhD student enrolled at the Catholic University of Leuven. Through this page I will briefly introduce myself as well as summarize the intent of my blog. Like many of my age demographic, online communication and digital media played an important role in my upbringing. As a logical extension of my interest in the technical aspects of the internet and computing cultivated while growing up, I enrolled in an undergraduate program in Applied Informatics in 2011, graduating with a BA in 2014. Having reached the end of those studies and becoming more interested in matters of politics and society, however, I felt an increasing desire to develop and express myself beyond those technical skills. Admittedly under the internet-facilitated influence of Japanese pop-culture, I next enrolled in the Japanese Studies program at the Catholic University of Leuven, graduating with a BA in 2017 and MA in 2019. During that period, I received the wonderful opportunity to spend three academic semesters in Japan as a MEXT-funded research student of the department of Socio-Informatics at Chuo University. No doubt a life-changing experience, my time at Chuo University also served as an important synthesis of both my former, technical interests and the interests I had developed in media, politics and cultural sociology during my time at KU Leuven. Entering 2020, I began my PhD studies at KU Leuven, working on the topics of grassroots political usage of social media in Japan and political propaganda in subcultural online spaces. On a personal note, I am fairly passionate about music. I have spent the better part of my youth taking up music lessons or playing in bands, and although I had to make some sacrifices in order to pursue my academic ambitions, I enjoy spending free time on composing and playing piano. #About this blog This blog, Onoreto, serves simultaneously as a kind of personal portfolio and as a creative outlet. That aside, I hope I am also able to provide some assistance to my fellow students (or anyone interested) regarding the technical aspects of learning Japanese or working academically on the topic of contemporary Japan. Technically, his blog was built as a static site with a highly customized template using the lightweight, python-based Pelican framework, and is hosted on GitHub’s free web hosting service GitHub Pages. Due to its ease and sustainability, I have for …">
   <meta name="keywords" content="blog, japan, japanese, stevie poppe, leuven, university, about, pelican, language">
   <meta name="author" content="Stevie Poppe">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="https://steviepoppe.net/favicon.ico">
 
-  <link rel="shortcut icon" type="image/png" href="https://steviepoppe.net/images/icons/favicon.png">
-  <link rel="shortcut icon" type="image/x-icon" href="https://steviepoppe.net/favicon.ico">
+<link rel="shortcut icon" sizes="196x196" href="https://steviepoppe.net/favicon-192.png">
+
+<link rel="icon" href="https://steviepoppe.net/favicon-32.png" sizes="32x32">
+<link rel="icon" href="https://steviepoppe.net/favicon-96.png" sizes="96x96">
+<link rel="icon" href="https://steviepoppe.net/favicon-128.png" sizes="128x128">
+<link rel="icon" href="https://steviepoppe.net/favicon-192.png" sizes="192x192">
 
   <title>About | Onoreto</title>
 <link rel="canonical" href="https://steviepoppe.net/about/">
@@ -49,9 +62,9 @@
 
 
               <!-- RSS Feeds -->
-              <link href="https://steviepoppe.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
-              <link href="https://steviepoppe.net/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
-              <link href="https://steviepoppe.net/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
+              <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
+              <link href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
+              <link href="http://localhost:8000/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
               <!-- /RSS Feeds -->
 
               <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -67,29 +80,110 @@
 
 <meta name="robots" content="index">        </head>
 
-        <body style="background-repeat: repeat; background-position: top left; background-attachment: scroll; background-image: url('https://steviepoppe.net/images/asanoha-400px.png');">
+        <body>
+
+    <!-- OVERLAY MENU -->
+    <div id="overlay-menu" class="overlay-menu">
+
+      <a href="#" id="overlay-menu-hide" class="navigation-hide"><button title="Close (Esc)" type="button" class="mfp-close">×</button></a>
+
+      <div class="overlay-menu-inner">
+        <nav class="overlay-menu-nav">
+
+          <ul id="overflow-nav">
+            <li>
+              <a class="link" href="https://steviepoppe.net"><i class="icon-home icon-menu"></i>Home</a>
+            </li>
+
+            <li class="slidedown"><a href="#"><i class="icon-folder-close icon-menu"></i>Categories</a>
+              <ul>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+              </ul>
+            </li>
+
+<li >
+                            <a class="link" href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a class="link" href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>          </ul>
+        </nav>
+      </div>
+
+      <div class="overlay-navigation-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+                          <ul class="socialnav2 social-icons-footer" style="width: auto;display: inline-block;float: none;">
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          </div>
+            <div class="col-sm-12 text-center">
+              <p class="copyright font-alt m-b-0">(ɔ) Stevie Poppe 2016 - 2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /OVERLAY MENU -->
+
           <div id="wrapper">
 
-            <div class="master">
+            <div class="master scrollingnav">
               <div class="head-container">
 
-                <div class="page-header">
-                  <a href="https://steviepoppe.net" class="avatar-container pull-left">
+                <header class="page-header">
+                  <a href="https://steviepoppe.net" class="avatar-container pull-left show-overlay toggle-menu" title="Menu">
                     <div class="avatar">
                       <div class="side"><img src="https://steviepoppe.net/images/logo2.png" class="img-responsive"/></div>
                     </div>
                   </a>
-                  <h1 style="font-size: 28px; letter-spacing: 1px;"><a href="https://steviepoppe.net">Onoreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
-                </div>
+                  <h1 id="onoreto" title="Onoreto" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">noreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
+                </header>
 
                 <div id="nav-wrapper">
-                  <nav class="navbar navbar-default" id="nav">
+                  <nav class="navbar navbar-default scrollingnav" id="nav">
 
                     <div class="navbar-collapse" id="steviesmenubar">
-                      <div style="float: left;">
+                      <div style="float: left;;margin-left: 20px;">
                         <ul class="nav navbar-nav">
+                          <li id="smallicon">
+<a class="small-nav-menu toggle-menu" href="#" title="Menu" style="color:unset;background-color:unset;transition: none;padding-right: 0px;">
+<img src="https://steviepoppe.net/images/logo2.png" style="border-radius: 50%;height: 25px;margin-top: -5px;margin-right: 5px;">
+</a>
+</li>
 <li class=" ">
-                            <a  href="/"><img id="smallicon" src="https://steviepoppe.net/images/logosmall2.png"><i class="icon-home icon-menu"></i>Blog</a>
+                            <a  href="/"><i class="icon-home icon-menu"></i>Blog</a>
                             </li><li class=" dropdown">
                             <a  class="dropdown-toggle" data-target="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="/blog/category/"><i class="icon-folder-close icon-menu"></i>Categories                              <span class="caret"></span>
 </a>
@@ -109,6 +203,11 @@
                               <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
                                 <i class="icon-linkedin" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
                             </li>
                             <li>
                               <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
@@ -135,8 +234,8 @@
                               </a>
                             </li>
                           </ul>
-                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" > 
-                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input"></form>
+                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" >
+                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input" style="width: 130px;"></form>
                           </div>
 
 
@@ -160,88 +259,104 @@
  -->        <div class="aboutmecontent">
           <h1 id="about-me"><a class="toclink" href="#about-me">#About me</a></h1>
 
-<p>Hello! I’m Stevie, a Belgian graduate student at the University of Leuven and currently studying at Chuo University in Tokyo, Japan. This page serves as a brief biographical introduction, as well as to explain the aims and origin of this blog.</p>
-<hr/>
-<p>Having formerly attained a BA in Applied Informatics,<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> I’m currently pursuing a Master’s degree in Japan studies at the University of Leuven; a radical switch, but one through which I’m able to combine both my strong interest in humanities as in the country of Japan and East Asia. Growing up in a poor Antwerp neighbourhood as the only kid at school of a supposed Belgian origin, and later onwards as a technical school (TSO) student, I have seen, and been confronted with, all kinds of discrimination. This has led me to an interest in (and questioning of) the notion of national identity and nationalism itself, as well as more broadly, an interest in the fields of sociology and politics. That aside, I’ve become particularly drawn to Digital Humanities, a domain that feels, through several years of fostering technical skills, right at home as a perfect synthesis of both my former and current studies.</p>
-<p>On a personal note, I’m fairly passionate about music. I’ve spent the better part of my life taking piano classes or playing in bands, and despite an ever shrinking lack of free time, enjoy spending most of it on composing. </p>
-<hr/>
+<p>Hello! I’m Stevie, a Belgian PhD student enrolled at the Catholic University of Leuven. Through this page I will briefly introduce myself as well as summarize the intent of my blog.</p>
+<hr>
+<p>Like many of my age demographic, online communication and digital media played an important role in my upbringing. As a logical extension of my interest in the technical aspects of the internet and computing cultivated while growing up, I enrolled in an undergraduate program in Applied Informatics<sup><a id="fnref-1" class="footnote-ref" href="#fn-1" rel="footnote">1</a></sup> in 2011, graduating with a BA in 2014. Having reached the end of those studies and becoming more interested in matters of politics and society, however, I felt an increasing desire to develop and express myself beyond those technical skills. Admittedly under the internet-facilitated influence of Japanese pop-culture, I next enrolled in the Japanese Studies program at the Catholic University of Leuven, graduating with a BA in 2017 and MA in 2019.</p>
+<p>During that period, I received the wonderful opportunity to spend three academic semesters in Japan as a MEXT-funded research student of the department of Socio-Informatics at Chuo University. No doubt a life-changing experience, my time at Chuo University also served as an important synthesis of both my former, technical interests and the interests I had developed in media, politics and cultural sociology during my time at KU Leuven. Entering 2020, I began my PhD studies at KU Leuven, working on the topics of grassroots political usage of social media in Japan and political propaganda in subcultural online spaces.</p>
+<p>On a personal note, I am fairly passionate about music. I have spent the better part of my youth taking up music lessons or playing in bands, and although I had to make some sacrifices in order to pursue my academic ambitions, I enjoy spending free time on composing and playing piano.</p>
+<hr>
+
 
 <h1 id="about-this-blog"><a class="toclink" href="#about-this-blog">#About this blog</a></h1>
-<p>I designed and built this blog from scratch using the lightweight, python-based <a href="http://blog.getpelican.com/">Pelican</a> as framework, and host my pages on GitHub’s free web hosting service <a href="https://pages.github.com/">GitHub Pages</a>. Since my workflow involves writing most of my content in the markdown syntaxis, Pelican turns out to be both a good fit, and way for me to practice webdesign.</p>
-<p>This blog serves simultaneously as a kind of portfolio, a place for technical experimentation, and as an outlet for random musings on personal subjects (usually on languages, my studies or my exchange in Japan, although hopefully I’ll get to occasionally plug whatever music I’m working on as well!). That aside, I hope I’ll be able to provide some assistance to my fellow students (or anyone interested) on technical aspects related to the academic studies, or on Japanese Studies and the Japanese language in general.</p>
-<h1 id="about-onoreto"><a class="toclink" href="#about-onoreto">#About Onoreto</a></h1>
-<p>Onoreto is the romanization of 己と, stylized as 己ト to resemble both the first two initials of my first name in Latin script, and the Korean Hangul 라. In the context of this blog as personal portfolio, 己 (onore) is a humble, rather old-fashioned way to refer to oneself, with と (to) implying a connection with what’s coming next (“Me and…”). Alternatively, 己と is also an <a href="http://kobun.weblio.jp/content/%E5%B7%B1%E3%81%A8">archaic Japanese expression</a> signifying a spontanious, natural action, similar to みずから or おのずから.</p>
+<p>This blog, Onoreto,<sup><a id="fnref-1" class="footnote-ref" href="#fn-2" rel="footnote">2</a></sup> serves simultaneously as a kind of personal portfolio and as a creative outlet. That aside, I hope I am also able to provide some assistance to my fellow students (or anyone interested) regarding the technical aspects of learning Japanese or working academically on the topic of contemporary Japan.</p>
+<p>Technically, his blog was built as a static site with a highly customized template using the lightweight, python-based <a href="https://blog.getpelican.com/">Pelican framework</a>, and is hosted on GitHub’s free web hosting service <a href="https://pages.github.com/">GitHub Pages</a>. Due to its ease and sustainability, I have for the past half decade written most of my writings (including graduate and undergraduate thesis, term papers and course notes) in the markdown syntax, and continue doing so with Pelican.</p>
         </div>
 </div>
         <div class="containerright">
-<div ><img class=profile alt="profile" src="/images/pp-full.png"></div>
+<div ><img class=profile alt="profile" src="https://steviepoppe.net/images/pp-full.jpg" style="max-width:225px;"></div>
 
-        <div class="aboutmecontent" style="text-align:center;">
+        <aside class="aboutmecontent" style="text-align:center;">
           <h1><span itemprop="name">#whoami</span></h1>
 <hr />
 <ul>
 <li><strong>Stevie Poppe</strong></li>
-<li>Japanology student @ KULeuven</li>
-<li>BA in Applied Informatics</li>
-<li>Hobbyist musician</li>
-<li>All-round tech-geek</li>
+<li>PhD student @ KU Leuven</li>
+<li>MEXT Research student @ Chuo University</li>
+<li>MA Japanese Studies @ KULeuven</li>
+<li>BA Applied Informatics @ AP University College</li>
 </ul>
 <hr />
-<h2>@KULeuven(<span lang="ja">の生活</span>)</h2>
+<h2>@Chuo University(<span lang="ja">の生活</span>)</h2>
 <ul>
-<li>PAL-Coach<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
-<li>CC Member<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
-<li>Buddy Programme member<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></li>
-<li>Co-organiser of the Japanese Reading Club<sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup></li>
+<li>Graduate Teaching Assistant GSP<sup><a id="fnref-2" class="footnote-ref" href="#fn-2" rel="footnote">2</a></sup></li>
+<li>Circle Activities<sup><a id="fnref-3" class="footnote-ref" href="#fn-3" rel="footnote">3</a></sup></li>
+</ul>
+<h2>@KU Leuven(<span lang="ja">の生活</span>)</h2>
+<ul>
+<li>PAL-Coach<sup><a id="fnref-4" class="footnote-ref" href="#fn-4" rel="footnote">4</a></sup></li>
+<li>CC Member<sup><a id="fnref-5" class="footnote-ref" href="#fn-5" rel="footnote">5</a></sup></li>
+<li>Buddy Program member<sup><a id="fnref-6" class="footnote-ref" href="#fn-6" rel="footnote">6</a></sup></li>
+<li>Co-organizer of the Japanese Reading Club<sup><a id="fnref-7" class="footnote-ref" href="#fn-7" rel="footnote">7</a></sup></li>
 </ul>
 <h2>@AP University College(<span lang="ja">の生活</span>)</h2>
 <ul>
 <li>Participated in short-term <strong>foreign exchange projects</strong> @ Portugal, Belgium and Luxembourg</li>
-<li>Trained <strong>leadership skills</strong> through various succesful projects</li>
+<li>Received 'Best Programmer' award at the 2014 graduation ceremony</li>
 <li>Cultivated an attitude of <strong>curiosity</strong> and <strong>adaptiveness</strong></li>
 </ul>
 <h2>@Personal(<span lang="ja">の生活</span>)</h2>
 <ul>
-<li><strong>Music</strong>: piano, violin, composing</li>
-<li><strong>Sports</strong>: Kung Fu, Strength Training</li>
-<li><strong>Others</strong>: Avid reader, traveller and film-enthusiast</li>
+<li><strong>Music</strong>: piano, band activities (keyboard), composing</li>
+<li><strong>Others</strong>: avid reader and film-enthusiast</li>
+<li><strong>Technical</strong>: hobbyist web-designer</li>
 </ul>
+        </aside>
           </div>
+
+
+
+
         </div>
-
-
-
-        </div>
-                      <div class="footnotescontent">
-<div class="footnote">
-<hr/>
+                      <article class="footnotescontent">
+<aside class="footnote">
+  <hr />
 <ol>
-<li id="fn:1">
-<p>AP University College, 2011 - 2014&nbsp;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+<li id="fn-1">
+<p>AP University College, 2011 - 2014&nbsp;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">↩</a></p>
 </li>
-<li id="fn:2">
-<p><em>‘Peer Assisted Learning’</em>. PAL coaches at Leuven University, usually second and third grade upperclass students, assist first grade students regularly on topics ranging from efficient studying, preparing for certain classes, networking and feeling at home, etc. I took on the role of PAL coach in my second and third, current year.&nbsp;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">↩</a></p>
+<li id="fn-2">
+<p><em>Onoreto</em> is the transliteration of <span lang="ja">己と</span>, stylized as <span lang="ja">己ト</span>. In the context of this blog as personal portfolio, <span lang="ja">己</span> (<em>onore</em>) is a humble, rather old-fashioned way to refer to oneself, and <span lang="ja">己と</span> also serves as an <a href="http://kobun.weblio.jp/content/%E5%B7%B1%E3%81%A8">archaic Japanese expression</a> signifying a spontaneous, natural action, similar to <span lang="ja">みずから</span> <em>mizukara</em> or <span lang="ja">おのずから</span> <em>onozukara</em>.&nbsp;<a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text">↩</a></p>
 </li>
-<li id="fn:3">
-<p>The Japanology CC (<a href="http://japanologie.arts.kuleuven.be/nl/organisatie-en-bestuur">Curriculum Commission</a>) monitors and assesses the quality of the Japanology program and consists of both faculty members and students representing their respective years. Topics include matters as programming, form and evaluation of courses amongst others. I served as CC member from my first to my third, current year at Leuven University.&nbsp;<a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">↩</a></p>
+<li id="fn-3">
+<p>For one academic year, I have assisted Dr. Prof. Nomiya Daishiro as teaching assistant in his Global Sociology Program, a course designed to teach undergraduate students the necessary skills to tackle academic research in the English language. This is done through both extensively handling academic literature on global issues in the field of Sociology (both in English and Japanese), as well as learn methodology through group projects. The students' intensive work lead to several presentations at an international conference held in Tokyo, March, 2019. &nbsp;<a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
-<li id="fn:4">
-<p>KU Leuven's <a href="http://www.kuleuven.be/english/studentservices/orientationdays/buddy">buddy programme</a> is meant to ease the integration of new international students or researchers by connecting them to locals. These local 'buddies' help with things like finding one's way around town, getting used to the Belgian lifestyle, meeting others, etc. I participated in this program, and became a buddy of a Japanese student, in my third (current) year at Leuven University.&nbsp;<a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">↩</a></p>
+<li id="fn-4">
+<p>I used my period as student at Chuo University to not just further my academic ambitions, but to develop a local friend circle based on my personal hobbies. By joining a music circles, I fulfilled a personal dream of performing live music in Japan, including at Chuo University's school festival. finally, I was a member of the piano circle, and often spent time at one of the movie-circles to extend my knowledge of Japanese cinema.&nbsp;<a class="footnote-backref" href="#fnref-4" title="Jump back to footnote 4 in the text">↩</a></p>
 </li>
-<li id="fn:5">
-<p>We follow the principle of <a href="https://en.wikipedia.org/wiki/Guided_reading">Guided Reading</a>: weekly reading sessions as a group of about 6 students accompanied by a teacher serving as our mentor. In our second year, we finished our first book: <em>The Girl Who Leapt Through Time</em> (<span lang="ja">時をかける少女</span>) over the course of one semester.&nbsp;<a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text">↩</a></p>
+<li id="fn-5">
+<p><em>‘Peer Assisted Learning’</em>. PAL coaches at Leuven University, usually second and third grade upper-class students, regularly assist first grade students on topics ranging from efficient studying, preparing for certain classes, networking or feeling at home. I took on the role of PAL coach in my second and third year.&nbsp;<a class="footnote-backref" href="#fnref-5" title="Jump back to footnote 5 in the text">↩</a></p>
+</li>
+<li id="fn-6">
+<p>The Japan Studies CC (<a href="http://japanologie.arts.kuleuven.be/nl/organisatie-en-bestuur">Curriculum Commission</a>) monitors and assesses the quality of the academic program and consists of both faculty members and students representing their respective years. Topics include matters as programming, form and evaluation of courses amongst others. I served as CC member from my first to my third at Leuven University.&nbsp;<a class="footnote-backref" href="#fnref-6" title="Jump back to footnote 6 in the text">↩</a></p>
+</li>
+<li id="fn-7">
+<p>KU Leuven's <a href="http://www.kuleuven.be/english/studentservices/orientationdays/buddy">buddy program</a> is meant to ease the integration of new international students or researchers by connecting them to locals. These local 'buddies' help with things like finding one's way around town, adapting to one's new lifestyle, expending one's network, etc.&nbsp;<a class="footnote-backref" href="#fnref-7" title="Jump back to footnote 7 in the text">↩</a></p>
+</li>
+<li id="fn-8">
+<p>We follow the principle of <a href="https://en.wikipedia.org/wiki/Guided_reading">Guided Reading</a>: weekly reading sessions as a group of about six students accompanied by a teacher serving as our mentor. In our second year, we finished our first book: <em>The Girl Who Leapt Through Time</em> (<span lang="ja">時をかける少女</span>) over the course of one semester.&nbsp;<a class="footnote-backref" href="#fnref-8" title="Jump back to footnote 8 in the text">↩</a></p>
 </li>
 </ol>
-</div>
+<hr/>
+</aside>
+        </article>
         </div>
       </div>
 
-        </div>
                 </div>
 
                 <footer id="footer" class="footer gradient-2">
                   <div id="footercontent">
-                    <span itemprop="copyrightHolder">&copy; Stevie Poppe 2017</span>
+                    <span itemprop="copyrightHolder">(ɔ) Stevie Poppe 2016 - 2021</span>
                     <div>
                       <ul class="footer-nav">                    
                        <li class=" footer-nav-middle ">
@@ -254,38 +369,19 @@
                         <a href="https://steviepoppe.net/blog/tags/" class="footer-nav-middle-a ">Tagcloud</a></li>
                       </ul>
                     </div>
-                    <div style="margin-top: -95px; margin-right:15px; float: right;">
-                      <h5><a id="backtotop" href="#">Back to top ↑</a></h5>
-                    </div>
                   </footer>
                 </div>
 
-
-                <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-
+      <div class="scroll-up" style="display: none;">
+        <a href="#main">&#xfe3f;</a>
+      </div>
                 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
-                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
                 <script type="text/javascript" src="https://steviepoppe.net/theme/js/bootstrap.js"></script>
-                <script>
-                  $(function() {
-                    $('#nav-wrapper').height($("#nav").height());
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/jquery.easing.1.3.js"></script>
+                <!-- <script type="text/javascript" src="https://steviepoppe.net/theme/js/parallax.min.js"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/clipboard.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/slick.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
 
-                    $('#nav').affix({
-                      offset: { top: $('#nav').offset().top }
-                    });
-                  });
-                </script>
-
-                <!-- Google Analytics -->
-                <script>
-                  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                  ga('create', 'UA-82857115-1', 'auto');
-                  ga('send', 'pageview');
-                </script>
-                <!-- /Google Analytics -->
               </body>
               </html>

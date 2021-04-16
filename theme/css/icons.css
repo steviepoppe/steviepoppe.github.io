@@ -1249,6 +1249,13 @@ ul.icons li [class*=" icon-"] {
 .icon-wordpress:before { content: '\77'; } /* 'w' */
 .icon-linkedin-rect:before { content: '\f31b'; } /* '?' */
 .icon-instagram:before { content: '\f31f'; } /* '?' */
+.icon-soundcloud:before { content: url(../fonts/soundcloud-brands.svg);
+display: inline-block;
+
+width: 16px;
+background-repeat: no-repeat;
+vertical-align: middle;
+margin-top: 8px; }
 
 
 .icon-goodreads:before { 

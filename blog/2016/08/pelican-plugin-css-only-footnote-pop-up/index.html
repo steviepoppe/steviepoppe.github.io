@@ -4,7 +4,17 @@
 
 <head>
   <!-- Stylesheets -->
-  <link href="https://steviepoppe.net/theme/css/all.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/bootstrap.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/nest.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/icons.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/css/pygment.css" rel="stylesheet">
+  <link href="https://steviepoppe.net/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+
+  <link href="https://steviepoppe.net//theme/css/magnific-popup.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/admonition.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/keys.css" rel="stylesheet">
+  <link href="https://steviepoppe.net//theme/css/slick.css" rel="stylesheet">
   <style>
     @import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
     @import 'https://fonts.googleapis.com/css?family=Poiret+One|Quicksand';
@@ -22,16 +32,19 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Footnotes are a classic staple in any writer’s toolbox and allows them to, in an unobtrusive way, citate sources or display additional information not directly related to the original argument. Yet I feel online footnotes, through the way they’re often implemented imitating printed media footnotes, come over quite counterintuitive by forcing the interested reader to disrupt his reading flow, and by failing to make use of today’s extensive webdesign posibilities. As I royally use footnotes in my markdown writing workflow1 I figured I’d get acquainted with the Pelican documentation a bit and write a small unobtrusive CSS pop-up plugin to display these on hover for those devices that support it.2">
+  <meta name="description" content="Footnotes are a classic staple in any writer’s toolbox, allowing them to, in an unobtrusive way, cite sources or display additional information not directly related to the original argument. Nevertheless it is my impression that online footnotes, through the way they are often implemented imitating printed media footnotes, come over quite counterintuitive and force the reader to disrupt his reading flow,failing to make use of today’s extensive web design possibilities. As I royally use footnotes in my markdown writing work-flow I figured I’d get acquainted with the Pelican documentation a bit and write a small unobtrusive CSS pop-up plugin to display these on hover for those devices that support it. My solution is pretty rough and based on the way Python-Markdown parses markdown into HTML. As it’s a quick ‘n dirty workaround untested with other parsers, I have no intention to further maintain this code so feel free to use it however you’d like. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 def content_object_init(instance): if instance._content is not None: content = instance._content soup = BeautifulSoup(content, &#39;html.parser&#39;) if &#39;sup&#39; in content: footnotes = soup.find(class_=&#34;footnote&#34;).find_all(&#39;p&#39;) footnoteref = soup.find_all(class_=&#34;footnote-ref&#34;) for index, item in enumerate(footnotes): footnoteref[index].parent[&#39;class&#39;] = &#39;popup_footnote&#39; tag = soup.new_tag(&#39;span&#39;) tag.append(BeautifulSoup(item.decode_contents(), &#39;html.parser&#39;)) footnoteref[index].insert_after(tag) instance._content = soup.decode() def register(): signals.content_object_init.connect(content_object_init) For simplicity’s sake I use the BeautifulSoup library to locate all footnote references and their respective footnotes. Then I loop through them and copy the contents of the footnote in a ‘popup_footnote’ span I append to the footnote reference container. Styling is done in CSS. Below is my markup. I use left: 50%; transform: translate(-50%, 0); to center the absolute-positioned pop-up over the footnote reference. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 sup.popup_footnote span { text-align: justify; z-index: 10; display: none; padding: 5px; line-height: 16px; opacity: 0.9; border-radius: 4px; box-shadow: 5px 5px 8px #D4D4D4; top: 10px; left: 50%; transform: translate(-50%, 0); position: absolute; width: 250px; } sup.popup_footnote:hover span{ display: inline; color: #111; border: 1px solid #eaeaea; background-color: #fffcfc; } The downside …">
   <meta name="keywords" content="Footnotes, Markdown, Pelican, Python">
   <meta name="author" content="Stevie Poppe">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="https://steviepoppe.net/favicon.ico">
 
-  <link rel="shortcut icon" type="image/png" href="https://steviepoppe.net/images/icons/favicon.png">
-  <link rel="shortcut icon" type="image/x-icon" href="https://steviepoppe.net/favicon.ico">
+<link rel="shortcut icon" sizes="196x196" href="https://steviepoppe.net/favicon-192.png">
+
+<link rel="icon" href="https://steviepoppe.net/favicon-32.png" sizes="32x32">
+<link rel="icon" href="https://steviepoppe.net/favicon-96.png" sizes="96x96">
+<link rel="icon" href="https://steviepoppe.net/favicon-128.png" sizes="128x128">
+<link rel="icon" href="https://steviepoppe.net/favicon-192.png" sizes="192x192">
 
   <title>Pelican Plugin: CSS-only footnote pop-up | Onoreto</title>
 <link rel="canonical" href="https://steviepoppe.net/blog/2016/08/pelican-plugin-css-only-footnote-pop-up/">
@@ -49,11 +62,11 @@
 
 
               <!-- RSS Feeds -->
-              <link href="https://steviepoppe.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
-              <link href="https://steviepoppe.net/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
-              <link href="https://steviepoppe.net/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
-              <link href="https://steviepoppe.net/feeds/technical.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
-              <link href="https://steviepoppe.net/feeds/technical.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
+              <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Full Atom Feed" />
+              <link href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Full RSS Feed" />
+              <link href="http://localhost:8000/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto RSS Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Onoreto Categories Atom Feed" />
+              <link href="http://localhost:8000/feeds/{slug}.rss.xml" type="application/rss+xml" rel="alternate" title="Onoreto Categories RSS Feed" />
               <!-- /RSS Feeds -->
 
               <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -69,29 +82,110 @@
 
 <meta name="robots" content="index">        </head>
 
-        <body style="background-repeat: repeat; background-position: top left; background-attachment: scroll; background-image: url('https://steviepoppe.net/images/asanoha-400px.png');">
+        <body>
+
+    <!-- OVERLAY MENU -->
+    <div id="overlay-menu" class="overlay-menu">
+
+      <a href="#" id="overlay-menu-hide" class="navigation-hide"><button title="Close (Esc)" type="button" class="mfp-close">×</button></a>
+
+      <div class="overlay-menu-inner">
+        <nav class="overlay-menu-nav">
+
+          <ul id="overflow-nav">
+            <li>
+              <a class="link" href="https://steviepoppe.net"><i class="icon-home icon-menu"></i>Home</a>
+            </li>
+
+            <li class="slidedown"><a href="#"><i class="icon-folder-close icon-menu"></i>Categories</a>
+              <ul>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li>
+                <li><a class="link" href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+              </ul>
+            </li>
+
+<li >
+                            <a class="link" href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a class="link" href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>          </ul>
+        </nav>
+      </div>
+
+      <div class="overlay-navigation-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+                          <ul class="socialnav2 social-icons-footer" style="width: auto;display: inline-block;float: none;">
+                            <li>
+                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+                                <i class="icon-linkedin" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
+                            </li>
+                            <li>
+                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
+                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">YouTube</span>
+                            </li>
+                            <li>
+                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
+                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Flickr</span>
+                            </li>
+                            <li>
+                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+                                <i class="icon-twitter" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Twitter</span>
+                            </li>
+                            <li>
+                            <!--<a href="https://steviepoppe.net/feeds/rss.xml" title="RSS">-->
+                              <a href="http://feeds.feedburner.com/Onoreto" title="Feed">
+                                <i class="icon-rss" style="font-size: 10px !important;">
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                          </div>
+            <div class="col-sm-12 text-center">
+              <p class="copyright font-alt m-b-0">(ɔ) Stevie Poppe 2016 - 2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /OVERLAY MENU -->
+
           <div id="wrapper">
 
-            <div class="master">
+            <div class="master scrollingnav">
               <div class="head-container">
 
-                <div class="page-header">
-                  <a href="https://steviepoppe.net" class="avatar-container pull-left">
+                <header class="page-header">
+                  <a href="https://steviepoppe.net" class="avatar-container pull-left show-overlay toggle-menu" title="Menu">
                     <div class="avatar">
                       <div class="side"><img src="https://steviepoppe.net/images/logo2.png" class="img-responsive"/></div>
                     </div>
                   </a>
-                  <h1 style="font-size: 28px; letter-spacing: 1px;"><a href="https://steviepoppe.net">Onoreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
-                </div>
+                  <h1 id="onoreto" title="Onoreto" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">noreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
+                </header>
 
                 <div id="nav-wrapper">
-                  <nav class="navbar navbar-default" id="nav">
+                  <nav class="navbar navbar-default scrollingnav" id="nav">
 
                     <div class="navbar-collapse" id="steviesmenubar">
-                      <div style="float: left;">
+                      <div style="float: left;;margin-left: 20px;">
                         <ul class="nav navbar-nav">
+                          <li id="smallicon">
+<a class="small-nav-menu toggle-menu" href="#" title="Menu" style="color:unset;background-color:unset;transition: none;padding-right: 0px;">
+<img src="https://steviepoppe.net/images/logo2.png" style="border-radius: 50%;height: 25px;margin-top: -5px;margin-right: 5px;">
+</a>
+</li>
 <li class=" ">
-                            <a  href="/"><img id="smallicon" src="https://steviepoppe.net/images/logosmall2.png"><i class="icon-home icon-menu"></i>Blog</a>
+                            <a  href="/"><i class="icon-home icon-menu"></i>Blog</a>
                             </li><li class=" dropdown">
                             <a  class="dropdown-toggle" data-target="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="/blog/category/"><i class="icon-folder-close icon-menu"></i>Categories                              <span class="caret"></span>
 </a>
@@ -111,6 +205,11 @@
                               <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
                                 <i class="icon-linkedin" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Linkedin</span>
+                            </li>
+                            <li>
+                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+                                <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">SoundCloud</span>
                             </li>
                             <li>
                               <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
@@ -137,8 +236,8 @@
                               </a>
                             </li>
                           </ul>
-                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" > 
-                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input"></form>
+                          <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" >
+                            <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input" style="width: 130px;"></form>
                           </div>
 
 
@@ -151,10 +250,10 @@
 
 
                 <div id="main">
-    <div class="container content padding-40" itemscope itemtype="http://schema.org/Article">
+    <div class="container content padding-40 articleshadow" itemscope itemtype="http://schema.org/Article">
     <div class="container header-wrapper nobanner">
-        <hr/>
         <div class="row">
+        <hr/>
               <div class="col-lg-12">
                   <div class="header-content center">
                       <h1 class="header-title nocount"><span itemprop="name">Pelican Plugin: CSS-only footnote pop-up</span></h1>
@@ -171,24 +270,45 @@
     <div class="container-main" itemprop="articleBody">
 <!--          -->
         
-<p>Footnotes are a classic staple in any writer’s toolbox and allows them to, in an unobtrusive way, citate sources or display additional information not directly related to the original argument. Yet I feel online footnotes, through the way they’re often implemented imitating printed media footnotes, come over quite counterintuitive by forcing the interested reader to disrupt his reading flow, and by failing to make use of today’s extensive webdesign posibilities.</p>
-<p>As I royally use footnotes in my markdown writing workflow<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> I figured I’d get acquainted with the Pelican documentation a bit and write a small unobtrusive CSS pop-up plugin to display these on hover for those devices that support it.<sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup></p>
 
-<p>My solution is pretty rough and based on the way Python-Markdown parses markdown into HTML. As it’s a quick ‘n dirty workaround untested with other parsers, I have no intention to further maintain this code so feel free to use it however you’d like.</p>
-<div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">content_object_init</span><span class="p">(</span><span class="n">instance</span><span class="p">):</span>
+<p>Footnotes are a classic staple in any writer&rsquo;s toolbox, allowing them to, in an unobtrusive way, cite sources or display additional information not directly related to the original argument. Nevertheless it is my impression that online footnotes, through the way they are often implemented imitating printed media footnotes, come over quite counterintuitive and force the reader to disrupt his reading flow,failing to make use of today&rsquo;s extensive web design possibilities.</p>
+<p>As I royally use footnotes in my markdown writing work-flow<sup><a class="footnote-ref" href="#fn-1" id="fnref-1" rel="footnote">1</a></sup> I figured I&rsquo;d get acquainted with the Pelican documentation a bit and write a small unobtrusive CSS pop-up plugin to display these on hover for those devices that support it.<sup><a class="footnote-ref" href="#fn-2" id="fnref-2" rel="footnote">2</a></sup></p>
 
-        <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">_content</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+
+<p>My solution is pretty rough and based on the way Python-Markdown parses markdown into HTML. As it&rsquo;s a quick &lsquo;n dirty workaround untested with other parsers, I have no intention to further maintain this code so feel free to use it however you&rsquo;d like.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">content_object_init</span><span class="p">(</span><span class="n">instance</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">_content</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">content</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">_content</span>
-            <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+            <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="s1">'sup'</span> <span class="ow">in</span> <span class="n">content</span><span class="p">:</span>
-                <span class="n">footnotes</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s2">"footnote"</span><span class="p">)</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">'p'</span><span class="p">)</span>
-                <span class="n">footnoteref</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s2">"footnote-ref"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s1">&#39;sup&#39;</span> <span class="ow">in</span> <span class="n">content</span><span class="p">:</span>
+                <span class="n">footnotes</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s2">&quot;footnote&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+                <span class="n">footnoteref</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s2">&quot;footnote-ref&quot;</span><span class="p">)</span>
 
                 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">footnotes</span><span class="p">):</span>
-                    <span class="n">footnoteref</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="s1">'class'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'popup_footnote'</span>
-                    <span class="n">tag</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">new_tag</span><span class="p">(</span><span class="s1">'span'</span><span class="p">)</span>
-                    <span class="n">tag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">decode_contents</span><span class="p">(),</span> <span class="s1">'html.parser'</span><span class="p">))</span>
+                    <span class="n">footnoteref</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;popup_footnote&#39;</span>
+                    <span class="n">tag</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">new_tag</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)</span>
+                    <span class="n">tag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">decode_contents</span><span class="p">(),</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">))</span>
                     <span class="n">footnoteref</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">insert_after</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
 
             <span class="n">instance</span><span class="o">.</span><span class="n">_content</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
@@ -196,9 +316,31 @@
     <span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
         <span class="n">signals</span><span class="o">.</span><span class="n">content_object_init</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">content_object_init</span><span class="p">)</span>
 </pre></div>
-<p>For simplicity’s sake I use the BeautifulSoup library to locate all footnote references and their respective footnotes. Then I loop through them and copy the contents of the footnote in a ‘popup_footnote’ span I append to the footnote reference container.</p>
+</td></tr></table>
+<p>For simplicity&rsquo;s sake I use the BeautifulSoup library to locate all footnote references and their respective footnotes. Then I loop through them and copy the contents of the footnote in a &lsquo;popup_footnote&rsquo; span I append to the footnote reference container.</p>
 <p>Styling is done in CSS. Below is my markup. I use <code>left: 50%;</code> <code>transform: translate(-50%, 0);</code> to center the absolute-positioned pop-up over the footnote reference.</p>
-<div class="codehilite"><pre><span></span>    <span class="nt">sup</span><span class="p">.</span><span class="nc">popup_footnote</span> <span class="nt">span</span> <span class="p">{</span>   
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="nt">sup</span><span class="p">.</span><span class="nc">popup_footnote</span> <span class="nt">span</span> <span class="p">{</span>   
         <span class="k">text-align</span><span class="p">:</span> <span class="kc">justify</span><span class="p">;</span>
         <span class="k">z-index</span><span class="p">:</span> <span class="mi">10</span><span class="p">;</span>
         <span class="k">display</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span> 
@@ -209,7 +351,7 @@
         <span class="k">box-shadow</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="mi">5</span><span class="kt">px</span> <span class="mi">8</span><span class="kt">px</span> <span class="mh">#D4D4D4</span><span class="p">;</span>
         <span class="k">top</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
         <span class="k">left</span><span class="p">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
-        <span class="k">transform</span><span class="p">:</span> <span class="nb">translate</span><span class="p">(</span><span class="mi">-50</span><span class="kt">%</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="k">transform</span><span class="p">:</span> <span class="nb">translate</span><span class="p">(</span><span class="nv">-50</span><span class="err">%</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
         <span class="k">position</span><span class="p">:</span> <span class="kc">absolute</span><span class="p">;</span> 
         <span class="k">width</span><span class="p">:</span> <span class="mi">250</span><span class="kt">px</span><span class="p">;</span>
     <span class="p">}</span>
@@ -221,15 +363,16 @@
         <span class="k">background-color</span><span class="p">:</span> <span class="mh">#fffcfc</span><span class="p">;</span>
       <span class="p">}</span>
 </pre></div>
-<p>The downside to this CSS-only implementation (next to having double content in your markup) is that it fails to respond well to responsive design. Fixed-size pop-ups relative to the footnote pointer could result in a potential screen overflow. If this is an issue, the only alternative is using jquery and calculate the position of your reference relative to the window border and use this to calculate an ideal pop-up location. Of course if you’re relying on the jquery library either way you might as well use that to copy the footnote on hover instead of above’s solution. For such an example, I recommend <a href="http://ignorethecode.net/blog/2010/04/20/footnotes/">ignorethecode.net’s solution</a>.</p>
+</td></tr></table>
+<p>The downside to this CSS-only implementation (next to having double content in your markup) is that it fails to respond well to responsive design. Fixed-size pop-ups relative to the footnote pointer could result in a potential screen overflow. If this is an issue, the only alternative is using jquery and calculate the position of your reference relative to the window border and use this to calculate an ideal pop-up location. Of course if you&rsquo;re relying on the jquery library either way you might as well use that to copy the footnote on hover instead of above&rsquo;s solution. For such an example, I recommend <a href="http://ignorethecode.net/blog/2010/04/20/footnotes/">ignorethecode.net&rsquo;s solution</a>.</p>
 <div class="footnote">
-<hr/>
+<hr>
 <ol>
 <li id="fn-1">
-<p>The difficulty writing web-content with footnotes is distinguishing footnotes or direct links. I generally draw the line between source citation as footnote and useful information as direct link. <a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">↩</a></p>
+<p>The difficulty writing web-content with footnotes is distinguishing footnotes or direct links. I generally draw the line between source citation as footnote and useful information as direct link.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn-2">
-<p>Using <code>:active</code> to substitute the lack of proper hover on touch devices wouldn’t be effective as these pop-ups display over anchors. A dirty solution would be to use media tags and keep <code>display:none</code> for mobile device widths, but with the blurring of lines between touch and mouse input devices lately this is not foolproof. <a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text">↩</a></p>
+<p>Using <code>:active</code> to substitute the lack of proper hover on touch devices wouldn&rsquo;t be effective as these pop-ups display over anchors. A dirty solution would be to use media tags and keep <code>display:none</code> for mobile device widths, but with the blurring of lines between touch and mouse input devices lately this is not foolproof.&#160;<a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -258,15 +401,39 @@
                 <dd><a href="https://steviepoppe.net/blog/2016/09/parsing-japanese-text-in-markdown-python-for-stylizing-and-semantic-purposes/">Parsing Japanese Text in Markdown-Python for Stylizing and Semantic Purposes</a></dd>
                 <dt>Tue 23 August 2016</dt>
                 <dd><a href="https://steviepoppe.net/blog/2016/08/hello-world-about-this-blog/">Hello World - About This Blog</a></dd>
+                <dt>Sun 05 July 2020</dt>
+                <dd><a href="https://steviepoppe.net/blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 4: Natural Language Processing With MeCab, Neologd and NLTK</a></dd>
+                <dt>Fri 05 June 2020</dt>
+                <dd><a href="https://steviepoppe.net/blog/2020/06/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-3/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 3: Natural Language Processing With MeCab, Neologd and KH Coder</a></dd>
+                <dt>Fri 15 May 2020</dt>
+                <dd><a href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 2: Basic Metrics & Graphs</a></dd>
             </dl>
             </div>
         <hr />
     </div>
+
+      <nav class="pagination">
+
+    <span id="older-nav">
+      <a href="https://steviepoppe.net/blog/2016/08/travels-roadtrip-through-the-deep-south/">Older Posts
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="139,512 1024,512 1024,436 139,436 528,47 465,0 0,483 465,948 528,901 "></polygon></svg></a>
+    </span>
+
+    <span id="newer-nav">
+      <a href="https://steviepoppe.net/blog/2016/08/travels-romance-in-rome/">
+      <!--?xml version="1.0" encoding="utf-8"?-->
+      <svg version="1.1" class="arrow-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 948" enable-background="new 0 0 1024 948" xml:space="preserve"> <polygon points="885,512 0,512 0,436 885,436 496,47 559,0 1024,483 559,948 496,901 "></polygon></svg> Newer Posts</a>
+    </span>
+  </nav>
+
+    <script src="https://steviepoppe.net/theme/js/youarehere.min.js"></script>
+    <!-- You can also customize the bar a bit -->
                 </div>
 
                 <footer id="footer" class="footer gradient-2">
                   <div id="footercontent">
-                    <span itemprop="copyrightHolder">&copy; Stevie Poppe 2017</span>
+                    <span itemprop="copyrightHolder">(ɔ) Stevie Poppe 2016 - 2021</span>
                     <div>
                       <ul class="footer-nav">                    
                        <li class=" footer-nav-middle ">
@@ -279,38 +446,19 @@
                         <a href="https://steviepoppe.net/blog/tags/" class="footer-nav-middle-a ">Tagcloud</a></li>
                       </ul>
                     </div>
-                    <div style="margin-top: -95px; margin-right:15px; float: right;">
-                      <h5><a id="backtotop" href="#">Back to top ↑</a></h5>
-                    </div>
                   </footer>
                 </div>
 
-
-                <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-
+      <div class="scroll-up" style="display: none;">
+        <a href="#main">&#xfe3f;</a>
+      </div>
                 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
-                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
                 <script type="text/javascript" src="https://steviepoppe.net/theme/js/bootstrap.js"></script>
-                <script>
-                  $(function() {
-                    $('#nav-wrapper').height($("#nav").height());
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/jquery.easing.1.3.js"></script>
+                <!-- <script type="text/javascript" src="https://steviepoppe.net/theme/js/parallax.min.js"></script> -->
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/clipboard.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/slick.min.js"></script>  
+                <script type="text/javascript" src="https://steviepoppe.net/theme/js/footnotes.js"></script>  
 
-                    $('#nav').affix({
-                      offset: { top: $('#nav').offset().top }
-                    });
-                  });
-                </script>
-
-                <!-- Google Analytics -->
-                <script>
-                  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                  ga('create', 'UA-82857115-1', 'auto');
-                  ga('send', 'pageview');
-                </script>
-                <!-- /Google Analytics -->
               </body>
               </html>
