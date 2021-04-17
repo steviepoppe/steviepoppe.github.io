@@ -291,13 +291,11 @@
 </li>
 </ul>
 </li>
-<li><a href="#1-2-3-4-5examples-examples_japanesefind_examples_multipleankinote-examples_japaneseconfigmaxpermanent-if-field-is-empty-and-examples-exist-if-examples-and-not-ankinoteexamples_japanesedst_field_comb-ankinoteexamples_japanesedst_field_comb-examples0">1
+<li><a href="#1-2-3-4examples-examples_japanesefind_examples_multipleankinote-examples_japaneseconfigmaxpermanent-if-examples-and-not-ankinoteexamples_japanesedst_field_comb-ankinoteexamples_japanesedst_field_comb-examples0">1
 2
 3
-4
-5examples = examples_japanese.find_examples_multiple(ankiNote, examples_japanese.config["maxPermanent"])
+4examples = examples_japanese.find_examples_multiple(ankiNote, examples_japanese.config["maxPermanent"])
 
-# if field is empty and examples exist
 if examples and not ankiNote[examples_japanese.DST_FIELD_COMB]:
     ankiNote[examples_japanese.DST_FIELD_COMB] = examples[0]
 
@@ -562,13 +560,11 @@ if examples and not ankiNote[examples_japanese.DST_FIELD_COMB]:
 </pre></div>
 </td></tr></table>
 <p>Next, I’ve written a few lines in the <code>addNote</code> method to call Japanese-examples’ find method at run-time. This should come before <code class="highlight"><span class="n">collection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">collection</span><span class="p">()</span></code> around <strong>line 500</strong>.</p>
-<h2 id="1-2-3-4-5examples-examples_japanesefind_examples_multipleankinote-examples_japaneseconfigmaxpermanent-if-field-is-empty-and-examples-exist-if-examples-and-not-ankinoteexamples_japanesedst_field_comb-ankinoteexamples_japanesedst_field_comb-examples0"><a class="toclink" href="#1-2-3-4-5examples-examples_japanesefind_examples_multipleankinote-examples_japaneseconfigmaxpermanent-if-field-is-empty-and-examples-exist-if-examples-and-not-ankinoteexamples_japanesedst_field_comb-ankinoteexamples_japanesedst_field_comb-examples0"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<h2 id="1-2-3-4examples-examples_japanesefind_examples_multipleankinote-examples_japaneseconfigmaxpermanent-if-examples-and-not-ankinoteexamples_japanesedst_field_comb-ankinoteexamples_japanesedst_field_comb-examples0"><a class="toclink" href="#1-2-3-4examples-examples_japanesefind_examples_multipleankinote-examples_japaneseconfigmaxpermanent-if-examples-and-not-ankinoteexamples_japanesedst_field_comb-ankinoteexamples_japanesedst_field_comb-examples0"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">examples</span> <span class="o">=</span> <span class="n">examples_japanese</span><span class="o">.</span><span class="n">find_examples_multiple</span><span class="p">(</span><span class="n">ankiNote</span><span class="p">,</span> <span class="n">examples_japanese</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"maxPermanent"</span><span class="p">])</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">examples</span> <span class="o">=</span> <span class="n">examples_japanese</span><span class="o">.</span><span class="n">find_examples_multiple</span><span class="p">(</span><span class="n">ankiNote</span><span class="p">,</span> <span class="n">examples_japanese</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"maxPermanent"</span><span class="p">])</span>
 
-<span class="c1"># if field is empty and examples exist</span>
 <span class="k">if</span> <span class="n">examples</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">ankiNote</span><span class="p">[</span><span class="n">examples_japanese</span><span class="o">.</span><span class="n">DST_FIELD_COMB</span><span class="p">]:</span>
     <span class="n">ankiNote</span><span class="p">[</span><span class="n">examples_japanese</span><span class="o">.</span><span class="n">DST_FIELD_COMB</span><span class="p">]</span> <span class="o">=</span> <span class="n">examples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
