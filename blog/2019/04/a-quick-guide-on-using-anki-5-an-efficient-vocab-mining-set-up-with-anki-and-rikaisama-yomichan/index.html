@@ -283,10 +283,7 @@
 </ul>
 </li>
 <li><a href="#japanese-example-sentences">Japanese Example Sentences</a><ul>
-<li><a href="#download">Download</a><ul>
-<li><a href="#updating-the-tanaka-corpus">Updating the Tanaka Corpus</a></li>
-</ul>
-</li>
+<li><a href="#download">Download</a></li>
 <li><a href="#set-up-with-anki-connect-yomichan">Set-up with Anki-connect + Yomichan</a><ul>
 <li><a href="#japanese-example-sentences-japanese_examplespy">Japanese Example Sentences: japanese_examples.py</a></li>
 <li><a href="#anki-connect-__init__py">Anki-Connect: __init__.py</a></li>
@@ -308,6 +305,7 @@ if examples and not ankiNote[examples_japanese.DST_FIELD_COMB]:
 
 </a><ul>
 <li><a href="#card-lay-out">Card Lay-out</a></li>
+<li><a href="#updating-the-tanaka-corpus">Updating the Tanaka Corpus</a></li>
 <li><a href="#example-set">Example Set</a></li>
 </ul>
 </li>
@@ -512,19 +510,13 @@ if examples and not ankiNote[examples_japanese.DST_FIELD_COMB]:
 <li><strong>Download</strong>: <a href="https://www.steviepoppe.net/files/Yomichan_test.apkg">Example set Yomichan <i class="icon-download-alt"></i></a></li>
 </ul>
 <h2 id="japanese-example-sentences"><a class="toclink" href="#japanese-example-sentences">Japanese Example Sentences</a></h2>
-<p>Our current set-up is pretty useful already, but as seen in the GIF at the top of the page, some further effort will allow us to add proper example sentences and their translations to our mined vocabulary on-the-fly. For this, we’ll be using an Anki add-on called <strong>Japanese Example Sentences</strong>, which relies on what is known as the [Tanaka Corpus][https://www.edrdg.org/wiki/index.php/Tanaka_Corpus), a massive corpus of parallel Japanese-English sentences compiled by Prof. Dr. Yasuhito Tanaka and his students. It is since being maintained by the <a href="https://tatoeba.org/">Tatoeba Project</a>, as formatted by Prof. Dr. Jim Breen.</p>
+<p>Our current set-up is pretty useful already, but as seen in the GIF at the top of the page, some further effort will allow us to add proper example sentences and their translations to our mined vocabulary on-the-fly. For this, we’ll be using an Anki add-on called <strong>Japanese Example Sentences</strong>, which relies on what is known as the <a href="https://www.edrdg.org/wiki/index.php/Tanaka_Corpus">Tanaka Corpus</a>, a massive corpus of parallel Japanese-English sentences compiled by Prof. Dr. Yasuhito Tanaka and his students. It is since being maintained by the <a href="https://tatoeba.org/">Tatoeba Project</a>, as formatted by Prof. Dr. Jim Breen.</p>
 <h3 id="download"><a class="toclink" href="#download">Download</a></h3>
 <p>The Japanese Example Sentences add-on has a page on Ankiweb’s <a href="https://ankiweb.net/shared/info/2413435972">plug-in page</a>, but as usual we’ll install the plug-in using the Desktop Anki application. Go to <strong>Tools → Add-ons → Browse &amp; Install</strong>, and copy-paste <strong>2413435972</strong> in the pop-up dialog. Restart the application to complete the installation.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The example sentences database provided with the plug-in uses a very outdated (2012) copy of the Tanaka Corpus. I have described how to update the corpus at the end of this section.</p>
+<p>The example sentences database provided with the plug-in uses a very outdated (2012) copy of the Tanaka Corpus. I have described how to update the corpus <a href="#updating-the-tanaka-corpus">at the end of this section</a>.</p>
 </div>
-<h4 id="updating-the-tanaka-corpus"><a class="toclink" href="#updating-the-tanaka-corpus">Updating the Tanaka Corpus</a></h4>
-<p>A regularly maintained copy in a compatible format can be download from the <a href="http://nihongo.monash.edu/wwwjdicinf.html#examp_tag">WWWJDIC web-page</a> (<a href="http://nihongo.monash.edu/examples.utf.gz">direct link to the UTF-8 variant</a>).</p>
-<ol>
-<li>Download the above UTF-8 copy of the corpus, and extract it in the Japanese Examples Anki add-on folder. Rename the extracted file <strong>japanese_examples.utf</strong>.</li>
-<li>Restart Anki. The Japanese Examples add-on will recompile  a <em>pickle</em> serialized variant of the corpus for speed efficiency in looking up sentences.</li>
-</ol>
 <h3 id="set-up-with-anki-connect-yomichan"><a class="toclink" href="#set-up-with-anki-connect-yomichan">Set-up with Anki-connect + Yomichan</a></h3>
 <p>Next, select <strong>Tools → Add-ons</strong>, select → <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span>, click on <strong>Japanese Example Sentences</strong> → <strong>Config</strong>. We’ll want to change the <code>"noteTypes"</code> field from <code>"example-sentences"</code> to <code>"Yomichan"</code>, the name of our new note-type. Click <strong>ok</strong> and and press <strong>View Files</strong> in the add-ons screen to open the Japanese Example Sentence add-on folder within your local AppData’s Anki folder. We’ll have to open <strong>config.json</strong> with a text-editor and make the exact same change again (e.g. change <code>"noteTypes": ["example_sentences"]</code> to <code>"noteTypes": ["Yomichan"]</code>).</p>
 <p>In its current stage, this plug-in can contextualize existing cards using <strong>Edit → Bulk-add examples</strong>. There are two requirements so-far: the ‘note-type’ should have both an examples field and expression field, and the expression should be just the Japanese expression <em>without</em> [square brackets] containing <em>furigana</em>.</p>
@@ -618,8 +610,14 @@ if examples and not ankiNote[examples_japanese.DST_FIELD_COMB]:
 </pre></div>
 </td></tr></table>
 <p><img alt="anki-notetype-back" class="hwimportant border fcenter" src="https://steviepoppe.net/images/anki/anki-notetype-back.jpg" title="anki-notetype-back"/></p>
+<h4 id="updating-the-tanaka-corpus"><a class="toclink" href="#updating-the-tanaka-corpus">Updating the Tanaka Corpus</a></h4>
+<p>A regularly maintained copy in a compatible format can be download from the <a href="http://nihongo.monash.edu/wwwjdicinf.html#examp_tag">WWWJDIC web-page</a> (<a href="http://nihongo.monash.edu/examples.utf.gz">direct link to the UTF-8 variant</a>).</p>
+<ol>
+<li>Download the above UTF-8 copy of the corpus, and extract it in the Japanese Examples Anki add-on folder. Rename the extracted file <strong>japanese_examples.utf</strong>.</li>
+<li>Restart Anki. The Japanese Examples add-on will recompile  a <em>pickle</em> serialized variant of the corpus for speed efficiency in looking up sentences.</li>
+</ol>
 <hr/>
-<p>If you’ve followed the above steps, your Yomichan-generated anki cards should contain example sentences as well. Try it out on our next <strong>Words of the Day</strong>: <span lang="ja"><ruby><rb>文脈</rb><rp>(</rp><rt>ぶんみゃく</rt><rp>)</rp></ruby></span> | <span lang="ja"><ruby><rb>語彙</rb><rp>(</rp><rt>ごい</rt><rp>)</rp></ruby></span></p>
+<p>If you’ve followed the above steps, your Yomichan-generated anki cards should contain example sentences as well. Try it out yourself: <span lang="ja"><ruby><rb>文脈</rb><rp>(</rp><rt>ぶんみゃく</rt><rp>)</rp></ruby></span> | <span lang="ja"><ruby><rb>語彙</rb><rp>(</rp><rt>ごい</rt><rp>)</rp></ruby></span>!</p>
 <h3 id="example-set"><a class="toclink" href="#example-set">Example Set</a></h3>
 <p>As usual, I’ve exported my own copy of this tutorial and uploaded it in case you’d like to compare or save yourself the work of editing the note template yourself.</p>
 <ul>
