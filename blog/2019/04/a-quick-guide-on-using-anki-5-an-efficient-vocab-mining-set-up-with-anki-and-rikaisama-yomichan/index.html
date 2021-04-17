@@ -291,17 +291,15 @@
 </li>
 </ul>
 </li>
-<li><a href="#1-2-3-4-5-6-for-use-with-japanese-examples-examples-examples_japanesefind_examples_multipleankinote-examples_japaneseconfigmaxpermanent-if-field-is-empty-and-examples-exist-if-examples-and-not-ankinoteexamples_japanesedst_field_comb-ankinoteexamples_japanesedst_field_comb-examples0">1
+<li><a href="#1-2-3-4-5examples-examples_japanesefind_examples_multipleankinote-examples_japaneseconfigmaxpermanent-if-field-is-empty-and-examples-exist-if-examples-and-not-ankinoteexamples_japanesedst_field_comb-ankinoteexamples_japanesedst_field_comb-examples0">1
 2
 3
 4
-5
-6    # for use with Japanese examples
-    examples = examples_japanese.find_examples_multiple(ankiNote, examples_japanese.config["maxPermanent"])
+5examples = examples_japanese.find_examples_multiple(ankiNote, examples_japanese.config["maxPermanent"])
 
-    # if field is empty and examples exist
-    if examples and not ankiNote[examples_japanese.DST_FIELD_COMB]:
-        ankiNote[examples_japanese.DST_FIELD_COMB] = examples[0]
+# if field is empty and examples exist
+if examples and not ankiNote[examples_japanese.DST_FIELD_COMB]:
+    ankiNote[examples_japanese.DST_FIELD_COMB] = examples[0]
 
 </a><ul>
 <li><a href="#card-lay-out">Card Lay-out</a></li>
@@ -536,7 +534,7 @@
     <span class="n">expression</span> <span class="o">=</span> <span class="n">searched</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-<p>Open <strong>japanese_examples.py</strong> and the above piece of code to the <code class="highlight"><span class="n">find_examples</span></code> class right after it defined examples as a list. it should be around <strong>line 124</strong> (<code class="highlight"><span class="k">def</span> <span class="nf">find_examples</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">maxitems</span><span class="p">):</span> <span class="n">examples</span> <span class="o">=</span> <span class="p">[]</span></code>). While you’re here, replace <code>" {CHECKED}"</code> with <code>"✓"</code> (e.g. <code class="highlight"><span class="n">example</span> <span class="o">=</span> <span class="n">example</span> <span class="o">+</span> <span class="s2">" ✓"</span></code>). It’s more <em>a e s t h e t i c</em>.</p>
+<p>Open <strong>japanese_examples.py</strong> and paste the above piece of code in the <code class="highlight"><span class="n">find_examples</span></code> class right after it defined examples as a list. it should be around <strong>line 124</strong> (<code class="highlight"><span class="k">def</span> <span class="nf">find_examples</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">maxitems</span><span class="p">):</span> <span class="n">examples</span> <span class="o">=</span> <span class="p">[]</span></code>). While you’re here, replace <code>" {CHECKED}"</code> with <code>"✓"</code> (e.g. <code class="highlight"><span class="n">example</span> <span class="o">=</span> <span class="n">example</span> <span class="o">+</span> <span class="s2">" ✓"</span></code>). It’s more <em>a e s t h e t i c</em>.</p>
 <p>Next, I’ve edited the mark-up of the example sentences to hide the English translations unless hovered above (or selected on touch-screens). Locate <code class="highlight"><span class="n">combined_examples</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"</span><span class="si">%s</span><span class="s2">&lt;br&gt;</span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">examples</span><span class="p">]</span></code> in the <code class="highlight"><span class="n">find_examples_multiple</span></code> method (around <strong>line 204</strong>) and replace it with the following line:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">combined_examples</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"&lt;div id='eng_test'&gt;</span><span class="si">%s</span><span class="s2">&lt;span id='eng_sentence'&gt;</span><span class="si">%s</span><span class="s2">&lt;/span&gt;&lt;/div&gt;"</span> <span class="o">%</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">examples</span><span class="p">]</span>
 </pre></div>
@@ -547,7 +545,7 @@
 <p class="admonition-title">Note</p>
 <p>This step is only necessary if you’d prefer example sentences to be added directly upon adding a new card with Yomichan. Another solution would be to just periodically select all cards in your deck with the Card Browser and click Edit →  Bulk-add Examples.</p>
 </div>
-<p><strong>Anki-Connect</strong> makes calls to Anki’s API to create new notes. My edit adds a call to the <strong>japanese_examples</strong> add-on at run-time. First, we’ll have to import the japanese_examples extension to be able to call its methods. If you’re doing this set-up manually, add the line below near the top, along with the other includes (around <strong>line 48</strong>).</p>
+<p><strong>Anki-Connect</strong> makes calls to Anki’s API to create new notes. My edit adds a call to the <strong>japanese_examples</strong> add-on at run-time. First, we’ll have to import the japanese_examples extension to be able to call its methods. If you’re doing this set-up manually, add the line below near the top of the <strong>__init__.py</strong> file, below the other imports (around <strong>line 48</strong>).</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -563,18 +561,16 @@
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'Failed to import Japanese Examples module'</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-<p>Next, I’ve written a few lines in the <code>addNote</code> method to call Japanese-examples’ find method at run-time and  This should come before <code class="highlight"><span class="n">collection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">collection</span><span class="p">()</span></code> around <strong>line 500</strong>.</p>
-<h2 id="1-2-3-4-5-6-for-use-with-japanese-examples-examples-examples_japanesefind_examples_multipleankinote-examples_japaneseconfigmaxpermanent-if-field-is-empty-and-examples-exist-if-examples-and-not-ankinoteexamples_japanesedst_field_comb-ankinoteexamples_japanesedst_field_comb-examples0"><a class="toclink" href="#1-2-3-4-5-6-for-use-with-japanese-examples-examples-examples_japanesefind_examples_multipleankinote-examples_japaneseconfigmaxpermanent-if-field-is-empty-and-examples-exist-if-examples-and-not-ankinoteexamples_japanesedst_field_comb-ankinoteexamples_japanesedst_field_comb-examples0"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p>Next, I’ve written a few lines in the <code>addNote</code> method to call Japanese-examples’ find method at run-time. This should come before <code class="highlight"><span class="n">collection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">collection</span><span class="p">()</span></code> around <strong>line 500</strong>.</p>
+<h2 id="1-2-3-4-5examples-examples_japanesefind_examples_multipleankinote-examples_japaneseconfigmaxpermanent-if-field-is-empty-and-examples-exist-if-examples-and-not-ankinoteexamples_japanesedst_field_comb-ankinoteexamples_japanesedst_field_comb-examples0"><a class="toclink" href="#1-2-3-4-5examples-examples_japanesefind_examples_multipleankinote-examples_japaneseconfigmaxpermanent-if-field-is-empty-and-examples-exist-if-examples-and-not-ankinoteexamples_japanesedst_field_comb-ankinoteexamples_japanesedst_field_comb-examples0"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="c1"># for use with Japanese examples</span>
-    <span class="n">examples</span> <span class="o">=</span> <span class="n">examples_japanese</span><span class="o">.</span><span class="n">find_examples_multiple</span><span class="p">(</span><span class="n">ankiNote</span><span class="p">,</span> <span class="n">examples_japanese</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"maxPermanent"</span><span class="p">])</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">examples</span> <span class="o">=</span> <span class="n">examples_japanese</span><span class="o">.</span><span class="n">find_examples_multiple</span><span class="p">(</span><span class="n">ankiNote</span><span class="p">,</span> <span class="n">examples_japanese</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"maxPermanent"</span><span class="p">])</span>
 
-    <span class="c1"># if field is empty and examples exist</span>
-    <span class="k">if</span> <span class="n">examples</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">ankiNote</span><span class="p">[</span><span class="n">examples_japanese</span><span class="o">.</span><span class="n">DST_FIELD_COMB</span><span class="p">]:</span>
-        <span class="n">ankiNote</span><span class="p">[</span><span class="n">examples_japanese</span><span class="o">.</span><span class="n">DST_FIELD_COMB</span><span class="p">]</span> <span class="o">=</span> <span class="n">examples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># if field is empty and examples exist</span>
+<span class="k">if</span> <span class="n">examples</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">ankiNote</span><span class="p">[</span><span class="n">examples_japanese</span><span class="o">.</span><span class="n">DST_FIELD_COMB</span><span class="p">]:</span>
+    <span class="n">ankiNote</span><span class="p">[</span><span class="n">examples_japanese</span><span class="o">.</span><span class="n">DST_FIELD_COMB</span><span class="p">]</span> <span class="o">=</span> <span class="n">examples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </td></tr></table></a></h2>
 <p>Finally, we want to alter out cards’ lay-out to display our example sentences in a educationally beneficial manner. We’ll need some further edits outlined below.</p>
@@ -614,7 +610,10 @@
 </td></tr></table>
 <p><img alt="anki-notetype-back" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/anki/anki-notetype-back.jpg" title="anki-notetype-back"/></p>
 <hr/>
-<p>If you’ve followed the above steps, your Yomichan-generated anki cards should contain example sentences as well. Try it out yourself: <span lang="ja"><ruby><rb>文脈</rb><rp>(</rp><rt>ぶんみゃく</rt><rp>)</rp></ruby></span> | <span lang="ja"><ruby><rb>語彙</rb><rp>(</rp><rt>ごい</rt><rp>)</rp></ruby></span>!</p>
+<p>If you’ve followed the above steps, your Yomichan-generated Anki cards should now contain example sentences as well.</p>
+<blockquote>
+<p>Try it out yourself: <span lang="ja"><ruby><rb>文脈</rb><rp>(</rp><rt>ぶんみゃく</rt><rp>)</rp></ruby></span> | <span lang="ja"><ruby><rb>語彙</rb><rp>(</rp><rt>ごい</rt><rp>)</rp></ruby></span>!</p>
+</blockquote>
 <h3 id="example-set"><a class="toclink" href="#example-set">Example Set</a></h3>
 <p>As usual, I’ve exported my own copy of this tutorial and uploaded it in case you’d like to compare or save yourself the work of editing the note template yourself.</p>
 <ul>
