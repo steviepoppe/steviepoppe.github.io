@@ -953,6 +953,8 @@ padding-right: 0px;
     display: block;
   margin-left: auto !important;
   margin-right: auto !important;
+  margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .m{
