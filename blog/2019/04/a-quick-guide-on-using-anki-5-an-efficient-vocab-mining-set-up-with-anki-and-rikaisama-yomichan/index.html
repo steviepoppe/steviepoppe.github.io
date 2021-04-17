@@ -296,12 +296,12 @@
 3
 4
 5
-6# for use with Japanese examples
-examples = examples_japanese.find_examples_multiple(ankiNote, examples_japanese.config["maxPermanent"])
+6    # for use with Japanese examples
+    examples = examples_japanese.find_examples_multiple(ankiNote, examples_japanese.config["maxPermanent"])
 
-# if field is empty and examples exist
-if examples and not ankiNote[examples_japanese.DST_FIELD_COMB]:
-    ankiNote[examples_japanese.DST_FIELD_COMB] = examples[0]
+    # if field is empty and examples exist
+    if examples and not ankiNote[examples_japanese.DST_FIELD_COMB]:
+        ankiNote[examples_japanese.DST_FIELD_COMB] = examples[0]
 
 </a><ul>
 <li><a href="#card-lay-out">Card Lay-out</a></li>
@@ -569,12 +569,12 @@ if examples and not ankiNote[examples_japanese.DST_FIELD_COMB]:
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># for use with Japanese examples</span>
-<span class="n">examples</span> <span class="o">=</span> <span class="n">examples_japanese</span><span class="o">.</span><span class="n">find_examples_multiple</span><span class="p">(</span><span class="n">ankiNote</span><span class="p">,</span> <span class="n">examples_japanese</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"maxPermanent"</span><span class="p">])</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="c1"># for use with Japanese examples</span>
+    <span class="n">examples</span> <span class="o">=</span> <span class="n">examples_japanese</span><span class="o">.</span><span class="n">find_examples_multiple</span><span class="p">(</span><span class="n">ankiNote</span><span class="p">,</span> <span class="n">examples_japanese</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"maxPermanent"</span><span class="p">])</span>
 
-<span class="c1"># if field is empty and examples exist</span>
-<span class="k">if</span> <span class="n">examples</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">ankiNote</span><span class="p">[</span><span class="n">examples_japanese</span><span class="o">.</span><span class="n">DST_FIELD_COMB</span><span class="p">]:</span>
-    <span class="n">ankiNote</span><span class="p">[</span><span class="n">examples_japanese</span><span class="o">.</span><span class="n">DST_FIELD_COMB</span><span class="p">]</span> <span class="o">=</span> <span class="n">examples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># if field is empty and examples exist</span>
+    <span class="k">if</span> <span class="n">examples</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">ankiNote</span><span class="p">[</span><span class="n">examples_japanese</span><span class="o">.</span><span class="n">DST_FIELD_COMB</span><span class="p">]:</span>
+        <span class="n">ankiNote</span><span class="p">[</span><span class="n">examples_japanese</span><span class="o">.</span><span class="n">DST_FIELD_COMB</span><span class="p">]</span> <span class="o">=</span> <span class="n">examples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </td></tr></table></a></h2>
 <p>Finally, we want to alter out cards’ lay-out to display our example sentences in a educationally beneficial manner. We’ll need some further edits outlined below.</p>
