@@ -181,15 +181,15 @@
 }
 
 kbd {
-    border: 1px solid #ebe6e6;
-    color: #9c5252;
+    /*border: 1px solid #ebe6e6;
+    color: #9c5252;*/
     display: inline-block;
     padding: 0 .6666666667em;
     line-height: 1.5;
     vertical-align: text-top;
     word-break: break-word;
     border-radius: .1rem;
-    background-color: rgb(255, 255, 255);
+    /*background-color: rgb(255, 255, 255);*/
 /*box-shadow: 0 .1rem 0 .05rem #eec6c6,0 .1rem 0 #fbc7d0,inset 0 -0.1rem .2rem #f7eaec;*/
 }
 .keys span {
