@@ -1636,7 +1636,7 @@ font-size: 25px;
 }
   .page-header .avatar-container{
     top: 3px;
-    margin-right: 0px;
+    margin-right: 15px;
 margin-left: 0px;
       width: 40px;
       height: 40px;
@@ -1670,7 +1670,7 @@ border-left: 0px;
 
 .page-header .avatar-container {
     margin-top: -10px;
-    margin-right: 2px;
+    margin-right: 15px;
 margin-left: 10px;
     width: 50px;
     height: 50px;
@@ -1824,12 +1824,11 @@ margin-bottom: 5px !important;
 
   .page-header .avatar-container{
     top: 3px;
-    margin-right: 0px;
-margin-left: 0px;
+    margin-right: 15px;
+    margin-left: 0px;
       width: 75px;
       height: 75px;
       margin-top: -20px;
-margin-right: 2px;
 }
   #nav-wrapper{
   margin-left: 50px;
