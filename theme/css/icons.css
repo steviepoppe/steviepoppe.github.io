@@ -1178,8 +1178,22 @@ ul.icons li [class*=" icon-"] {
        url('../fonts/fontello.woff?31771571') format('woff'),
        url('../fonts/fontello.ttf?31771571') format('truetype'),
        url('../fonts/fontello.svg?31771571#fontello') format('svg');
+
+
   font-weight: normal;
   font-style: normal;
+}
+
+@font-face {
+    font-family: 'Academicons';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src:url('../fonts/academicons.eot');
+    src:url('../fonts/academicons.eot') format('embedded-opentype'),
+        url('../fonts/academicons.ttf') format('truetype'),
+        url('../fonts/academicons.woff') format('woff'),
+        url('../fonts/academicons.svg') format('svg');
 }
  
 .social-icons-footer li i {
@@ -1264,4 +1278,28 @@ margin-top: 8px; }
     font-family: Arial, Sans-Serif;
     font-weight: bold;
     margin: 0 9px 0 3px;
+}
+
+.icon-ai {
+  font-family: 'Academicons' !important;
+  font-weight: 400;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1 ;
+}
+.icon-google-scholar:before {
+  content: "\e9d4";
+}
+.icon-google-scholar-square:before {
+  content: "\e9f9";
+}
+.icon-orcid:before {
+  content: "\e9d9";
+}
+.icon-orcid-square:before {
+  content: "\e9c3";
 }
