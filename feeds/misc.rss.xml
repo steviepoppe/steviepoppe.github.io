@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Onoreto - misc</title><link>http://localhost:8000/</link><description>| Onoreto</description><lastBuildDate>Wed, 04 Sep 2019 00:00:00 +0200</lastBuildDate><item><title>Resources</title><link>http://localhost:8000/blog/2019/09/resources/</link><description>
+&lt;p&gt;This page contains links and files that have proven to be particularly useful for myself and might be of use for those with similar interests. I’ll update this spot as I encounter more tools or pages I feel are worthy of mention.&lt;/p&gt;
+&lt;h1 id="useful-links"&gt;&lt;a class="toclink" href="#useful-links"&gt;Useful Links&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="general"&gt;&lt;a class="toclink" href="#general"&gt;General&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://ankisrs.net/"&gt;Anki&lt;/a&gt;&lt;/strong&gt;: Free, open-source, multi-platform flashcard application with powerful SRS&lt;sup&gt;&lt;/sup&gt; algorithm. Especially vital for language acquisition and probably the single most important (digital) tool for efficient memorization.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="language"&gt;&lt;a class="toclink" href="#language"&gt;Language&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="japanese"&gt;&lt;a class="toclink" href="#japanese"&gt;Japanese&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://foosoft.net/projects/yomichan/"&gt;Yomichan&lt;/a&gt;&lt;/strong&gt;: a Firefox and Chrome pop-up dictionary and a digital-minded Japanese learner’s best friend. Yomichan allows additional audio playback and full Anki integration. I’ve written a &lt;a href="https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/"&gt;blog&lt;/a&gt; on how to do this. &lt;strong&gt;&lt;a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/"&gt;Rikaisama&lt;/a&gt;&lt;/strong&gt;, although no longer by Firefox, also continues to be useful for mass-generating cards while reading HTML-formatted e-books.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://animelon.com/"&gt;Animelon&lt;/a&gt;&lt;/strong&gt;: for all you ‘learn Japanese through Anime’ kids out there! Reminiscent of the classic &lt;em&gt;&lt;a href="https://www.erin.ne.jp/en/"&gt;Erin’s Challenge&lt;/a&gt;&lt;/em&gt; videos: watch various popular anime with Japanese subtitles and integrated dictionary. Works in combination with Yomichan or Rikaisama as well.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://tangorin.com/kanji/"&gt;Tangorin&lt;/a&gt;&lt;/strong&gt;: my favorite online Japanese dictionary with tons of example sentences for each definition, and an excellent Kanji dictionary as well. &lt;a href="http://dictionary.goo.ne.jp"&gt;Goo&lt;/a&gt;, &lt;a href="http://www.weblio.jp"&gt;Weblio&lt;/a&gt; and &lt;a href="http://www.sanseido.net"&gt;Sanseido&lt;/a&gt; provide good alternatives.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://japansnederlandswoordenboek.org/index.php/Hoofdpagina"&gt;Waran Jiten&lt;/a&gt;&lt;/strong&gt;: a Japanese-Dutch dictionary courtesy of Leuven University. Has a dutch Rikai addon.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://sourceforge.net/directory/home-education/edlanguage/os:windows/?q=Japanese"&gt;Sourceforge&lt;/a&gt;&lt;/strong&gt;: contains a wide variety of software developed by fellow Japanese learners. Some, such as &lt;em&gt;&lt;a href="https://sourceforge.net/projects/jnovelformatter/?source=directory"&gt;Jnovelformatter&lt;/a&gt;&lt;/em&gt;, &lt;em&gt;&lt;a href="https://sourceforge.net/projects/japanesetextana/?source=directory"&gt;Japanese Text Analysis Tool&lt;/a&gt;&lt;/em&gt; or &lt;em&gt;&lt;a href="https://sourceforge.net/projects/ocrmangareaderforandroid/"&gt;OCR Manga Reader&lt;/a&gt;&lt;/em&gt; are particularly noteworthy, others not so much.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://japanologie.arts.kuleuven.be/"&gt;KULeuven Japanology&lt;/a&gt;&lt;/strong&gt;: the Leuven University Japan Studies homepage. &lt;i class="icon-smile"&gt;&lt;/i&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="korean"&gt;&lt;a class="toclink" href="#korean"&gt;Korean&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://www.toktogi.com/"&gt;Toktogi&lt;/a&gt;&lt;/strong&gt;: a Korean-English pop-up dictionary similar to yomichan, available both for Firefox and Chrome. It’s still a work-in-progress and not as polished as Yomichan, but very usable nonetheless.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://endic.naver.com/?sLn=en"&gt;Naver Dictionary&lt;/a&gt;&lt;/strong&gt;: Naver Corporation, the highly popular South Korean web-hub, has a fairly complete English-Korean dictionary as well as an Android application (requires internet).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="sanskrit"&gt;&lt;a class="toclink" href="#sanskrit"&gt;Sanskrit&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://spokensanskrit.de/"&gt;spokensanskrit&lt;/a&gt;&lt;/strong&gt;: the only decent online Sanskrit dictionary out there.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://www.lexilogos.com/keyboard/sanskrit_devanagari.htm"&gt;Lexilogos&lt;/a&gt;&lt;/strong&gt;: multilingual web keyboard that beats learning to type &lt;em&gt;devanagari&lt;/em&gt; on a latin-script keyboard.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr/&gt;
+&lt;h1 id="files"&gt;&lt;a class="toclink" href="#files"&gt;Files&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="anki"&gt;&lt;a class="toclink" href="#anki"&gt;Anki&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I use Anki to complement my other study methods for nearly all my classes. These are a bunch of Anki-sets I made I feel are stand-alone enough to be useful to new students of these classes as well.&lt;/p&gt;
+&lt;hr/&gt;
+&lt;h3 id="inleiding-tot-de-europese-literatuur-na-1750"&gt;&lt;a class="toclink" href="#inleiding-tot-de-europese-literatuur-na-1750"&gt;Inleiding tot de Europese Literatuur na 1750&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Download&lt;/strong&gt;: &lt;a href="https://www.dropbox.com/s/yf2hdqxyqobqr60/Europese_Literatuur.apkg?dl=0"&gt;Europese Literatuur &lt;i class="icon-download-alt"&gt;&lt;/i&gt;&lt;/a&gt;  (±26MB)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A full set to accompany the textbook ‘&lt;em&gt;Literaire Verbeelding 2&lt;/em&gt;’:&lt;sup&gt;&lt;/sup&gt; contains important dates and summaries of all artists and their discussed works (in Dutch …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Stevie Poppe</dc:creator><pubDate>Wed, 04 Sep 2019 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:localhost,2019-09-04:/blog/2019/09/resources/</guid><category>misc</category><category>Anki</category><category>Tutorial</category><category>Japanese</category><category>Japan</category><category>Study</category></item></channel></rss>

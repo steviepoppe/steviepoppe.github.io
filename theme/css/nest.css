@@ -797,6 +797,11 @@ h2 {
     font-family: "Poiret One","Noto Sans Japanese","Meiryo",sans-serif !important;
   }
 
+  .home-article-container .post-title a{
+    font-size: 2.3rem;
+
+  }
+
 
 
   .datetitle, .banner-index-content a, .post-title, .post-title a{
@@ -914,7 +919,7 @@ padding-right: 0px;
 
     .nobanner .header-title,  .nobanner .header-date, .nobanner .header-date a, 
     .nobanner .header-subtitle, .nobanner .header-tags, .nobanner .header-tags a {
-      color: #124877;
+      color: #59b2ff;
     }
 
     /* Content */
@@ -1877,6 +1882,14 @@ font-size: 32px;
  }
 }
 
+@media(max-width: 991px){
+   .home-article-container .header-wrapper{
+    margin-right: -25px !important;
+    min-height:15em;
+  }
+
+}
+
 @media (max-width: 1200px) {
   .banner{
     margin-right: -15px;
@@ -1890,6 +1903,13 @@ font-size: 32px;
   .header-wrapper{
     margin-left: -25px;
   }
+
+  .home-article-container .header-wrapper{
+    margin-right: -25px !important;
+  }
+
+
+
 
   #nav.affix .rssonly{
     display: initial;
@@ -2013,6 +2033,14 @@ font-size: 32px;
       max-width:75%;
       max-height: 400px !important;
     }
+    .home-article-container .header-wrapper{
+    min-height:18em;
+  }
+
+  .home-article-container .post-content {
+    min-height: 9em;
+  }
+
     .archive-container .container{
       width: 850px;
     }
@@ -2489,4 +2517,39 @@ box-shadow: 1px 3px 7px 1px rgba(0, 0, 0, 0.11);
 
 .highlight:hover .copy-code-button, .highlight:active .copy-code-button, .highlight:focus .copy-code-button{
   color: #e4a4a4;
+}
+
+.home-article-container .datetitle {
+  text-align: center;
+  float: none;
+}
+.home-article-container .banner-index-content {
+    position: absolute;
+    bottom: 2px;
+    left: 30%;
+    right: 30%;
+}
+.home-article-container, .home-article-container .banner, .home-article-container .header-wrapper {
+      width: unset !important;
+      max-width: unset !important;
+    }
+
+.home-articles {
+  background-color: rgba(36, 35, 35, 0.8);
+  margin-bottom: 2em;
+}
+
+.home-bio, .home-publications {
+  background-color: rgba(56, 56, 56, 0.8);
+  margin-bottom:  2em;
+}
+
+.home-articles-title {
+  padding: 1em;
+}
+
+.home-profile {
+  border-radius: 50%;
+  margin-bottom: 2em;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.44);
 }

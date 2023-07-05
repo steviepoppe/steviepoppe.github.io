@@ -12,6 +12,18 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>./publication/covid-disinformation/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>./blog/2022/12/travels-one-week-in-jordan/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>./publication/from-y/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>./blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/</loc>
     <priority>0.5</priority>
   </url>
@@ -29,6 +41,10 @@
   </url>
   <url>
     <loc>./blog/2019/09/travels-two-weeks-in-mainland-china-changsha-yunnan-xian/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>./blog/2019/09/resources/</loc>
     <priority>0.5</priority>
   </url>
   <url>
@@ -154,10 +170,6 @@
 
   <url>
     <loc>./about/</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>./resources/</loc>
     <priority>0.8</priority>
   </url>
 
