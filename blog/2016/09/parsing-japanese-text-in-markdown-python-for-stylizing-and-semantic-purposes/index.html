@@ -32,7 +32,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Due to my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the rest of my design. To target specifically Japanese text, I wrote a small Markdown-Python extension for use in static blog generators as Jekyll and Pelican (or pretty much anything that utilizes Markdown-Python to parse Markdown in HTML) and embed such text in a span with the language attribute set to Japanese. The added, and probably more important bonus, aside from styling and semantic reasons, is that this method counters the negative effects of Han unification in so-called CJK-languages. Download I’ve added the extension on its own repository on my GitHub for anyone interested, but as it serves its purpose for me as-is I have no further interest in maintaining it at the moment. Installation Copy the japanese.py script into your python-markdown extension directory. If you’re using Pelican as static site generator, open your project’s pelicanconf.py and add &#39;japanese&#39; to the MD_EXTENSIONS list: 1 MD_EXTENSIONS = [&#39;japanese&#39;] Usage Using a simple regular expression (\{\{)(.+?)(\}\}), the extension treats double {} brackets as span tags with a lang=&#34;ja&#34; attribute. 1 {{読書クラブ}} will output 1 &lt;span lang=&#34;ja&#34;&gt;読書クラブ&lt;/span&gt; Example 1 (fonts): just compare 読書(どくしょ)クラブ (custom) to 読書(どくしょ)クラブ (Meiryo) to 読書(どくしょ)クラブ (MS Gothic default). Example 2 (unihan): compare the Chinese to Japanese characters: 隆 (隆), 誤 (誤), 直 (直). Styling Although it’s a bit of a risk performance-wise, I’m quite a fan of Google’s free web-fonts. Due the complexity of the Japanese character-set, development on these have been slow, but Google’s Noto Font is getting quite efficient and with the Japanese font set supporting near 7000 characters, it should pose no problem for most web-projects. Since it works better, typography-wise, with the rest of my fonts, I use this one over fonts as Meiryo that are more widespread across all platforms. Using the CSS below, I ensure max compatibility by using Meiryo and others as fall-back if the page can’t connect to Google’s font API. 1 2 3 4 5 6 7 8@import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css); [lang=&#34;ja&#34;] { font-family: &#34;Noto Sans Japanese&#34;, &#34;メイリオ&#34;,&#34;Meiryo&#34;,&#34;ヒラギノ角ゴ Pro W3&#34;, &#34;Hiragino Kaku Gothic …">
+  <meta name="description" content="Due to my studies I (will) often use Japanese in my blog. As I gave some thought to typography and readability, I found the default appearance of Japanese text to be in stark contrast with the rest of my design. To target specifically Japanese text, I wrote a small Markdown-Python extension for use in static blog generators as Jekyll and Pelican (or pretty much anything that utilizes Markdown-Python to parse Markdown in HTML) and embed such text in a span with the language attribute set to Japanese. The added, and probably more important bonus, aside from styling and semantic reasons, is that this method counters the negative effects of Han unification in so-called CJK-languages. Download I’ve added the extension on its own repository on my GitHub for anyone interested, but as it serves its purpose for me as-is I have no further interest in maintaining it at the moment. Installation Copy the japanese.py script into your python-markdown extension directory. If you’re using Pelican as static site generator, open your project’s pelicanconf.py and add &#39;japanese&#39; to the MD_EXTENSIONS list: 1 MD_EXTENSIONS = [&#39;japanese&#39;] Usage Using a simple regular expression (\{\{)(.+?)(\}\}), the extension treats double {} brackets as span tags with a lang=&#34;ja&#34; attribute. 1 {{読書クラブ}} will output 1 &lt;span lang=&#34;ja&#34;&gt;読書クラブ&lt;/span&gt; Example 1 (fonts): just compare 読書(どくしょ)クラブ (custom) to 読書(どくしょ)クラブ (Meiryo) to 読書(どくしょ)クラブ (MS Gothic default). Example 2 (unihan): compare the Chinese to Japanese characters: 隆 (隆), 誤 (誤), 直 (直). Styling Although it’s a bit of a risk performance-wise, I’m quite a fan of Google’s free web-fonts. Due the complexity of the Japanese character-set, development on these have been slow, but Google’s Noto Font is getting quite efficient and with the Japanese font set supporting near 7000 characters, it should pose no problem for most web-projects. Since it works better, typography-wise, with the rest of my fonts, I use this one over fonts as Meiryo that are more widespread across all platforms. Using the CSS below, I ensure max compatibility by using Meiryo and others as fall-back if the page can’t connect to Google’s font API. 1 2 3 4 5 …">
   <meta name="keywords" content="fonts, Japanese, markdown, pelican, python">
   <meta name="author" content="Stevie Poppe">
   <meta name="mobile-web-app-capable" content="yes">
@@ -75,10 +75,7 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
           <![endif]-->
 
-
-
-          <link rel="author" href="https://plus.google.com/112676714486792414615"/>
-   
+ 
 
 <meta name="robots" content="index">        </head>
 
@@ -106,7 +103,7 @@
             </li>
 
 <li >
-                            <a class="link" href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a class="link" href="https://steviepoppe.net/resume/"><i class="icon-hashtag icon-menu"></i>Resume</a></li><li >
                             <a class="link" href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>          </ul>
         </nav>
       </div>
@@ -117,6 +114,16 @@
             <div class="col-sm-12 text-center">
                           <ul class="socialnav2 social-icons-footer" style="width: auto;display: inline-block;float: none;">
                             <li>
+                              <a href="https://scholar.google.com/citations?user=Sok6SPoAAAAJ" title="Google Scholar">
+                                <i class="icon-google scholar" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Google Scholar</span>
+                            </li>
+                            <li>
+                              <a href="https://orcid.org/0000-0002-8795-7336" title="ORCID">
+                                <i class="icon-orcid" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">ORCID</span>
+                            </li>
+                            <li>
                               <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
                                 <i class="icon-linkedin" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Linkedin</span>
@@ -125,16 +132,6 @@
                               <a href="https://soundcloud.com/onoreto" title="SoundCloud">
                                 <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">SoundCloud</span>
-                            </li>
-                            <li>
-                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
-                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
-                              </a><span class="screen-reader">YouTube</span>
-                            </li>
-                            <li>
-                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
-                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
-                              </a><span class="screen-reader">Flickr</span>
                             </li>
                             <li>
                               <a href="https://twitter.com/PoppeStevie" title="Twitter">
@@ -151,7 +148,7 @@
                           </ul>
                           </div>
             <div class="col-sm-12 text-center">
-              <p class="copyright font-alt m-b-0">(ɔ) Stevie Poppe 2016 - 2021</p>
+              <p class="copyright font-alt m-b-0">Copyright © Stevie Poppe 2016-2023 (CC BY-NC-SA 4.0)</p>
             </div>
           </div>
         </div>
@@ -170,7 +167,7 @@
                       <div class="side"><img src="https://steviepoppe.net/images/logo2.png" class="img-responsive"/></div>
                     </div>
                   </a>
-                  <h1 id="onoreto" title="Onoreto" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">noreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
+                  <h1 id="onoreto" title="Stevie Poppe" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">Stevie Poppe</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">| Onoreto</span></span></small></h1>
                 </header>
 
                 <div id="nav-wrapper">
@@ -185,7 +182,9 @@
 </a>
 </li>
 <li class=" ">
-                            <a  href="/"><i class="icon-home icon-menu"></i>Blog</a>
+                            <a  href="/"><i class="icon-home icon-menu"></i>Home</a>
+                            </li><li class=" ">
+                            <a  href="/blog/"><i class="icon-book icon-menu"></i>Blog</a>
                             </li><li class=" dropdown">
                             <a  class="dropdown-toggle" data-target="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="/blog/category/"><i class="icon-folder-close icon-menu"></i>Categories                              <span class="caret"></span>
 </a>
@@ -194,35 +193,38 @@
                                 <li><a href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li> 
                                 <li><a href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
                               </ul> 
-                            </li><li >
-                            <a href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
-                            <a href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>                          </ul>
+                            </li>                          </ul>
                         </div>
                         <div class="social">
                           <ul class="socialnav socialonly social-icons-footer collapse">
 
                             <li>
-                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+
+                                <a href="https://scholar.google.com/citations?user=Sok6SPoAAAAJ" title="Google Scholar" style="padding-bottom: 11px !important;">
+                                <i class="icon-google-scholar icon-ai" style="margin-top: 0.4em !important"></i>
+                              </a><span class="screen-reader">Google Scholar</span>
+                            </li>
+                            <li>
+
+                                <a href="https://orcid.org/0000-0002-8795-7336" title="ORCID" style="padding-bottom: 11px !important;">
+                                <i class="icon-orcid icon-ai" style="margin-top: 0.4em !important;"></i>
+                              </a><span class="screen-reader">ORCID</span>
+                            </li>
+                            <li>
+
+                                <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
                                 <i class="icon-linkedin" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Linkedin</span>
                             </li>
                             <li>
-                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+
+                                <a href="https://soundcloud.com/onoreto" title="SoundCloud">
                                 <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">SoundCloud</span>
                             </li>
                             <li>
-                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
-                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
-                              </a><span class="screen-reader">YouTube</span>
-                            </li>
-                            <li>
-                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
-                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
-                              </a><span class="screen-reader">Flickr</span>
-                            </li>
-                            <li>
-                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+
+                                <a href="https://twitter.com/PoppeStevie" title="Twitter">
                                 <i class="icon-twitter" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Twitter</span>
                             </li>
@@ -291,17 +293,17 @@
 <h1 id="installation"><a class="toclink" href="#installation">Installation</a></h1>
 <p>Copy the <code>japanese.py</code> script into your python-markdown extension directory.</p>
 <p>If you’re using <a href="http://docs.getpelican.com/en/latest/">Pelican</a> as static site generator, open your project’s <code>pelicanconf.py</code> and add <code>'japanese'</code> to the <code>MD_EXTENSIONS</code> list:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="n">MD_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'japanese'</span><span class="p">]</span>
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="n">MD_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'japanese'</span><span class="p">]</span>
+</code></pre></div>
 </td></tr></table>
 <h1 id="usage"><a class="toclink" href="#usage">Usage</a></h1>
 <p>Using a simple regular expression <code>(\{\{)(.+?)(\}\})</code>, the extension treats double {} brackets as span tags with a <code>lang="ja"</code> attribute.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    {{読書クラブ}}
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    {{読書クラブ}}
+</code></pre></div>
 </td></tr></table>
 <p>will output</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">lang</span><span class="o">=</span><span class="s">"ja"</span><span class="p">&gt;</span>読書クラブ<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">lang</span><span class="o">=</span><span class="s">"ja"</span><span class="p">&gt;</span>読書クラブ<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</code></pre></div>
 </td></tr></table>
 <p><strong>Example 1</strong> (fonts): just compare <span style="font-size: 135%;"><span lang="ja"><ruby><rb>読書</rb><rp>(</rp><rt>どくしょ</rt><rp>)</rp></ruby>クラブ</span></span> (custom) to <span style="font-size: 130%;"><ruby><rb>読書</rb><rp>(</rp><rt>どくしょ</rt><rp>)</rp></ruby>クラブ</span> (Meiryo) to <span style='font-size: 130%; font-family: "MS Gothic";'><ruby><rb>読書</rb><rp>(</rp><rt>どくしょ</rt><rp>)</rp></ruby>クラブ</span> (MS Gothic default).<sup><a class="footnote-ref" href="#fn-3" id="fnref-3" rel="footnote">3</a></sup></p>
 <p><strong>Example 2</strong> (unihan): compare the Chinese to Japanese characters: <span lang="zh" style="font-size: 130%; font-family: 'Quicksand',sans-serif;">隆</span> (<span lang="ja" style="font-size: 135%;">隆</span>), <span lang="zh" style="font-size: 130%; font-family: 'Quicksand',sans-serif;">誤</span> (<span lang="ja" style="font-size: 135%;">誤</span>), <span lang="zh" style="font-size: 130%; font-family: 'Quicksand',sans-serif;">直</span> (<span lang="ja" style="font-size: 135%;">直</span>).<sup><a class="footnote-ref" href="#fn-4" id="fnref-4" rel="footnote">4</a></sup></p>
@@ -315,7 +317,7 @@
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">import</span> <span class="nt">url</span><span class="o">(</span><span class="nt">https</span><span class="o">://</span><span class="nt">fonts</span><span class="p">.</span><span class="nc">googleapis</span><span class="p">.</span><span class="nc">com</span><span class="o">/</span><span class="nt">earlyaccess</span><span class="o">/</span><span class="nt">notosansjapanese</span><span class="p">.</span><span class="nc">css</span><span class="o">)</span><span class="p">;</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">import</span> <span class="nt">url</span><span class="o">(</span><span class="nt">https</span><span class="o">://</span><span class="nt">fonts</span><span class="p">.</span><span class="nc">googleapis</span><span class="p">.</span><span class="nc">com</span><span class="o">/</span><span class="nt">earlyaccess</span><span class="o">/</span><span class="nt">notosansjapanese</span><span class="p">.</span><span class="nc">css</span><span class="o">)</span><span class="p">;</span>
 
     <span class="o">[</span><span class="nt">lang</span><span class="o">=</span><span class="s2">"ja"</span><span class="o">]</span> <span class="p">{</span>
       <span class="k">font-family</span><span class="p">:</span> <span class="s2">"Noto Sans Japanese"</span><span class="p">,</span> <span class="s2">"メイリオ"</span><span class="p">,</span><span class="s2">"Meiryo"</span><span class="p">,</span><span class="s2">"ヒラギノ角ゴ Pro W3"</span><span class="p">,</span>
@@ -323,7 +325,7 @@
       <span class="k">font-weight</span><span class="p">:</span> <span class="mi">100</span><span class="p">;</span>
       <span class="k">font-size</span><span class="p">:</span> <span class="mi">95</span><span class="kt">%</span><span class="p">;</span>
     <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 <h1 id="further-reading"><a class="toclink" href="#further-reading">Further reading</a></h1>
 <ul>
@@ -412,17 +414,20 @@
 
                 <footer id="footer" class="footer gradient-2">
                   <div id="footercontent">
-                    <span itemprop="copyrightHolder">(ɔ) Stevie Poppe 2016 - 2021</span>
+                    <span itemprop="contact"><strong>Contact:</strong> stevie [dot] poppe [at] kuleuven [dot] be</span>
+                    <br>
+                    <br>    
+                    <span itemprop="copyrightHolder">Copyright © Stevie Poppe 2016-2023 (CC BY-NC-SA 4.0)</span>                
                     <div>
                       <ul class="footer-nav">                    
                        <li class=" footer-nav-middle ">
                         <a href="https://steviepoppe.net/" class="footer-nav-middle-a footer-nav-first-a">Home</a></li>
                        <li class=" footer-nav-middle ">
-                        <a href="https://steviepoppe.net/blog/archives/" class="footer-nav-middle-a ">Archives</a></li>
+                        <a href="https://steviepoppe.net/blog/" class="footer-nav-middle-a ">Blog</a></li>
                        <li class=" footer-nav-middle ">
                         <a href="https://steviepoppe.net/blog/category/" class="footer-nav-middle-a ">Categories</a></li>
                        <li class=" footer-nav-last ">
-                        <a href="https://steviepoppe.net/blog/tags/" class="footer-nav-middle-a ">Tagcloud</a></li>
+                        <a href="https://steviepoppe.net/about/" class="footer-nav-middle-a ">About</a></li>
                       </ul>
                     </div>
                   </footer>

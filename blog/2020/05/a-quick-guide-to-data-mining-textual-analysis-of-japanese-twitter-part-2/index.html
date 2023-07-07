@@ -32,7 +32,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="This short series of blogs chronicles the bare-bones required to conduct a basic form of social media analysis on corpora of (Japanese) Tweets. It is primarily intended for undergraduate and graduate students whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle. The purpose of this second blog is two-fold: 1) to introduce the reader to some possibilities in regards to basic social media analysis (applicable almost immediately upon having finished the previous guide), and 2) to touch upon a crucial, yet sometimes ignored aspect of social media analysis: the legal and ethical caveats regarding privacy and informed content when researching user-generated content on social media. By using a concrete, real-world example, we will thus: Think about how we might integrate Twitter analysis into our project, Use the Python scripting language to further process our dataset to our needs and obtain relevant metrics, Use spreadsheet software such as Openlibre or Excel to produce pivot tables and graphs, Reflect on the ethical and legal ramifications of working with social media data in academic research. Context I assisted several third-year BA students working on a group essay covering aspects of the COVID-19 virus and marital issues within a larger framework of hegemonic masculinity, femininity and gender hegemony in Japan. Their choice of incorporating an element of social network analysis was not ungrounded. Correlating to increased remote work measures taken in Japan as a COVID-19 precaution, several hashtags concerning marital issues began to trend on Japanese Twitter starting Mid-April 2020 and saw further acceleration after being promptly picked up on by several news outlets and tabloids both within- and outside of Japan (such as the Japanese hashtag #coronadivorce, #koronarikon #コロナ離婚(りこん)). One of my research interests concerns the many ways the internet, as a cultural artifact, augments or subverts our personal reality. Of interest to this project, then, was how the explosion in usage of the above hashtags reifies in Japan a situation that is undoubtedly being felt worldwide among many (married) couples during the pandemic. Concretely we had several questions: how does Twitter (and general social media usage) fit within the lives of struggling couples trying to cope with the uncertainty of the Corona crisis and its amplification of internal relational struggles? Does the usage of those hashtags …">
+  <meta name="description" content="This short series of blogs chronicles the bare-bones required to conduct a basic form of social media analysis on corpora of (Japanese) Tweets. It is primarily intended for undergraduate and graduate students whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle. The purpose of this second blog is two-fold: 1) to introduce the reader to some possibilities in regards to basic social media analysis (applicable almost immediately upon having finished the previous guide), and 2) to touch upon a crucial, yet sometimes ignored aspect of social media analysis: the legal and ethical caveats regarding privacy and informed content when researching user-generated content on social media. By using a concrete, real-world example, we will thus: Think about how we might integrate Twitter analysis into our project, Use the Python scripting language to further process our dataset to our needs and obtain relevant metrics, Use spreadsheet software such as Openlibre or Excel to produce pivot tables and graphs, Reflect on the ethical and legal ramifications of working with social media data in academic research. Context I assisted several third-year BA students working on a group essay covering aspects of the COVID-19 virus and marital issues within a larger framework of hegemonic masculinity, femininity and gender hegemony in Japan. Their choice of incorporating an element of social network analysis was not ungrounded. Correlating to increased remote work measures taken in Japan as a COVID-19 precaution, several hashtags concerning marital issues began to trend on Japanese Twitter starting Mid-April 2020 and saw further acceleration after being promptly picked up on by several news outlets and tabloids both within- and outside of Japan (such as the Japanese hashtag #coronadivorce, #koronarikon #コロナ離婚(りこん)). One of my research interests concerns the many ways the internet, as a cultural artifact, augments or subverts our personal reality. Of interest to this project, then, was how the explosion in usage of the above hashtags reifies in Japan a situation that is undoubtedly being felt worldwide among many (married) couples during the pandemic. Concretely we had several questions: how does Twitter (and general social media usage) fit within the lives of struggling couples trying to cope with the uncertainty of the Corona crisis and its amplification of internal relational struggles? Does …">
   <meta name="keywords" content="Big Data, Digital Humanities, Japanese, Python, Tutorial,  Twitter, Japanese, Japan, Study">
   <meta name="author" content="Stevie Poppe">
   <meta name="mobile-web-app-capable" content="yes">
@@ -75,10 +75,7 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
           <![endif]-->
 
-
-
-          <link rel="author" href="https://plus.google.com/112676714486792414615"/>
-   
+ 
 
 <meta name="robots" content="index">        </head>
 
@@ -106,7 +103,7 @@
             </li>
 
 <li >
-                            <a class="link" href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
+                            <a class="link" href="https://steviepoppe.net/resume/"><i class="icon-hashtag icon-menu"></i>Resume</a></li><li >
                             <a class="link" href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>          </ul>
         </nav>
       </div>
@@ -117,6 +114,16 @@
             <div class="col-sm-12 text-center">
                           <ul class="socialnav2 social-icons-footer" style="width: auto;display: inline-block;float: none;">
                             <li>
+                              <a href="https://scholar.google.com/citations?user=Sok6SPoAAAAJ" title="Google Scholar">
+                                <i class="icon-google scholar" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">Google Scholar</span>
+                            </li>
+                            <li>
+                              <a href="https://orcid.org/0000-0002-8795-7336" title="ORCID">
+                                <i class="icon-orcid" style="font-size: 10px !important;"></i>
+                              </a><span class="screen-reader">ORCID</span>
+                            </li>
+                            <li>
                               <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
                                 <i class="icon-linkedin" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Linkedin</span>
@@ -125,16 +132,6 @@
                               <a href="https://soundcloud.com/onoreto" title="SoundCloud">
                                 <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">SoundCloud</span>
-                            </li>
-                            <li>
-                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
-                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
-                              </a><span class="screen-reader">YouTube</span>
-                            </li>
-                            <li>
-                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
-                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
-                              </a><span class="screen-reader">Flickr</span>
                             </li>
                             <li>
                               <a href="https://twitter.com/PoppeStevie" title="Twitter">
@@ -151,7 +148,7 @@
                           </ul>
                           </div>
             <div class="col-sm-12 text-center">
-              <p class="copyright font-alt m-b-0">(ɔ) Stevie Poppe 2016 - 2021</p>
+              <p class="copyright font-alt m-b-0">Copyright © Stevie Poppe 2016-2023 (CC BY-NC-SA 4.0)</p>
             </div>
           </div>
         </div>
@@ -170,7 +167,7 @@
                       <div class="side"><img src="https://steviepoppe.net/images/logo2.png" class="img-responsive"/></div>
                     </div>
                   </a>
-                  <h1 id="onoreto" title="Onoreto" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">noreto</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@Stevie Poppe</span></span></small></h1>
+                  <h1 id="onoreto" title="Stevie Poppe" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">Stevie Poppe</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">| Onoreto</span></span></small></h1>
                 </header>
 
                 <div id="nav-wrapper">
@@ -185,7 +182,9 @@
 </a>
 </li>
 <li class=" ">
-                            <a  href="/"><i class="icon-home icon-menu"></i>Blog</a>
+                            <a  href="/"><i class="icon-home icon-menu"></i>Home</a>
+                            </li><li class=" ">
+                            <a  href="/blog/"><i class="icon-book icon-menu"></i>Blog</a>
                             </li><li class=" dropdown">
                             <a  class="dropdown-toggle" data-target="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="/blog/category/"><i class="icon-folder-close icon-menu"></i>Categories                              <span class="caret"></span>
 </a>
@@ -194,35 +193,38 @@
                                 <li><a href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li> 
                                 <li><a href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
                               </ul> 
-                            </li><li >
-                            <a href="https://steviepoppe.net/about/"><i class="icon-hashtag icon-menu"></i>About</a></li><li >
-                            <a href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>                          </ul>
+                            </li>                          </ul>
                         </div>
                         <div class="social">
                           <ul class="socialnav socialonly social-icons-footer collapse">
 
                             <li>
-                              <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
+
+                                <a href="https://scholar.google.com/citations?user=Sok6SPoAAAAJ" title="Google Scholar" style="padding-bottom: 11px !important;">
+                                <i class="icon-google-scholar icon-ai" style="margin-top: 0.4em !important"></i>
+                              </a><span class="screen-reader">Google Scholar</span>
+                            </li>
+                            <li>
+
+                                <a href="https://orcid.org/0000-0002-8795-7336" title="ORCID" style="padding-bottom: 11px !important;">
+                                <i class="icon-orcid icon-ai" style="margin-top: 0.4em !important;"></i>
+                              </a><span class="screen-reader">ORCID</span>
+                            </li>
+                            <li>
+
+                                <a href="https://be.linkedin.com/in/stevie-poppe" title="Linkedin">
                                 <i class="icon-linkedin" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Linkedin</span>
                             </li>
                             <li>
-                              <a href="https://soundcloud.com/onoreto" title="SoundCloud">
+
+                                <a href="https://soundcloud.com/onoreto" title="SoundCloud">
                                 <i class="icon-soundcloud" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">SoundCloud</span>
                             </li>
                             <li>
-                              <a href="https://www.youtube.com/channel/UC-wW8gg1lGVn99X9ue6_eVA" title="YouTube">
-                                <i class="icon-youtube" style="font-size: 10px !important;"></i>
-                              </a><span class="screen-reader">YouTube</span>
-                            </li>
-                            <li>
-                              <a href="https://www.flickr.com/photos/147061735@N04/" title="Flickr">
-                                <i class="icon-flickr" style="font-size: 10px !important;"></i>
-                              </a><span class="screen-reader">Flickr</span>
-                            </li>
-                            <li>
-                              <a href="https://twitter.com/PoppeStevie" title="Twitter">
+
+                                <a href="https://twitter.com/PoppeStevie" title="Twitter">
                                 <i class="icon-twitter" style="font-size: 10px !important;"></i>
                               </a><span class="screen-reader">Twitter</span>
                             </li>
@@ -554,7 +556,7 @@
 <span class="normal">214</span>
 <span class="normal">215</span>
 <span class="normal">216</span>
-<span class="normal">217</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="normal">217</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">tweepy</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">csv</span>
@@ -771,7 +773,7 @@
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">parse_tweets</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1019,7 +1021,7 @@
 <span class="normal">198</span>
 <span class="normal">199</span>
 <span class="normal">200</span>
-<span class="normal">201</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="normal">201</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">csv</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span>
@@ -1220,7 +1222,7 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="c1">#pass in the target filename without "json" as argument in command prompt.</span>
     <span class="n">parse_tweets</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 <h3 id="spreadsheet-graphs"><a class="toclink" href="#spreadsheet-graphs">Spreadsheet Graphs</a></h3>
 <p>This section contains some graphs we might create upon importing the metric CSV files, generated with the script above, into a spreadsheet application.<sup><a class="footnote-ref" href="#fn-5" id="fnref-5" rel="footnote">6</a></sup></p>
@@ -1316,7 +1318,7 @@
 <span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
-<span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>@echo off
+<span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>@echo off
 
 :: Necessary <span class="k">for</span> Unicode support
 chcp <span class="m">65001</span> &gt;NUL
@@ -1355,7 +1357,7 @@ endlocal
 py python_metrics.py %safe_csv%
 
 PAUSE
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 <p>This script could be further edited to begin by first datamining new JSON data with any of the API scripts provided earlier, potentially using the Windows Registry to keep track op the <code>since_id</code> variable. If desired, we might also schedule this script to run periodically using the Windows schedule manager (e.g. to run the Search API script and its preprocessing and parsing scripts on a weekly basis, or even on a daily basis if daily updated statistics on account information, such as follower and following count, is preferred).</p>
 <p>If we are using spreadsheet software that maintains a connection with the CSV data sources for its tables and graphs, updating our graphs to reflect those changes is a matter of pressing a single update button (such as the Data → Refresh All button in MS Excel 2019).</p>
@@ -1457,10 +1459,10 @@ PAUSE
                 <dd><a href="https://steviepoppe.net/blog/2020/06/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-3/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 3: Natural Language Processing With MeCab, Neologd and KH Coder</a></dd>
                 <dt>Wed 01 April 2020</dt>
                 <dd><a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/">A <del>Quick</del> Guide to Data-mining & (Textual) Analysis of (Japanese) Twitter Part 1: Twitter Data Collection</a></dd>
+                <dt>Wed 04 September 2019</dt>
+                <dd><a href="https://steviepoppe.net/blog/2019/09/resources/">Resources</a></dd>
                 <dt>Tue 14 May 2019</dt>
                 <dd><a href="https://steviepoppe.net/blog/2019/05/japanese-e-books-vocab-mining-drm-and-copyright-law/">Japanese E-books, vocab-mining, DRM and copyright law</a></dd>
-                <dt>Wed 17 April 2019</dt>
-                <dd><a href="https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/">A <del>Quick</del> Guide on Using Anki 5: an efficient vocab mining set-up with Anki and Yomichan [2021 UPDATE]</a></dd>
             </dl>
             </div>
         <hr />
@@ -1487,17 +1489,20 @@ PAUSE
 
                 <footer id="footer" class="footer gradient-2">
                   <div id="footercontent">
-                    <span itemprop="copyrightHolder">(ɔ) Stevie Poppe 2016 - 2021</span>
+                    <span itemprop="contact"><strong>Contact:</strong> stevie [dot] poppe [at] kuleuven [dot] be</span>
+                    <br>
+                    <br>    
+                    <span itemprop="copyrightHolder">Copyright © Stevie Poppe 2016-2023 (CC BY-NC-SA 4.0)</span>                
                     <div>
                       <ul class="footer-nav">                    
                        <li class=" footer-nav-middle ">
                         <a href="https://steviepoppe.net/" class="footer-nav-middle-a footer-nav-first-a">Home</a></li>
                        <li class=" footer-nav-middle ">
-                        <a href="https://steviepoppe.net/blog/archives/" class="footer-nav-middle-a ">Archives</a></li>
+                        <a href="https://steviepoppe.net/blog/" class="footer-nav-middle-a ">Blog</a></li>
                        <li class=" footer-nav-middle ">
                         <a href="https://steviepoppe.net/blog/category/" class="footer-nav-middle-a ">Categories</a></li>
                        <li class=" footer-nav-last ">
-                        <a href="https://steviepoppe.net/blog/tags/" class="footer-nav-middle-a ">Tagcloud</a></li>
+                        <a href="https://steviepoppe.net/about/" class="footer-nav-middle-a ">About</a></li>
                       </ul>
                     </div>
                   </footer>

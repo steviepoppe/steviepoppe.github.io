@@ -36,7 +36,7 @@ http://www.tipue.com/search
 .tipue_search_content_title
 {
 	margin-top: 23px; 
-font-family: poiret one,noto sans japanese,meiryo,sans-serif!important;  color: #124877;
+     color: #124877;
   line-height: 125%;
     font-size: 24px;
 }
@@ -64,19 +64,17 @@ font-family: poiret one,noto sans japanese,meiryo,sans-serif!important;  color: 
 }
 .tipue_search_content_text
 {
-	color: #555;
      word-wrap: break-word;
      hyphens: auto;
      margin-top: 3px;
 }
 .tipue_search_content_debug
 {
-	color: #555;
      margin: 5px 0;
 }
 .tipue_search_content_bold
 {
-     color: #333;
+     color: #fff;
      font-weight: 600;
 }
 
@@ -123,7 +121,6 @@ font-family: poiret one,noto sans japanese,meiryo,sans-serif!important;  color: 
 }
 
 #tipue_search_results_count, .tipue_search_content_debug {
-    font: 13px/1.5 'Source Code Pro', monospace;
     text-transform: uppercase;
     color: 
     #999;

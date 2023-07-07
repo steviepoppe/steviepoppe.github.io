@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Onoreto - Studies</title><link href="https://steviepoppe.net/" rel="alternate"></link><link href="http://localhost:8000/feeds/studies.atom.xml" rel="self"></link><id>https://steviepoppe.net/</id><updated>2021-04-17T00:00:00+02:00</updated><subtitle>@Stevie Poppe</subtitle><entry><title>A Quick Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 4: Natural Language Processing With MeCab, Neologd and NLTK</title><link href="https://steviepoppe.net/blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/" rel="alternate"></link><published>2020-07-05T00:00:00+02:00</published><updated>2020-07-05T00:00:00+02:00</updated><author><name>Stevie Poppe</name></author><id>tag:steviepoppe.net,2020-07-05:/blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/</id><summary type="html">&lt;p&gt;&lt;em&gt;This short series of blogs chronicles the bare-bones required to conduct a basic form of social media analysis on corpora of (Japanese) Tweets. It is primarily intended for &lt;/em&gt;&lt;em&gt;undergraduate and graduate students&lt;/em&gt;&lt;em&gt; whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle.&lt;/em&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Onoreto - Studies</title><link href="https://steviepoppe.net/" rel="alternate"></link><link href="http://localhost:8000/feeds/studies.atom.xml" rel="self"></link><id>https://steviepoppe.net/</id><updated>2021-04-17T00:00:00+02:00</updated><subtitle>| Onoreto</subtitle><entry><title>A Quick Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 4: Natural Language Processing With MeCab, Neologd and NLTK</title><link href="https://steviepoppe.net/blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/" rel="alternate"></link><published>2020-07-05T00:00:00+02:00</published><updated>2020-07-05T00:00:00+02:00</updated><author><name>Stevie Poppe</name></author><id>tag:steviepoppe.net,2020-07-05:/blog/2020/07/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-4/</id><summary type="html">&lt;p&gt;&lt;em&gt;This short series of blogs chronicles the bare-bones required to conduct a basic form of social media analysis on corpora of (Japanese) Tweets. It is primarily intended for &lt;/em&gt;&lt;em&gt;undergraduate and graduate students&lt;/em&gt;&lt;em&gt; whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;This fourth blog follows up on the MeCab + NEologd set-up described in the third part of this series, and introduces the reader to some of possibilities when working with python-based NLP tools such as NLTK. Concretely, we will:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;i class="icon-check"&gt;&lt;/i&gt; Import the python wrapper mecab-python, necessary to use MeCab in our python scripts,&lt;/li&gt;
@@ -14,12 +14,12 @@
 &lt;span class="normal"&gt;2&lt;/span&gt;
 &lt;span class="normal"&gt;3&lt;/span&gt;
 &lt;span class="normal"&gt;4&lt;/span&gt;
-&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;MeCab&lt;/span&gt;
+&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;MeCab&lt;/span&gt;
 
 &lt;span class="n"&gt;tagger&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MeCab&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Tagger&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;parsed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tagger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"お母さんが作ってくれた魚フライ定食を食べてみたいです。"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;parsed&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;The MeCab.Tagger function accepts several arguments we can pass to MeCab:&lt;/p&gt;
 &lt;ul&gt;
@@ -34,15 +34,8 @@
 &lt;span class="normal"&gt;2&lt;/span&gt;
 &lt;span class="normal"&gt;3&lt;/span&gt;
 &lt;span class="normal"&gt;4&lt;/span&gt;
-&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;MeCab&lt;/span&gt;
-&lt;span class="n"&gt;tagger&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MeCab&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Tagger&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"-F%m:&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;t&lt;/span&gt;&lt;span class="si"&gt;%f&lt;/span&gt;&lt;span class="s2"&gt;[0]&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;n -E&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;n --unk-feature 未知語"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"うわー！母が作ってくれた魚フライ定食は素敵だったな～！？ウェーーーーイイイイイイイイィ！"&lt;/span&gt;
-&lt;span class="n"&gt;parsed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tagger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;parsed&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;h2 id="normalizing-japanese-text-with-neologdn-optional"&gt;&lt;a class="toclink" href="#normalizing-japanese-text-with-neologdn-optional"&gt;Normalizing Japanese text with Neologdn (optional)&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://github.com/ikegami-yukino/neologdn"&gt;This&lt;/a&gt; small library consists of …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;This short series of blogs chronicles the bare-bones required to conduct a basic form of social media analysis on corpora of (Japanese) Tweets. It is primarily intended for &lt;/em&gt;&lt;em&gt;undergraduate and graduate students&lt;/em&gt;&lt;em&gt; whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle.&lt;/em&gt;&lt;/p&gt;
+&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;MeCab&lt;/span&gt;
+&lt;span class="n"&gt;tagger&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MeCab&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Tagger …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;This short series of blogs chronicles the bare-bones required to conduct a basic form of social media analysis on corpora of (Japanese) Tweets. It is primarily intended for &lt;/em&gt;&lt;em&gt;undergraduate and graduate students&lt;/em&gt;&lt;em&gt; whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle.&lt;/em&gt;&lt;/p&gt;
 
 
 &lt;p&gt;This fourth blog follows up on the MeCab + NEologd set-up described in the third part of this series, and introduces the reader to some of possibilities when working with python-based NLP tools such as NLTK. Concretely, we will:&lt;/p&gt;
@@ -60,12 +53,12 @@
 &lt;span class="normal"&gt;2&lt;/span&gt;
 &lt;span class="normal"&gt;3&lt;/span&gt;
 &lt;span class="normal"&gt;4&lt;/span&gt;
-&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;MeCab&lt;/span&gt;
+&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;MeCab&lt;/span&gt;
 
 &lt;span class="n"&gt;tagger&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MeCab&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Tagger&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;parsed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tagger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"お母さんが作ってくれた魚フライ定食を食べてみたいです。"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;parsed&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;The MeCab.Tagger function accepts several arguments we can pass to MeCab:&lt;/p&gt;
 &lt;ul&gt;
@@ -80,12 +73,12 @@
 &lt;span class="normal"&gt;2&lt;/span&gt;
 &lt;span class="normal"&gt;3&lt;/span&gt;
 &lt;span class="normal"&gt;4&lt;/span&gt;
-&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;MeCab&lt;/span&gt;
+&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;MeCab&lt;/span&gt;
 &lt;span class="n"&gt;tagger&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MeCab&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Tagger&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"-F%m:&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;t&lt;/span&gt;&lt;span class="si"&gt;%f&lt;/span&gt;&lt;span class="s2"&gt;[0]&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;n -E&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;n --unk-feature 未知語"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"うわー！母が作ってくれた魚フライ定食は素敵だったな～！？ウェーーーーイイイイイイイイィ！"&lt;/span&gt;
 &lt;span class="n"&gt;parsed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tagger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;parsed&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;h2 id="normalizing-japanese-text-with-neologdn-optional"&gt;&lt;a class="toclink" href="#normalizing-japanese-text-with-neologdn-optional"&gt;Normalizing Japanese text with Neologdn (optional)&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://github.com/ikegami-yukino/neologdn"&gt;This&lt;/a&gt; small library consists of several regular expressions helpful in normalizing common tendencies of Japanese text on social media, such as converting half-width characters to full-width and removing dramatizing hyphens. As always, install with &lt;strong&gt;pip&lt;/strong&gt;: &lt;code&gt;pip install neologdn&lt;/code&gt;, and try out the script below as example or read the documentation for further usage.&lt;/p&gt;
@@ -95,14 +88,14 @@
 &lt;span class="normal"&gt;4&lt;/span&gt;
 &lt;span class="normal"&gt;5&lt;/span&gt;
 &lt;span class="normal"&gt;6&lt;/span&gt;
-&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;MeCab&lt;/span&gt;
+&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;MeCab&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;neologdn&lt;/span&gt;
 &lt;span class="n"&gt;tagger&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MeCab&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Tagger&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"-O wakati"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;" ﾊﾝｶｸｶﾅっ　　　ウェーーーーイイイイイイイイィっ！？"&lt;/span&gt;
 &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;neologdn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;repeat&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;parsed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tagger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;parsed&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;h1 id="using-mecab-with-nltk"&gt;&lt;a class="toclink" href="#using-mecab-with-nltk"&gt;Using MeCab with NLTK&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;Having set up the above, we can now further integrate this into one of the python NLP libraries. With its focus on speed and efficiency, SpaCy is popular for real-life applications while NLTK (Natural Language Toolkit) remains a popular for experimentation among students and researchers. The choice for NLTK was fairly arbitrary and the examples below are easily accomplished in both libraries. To install NLTK, use &lt;strong&gt;pip&lt;/strong&gt; from the command line: &lt;code&gt;pip install NLTK&lt;/code&gt;.&lt;/p&gt;
@@ -144,7 +137,7 @@
 &lt;span class="normal"&gt;29&lt;/span&gt;
 &lt;span class="normal"&gt;30&lt;/span&gt;
 &lt;span class="normal"&gt;31&lt;/span&gt;
-&lt;span class="normal"&gt;32&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding=utf-8&lt;/span&gt;
+&lt;span class="normal"&gt;32&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# coding=utf-8&lt;/span&gt;
 
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;MeCab&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;neologdn&lt;/span&gt;
@@ -176,7 +169,7 @@
         &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;next&lt;/span&gt;
     &lt;span class="n"&gt;fdist&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;FreqDist&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;content_words&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;fdist&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cumulative&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;div class="admonition note"&gt;
 &lt;p class="admonition-title"&gt;Note&lt;/p&gt;
@@ -227,7 +220,7 @@
 &lt;span class="normal"&gt;32&lt;/span&gt;
 &lt;span class="normal"&gt;33&lt;/span&gt;
 &lt;span class="normal"&gt;34&lt;/span&gt;
-&lt;span class="normal"&gt;35&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# coding=utf-8&lt;/span&gt;
+&lt;span class="normal"&gt;35&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# coding=utf-8&lt;/span&gt;
 
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;MeCab&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;neologdn&lt;/span&gt;
@@ -262,7 +255,7 @@
 
     &lt;span class="n"&gt;fdist&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;FreqDist&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;content_words&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;fdist&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cumulative&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;h2 id="sentiment-analysis"&gt;&lt;a class="toclink" href="#sentiment-analysis"&gt;Sentiment analysis&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;[Coming soon: Sentiment analysis]&lt;/p&gt;
@@ -302,7 +295,7 @@
 &lt;li&gt;&lt;i class="icon-check"&gt;&lt;/i&gt;  Install and set-up the quantitative content analysis tool KH Coder,&lt;/li&gt;
 &lt;li&gt;&lt;i class="icon-check"&gt;&lt;/i&gt;  Perform a rudimentary content analysis on a corpus of tweets collected with methods described in the previous two blogs.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Although this blog thus assumes that the reader has read &lt;a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/"&gt;part one&lt;/a&gt; and &lt;a href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/"&gt;two&lt;/a&gt; of this series, it should also serve as a solid stand-alone introduction to setting up MeCab and the IPADic NEologd dictionary (as of writing still pretty much the de-facto canonical tools in academic scholarship applying a form of Japanese computational linguistics) and combining them with KH Coder.&lt;/p&gt;
+&lt;p&gt;Although this blog thus assumes that the reader has read &lt;a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/"&gt;part one&lt;/a&gt; and &lt;a href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/"&gt;two&lt;/a&gt; of this series, it should also serve as a solid stand-alone introduction to setting up MeCab and the IPADic NEologd dictionary (as of writing still pretty much the &lt;em&gt;de-facto&lt;/em&gt; canonical tools in academic scholarship applying a form of Japanese computational linguistics) and combining them with KH Coder.&lt;/p&gt;
 &lt;p&gt;Due to the nature of the field, parts of this tutorial will be rather technical and rely on having some basic experience working with the Windows command prompt or MacOS Terminal, but despite the complexity of the matter, there shouldn’t be much of a technical difficulty gap compared to the previous tutorials.&lt;sup&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;h1 id="japanese-natural-language-processing"&gt;&lt;a class="toclink" href="#japanese-natural-language-processing"&gt;Japanese Natural Language Processing&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;‘Natural language’ refers to the usage of language that has developed naturally over time among humans, encompassing methods of communication such as speech, written text and signaling. Natural Language Processing, then, is the field of developing how computers can understand and process such use of language in a cognitive way. Applications of NLP are seen anywhere ranging from AI assistants (such as Siri, Alexa or Google Assistant), to automatic translation (e.g. Google Translate), targeted advertising, and even in health-care.&lt;sup&gt;&lt;/sup&gt;&lt;/p&gt;
@@ -316,7 +309,7 @@
 &lt;li&gt;&lt;i class="icon-check"&gt;&lt;/i&gt;  Install and set-up the quantitative content analysis tool KH Coder,&lt;/li&gt;
 &lt;li&gt;&lt;i class="icon-check"&gt;&lt;/i&gt;  Perform a rudimentary content analysis on a corpus of tweets collected with methods described in the previous two blogs.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Although this blog thus assumes that the reader has read &lt;a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/"&gt;part one&lt;/a&gt; and &lt;a href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/"&gt;two&lt;/a&gt; of this series, it should also serve as a solid stand-alone introduction to setting up MeCab and the IPADic NEologd dictionary (as of writing still pretty much the de-facto canonical tools in academic scholarship applying a form of Japanese computational linguistics) and combining them with KH Coder.&lt;/p&gt;
+&lt;p&gt;Although this blog thus assumes that the reader has read &lt;a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/"&gt;part one&lt;/a&gt; and &lt;a href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/"&gt;two&lt;/a&gt; of this series, it should also serve as a solid stand-alone introduction to setting up MeCab and the IPADic NEologd dictionary (as of writing still pretty much the &lt;em&gt;de-facto&lt;/em&gt; canonical tools in academic scholarship applying a form of Japanese computational linguistics) and combining them with KH Coder.&lt;/p&gt;
 &lt;p&gt;Due to the nature of the field, parts of this tutorial will be rather technical and rely on having some basic experience working with the Windows command prompt or MacOS Terminal, but despite the complexity of the matter, there shouldn’t be much of a technical difficulty gap compared to the previous tutorials.&lt;sup&gt;&lt;a class="footnote-ref" href="#fn-1" id="fnref-1" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;h1 id="japanese-natural-language-processing"&gt;&lt;a class="toclink" href="#japanese-natural-language-processing"&gt;Japanese Natural Language Processing&lt;/a&gt;&lt;/h1&gt;
@@ -386,9 +379,9 @@ Next, we should add a global variable MECABRC, with a value pointing to &lt;em&g
 &lt;/div&gt;
 &lt;p&gt;Finally, move the previously extracted NEologd CSV files to the ‘ipadic-neologd’ folder. We can now &lt;strong&gt;compile&lt;/strong&gt; our IPADic-NEologd dictionary from the command prompt by changing to that directory and running &lt;strong&gt;mecab-dict-index&lt;/strong&gt; with encoding set both from and to UTF-8:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; C:&lt;span class="se"&gt;\P&lt;/span&gt;rogram Files&lt;span class="se"&gt;\M&lt;/span&gt;eCab&lt;span class="se"&gt;\d&lt;/span&gt;ic&lt;span class="se"&gt;\i&lt;/span&gt;padic-neologd
+&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; C:&lt;span class="se"&gt;\P&lt;/span&gt;rogram Files&lt;span class="se"&gt;\M&lt;/span&gt;eCab&lt;span class="se"&gt;\d&lt;/span&gt;ic&lt;span class="se"&gt;\i&lt;/span&gt;padic-neologd
 mecab-dict-index -f utf-8 -t utf-8
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;div class="admonition note"&gt;
 &lt;p class="admonition-title"&gt;Note&lt;/p&gt;
@@ -464,7 +457,7 @@ mecab-dict-index -f utf-8 -t utf-8
 &lt;span class="normal"&gt;41&lt;/span&gt;
 &lt;span class="normal"&gt;42&lt;/span&gt;
 &lt;span class="normal"&gt;43&lt;/span&gt;
-&lt;span class="normal"&gt;44&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="normal"&gt;44&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;csv&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;chain&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;functools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;reduce&lt;/span&gt;
@@ -508,7 +501,7 @@ mecab-dict-index -f utf-8 -t utf-8
 
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'__main__'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;parse_tweets&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;div class="admonition note"&gt;
 &lt;p class="admonition-title"&gt;Note&lt;/p&gt;
@@ -582,7 +575,7 @@ mecab-dict-index -f utf-8 -t utf-8
 &lt;span class="normal"&gt;21&lt;/span&gt;
 &lt;span class="normal"&gt;22&lt;/span&gt;
 &lt;span class="normal"&gt;23&lt;/span&gt;
-&lt;span class="normal"&gt;24&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;Children&lt;/span&gt;
+&lt;span class="normal"&gt;24&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;Children&lt;/span&gt;
 &lt;span class="err"&gt;子供達&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;子供&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;こども&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;子ども&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;子ども&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;娘&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;赤ちゃん&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;あかちゃん&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;息子&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;妊婦&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;育児&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;保育園&lt;/span&gt;
 
 &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;Household_Tasks&lt;/span&gt;
@@ -606,7 +599,7 @@ mecab-dict-index -f utf-8 -t utf-8
 
 &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;Financial_Employment&lt;/span&gt;
 &lt;span class="err"&gt;給付金&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;テレワーク&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;在宅ワーク&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;失業&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;仕事&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;業&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;収入&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;テレワーク&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;在宅ワーク&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;在宅&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;休み&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;休む&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;会社&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;出社&lt;/span&gt; &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="err"&gt;勤務&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Saving the above file and applying it as coding rule against the corpus (&lt;strong&gt;Tools → Coding → Frequency → H5&lt;/strong&gt;) reveals how many tweets contain keywords that we have coded among the above categories (as seen in &lt;strong&gt;Figure 13&lt;/strong&gt;).&lt;/p&gt;
 &lt;p&gt;Considering the origin of the corpus, it is safe to say that the majority of tweets will contain grievances concerning the Twitter user’s husband. Indeed, over a quarter of those posts contain harsh, aggressive language. Posts that directly reference COVID-19 (about 5%) or even the employment status of the husband (approx. 15%), however, are relatively low in numbers. The most prevalent category is that of household tasks; confirming the likelihood that these users are using the medium to vent daily frustrations in regards to the labor performed as a housewife and the lack of compassion or assistance from the husband; something that is further aggravated due to the virus.&lt;/p&gt;
@@ -685,7 +678,7 @@ mecab-dict-index -f utf-8 -t utf-8
 &lt;p&gt;Unless we edit the source code manually and recompile the application, there is not much we can do to fix this at this point anyway. One workaround, as &lt;a href="https://blog.14nigo.net/2019/12/mecabpython3.html"&gt;this Japanese blogger&lt;/a&gt; writes, is to set the output encoding of the command prompt to utf-8 using &lt;code&gt;chcp 65001&lt;/code&gt; and piping the Japanese query with &lt;code&gt;echo&lt;/code&gt; to mecab (e.g. &lt;code&gt;!#batch echo 猿も木から落ちる | mecab&lt;/code&gt;), or alternatively, to use another command line utility program such as git Git Bash. &lt;a class="footnote-backref" href="#fnref-12" title="Jump back to footnote 13 in the text"&gt;↩&lt;/a&gt;&lt;a class="footnote-backref" href="#fnref2-12" title="Jump back to footnote 13 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id="fn-13"&gt;
-&lt;p&gt;The other options are “-O chasen” (to display the POS tagged tokens in ChaSen format), “-O yomi” (for displaying the reading of the token) and “-O dump” (the default options, dumps all information). &lt;a class="footnote-backref" href="#fnref-13" title="Jump back to footnote 14 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The other options are “&lt;code&gt;-O chasen&lt;/code&gt;” (to display the POS tagged tokens in ChaSen format), “&lt;code&gt;-O yomi&lt;/code&gt;” (for displaying the reading of the token) and “&lt;code&gt;-O dump&lt;/code&gt;” (the default options, dumps all information). &lt;a class="footnote-backref" href="#fnref-13" title="Jump back to footnote 14 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id="fn-14"&gt;
 &lt;p&gt;As pointed out here, an alternative method is to compile NEologd as a user dictionary and to use it in conjunction with the standard UNIDic dictionary, rather than to compile the two in one system dictionary. &lt;a class="footnote-backref" href="#fnref-14" title="Jump back to footnote 15 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
@@ -697,7 +690,7 @@ mecab-dict-index -f utf-8 -t utf-8
 &lt;p&gt;Because of the frequent updates and massive size of the raw NEologd CSV files, this tutorial won’t provide a compiled dic file, however. &lt;a class="footnote-backref" href="#fnref-16" title="Jump back to footnote 17 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id="fn-17"&gt;
-&lt;p&gt;Named Entity Recognition; identifying and tagging tokens that are real-world objects (persons, locations, products, etc). The NEologd dictionary has some basic NER as part of the pos sub-classification. The entry for Belgium, for example, returns the following: “ベルギー,名詞,固有名詞,地域,国,,,ベルギー,ベルギー,ベルギー”. In other words, Belgium is classified as a noun → proper noun → region → country. &lt;a class="footnote-backref" href="#fnref-17" title="Jump back to footnote 18 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Named Entity Recognition&lt;/strong&gt;; identifying and tagging tokens that are real-world objects (persons, locations, products, etc). The NEologd dictionary has some basic NER as part of the pos sub-classification. The entry for Belgium, for example, returns the following: “ベルギー,名詞,固有名詞,地域,国,,,ベルギー,ベルギー,ベルギー”. In other words, Belgium is classified as a noun → proper noun → region → country. &lt;a class="footnote-backref" href="#fnref-17" title="Jump back to footnote 18 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id="fn-18"&gt;
 &lt;p&gt;&lt;strong&gt;S. Yada and K. Kageura&lt;/strong&gt;. 2015. Identification of Tweets that Mention Books: An Experimental Comparison of Machine Learning Methods. Digital Libraries: Providing Quality Information: 17&lt;sup&gt;th&lt;/sup&gt; International Conference on Asia-Pacific Digital Libraries, ICADL 2015, Seoul, Korea, December 9-12, 2015. Proceedings &lt;a class="footnote-backref" href="#fnref-18" title="Jump back to footnote 19 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
@@ -724,7 +717,7 @@ mecab-dict-index -f utf-8 -t utf-8
 &lt;p&gt;A method of content-analysis first applied by psychologist Charles Osgood in his 1959 paper “The Representational Model and Relevant Research Methods”. KH Coder’s visual application is based on force-directed graph drawing algorithms known as Fruchterman–Reingold forces, a method developed by Fruchterman &amp;amp; Reingold in 1991. &lt;a class="footnote-backref" href="#fnref-25" title="Jump back to footnote 26 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id="fn-26"&gt;
-&lt;p&gt;KWIC stands for Key Word In Context. A KWIC concordance shows a list of all the pieces of text containing a particular lemma (KH Coder performs a form of lemmatization by taking the base form of the lemma based on the MeCab dictionary employed: i.e. stripping conjugation of verbs). &lt;a class="footnote-backref" href="#fnref-26" title="Jump back to footnote 27 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;KWIC stands for Key Word In Context. A KWIC concordance shows a list of all the pieces of text containing a particular lemma (KH Coder performs a form of &lt;em&gt;lemmatization&lt;/em&gt; by taking the base form of the lemma based on the MeCab dictionary employed: i.e. stripping conjugation of verbs). &lt;a class="footnote-backref" href="#fnref-26" title="Jump back to footnote 27 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;</content><category term="Studies"></category><category term="Big Data"></category><category term="Digital Humanities"></category><category term="Japanese"></category><category term="Python"></category><category term="Tutorial"></category><category term="Twitter"></category></entry><entry><title>A Quick Guide to Data-mining &amp; (Textual) Analysis of (Japanese) Twitter Part 2: Basic Metrics &amp; Graphs</title><link href="https://steviepoppe.net/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/" rel="alternate"></link><published>2020-05-15T00:00:00+02:00</published><updated>2020-05-15T00:00:00+02:00</updated><author><name>Stevie Poppe</name></author><id>tag:steviepoppe.net,2020-05-15:/blog/2020/05/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter-part-2/</id><summary type="html">&lt;p&gt;&lt;em&gt;This short series of blogs chronicles the bare-bones required to conduct a basic form of social media analysis on corpora of (Japanese) Tweets. It is primarily intended for &lt;/em&gt;&lt;em&gt;undergraduate and graduate students&lt;/em&gt;&lt;em&gt; whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle.&lt;/em&gt;&lt;/p&gt;
@@ -741,7 +734,7 @@ mecab-dict-index -f utf-8 -t utf-8
 
 &lt;h1 id="context"&gt;&lt;a class="toclink" href="#context"&gt;Context&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;I assisted several third-year BA students working on a group essay covering aspects of the COVID-19 virus and marital issues within a larger framework of hegemonic masculinity, femininity and gender hegemony in Japan. Their choice of incorporating an element of social network analysis was not ungrounded. Correlating to increased remote work measures taken in Japan as a COVID-19 precaution, several hashtags concerning marital issues began to trend on Japanese Twitter starting Mid-April 2020 and saw further acceleration after being promptly picked up on by several news outlets and tabloids both within- and outside of Japan (such as the Japanese hashtag #&lt;em&gt;coronadivorce&lt;/em&gt;, #&lt;em&gt;koronarikon&lt;/em&gt; #コロナ&lt;span lang="ja"&gt;&lt;ruby&gt;&lt;rb&gt;離婚&lt;/rb&gt;&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;りこん&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;&lt;/span&gt;).&lt;/p&gt;
-&lt;p&gt;One of my research interests concerns the many ways the internet, as a cultural artifact, augments or subverts our personal reality. Of interest to this project, then, was how the explosion in usage of the above hashtags reifies in Japan a situation that is undoubtedly being felt worldwide among many (married) couples during the pandemic. Concretely we had several questions: how does Twitter (and general social media usage) fit within the lives of struggling couples trying to cope with the uncertainty of the Corona crisis and its amplification of internal relational struggles? Does the usage of those hashtags …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;This short series of blogs chronicles the bare-bones required to conduct a basic form of social media analysis on corpora of (Japanese) Tweets. It is primarily intended for &lt;/em&gt;&lt;em&gt;undergraduate and graduate students&lt;/em&gt;&lt;em&gt; whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;One of my research interests concerns the many ways the internet, as a cultural artifact, augments or subverts our personal reality. Of interest to this project, then, was how the explosion in usage of the above hashtags reifies in Japan a situation that is undoubtedly being felt worldwide among many (married) couples during the pandemic. Concretely we had several questions: how does Twitter (and general social media usage) fit within the lives of struggling couples trying to cope with the uncertainty of the Corona crisis and its amplification of internal relational struggles? Does …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;This short series of blogs chronicles the bare-bones required to conduct a basic form of social media analysis on corpora of (Japanese) Tweets. It is primarily intended for &lt;/em&gt;&lt;em&gt;undergraduate and graduate students&lt;/em&gt;&lt;em&gt; whose topics of research include contemporary Japan or its online vox populi, and want to strengthen their existing research (such as an undergraduate thesis or term paper) with a social media-based quantitative angle.&lt;/em&gt;&lt;/p&gt;
 
 
 &lt;p&gt;The purpose of this second blog is two-fold: 1) to introduce the reader to some possibilities in regards to basic social media analysis (applicable almost immediately upon having &lt;a href="https://steviepoppe.net/blog/2020/04/a-quick-guide-to-data-mining-textual-analysis-of-japanese-twitter/"&gt;finished the previous guide&lt;/a&gt;), and 2) to touch upon a crucial, yet sometimes ignored aspect of social media analysis: the legal and ethical caveats regarding privacy and informed content when researching user-generated content on social media.&lt;/p&gt;
@@ -994,7 +987,7 @@ mecab-dict-index -f utf-8 -t utf-8
 &lt;span class="normal"&gt;214&lt;/span&gt;
 &lt;span class="normal"&gt;215&lt;/span&gt;
 &lt;span class="normal"&gt;216&lt;/span&gt;
-&lt;span class="normal"&gt;217&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
+&lt;span class="normal"&gt;217&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;tweepy&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;csv&lt;/span&gt;
@@ -1211,7 +1204,7 @@ mecab-dict-index -f utf-8 -t utf-8
 
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'__main__'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;parse_tweets&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;div class="admonition note"&gt;
 &lt;p class="admonition-title"&gt;Note&lt;/p&gt;
@@ -1459,7 +1452,7 @@ mecab-dict-index -f utf-8 -t utf-8
 &lt;span class="normal"&gt;198&lt;/span&gt;
 &lt;span class="normal"&gt;199&lt;/span&gt;
 &lt;span class="normal"&gt;200&lt;/span&gt;
-&lt;span class="normal"&gt;201&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
+&lt;span class="normal"&gt;201&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;csv&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;
@@ -1660,7 +1653,7 @@ mecab-dict-index -f utf-8 -t utf-8
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'__main__'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="c1"&gt;#pass in the target filename without "json" as argument in command prompt.&lt;/span&gt;
     &lt;span class="n"&gt;parse_tweets&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;h3 id="spreadsheet-graphs"&gt;&lt;a class="toclink" href="#spreadsheet-graphs"&gt;Spreadsheet Graphs&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;This section contains some graphs we might create upon importing the metric CSV files, generated with the script above, into a spreadsheet application.&lt;sup&gt;&lt;a class="footnote-ref" href="#fn-5" id="fnref-5" rel="footnote"&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
@@ -1756,7 +1749,7 @@ mecab-dict-index -f utf-8 -t utf-8
 &lt;span class="normal"&gt;36&lt;/span&gt;
 &lt;span class="normal"&gt;37&lt;/span&gt;
 &lt;span class="normal"&gt;38&lt;/span&gt;
-&lt;span class="normal"&gt;39&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@echo off
+&lt;span class="normal"&gt;39&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;@echo off
 
 :: Necessary &lt;span class="k"&gt;for&lt;/span&gt; Unicode support
 chcp &lt;span class="m"&gt;65001&lt;/span&gt; &amp;gt;NUL
@@ -1795,7 +1788,7 @@ endlocal
 py python_metrics.py %safe_csv%
 
 PAUSE
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;This script could be further edited to begin by first datamining new JSON data with any of the API scripts provided earlier, potentially using the Windows Registry to keep track op the &lt;code&gt;since_id&lt;/code&gt; variable. If desired, we might also schedule this script to run periodically using the Windows schedule manager (e.g. to run the Search API script and its preprocessing and parsing scripts on a weekly basis, or even on a daily basis if daily updated statistics on account information, such as follower and following count, is preferred).&lt;/p&gt;
 &lt;p&gt;If we are using spreadsheet software that maintains a connection with the CSV data sources for its tables and graphs, updating our graphs to reflect those changes is a matter of pressing a single update button (such as the Data → Refresh All button in MS Excel 2019).&lt;/p&gt;
@@ -2007,7 +2000,7 @@ PAUSE
 &lt;span class="normal"&gt;49&lt;/span&gt;
 &lt;span class="normal"&gt;50&lt;/span&gt;
 &lt;span class="normal"&gt;51&lt;/span&gt;
-&lt;span class="normal"&gt;52&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;tweepy&lt;/span&gt;
+&lt;span class="normal"&gt;52&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;tweepy&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;
@@ -2059,7 +2052,7 @@ PAUSE
         &lt;span class="n"&gt;search_query&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
     &lt;span class="n"&gt;get_timeline_tweets&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;search_query&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;&lt;img alt="cmd_python_user" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/twitter/cmd_python_user.png" title="cmd_python_user"/&gt;&lt;/p&gt;
 &lt;h2 id="by-keyword"&gt;&lt;a class="toclink" href="#by-keyword"&gt;By keyword&lt;/a&gt;&lt;/h2&gt;
@@ -2175,7 +2168,7 @@ PAUSE
 &lt;span class="normal"&gt;101&lt;/span&gt;
 &lt;span class="normal"&gt;102&lt;/span&gt;
 &lt;span class="normal"&gt;103&lt;/span&gt;
-&lt;span class="normal"&gt;104&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;tweepy&lt;/span&gt;
+&lt;span class="normal"&gt;104&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;tweepy&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
@@ -2279,7 +2272,7 @@ PAUSE
 
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'__main__'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;search_tweets&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;&lt;img alt="cmd_python_search" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/twitter/cmd_python_search.png" title="cmd_python_search"/&gt;&lt;/p&gt;
 &lt;div class="admonition note"&gt;
@@ -2363,7 +2356,7 @@ PAUSE
 &lt;span class="normal"&gt;71&lt;/span&gt;
 &lt;span class="normal"&gt;72&lt;/span&gt;
 &lt;span class="normal"&gt;73&lt;/span&gt;
-&lt;span class="normal"&gt;74&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;tweepy&lt;/span&gt;
+&lt;span class="normal"&gt;74&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;tweepy&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;
@@ -2437,7 +2430,7 @@ PAUSE
 
     &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'./results/stream_tweets_&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt;_&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt;.json'&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;search_query&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;timestamp&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s1"&gt;'a'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;']}'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;div class="admonition note"&gt;
 &lt;p class="admonition-title"&gt;Note&lt;/p&gt;
@@ -2542,7 +2535,7 @@ PAUSE
 &lt;span class="normal"&gt;70&lt;/span&gt;
 &lt;span class="normal"&gt;71&lt;/span&gt;
 &lt;span class="normal"&gt;72&lt;/span&gt;
-&lt;span class="normal"&gt;73&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;tweepy&lt;/span&gt;
+&lt;span class="normal"&gt;73&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;tweepy&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;csv&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;timezone&lt;/span&gt;
@@ -2615,7 +2608,7 @@ PAUSE
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'__main__'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="c1"&gt;#pass in the target filename without "json" as argument in command prompt.&lt;/span&gt;
     &lt;span class="n"&gt;parse_tweets&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;&lt;img alt="open_refine_abe" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/twitter/open_refine_abe.png" title="open_refine_abe"/&gt;&lt;/p&gt;
 &lt;div class="admonition note"&gt;
@@ -2696,7 +2689,139 @@ PAUSE
 &lt;p&gt;For two excellent and recent English language papers which utilize a form of quantitative analysis of Japanese tweets in order to strengthen their main arguments, see: &lt;strong&gt;Tamara Fuchs &amp;amp; Fabian Schäfer (2020)&lt;/strong&gt;: Normalizing misogyny: hate speech and verbal abuse of female politicians on Japanese Twitter, Japan Forum, &lt;a href="https://doi.org/10.1080/09555803.2019.1687564"&gt;DOI: 10.1080/09555803.2019.1687564&lt;/a&gt;, and &lt;strong&gt;Fabian Schäfer, Stefan Evert, and Philipp Heinrich (2017)&lt;/strong&gt;: Japan’s 2014 General Election: Political Bots, Right-Wing Internet Activism, and Prime Minister Shinzō Abe’s Hidden Nationalist Agenda, Big Data. 294-309. &lt;a href="https://doi.org/10.1089/big.2017.0049"&gt;DOI: 10.1089/big.2017.0049&lt;/a&gt;. &lt;a class="footnote-backref" href="#fnref-19" title="Jump back to footnote 20 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</content><category term="Studies"></category><category term="Big Data"></category><category term="Digital Humanities"></category><category term="Japanese"></category><category term="Python"></category><category term="Tutorial"></category><category term="Twitter"></category></entry><entry><title>Several tips for exchange students heading to Japan / Tokyo</title><link href="https://steviepoppe.net/blog/2019/05/several-tips-for-exchange-students-living-in-japan-tokyo/" rel="alternate"></link><published>2019-05-18T00:00:00+02:00</published><updated>2019-05-18T00:00:00+02:00</updated><author><name>Stevie Poppe</name></author><id>tag:steviepoppe.net,2019-05-18:/blog/2019/05/several-tips-for-exchange-students-living-in-japan-tokyo/</id><summary type="html">
+&lt;/div&gt;</content><category term="Studies"></category><category term="Big Data"></category><category term="Digital Humanities"></category><category term="Japanese"></category><category term="Python"></category><category term="Tutorial"></category><category term="Twitter"></category></entry><entry><title>Resources</title><link href="https://steviepoppe.net/blog/2019/09/resources/" rel="alternate"></link><published>2019-09-04T00:00:00+02:00</published><updated>2019-09-04T00:00:00+02:00</updated><author><name>Stevie Poppe</name></author><id>tag:steviepoppe.net,2019-09-04:/blog/2019/09/resources/</id><summary type="html">
+&lt;p&gt;This page contains links and files that have proven to be particularly useful for myself and might be of use for those with similar interests. I’ll update this spot as I encounter more tools or pages I feel are worthy of mention.&lt;/p&gt;
+&lt;h1 id="useful-links"&gt;&lt;a class="toclink" href="#useful-links"&gt;Useful Links&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="general"&gt;&lt;a class="toclink" href="#general"&gt;General&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://ankisrs.net/"&gt;Anki&lt;/a&gt;&lt;/strong&gt;: Free, open-source, multi-platform flashcard application with powerful SRS&lt;sup&gt;&lt;/sup&gt; algorithm. Especially vital for language acquisition and probably the single most important (digital) tool for efficient memorization.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="language"&gt;&lt;a class="toclink" href="#language"&gt;Language&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="japanese"&gt;&lt;a class="toclink" href="#japanese"&gt;Japanese&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://foosoft.net/projects/yomichan/"&gt;Yomichan&lt;/a&gt;&lt;/strong&gt;: a Firefox and Chrome pop-up dictionary and a digital-minded Japanese learner’s best friend. Yomichan allows additional audio playback and full Anki integration. I’ve written a &lt;a href="https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/"&gt;blog&lt;/a&gt; on how to do this. &lt;strong&gt;&lt;a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/"&gt;Rikaisama&lt;/a&gt;&lt;/strong&gt;, although no longer by Firefox, also continues to be useful for mass-generating cards while reading HTML-formatted e-books.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://animelon.com/"&gt;Animelon&lt;/a&gt;&lt;/strong&gt;: for all you ‘learn Japanese through Anime’ kids out there! Reminiscent of the classic &lt;em&gt;&lt;a href="https://www.erin.ne.jp/en/"&gt;Erin’s Challenge&lt;/a&gt;&lt;/em&gt; videos: watch various popular anime with Japanese subtitles and integrated dictionary. Works in combination with Yomichan or Rikaisama as well.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://tangorin.com/kanji/"&gt;Tangorin&lt;/a&gt;&lt;/strong&gt;: my favorite online Japanese dictionary with tons of example sentences for each definition, and an excellent Kanji dictionary as well. &lt;a href="http://dictionary.goo.ne.jp"&gt;Goo&lt;/a&gt;, &lt;a href="http://www.weblio.jp"&gt;Weblio&lt;/a&gt; and &lt;a href="http://www.sanseido.net"&gt;Sanseido&lt;/a&gt; provide good alternatives.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://japansnederlandswoordenboek.org/index.php/Hoofdpagina"&gt;Waran Jiten&lt;/a&gt;&lt;/strong&gt;: a Japanese-Dutch dictionary courtesy of Leuven University. Has a dutch Rikai addon.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://sourceforge.net/directory/home-education/edlanguage/os:windows/?q=Japanese"&gt;Sourceforge&lt;/a&gt;&lt;/strong&gt;: contains a wide variety of software developed by fellow Japanese learners. Some, such as &lt;em&gt;&lt;a href="https://sourceforge.net/projects/jnovelformatter/?source=directory"&gt;Jnovelformatter&lt;/a&gt;&lt;/em&gt;, &lt;em&gt;&lt;a href="https://sourceforge.net/projects/japanesetextana/?source=directory"&gt;Japanese Text Analysis Tool&lt;/a&gt;&lt;/em&gt; or &lt;em&gt;&lt;a href="https://sourceforge.net/projects/ocrmangareaderforandroid/"&gt;OCR Manga Reader&lt;/a&gt;&lt;/em&gt; are particularly noteworthy, others not so much.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://japanologie.arts.kuleuven.be/"&gt;KULeuven Japanology&lt;/a&gt;&lt;/strong&gt;: the Leuven University Japan Studies homepage. &lt;i class="icon-smile"&gt;&lt;/i&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="korean"&gt;&lt;a class="toclink" href="#korean"&gt;Korean&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://www.toktogi.com/"&gt;Toktogi&lt;/a&gt;&lt;/strong&gt;: a Korean-English pop-up dictionary similar to yomichan, available both for Firefox and Chrome. It’s still a work-in-progress and not as polished as Yomichan, but very usable nonetheless.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://endic.naver.com/?sLn=en"&gt;Naver Dictionary&lt;/a&gt;&lt;/strong&gt;: Naver Corporation, the highly popular South Korean web-hub, has a fairly complete English-Korean dictionary as well as an Android application (requires internet).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="sanskrit"&gt;&lt;a class="toclink" href="#sanskrit"&gt;Sanskrit&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://spokensanskrit.de/"&gt;spokensanskrit&lt;/a&gt;&lt;/strong&gt;: the only decent online Sanskrit dictionary out there.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://www.lexilogos.com/keyboard/sanskrit_devanagari.htm"&gt;Lexilogos&lt;/a&gt;&lt;/strong&gt;: multilingual web keyboard that beats learning to type &lt;em&gt;devanagari&lt;/em&gt; on a latin-script keyboard.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr/&gt;
+&lt;h1 id="files"&gt;&lt;a class="toclink" href="#files"&gt;Files&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="anki"&gt;&lt;a class="toclink" href="#anki"&gt;Anki&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I use Anki to complement my other study methods for nearly all my classes. These are a bunch of Anki-sets I made I feel are stand-alone enough to be useful to new students of these classes as well.&lt;/p&gt;
+&lt;hr/&gt;
+&lt;h3 id="inleiding-tot-de-europese-literatuur-na-1750"&gt;&lt;a class="toclink" href="#inleiding-tot-de-europese-literatuur-na-1750"&gt;Inleiding tot de Europese Literatuur na 1750&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Download&lt;/strong&gt;: &lt;a href="https://www.dropbox.com/s/yf2hdqxyqobqr60/Europese_Literatuur.apkg?dl=0"&gt;Europese Literatuur &lt;i class="icon-download-alt"&gt;&lt;/i&gt;&lt;/a&gt;  (±26MB)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A full set to accompany the textbook ‘&lt;em&gt;Literaire Verbeelding 2&lt;/em&gt;’:&lt;sup&gt;&lt;/sup&gt; contains important dates and summaries of all artists and their discussed works (in Dutch …&lt;/p&gt;</summary><content type="html">
+&lt;p&gt;This page contains links and files that have proven to be particularly useful for myself and might be of use for those with similar interests. I’ll update this spot as I encounter more tools or pages I feel are worthy of mention.&lt;/p&gt;
+
+
+&lt;h1 id="useful-links"&gt;&lt;a class="toclink" href="#useful-links"&gt;Useful Links&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="general"&gt;&lt;a class="toclink" href="#general"&gt;General&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://ankisrs.net/"&gt;Anki&lt;/a&gt;&lt;/strong&gt;: Free, open-source, multi-platform flashcard application with powerful SRS&lt;sup&gt;&lt;a class="footnote-ref" href="#fn-1" id="fnref-1" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt; algorithm. Especially vital for language acquisition and probably the single most important (digital) tool for efficient memorization.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="language"&gt;&lt;a class="toclink" href="#language"&gt;Language&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="japanese"&gt;&lt;a class="toclink" href="#japanese"&gt;Japanese&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://foosoft.net/projects/yomichan/"&gt;Yomichan&lt;/a&gt;&lt;/strong&gt;: a Firefox and Chrome pop-up dictionary and a digital-minded Japanese learner’s best friend. Yomichan allows additional audio playback and full Anki integration. I’ve written a &lt;a href="https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/"&gt;blog&lt;/a&gt; on how to do this. &lt;strong&gt;&lt;a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/"&gt;Rikaisama&lt;/a&gt;&lt;/strong&gt;, although no longer by Firefox, also continues to be useful for mass-generating cards while reading HTML-formatted e-books.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://animelon.com/"&gt;Animelon&lt;/a&gt;&lt;/strong&gt;: for all you ‘learn Japanese through Anime’ kids out there! Reminiscent of the classic &lt;em&gt;&lt;a href="https://www.erin.ne.jp/en/"&gt;Erin’s Challenge&lt;/a&gt;&lt;/em&gt; videos: watch various popular anime with Japanese subtitles and integrated dictionary. Works in combination with Yomichan or Rikaisama as well.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://tangorin.com/kanji/"&gt;Tangorin&lt;/a&gt;&lt;/strong&gt;: my favorite online Japanese dictionary with tons of example sentences for each definition, and an excellent Kanji dictionary as well. &lt;a href="http://dictionary.goo.ne.jp"&gt;Goo&lt;/a&gt;, &lt;a href="http://www.weblio.jp"&gt;Weblio&lt;/a&gt; and &lt;a href="http://www.sanseido.net"&gt;Sanseido&lt;/a&gt; provide good alternatives.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://japansnederlandswoordenboek.org/index.php/Hoofdpagina"&gt;Waran Jiten&lt;/a&gt;&lt;/strong&gt;: a Japanese-Dutch dictionary courtesy of Leuven University. Has a dutch Rikai addon.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://sourceforge.net/directory/home-education/edlanguage/os:windows/?q=Japanese"&gt;Sourceforge&lt;/a&gt;&lt;/strong&gt;: contains a wide variety of software developed by fellow Japanese learners. Some, such as &lt;em&gt;&lt;a href="https://sourceforge.net/projects/jnovelformatter/?source=directory"&gt;Jnovelformatter&lt;/a&gt;&lt;/em&gt;, &lt;em&gt;&lt;a href="https://sourceforge.net/projects/japanesetextana/?source=directory"&gt;Japanese Text Analysis Tool&lt;/a&gt;&lt;/em&gt; or &lt;em&gt;&lt;a href="https://sourceforge.net/projects/ocrmangareaderforandroid/"&gt;OCR Manga Reader&lt;/a&gt;&lt;/em&gt; are particularly noteworthy, others not so much.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://japanologie.arts.kuleuven.be/"&gt;KULeuven Japanology&lt;/a&gt;&lt;/strong&gt;: the Leuven University Japan Studies homepage. &lt;i class="icon-smile"&gt;&lt;/i&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="korean"&gt;&lt;a class="toclink" href="#korean"&gt;Korean&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://www.toktogi.com/"&gt;Toktogi&lt;/a&gt;&lt;/strong&gt;: a Korean-English pop-up dictionary similar to yomichan, available both for Firefox and Chrome. It’s still a work-in-progress and not as polished as Yomichan, but very usable nonetheless.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://endic.naver.com/?sLn=en"&gt;Naver Dictionary&lt;/a&gt;&lt;/strong&gt;: Naver Corporation, the highly popular South Korean web-hub, has a fairly complete English-Korean dictionary as well as an Android application (requires internet).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="sanskrit"&gt;&lt;a class="toclink" href="#sanskrit"&gt;Sanskrit&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://spokensanskrit.de/"&gt;spokensanskrit&lt;/a&gt;&lt;/strong&gt;: the only decent online Sanskrit dictionary out there.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="http://www.lexilogos.com/keyboard/sanskrit_devanagari.htm"&gt;Lexilogos&lt;/a&gt;&lt;/strong&gt;: multilingual web keyboard that beats learning to type &lt;em&gt;devanagari&lt;/em&gt; on a latin-script keyboard.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr/&gt;
+&lt;h1 id="files"&gt;&lt;a class="toclink" href="#files"&gt;Files&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="anki"&gt;&lt;a class="toclink" href="#anki"&gt;Anki&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I use Anki to complement my other study methods for nearly all my classes. These are a bunch of Anki-sets I made I feel are stand-alone enough to be useful to new students of these classes as well.&lt;/p&gt;
+&lt;hr/&gt;
+&lt;h3 id="inleiding-tot-de-europese-literatuur-na-1750"&gt;&lt;a class="toclink" href="#inleiding-tot-de-europese-literatuur-na-1750"&gt;Inleiding tot de Europese Literatuur na 1750&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Download&lt;/strong&gt;: &lt;a href="https://www.dropbox.com/s/yf2hdqxyqobqr60/Europese_Literatuur.apkg?dl=0"&gt;Europese Literatuur &lt;i class="icon-download-alt"&gt;&lt;/i&gt;&lt;/a&gt;  (±26MB)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A full set to accompany the textbook ‘&lt;em&gt;Literaire Verbeelding 2&lt;/em&gt;’:&lt;sup&gt;&lt;a class="footnote-ref" href="#fn-3" id="fnref-3" rel="footnote"&gt;3&lt;/a&gt;&lt;/sup&gt; contains important dates and summaries of all artists and their discussed works (in Dutch), sorted by period (from Romanticism till Post-modernism).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="anki-lit-s" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/anki-lit-s.jpg" title="anki-lit-s"/&gt;&lt;/p&gt;
+&lt;h3 id="kanji-1-kanji-2"&gt;&lt;a class="toclink" href="#kanji-1-kanji-2"&gt;Kanji 1 &amp;amp; Kanji 2&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Download&lt;/strong&gt;: &lt;a href="https://www.dropbox.com/s/83w2rsrack9ohs0/Kanji_1.apkg?dl=0"&gt;Kanji 1 &lt;i class="icon-download-alt"&gt;&lt;/i&gt;&lt;/a&gt; &lt;a href="https://www.dropbox.com/s/2885777i70qfr15/Kanji_woordenschat_1.apkg?dl=0"&gt;Kanji Vocab 1 &lt;i class="icon-download-alt"&gt;&lt;/i&gt;&lt;/a&gt; (±9MB each)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Two sets on the compulsory Kanji and vocabulary as seen in the Kanji classes in the first year of Japan Studies at KU Leuven. They contain stroke order, definitions, and different readings, both in recognition and reproduction form. They use the &lt;em&gt;KanjiStrokeOrders&lt;/em&gt;&lt;sup&gt;&lt;a class="footnote-ref" href="#fn-4" id="fnref-4" rel="footnote"&gt;4&lt;/a&gt;&lt;/sup&gt; font and display hidden &lt;em&gt;hiragana&lt;/em&gt; on touch/hover. I recommend doing these on a hand-held device to practice writing and stroke order using the touchscreen.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Download&lt;/strong&gt;: &lt;a href="https://www.dropbox.com/s/3hvl2unaghb375l/Kanji_2.apkg?dl=0"&gt;Kanji 2 &lt;i class="icon-download-alt"&gt;&lt;/i&gt;&lt;/a&gt; &lt;a href="https://www.dropbox.com/s/x4dlldq95x3x8rj/Kanji_woordenschat_2.apkg?dl=0"&gt;Kanji Vocab 2 &lt;i class="icon-download-alt"&gt;&lt;/i&gt;&lt;/a&gt; (±10MB each)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Similar to the previous decks, two sets on the compulsory kanji and vocabulary for Kanji/goi classes in the second year of Japanese Studies, as seen in our handbook&lt;sup&gt;&lt;a class="footnote-ref" href="#fn-5" id="fnref-5" rel="footnote"&gt;5&lt;/a&gt;&lt;/sup&gt; lessons 1 - 20. They’re tagged by chapter and contain respectively stroke order, radicals, definitions, and different readings for the Kanji set, and example sentences in &lt;em&gt;cloze deletion&lt;/em&gt;&lt;sup&gt;&lt;a class="footnote-ref" href="#fn-6" id="fnref-6" rel="footnote"&gt;6&lt;/a&gt;&lt;/sup&gt; for vocab, both in recognition and reproduction form.&lt;/p&gt;
+&lt;p alt="twitter" class="hwimportant center"&gt;
+&lt;img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/anki-kanji-s.jpg" style="width: 177px !important;"/&gt;
+&lt;img alt="Twitter" class="fborder" src="https://steviepoppe.net/images/anki-kanjivoc-s.jpg" style="width: 226px !important;"/&gt;
+&lt;/p&gt;
+&lt;h3 id="japanese-geography"&gt;&lt;a class="toclink" href="#japanese-geography"&gt;Japanese Geography&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Download&lt;/strong&gt;: &lt;a href="https://www.dropbox.com/s/95bkr3ce4iqkhxi/Europese_literatuur.apkg?dl=0"&gt;Japanese Geography &lt;i class="icon-download-alt"&gt;&lt;/i&gt;&lt;/a&gt;  (±10MB)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A modified &lt;a href="https://ankiweb.net/shared/info/856922372"&gt;Prefectures in Japan&lt;/a&gt; set, includes all Japanese regions and prefectures written in Kanji with &lt;em&gt;furigana&lt;/em&gt;, and some extra maps.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="anki-geography-s" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/anki-geography-s.jpg" title="anki-geography-s"/&gt;&lt;/p&gt;
+&lt;h3 id="sanskrit_1"&gt;&lt;a class="toclink" href="#sanskrit_1"&gt;Sanskrit&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Download&lt;/strong&gt;: &lt;a href="https://www.dropbox.com/s/s7j93uhe6ozn7w8/Sanskrit.apkg?dl=0"&gt;Europese Literatuur &lt;i class="icon-download-alt"&gt;&lt;/i&gt;&lt;/a&gt;  (±5MB)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A full set to accompany the introductory Sanskrit language course. Includes an introduction to the Devanagari alphabet, a recap of the taught grammar points (such as different conjugations and Sandi rules), three-way cards (English/Sanskrit, Sanskrit/English and audio) of all the vocabulary as seen in class and several exercises.&lt;/p&gt;
+&lt;h3 id="anki-plug-in-japanese-definitions-for-korean-vocabulary"&gt;&lt;a class="toclink" href="#anki-plug-in-japanese-definitions-for-korean-vocabulary"&gt;Anki Plug-in: Japanese Definitions for Korean Vocabulary&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Download&lt;/strong&gt;: &lt;a href="https://ankiweb.net/shared/info/553926167"&gt;Japanese Definitions for Korean Vocabulary &lt;i class="icon-download-alt"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;An Anki add-on, based on the &lt;a href="https://ankiweb.net/shared/info/1967553085"&gt;Sanseido Definitions&lt;/a&gt; add-on, for adding Japanese translations of Korean vocabulary. It’s primarily meant for Korean learners who’re proficient in, or simultaneously learning, Japanese. I wrote a &lt;a href="https://steviepoppe.net/blog/2016/10/anki-add-on-japanese-translations-for-korean-vocabulary/"&gt;small tutorial&lt;/a&gt; for those new to Anki plug-ins.&lt;/p&gt;
+&lt;h3 id="anki-plug-in-remove-missing-audio-references"&gt;&lt;a class="toclink" href="#anki-plug-in-remove-missing-audio-references"&gt;Anki Plug-in: Remove Missing Audio References&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Download&lt;/strong&gt;: &lt;a href="https://ankiweb.net/shared/info/1328067109"&gt;Remove Missing Audio References &lt;i class="icon-download-alt"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;An Anki plug-in to be used in combination with a Rikaisama / Anki set-up as prescribed in &lt;a href="https://steviepoppe.net/blog/2016/09/a-quick-guide-on-using-anki-2-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama/"&gt;this blog&lt;/a&gt;. Replaces or removes references to missing audio-files.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr/&gt;
+&lt;ol&gt;
+&lt;li id="fn-footnote"&gt;
+&lt;p&gt;Image taken from the 2012 Japanese animated film Wolf Children by Mamoru Hosoda, used under Fair Use doctrine. &lt;a class="footnote-backref" href="#fnref-footnote" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn-1"&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Spaced_repetition"&gt;Spaced Repetition System&lt;/a&gt;: a method of studying optimally by repeating items over gradually increasing periods. Cards are calculated to appear shortly before the item slips one’s mind. &lt;a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn-3"&gt;
+&lt;p&gt;&lt;strong&gt;Ghesquiere, R. 2006&lt;/strong&gt;. Literaire verbeelding 2: een geschiedenis van de Europese literatuur en cultuur vanaf 1750. Leuven: Acco &lt;a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 3 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn-4"&gt;
+&lt;p&gt;Available for free under a BSD style license at &lt;a href="http://www.nihilist.org.uk/"&gt;http://www.nihilist.org.uk/&lt;/a&gt;. &lt;a class="footnote-backref" href="#fnref-4" title="Jump back to footnote 4 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn-5"&gt;
+&lt;p&gt;Japanese for International/Graduate Students vol.5: Kanji and Vocabulary&lt;span lang="ja"&gt;（稲村真理子. 2007. 大学・大学院留学生の日本語. 5(漢字・語彙編) 5(漢字・語彙編). 東京: アルク）&lt;/span&gt; &lt;a class="footnote-backref" href="#fnref-5" title="Jump back to footnote 5 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn-6"&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Cloze_test"&gt;cloze deletion test&lt;/a&gt;: an exercise in which one fills in portions of the text left blank, based on the context of the text. &lt;a class="footnote-backref" href="#fnref-6" title="Jump back to footnote 6 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content><category term="Studies"></category><category term="Anki"></category><category term="Tutorial"></category><category term="Japanese"></category><category term="Japan"></category><category term="Study"></category></entry><entry><title>Several tips for exchange students heading to Japan / Tokyo</title><link href="https://steviepoppe.net/blog/2019/05/several-tips-for-exchange-students-living-in-japan-tokyo/" rel="alternate"></link><published>2019-05-18T00:00:00+02:00</published><updated>2019-05-18T00:00:00+02:00</updated><author><name>Stevie Poppe</name></author><id>tag:steviepoppe.net,2019-05-18:/blog/2019/05/several-tips-for-exchange-students-living-in-japan-tokyo/</id><summary type="html">
 
 &lt;p&gt;My home university’s student circle asked me for some tips for new exchange students coming to Japan and after living in Tokyo, Japan for over 18 months I learned some things that might be useful for future exchange students, often glanced over in similar lists. Although this list is a perpetual work-in-progress, I hope it can at least offer some concrete, directly applicable tips.&lt;/p&gt;
 
@@ -2711,7 +2836,7 @@ PAUSE
 &lt;h1 id="services"&gt;&lt;a class="toclink" href="#services"&gt;Services&lt;/a&gt;&lt;/h1&gt;
 &lt;h2 id="manga-cafes"&gt;&lt;a class="toclink" href="#manga-cafes"&gt;(Manga) cafes&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Although I loved my apartment and spent a lot of time at my university lab, I generally felt the most productive studying or reading in bakeries or the omnipresent coffee-shops like Tully’s and Renoir. Perhaps not as romantic, but another cheap option might be studying at McDonalds chains equipped with electric outlets and ordering a cheap coffee.&lt;/p&gt;
-&lt;p&gt;Personally, I grew fond of manga cafes and particularly of the &lt;strong&gt;Kaikatsu Club&lt;/strong&gt; (快活クラブ) chain. Students get steep discounts, private booths are comfortable and equipped with both blankets and pillows for a quick nap, as well as a computer and additional screen I could attach to my laptop, and sufficient electrical outlets. All you can drink soft-ice, hot drinks and soft drinks are included, and food-service is …&lt;/p&gt;</summary><content type="html">
+&lt;p&gt;Personally, I grew fond of manga cafes and particularly of the &lt;strong&gt;Kaikatsu Club&lt;/strong&gt; (快活クラブ) chain. Students get steep discounts, private booths are comfortable and equipped with both blankets and pillows for a quick nap, as well as a computer and additional screen I could attach to my laptop, and sufficient electrical outlets. All you can drink soft-ice, hot drinks and …&lt;/p&gt;</summary><content type="html">
 
 &lt;p&gt;My home university’s student circle asked me for some tips for new exchange students coming to Japan and after living in Tokyo, Japan for over 18 months I learned some things that might be useful for future exchange students, often glanced over in similar lists. Although this list is a perpetual work-in-progress, I hope it can at least offer some concrete, directly applicable tips.&lt;/p&gt;
 
@@ -2932,7 +3057,7 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;p&gt;Yomichan can’t parse offline files out-of-the-box. If you’re inclined to use Yomichan with offline files (when reading HTML-formatted novels for example), just head to the Chrome/Firefox &lt;strong&gt;settings → extensions&lt;/strong&gt; page and manually allow the add-on to access file URLs.&lt;/p&gt;
 &lt;/div&gt;
 &lt;h3 id="dictionaries"&gt;&lt;a class="toclink" href="#dictionaries"&gt;Dictionaries&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;First, download the &lt;a href="https://foosoft.net/projects/yomichan/"&gt;libraries&lt;/a&gt; to your liking and add them in the Yomichan settings page.&lt;/p&gt;
+&lt;p&gt;First, download your preferred &lt;a href="https://foosoft.net/projects/yomichan/"&gt;dictionaries&lt;/a&gt; and add them in your browser’s Yomichan settings page.&lt;/p&gt;
 &lt;h3 id="integrating-anki"&gt;&lt;a class="toclink" href="#integrating-anki"&gt;Integrating Anki&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;To integrate Yomichan into Anki, we’ll need to install &lt;a href="https://foosoft.net/projects/anki-connect/index.html"&gt;Anki-Connect&lt;/a&gt;, an Anki plug-in specifically tailored to Yomichan. Open Anki on your desktop, go to &lt;strong&gt;Tools → Add-ons → Browse &amp;amp; Install&lt;/strong&gt;, and copy-paste &lt;strong&gt;2055492159&lt;/strong&gt; in the pop-up dialog.&lt;/p&gt;
 &lt;p&gt;Now, we’ll create a new set to contain our Yomichan-powered cards. We want cards containing the expression (and hover-able &lt;em&gt;furigana&lt;/em&gt; reading), its definition in our language of choice, audio readings and example sentences. For this, we’ll create a new &lt;strong&gt;‘note-type’&lt;/strong&gt; with fields corresponding to the info we’d like to see in our cards. We probably want to be tested both on the Japanese expression (visual recognition), on its meaning (production) and finally on the audio (oral recognition). To achieve this, we’ll add three &lt;strong&gt;‘card-types’&lt;/strong&gt; to our ‘note-type’.&lt;/p&gt;
@@ -2941,9 +3066,9 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;p&gt;Next, we’ll be customizing this note-type to better suit our study-method. Select the new Yomichan ‘note-type’ and click &lt;strong&gt;Fields&lt;/strong&gt;. We’ll rename the current front and backside as &lt;code&gt;Expression&lt;/code&gt; and &lt;code&gt;Meaning&lt;/code&gt;, and add three new ‘fields’ &lt;code&gt;Audio&lt;/code&gt;, &lt;code&gt;Examples&lt;/code&gt; and &lt;code&gt;Notes&lt;/code&gt; (that latter one could be used for personal notes).&lt;/p&gt;
 &lt;p&gt;Close this screen and select &lt;strong&gt;Cards&lt;/strong&gt;. We’ll manage the different cards this note generates as well as its make-up. We’ll start with a basic layout. In the template section of this screen, click on the &lt;strong&gt;Styling&lt;/strong&gt; radio button and add the following lines of CSS to the bottom. For optimal learning, we’ll keep &lt;em&gt;furigana&lt;/em&gt; &lt;em&gt;kana&lt;/em&gt;-readings displayed only touch/hover. This way learners are less likely to use them as a crutch.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;ruby&lt;/span&gt; &lt;span class="nt"&gt;rt&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;visibility&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;hidden&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;ruby&lt;/span&gt; &lt;span class="nt"&gt;rt&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;visibility&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;hidden&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="nt"&gt;ruby&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;hover&lt;/span&gt; &lt;span class="nt"&gt;rt&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;visibility&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;visible&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Currently we’ll have two card types: &lt;strong&gt;Card 1: Expression → Meaning&lt;/strong&gt; (e.g. &lt;em&gt;recognition&lt;/em&gt; of vocabulary) and &lt;strong&gt;Card 2: Meaning → Expression&lt;/strong&gt; (e.g. &lt;em&gt;production&lt;/em&gt; and active recalling). Each card will question you on one field (the Japanese expression or the English translation) and show the answer on the backside along with audio and any potential notes.&lt;/p&gt;
 &lt;p&gt;Click &lt;strong&gt;Options&lt;/strong&gt; and select &lt;strong&gt;Rename Card Type&lt;/strong&gt; to rename both cards to respectively  &lt;code&gt;Recognition&lt;/code&gt; and &lt;code&gt;Production&lt;/code&gt;. Now let’s edit the actual template of each Card Type’s front and back template to look as follows:&lt;/p&gt;
@@ -2951,8 +3076,8 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Front Template&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="nt"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"ja"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="n"&gt;furigana&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Expression&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="nt"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"ja"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="n"&gt;furigana&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Expression&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Back Template&lt;/strong&gt;&lt;/li&gt;
@@ -2969,7 +3094,7 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;10&lt;/span&gt;
 &lt;span class="normal"&gt;11&lt;/span&gt;
 &lt;span class="normal"&gt;12&lt;/span&gt;
-&lt;span class="normal"&gt;13&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{FrontSide&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{FrontSide&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
 
 &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;hr&lt;/span&gt; &lt;span class="nt"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nt"&gt;answer&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 
@@ -2982,14 +3107,14 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{/Notes&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
 
 &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{Audio&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;&lt;strong&gt;Production&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Front Template&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="n"&gt;furigana&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Meaning&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="n"&gt;furigana&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Meaning&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Back Template&lt;/strong&gt;&lt;/li&gt;
@@ -3005,7 +3130,7 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt; 9&lt;/span&gt;
 &lt;span class="normal"&gt;10&lt;/span&gt;
 &lt;span class="normal"&gt;11&lt;/span&gt;
-&lt;span class="normal"&gt;12&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{FrontSide&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{FrontSide&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
 
 &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;hr&lt;/span&gt; &lt;span class="nt"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nt"&gt;answer&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 
@@ -3017,15 +3142,15 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="n"&gt;furigana&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Notes&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{/Notes&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{Audio&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;We’ll also want to test our listening comprehension. Thus, click &lt;strong&gt;Options&lt;/strong&gt; and select &lt;strong&gt;Add Card Type&lt;/strong&gt;. Let’s rename it to &lt;code&gt;Audio&lt;/code&gt; and edit the template as follows:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Audio&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Front Template&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;Listen&lt;/span&gt;&lt;span class="o"&gt;.&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{Audio&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;Listen&lt;/span&gt;&lt;span class="o"&gt;.&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{Audio&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Back Template&lt;/strong&gt;&lt;/li&gt;
@@ -3041,7 +3166,7 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt; 9&lt;/span&gt;
 &lt;span class="normal"&gt;10&lt;/span&gt;
 &lt;span class="normal"&gt;11&lt;/span&gt;
-&lt;span class="normal"&gt;12&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{FrontSide&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{FrontSide&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
 &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;hr&lt;/span&gt; &lt;span class="nt"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nt"&gt;answer&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 
 &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="nt"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"ja"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="n"&gt;furigana&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Expression&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
@@ -3053,7 +3178,7 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;b&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nt"&gt;Notes&lt;/span&gt;&lt;span class="o"&gt;:&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;b&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="n"&gt;furigana&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Notes&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;{/Notes&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;hr/&gt;
 &lt;h3 id="mapping"&gt;&lt;a class="toclink" href="#mapping"&gt;Mapping&lt;/a&gt;&lt;/h3&gt;
@@ -3098,15 +3223,15 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;h4 id="japanese-example-sentences-japanese_examplespy"&gt;&lt;a class="toclink" href="#japanese-example-sentences-japanese_examplespy"&gt;Japanese Example Sentences: &lt;strong&gt;japanese_examples.py&lt;/strong&gt;&lt;/a&gt;&lt;/h4&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
 &lt;span class="normal"&gt;2&lt;/span&gt;
-&lt;span class="normal"&gt;3&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;searched&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;'^[^\[]+'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;expression&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;searched&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;'^[^\[]+'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;expression&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;searched&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;expression&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;searched&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Open &lt;strong&gt;japanese_examples.py&lt;/strong&gt; and paste the above piece of code in the &lt;code class="highlight"&gt;&lt;span class="n"&gt;find_examples&lt;/span&gt;&lt;/code&gt; class right after it defined examples as a list. it should be around &lt;strong&gt;line 124&lt;/strong&gt; (&lt;code class="highlight"&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;find_examples&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;expression&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;maxitems&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="n"&gt;examples&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;/code&gt;). While you’re here, replace &lt;code&gt;" {CHECKED}"&lt;/code&gt; with &lt;code&gt;"✓"&lt;/code&gt; (e.g. &lt;code class="highlight"&gt;&lt;span class="n"&gt;example&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;example&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s2"&gt;" ✓"&lt;/span&gt;&lt;/code&gt;). It’s more &lt;em&gt;a e s t h e t i c&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Next, I’ve edited the mark-up of the example sentences to hide the English translations unless hovered above (or selected on touch-screens). Locate &lt;code class="highlight"&gt;&lt;span class="n"&gt;combined_examples&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;examples&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;/code&gt; in the &lt;code class="highlight"&gt;&lt;span class="n"&gt;find_examples_multiple&lt;/span&gt;&lt;/code&gt; method (around &lt;strong&gt;line 204&lt;/strong&gt;) and replace it with the following line:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; &lt;span class="n"&gt;combined_examples&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"&amp;lt;div id='eng_test'&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;lt;span id='eng_sentence'&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;examples&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; &lt;span class="n"&gt;combined_examples&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"&amp;lt;div id='eng_test'&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;lt;span id='eng_sentence'&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;examples&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Finally, In the &lt;code&gt;find_examples_multiple&lt;/code&gt; method (around &lt;strong&gt;line 212&lt;/strong&gt;), replace “&lt;code class="highlight"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;” with “&lt;code class="highlight"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;”; we’ll want just one break between example sentences.&lt;/p&gt;
 &lt;h4 id="anki-connect-__init__py"&gt;&lt;a class="toclink" href="#anki-connect-__init__py"&gt;Anki-Connect: &lt;strong&gt;__init__.py&lt;/strong&gt;&lt;/a&gt;&lt;/h4&gt;
@@ -3121,14 +3246,14 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;4&lt;/span&gt;
 &lt;span class="normal"&gt;5&lt;/span&gt;
 &lt;span class="normal"&gt;6&lt;/span&gt;
-&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;japanese_examples&lt;/span&gt;
 &lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;examples_japanese&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;__import__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"2413435972"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;japanese_examples&lt;/span&gt;
     &lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Failed to import Japanese Examples module'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Next, I’ve written a few lines in the &lt;code&gt;addNote&lt;/code&gt; method to call Japanese-examples’ find method at run-time. This should come before &lt;code class="highlight"&gt;&lt;span class="n"&gt;collection&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;collection&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;/code&gt; around &lt;strong&gt;line 500&lt;/strong&gt;.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
@@ -3136,13 +3261,13 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;3&lt;/span&gt;
 &lt;span class="normal"&gt;4&lt;/span&gt;
 &lt;span class="normal"&gt;5&lt;/span&gt;
-&lt;span class="normal"&gt;6&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# for use with Japanese examples&lt;/span&gt;
+&lt;span class="normal"&gt;6&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# for use with Japanese examples&lt;/span&gt;
 &lt;span class="n"&gt;examples&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;examples_japanese&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_examples_multiple&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ankiNote&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;examples_japanese&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"maxPermanent"&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 
 &lt;span class="c1"&gt;# if field is empty and examples exist&lt;/span&gt;
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;examples&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;ankiNote&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;examples_japanese&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DST_FIELD_COMB&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
     &lt;span class="n"&gt;ankiNote&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;examples_japanese&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DST_FIELD_COMB&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;examples&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;hr/&gt;
 &lt;p&gt;Finally, we want to alter out cards’ lay-out to display our example sentences in a educationally beneficial manner. We’ll need some further edits outlined below.&lt;/p&gt;
@@ -3157,7 +3282,7 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;5&lt;/span&gt;
 &lt;span class="normal"&gt;6&lt;/span&gt;
 &lt;span class="normal"&gt;7&lt;/span&gt;
-&lt;span class="normal"&gt;8&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="normal"&gt;8&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
 {{#Examples}}
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"examples"&lt;/span&gt; &lt;span class="na"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"ja"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -3165,7 +3290,7 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 {{furigana:Examples}}
 &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 {{/Examples}}
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;h4 id="card-lay-out"&gt;&lt;a class="toclink" href="#card-lay-out"&gt;Card Lay-out&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;Add the code below to the bottom of the Template’s Styling tab. It’ll display the example sentences to the left of your cards.&lt;/p&gt;
@@ -3173,12 +3298,12 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;2&lt;/span&gt;
 &lt;span class="normal"&gt;3&lt;/span&gt;
 &lt;span class="normal"&gt;4&lt;/span&gt;
-&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.examples {font-size:75%; text-align: left;}
+&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;.examples {font-size:75%; text-align: left;}
 .title {font-size:16px; color: #999999;}
 
 #eng_sentence { display: none; }
 #eng_test:hover #eng_sentence{ display: inherit; color: #eb4c42;}
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;&lt;img alt="anki-notetype-back" class="hwimportant fborder fcenter" src="https://steviepoppe.net/images/anki/anki-notetype-back.jpg" title="anki-notetype-back"/&gt;&lt;/p&gt;
 &lt;hr/&gt;
@@ -3210,10 +3335,10 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;p&gt;If you’d like to edit this yourself, add the following code as first line in the &lt;code&gt;fetchDef&lt;/code&gt; class - it should be around &lt;strong&gt;line 42&lt;/strong&gt; (&lt;code class="highlight"&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fetchDef&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;term&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;/code&gt;).&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
 &lt;span class="normal"&gt;2&lt;/span&gt;
-&lt;span class="normal"&gt;3&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;searched&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;'^[^\[]+'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;term&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="n"&gt;searched&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;'^[^\[]+'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;term&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;searched&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;term&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;searched&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;h4 id="anki-connect-__init__py_1"&gt;&lt;a class="toclink" href="#anki-connect-__init__py_1"&gt;Anki-Connect: &lt;strong&gt;__init__.py&lt;/strong&gt;&lt;/a&gt;&lt;/h4&gt;
 &lt;div class="admonition note"&gt;
@@ -3227,14 +3352,14 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;4&lt;/span&gt;
 &lt;span class="normal"&gt;5&lt;/span&gt;
 &lt;span class="normal"&gt;6&lt;/span&gt;
-&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;anki_plugin_jaja_definitions&lt;/span&gt;
 &lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;jaja_definitions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;__import__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"2055037404"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Failed to import Weblio Japanese Definitions module'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Next, we’ll make a call to Weblio Japanese Definitions in Anki-Connect’s 
 &lt;code&gt;addNote&lt;/code&gt; method to webscrape Weblio’s dictionary at run-time and, if a definition was found, add those to our card. Again this should come before &lt;code class="highlight"&gt;&lt;span class="n"&gt;collection&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;collection&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;/code&gt; around line 500.&lt;/p&gt;
@@ -3243,21 +3368,21 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;3&lt;/span&gt;
 &lt;span class="normal"&gt;4&lt;/span&gt;
 &lt;span class="normal"&gt;5&lt;/span&gt;
-&lt;span class="normal"&gt;6&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        &lt;span class="c1"&gt;# for use with weblio dictionary add-on&lt;/span&gt;
+&lt;span class="normal"&gt;6&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;        &lt;span class="c1"&gt;# for use with weblio dictionary add-on&lt;/span&gt;
         &lt;span class="n"&gt;weblio_dic&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;jaja_definitions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fetchDef&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ankiNote&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;jaja_definitions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;expressionField&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 
         &lt;span class="c1"&gt;# if field is empty and def exist&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;weblio_dic&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;ankiNote&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;jaja_definitions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;definitionField&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
             &lt;span class="n"&gt;ankiNote&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;jaja_definitions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;definitionField&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;weblio_dic&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;If you’ve followed above steps, every time you add a new word with Yomichan, it will automatically contain a Weblio dictionary definition as well. Try it out yourself: &lt;span lang="ja"&gt;&lt;ruby&gt;&lt;rb&gt;逆転&lt;/rb&gt;&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;ぎゃくてん&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;&lt;/span&gt; | &lt;span lang="ja"&gt;&lt;ruby&gt;&lt;rb&gt;裁判&lt;/rb&gt;&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;さいばん&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;&lt;/span&gt;!&lt;/p&gt;
 &lt;h3 id="anki-note-lay-out"&gt;&lt;a class="toclink" href="#anki-note-lay-out"&gt;Anki Note Lay-out&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Finally, let’s edit the lay-out of our cards (open ‘note-type’ management screen) in order to display our Japanese definitions (if any).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Lay-out&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;As usual, add the following CSS code to the bottom style screen of your note’s ‘card-type’ template.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;title&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#999999&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;title&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#999999&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;&lt;strong&gt;Templates&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Add the following code below the line displaying your vocab expression’s definition (e.g. &lt;code&gt;{{Meaning}}&lt;/code&gt;). You’ll do this in &lt;strong&gt;Expression → Back Template&lt;/strong&gt;, &lt;strong&gt;Meaning → Front Template&lt;/strong&gt; and &lt;strong&gt;Audio → Back Template&lt;/strong&gt;.&lt;/p&gt;
@@ -3267,14 +3392,14 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;4&lt;/span&gt;
 &lt;span class="normal"&gt;5&lt;/span&gt;
 &lt;span class="normal"&gt;6&lt;/span&gt;
-&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{{#JapaneseDefinitions}}
+&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{{#JapaneseDefinitions}}
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"japanese_meaning"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"title"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;定義:&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"japanese"&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"JapaneseDefinitions"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 {{furigana:JapaneseDefinitions}}&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 {{/JapaneseDefinitions}}
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;hr/&gt;
 &lt;h3 id="download-example-set"&gt;&lt;a class="toclink" href="#download-example-set"&gt;Download Example Set&lt;/a&gt;&lt;/h3&gt;
@@ -3304,7 +3429,7 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;p&gt;Image taken from the 2012 Japanese animated film Wolf Children by Mamoru Hosoda, used under Fair Use doctrine. &lt;a class="footnote-backref" href="#fnref-footnote" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id="fn-1"&gt;
-&lt;p&gt;I’ll never stop actively learning Japanese and still rely on Anki and the methods outlined below as of writing, but now that the language became part of my ‘professional’ life (😏), the extent to which I encounter new vocabulary has somewhat decreased over the years. In turn so has my interest in finding and integrating new study methods. &lt;a href="https://www.migaku.io/tools-guides/migaku-japanese/quickstart/"&gt;Migaku&lt;/a&gt; (whose developers seem to run a successful Patreon) appears to be quite useful and would work well in conjunction with this tutorial, but it might be a while before I look further into that. &lt;a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2021 update: I’ll never stop actively learning Japanese and still rely on Anki and the methods outlined below as of writing, but now that the language became part of my ‘professional’ life (😏), the extent to which I encounter new vocabulary has somewhat decreased over the years. In turn so has my interest in finding and integrating new study methods. &lt;a href="https://www.migaku.io/tools-guides/migaku-japanese/quickstart/"&gt;Migaku&lt;/a&gt; (whose developers seem to run a successful Patreon) appears to be quite useful and would work well in conjunction with this tutorial, but it might be a while before I look further into that. &lt;a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id="fn-2"&gt;
 &lt;p&gt;Granted, the offline Yomichan-application that predated the current Yomichan Chrome plug-in covered most of these bases, but in my opinion reading novels on Yomichan was less as ideal and the project has been rendered obsolete since development of the Chrome plug-in took off. &lt;a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 3 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
@@ -3317,22 +3442,12 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;</content><category term="Studies"></category><category term="Anki"></category><category term="Rikaisama"></category><category term="Yomichan"></category><category term="Tutorial"></category><category term="Japanese"></category><category term="Studying"></category></entry><entry><title>織田信長とアルベール一世：我々の国民の共有している歴史</title><link href="https://steviepoppe.net/blog/2016/12/oda-nobunaga-to-aruberu-issei/" rel="alternate"></link><published>2016-12-01T00:00:00+01:00</published><updated>2016-12-01T00:00:00+01:00</updated><author><name>Stevie Poppe</name></author><id>tag:steviepoppe.net,2016-12-01:/blog/2016/12/oda-nobunaga-to-aruberu-issei/</id><summary type="html">
+
 &lt;p&gt;私は先週、ブリュッセルで行われた日本語のスピーチコンテストに参加して、「ベルギー・日本友好１５０周年」のために歴史的なスピーチを発表する機会をいただきました。すると、参加者の他者が非常に高いレベルにあったし、質疑応答もやや恥ずかしくなっても、何とか第三位に入賞しました。このブログのエントリーは私が書いたスピーチの原稿です。&lt;/p&gt;
+
 &lt;h1 id="_1"&gt;&lt;a class="toclink" href="#_1"&gt;スピーチ&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;会場にお集まりの皆様、こんにちは！ルーバン大学日本学科3年生のスティービーと申します。私は子供の頃から日本の文化と歴史に大変興味がありました。そして日本学科に入学して2年間勉強をすることで自分の知識をもっと広め、深めることができました。更に、来年日本へ留学する可能性があることや、今年が「ベルギー・日本友好150周年」の年であることから、日本の歴史だけでなく、特に独立前のベルギーと日本の400年も前に遡る両国が共有している歴史への関心も高まってきました。そのため、この発表「我々の国民の共有している歴史」では、二つの歴史的逸話を紹介して、ベルギー人と日本人の友好についてお話したいと思います。&lt;/p&gt;
-&lt;p&gt;この共有されている歴史、すなわち、両国間の共感は、私たちの国の歴史的展開がほぼ同じように進んだからだと考えます。ベルギーも日本も強大な国々が隣接していたにもかかわらず独立することができました。ベルギーがフランスやドイツの大国に挟まれながらも何とか独立したのと同様に、日本も中国やロシア、欧米の中で、独立国として次第に世界で最大の経済大国の一つになりました。そのため、明治時代に岩倉使節団が派遣された際、「日本人と同じような独立の気概を持っているベルギー王国をモデルとしてはどうか」という記事を書いた日本人記者もいました。また、第一次世界大戦中にドイツ帝国の攻撃を受けたベルギーは「意志が強い、勇敢な国である」と日本で報道されました。&lt;/p&gt;
-&lt;h2 id="_2"&gt;&lt;a class="toclink" href="#_2"&gt;織田信長とアルベール一世&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;当日のベルギー王アルベール一世がフランスの国境近くにある村から抵抗をし続けていた間、東京と大阪の朝日新聞が協力して、ベルギーを支援するために募金キャンペーンを行いました。更に、ベルギーの国民を励ますために、ベルギーの国王の誕生日に刀を献上する企画も立てました。そのため、朝日新聞記者の杉村廣太郎がベルギーに派遣されました。１９１４年に彼がイギリスを経由した際に、そこで苦しむベルギー避難民を目撃し、戦争の深刻な状況について朝日新聞に報告しました。戦争の影響による難しい旅路を経て、やっとのことでベルギーの亡命政府にたどり着き、国王に謁見する機会を得ました。彼は、朝日新聞の社長が書いた国交の手紙を渡した後、国王に戦国時代の織田信長が用いていたという刀を献上しました。その象徴的な行為がベルギーだけではなく、世界中の報道機関によく受け入れられたのはいうまでもありません。その結果、ベルギーの国民も日本人に対して非常に友好的な印象を持つようになりました。&lt;/p&gt;
-&lt;h2 id="_3"&gt;&lt;a class="toclink" href="#_3"&gt;関東大震災&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;１９２３年の関東大震災が起こった時、ベルギー人がためらわず、救援活動を行ったり資金集めをしたりしたのは、この友好的な日本との関係のためだと言えます。王族と、新たに設立されたベルギー国内委員会が協力して大規模な救援活動を実施しました。私の故郷アントワープを含むベルギーの全国各地でも教会と戦争の退役軍人が協力して「Japan Day」という催しを行いました。他にも、ベルギー人の芸術家達が作品を集めたり新作を発表したりして特別な貢献をしました。まずはブリュッセルで、次に日本で作品の展示発売や展覧会を開催し、売り上げや入場料の利益は全て救援活動のために寄付されました。日本の展覧会だけでも3万５千人もの観客が訪れたと報告されていて、その上、日本の皇太子様と皇后様が30点もの芸術品をご購入されたと聞いております。&lt;/p&gt;
-&lt;p&gt;もちろん、多くの国が日本への支援に参加しましたが、ベルギーより多くの資金を集めたのは大国のイギリスとアメリカだけでした。それはベルギー人と日本人の相互の友好関係と共感の証しだと思います。私は、日本学科で学ぶベルギー人の学生として、我々の両国がこの豊かな道を共に歩き続けられるように心から願っています。&lt;/p&gt;
-&lt;p&gt;以上です。ご清聴ありがとうございました。 &lt;/p&gt;
-&lt;h1 id="_4"&gt;&lt;a class="toclink" href="#_4"&gt;参考文献&lt;/a&gt;&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Japan &amp;amp; Belgium: An Itinerary of Mutual Inspiration, ed. W.F. Vande Walle, pp. 187-213. Tielt: Lannoo, 2016.&lt;/li&gt;
-&lt;li&gt;Japan &amp;amp; Belgium: Four Centuries of Exchange. Brussels: Commissioners-General of the Belgian Government at the Universal Exposition of Aichi 2005, Japan.&lt;/li&gt;
-&lt;/ul&gt;
-</summary><content type="html">
+&lt;p&gt;この共有されている歴史、すなわち、両国間の共感は、私たちの国の歴史的展開がほぼ同じように進んだからだと考えます。ベ …&lt;/p&gt;</summary><content type="html">
 
 &lt;p&gt;私は先週、ブリュッセルで行われた日本語のスピーチコンテストに参加して、「ベルギー・日本友好１５０周年」のために歴史的なスピーチを発表する機会をいただきました。すると、参加者の他者が非常に高いレベルにあったし、質疑応答もやや恥ずかしくなっても、何とか第三位に入賞しました。このブログのエントリーは私が書いたスピーチの原稿です。&lt;/p&gt;
 
@@ -3435,9 +3550,9 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;p&gt;&lt;strong&gt;Lay-out&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Add the following CSS code to the shared style screen of your note’s card-type template.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;title&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#999999&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="kt"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;title&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#999999&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="kt"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
 &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;notes&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#449933&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="kt"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;&lt;strong&gt;Templates&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Add the following code to the bottom of all your different card templates’ back template.&lt;/p&gt;
@@ -3446,13 +3561,13 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;3&lt;/span&gt;
 &lt;span class="normal"&gt;4&lt;/span&gt;
 &lt;span class="normal"&gt;5&lt;/span&gt;
-&lt;span class="normal"&gt;6&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{{#Japanese}}
+&lt;span class="normal"&gt;6&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{{#Japanese}}
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;'text-align: left; '&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"title"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Additional Information:&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;notes&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{Japanese}}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 {{/Japanese}}
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;hr/&gt;
 &lt;h2 id="bulk-edit"&gt;&lt;a class="toclink" href="#bulk-edit"&gt;Bulk-edit&lt;/a&gt;&lt;/h2&gt;
@@ -3513,8 +3628,8 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;h2 id="anki-note-lay-out"&gt;&lt;a class="toclink" href="#anki-note-lay-out"&gt;Anki Note Lay-out&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Lay-out&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Add the CSS code below to the shared style screen of your note’s card-type template.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;title&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#999999&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;title&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#999999&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;&lt;strong&gt;Templates&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Add the following code below the line displaying your vocabulary’s translation/English definition (eg. &lt;code&gt;{{Meaning}}&lt;/code&gt;) . You’ll do this in &lt;strong&gt;Expression&lt;/strong&gt; → &lt;strong&gt;Back Template&lt;/strong&gt;, &lt;strong&gt;Meaning&lt;/strong&gt; → &lt;strong&gt;Front Template&lt;/strong&gt; and &lt;strong&gt;Audio&lt;/strong&gt; → &lt;strong&gt;Back Template&lt;/strong&gt;.&lt;/p&gt;
@@ -3524,14 +3639,14 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;4&lt;/span&gt;
 &lt;span class="normal"&gt;5&lt;/span&gt;
 &lt;span class="normal"&gt;6&lt;/span&gt;
-&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;{{#Sanseido}}
+&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;{{#Sanseido}}
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"japanese_meaning"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"title"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Japanese:&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"japanese"&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"sanseido"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 {{furigana:Sanseido}}&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 {{/Sanseido}}
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;hr/&gt;
 &lt;h2 id="bulk-edit"&gt;&lt;a class="toclink" href="#bulk-edit"&gt;Bulk-edit&lt;/a&gt;&lt;/h2&gt;
@@ -3545,15 +3660,15 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;h2 id="set-up_1"&gt;&lt;a class="toclink" href="#set-up_1"&gt;Set-up&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;sanseidoDefsForAnki.py&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;We’ve set up our notes to show &lt;em&gt;furigana&lt;/em&gt; on our vocabulary. This requires square brackets (eg. &lt;code&gt;気象庁[きしょうちょう]&lt;/code&gt;). The Anki plug-in for Sanseido definitions however does not support this out of the box. For that reason, I’ve added a single line of code that uses a regular expression to only use the contents up to the first square bracket as expression.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;term&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;'^[^\[]+'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;term&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;term&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;'^[^\[]+'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;term&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;If you’d like to edit this yourself, add the next line of code as first line in the &lt;code&gt;fetchDef&lt;/code&gt; class - it should be around line 27 (&lt;code&gt;def fetchDef(term):&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Real-Time_Import_for_use_with_the_Rikaisama_Firefox_Extension.py&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This extension calls on Anki’s API to create new notes. I haven’t found a way to hook japanese_examples to outside note-creation, so instead I’ve edited the real_time_import plug-in itself to call japanese_examples at run-time.&lt;/p&gt;
 &lt;p&gt;First, we’ll have to import that extension to be able to call it’s methods. If you’re doing this set-up manually, add the next line near the top, with the other includes (around line 30).&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sanseidoDefsForAnki&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sanseidoDefsForAnki&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Next, I’ve written a few lines in the &lt;code&gt;createNote&lt;/code&gt; method to call sanseidoDefsForAnki’s glossNote method at run-time and, if examples were found and our note-type has the correct destination field, add these to our newly created card. This should come before &lt;code&gt;dupOrEmpty = note.dupeOrEmpty()&lt;/code&gt; around line 100.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
@@ -3562,20 +3677,20 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;4&lt;/span&gt;
 &lt;span class="normal"&gt;5&lt;/span&gt;
 &lt;span class="normal"&gt;6&lt;/span&gt;
-&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Create sanseido definitions&lt;/span&gt;
+&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Create sanseido definitions&lt;/span&gt;
 &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;glossNote&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;note&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;showTooltip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Error, could not create sanseido definition."&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;note&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;flush&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;showTooltip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Error, could not create sanseido definition."&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;h2 id="contextualizing-imported-cards"&gt;&lt;a class="toclink" href="#contextualizing-imported-cards"&gt;Contextualizing imported cards&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;If you’ve followed above steps, every time you add a new word online by pressing &lt;kbd&gt;r&lt;/kbd&gt; (the &lt;em&gt;Real-Time Import&lt;/em&gt; key) while hovering over something Japanese, it’ll automatically contain a Sanseido dictionary definition as well.&lt;/p&gt;
 &lt;p&gt;Try it out on this article’s “&lt;strong&gt;Words of the Day&lt;/strong&gt;”!&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{{逆転(ぎゃくてん)}} | {{裁判(さいばん)}}
-&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{{逆転(ぎゃくてん)}} | {{裁判(さいばん)}}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;h1 id="download-example-set"&gt;&lt;a class="toclink" href="#download-example-set"&gt;Download Example Set&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;As usual, I’ve exported my own Anki copy of this tutorial and uploaded it in case you’d like to compare or save yourself the work of editing the note template yourself. It includes work from the previous two tutorials.&lt;/p&gt;
@@ -3638,9 +3753,9 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;h2 id="anki-note-lay-out"&gt;&lt;a class="toclink" href="#anki-note-lay-out"&gt;Anki Note Lay-out&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Add the code to the bottom of the middle lay-out screen. It’ll display the example sentences to the left of your cards.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;examples&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;75&lt;/span&gt;&lt;span class="kt"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;text-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;examples&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;75&lt;/span&gt;&lt;span class="kt"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;text-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
 &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;title&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#999999&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Back Template&lt;/strong&gt;&lt;/li&gt;
@@ -3652,14 +3767,14 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;4&lt;/span&gt;
 &lt;span class="normal"&gt;5&lt;/span&gt;
 &lt;span class="normal"&gt;6&lt;/span&gt;
-&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{{#Examples}}
+&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{{#Examples}}
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"examples"&lt;/span&gt; &lt;span class="na"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"ja"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"title"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Sentences:&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
 {{furigana:Examples}}
 &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 {{/Examples}}
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;&lt;img alt="anki-notetype-back" class="fborder fcenter" src="https://steviepoppe.net/images/anki/anki-notetype-back.jpg" title="anki-notetype-back"/&gt;&lt;/p&gt;
 &lt;p&gt;When done, close both this and the previous screen. Let’s try this plug-in out now!&lt;/p&gt;
@@ -3678,17 +3793,17 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;p&gt;We’ve set up our notes to show &lt;em&gt;furigana&lt;/em&gt; on our vocabulary. This requires square brackets (e.g. &lt;code&gt;気象庁[きしょうちょう]&lt;/code&gt;). The anki plug-in for Japanese example sentences however does not support this out of the box. For that reason, I’ve added a regular expression to only use the contents up to the first square bracket as expression.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
 &lt;span class="normal"&gt;2&lt;/span&gt;
-&lt;span class="normal"&gt;3&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;searched&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;'^[^\[]+'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;expression&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;searched&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;'^[^\[]+'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;expression&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;searched&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;expression&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;searched&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;If you’d like to edit this yourself, add that piece of code to the &lt;code&gt;find_examples&lt;/code&gt; class right after it defined &lt;code&gt;examples&lt;/code&gt; as a list. it should be around line 139 (&lt;code&gt;def find_examples(expression, maxitems):&lt;/code&gt; &lt;code&gt;examples = []&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Real-Time_Import_for_use_with_the_Rikaisama_Firefox_Extension.py&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This extension calls on Anki’s API to create new notes. I haven’t found a way to hook Japanese_examples to external note-creation, so instead I’ve edited the &lt;em&gt;real_time_import&lt;/em&gt; plug-in itself to call japanese_examples at run-time.&lt;/p&gt;
 &lt;p&gt;First, we’ll have to import the japanese_examples extension to be able to call its methods. If you’re doing this set-up manually, add the line below near the top, along with the other includes (around line 30).&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;japanese_examples&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;japanese_examples&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Next, I’ve written a few lines in the &lt;code&gt;createNote&lt;/code&gt; method to call Japanese-examples’ find method at run-time and, if examples were found and our note-type has the correct destination field, add these to our newly created card. This should come before &lt;code&gt;dupOrEmpty = note.dupeOrEmpty()&lt;/code&gt; around line 100.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
@@ -3696,28 +3811,28 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;3&lt;/span&gt;
 &lt;span class="normal"&gt;4&lt;/span&gt;
 &lt;span class="normal"&gt;5&lt;/span&gt;
-&lt;span class="normal"&gt;6&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# for use with japanese examples&lt;/span&gt;
+&lt;span class="normal"&gt;6&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# for use with japanese examples&lt;/span&gt;
 &lt;span class="n"&gt;examples&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;find_examples_multiple&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;note&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MAX_PERMANENT&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="c1"&gt;# if field is empty and examples exist&lt;/span&gt;
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;examples&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;DEST_FIELD&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
     &lt;span class="n"&gt;note&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;DEST_FIELD&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;examples&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Finally, I’ve edited the mark-up of the example sentences themselves to hide the English translations unless hovered above (or on press on smart phones). Locate the &lt;code&gt;examples.append&lt;/code&gt; call in the &lt;code&gt;find_examples&lt;/code&gt; method. You’ll want to replace it (I commented it out) with the line below. It’ll be around line 174.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;examples&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&amp;lt;div id='eng_test'&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;lt;span id='eng_sentence'&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nb"&gt;tuple&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;examples&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&amp;lt;div id='eng_test'&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;lt;span id='eng_sentence'&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nb"&gt;tuple&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;In the &lt;code&gt;find_examples_multiple&lt;/code&gt; method (around line 214), replace the current &lt;code&gt;return&lt;/code&gt; with the following line. We want only one break between example sentences.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;"&amp;lt;br&amp;gt;"&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;examples&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;"&amp;lt;br&amp;gt;"&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;examples&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;hr/&gt;
 &lt;p&gt;&lt;strong&gt;Important!&lt;/strong&gt; For this to work, you’ll need to make an edit to your note template’s layout. As usual enter the note-type management screen by pressing &lt;span class="keys"&gt;&lt;kbd class="key-control"&gt;Ctrl&lt;/kbd&gt;&lt;span&gt;+&lt;/span&gt;&lt;kbd class="key-shift"&gt;Shift&lt;/kbd&gt;&lt;span&gt;+&lt;/span&gt;&lt;kbd class="key-n"&gt;N&lt;/kbd&gt;&lt;/span&gt;, or click &lt;strong&gt;Tools&lt;/strong&gt; → &lt;strong&gt;Manage Note Types&lt;/strong&gt;. Select the notetype of the cards you’d like to contain example sentences and click &lt;strong&gt;fields&lt;/strong&gt;. From there, select the &lt;code&gt;Rikai&lt;/code&gt; note, click &lt;strong&gt;cards&lt;/strong&gt; and add the following CSS code to the bottom of the shared lay-out screen in the middle.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;eng_sentence&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;eng_sentence&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;eng_test&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;hover&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;eng_sentence&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;inherit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#eb4c42&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;h1 id="new-usage"&gt;&lt;a class="toclink" href="#new-usage"&gt;New Usage&lt;/a&gt;&lt;/h1&gt;
 &lt;h2 id="contextualizing-existing-cards_1"&gt;&lt;a class="toclink" href="#contextualizing-existing-cards_1"&gt;Contextualizing existing cards&lt;/a&gt;&lt;/h2&gt;
@@ -3894,9 +4009,9 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;p&gt;Next, select the new Rikai note-type and click &lt;strong&gt;Fields&lt;/strong&gt;. We’ll rename the current front and backside as &lt;code&gt;Expression&lt;/code&gt; and &lt;code&gt;Meaning&lt;/code&gt;, and add two new Fields &lt;code&gt;Audio&lt;/code&gt; and &lt;code&gt;Notes&lt;/code&gt; (this one could be used for personal notes or example sentences). If you’re interested in pitch accents, add a fifth field &lt;code&gt;Pitch&lt;/code&gt;. Next, close this screen and click on &lt;strong&gt;Cards&lt;/strong&gt;. We’ll manage the different cards this note generates as well as it’s make-up.&lt;/p&gt;
 &lt;p&gt;We’ll start with some basic layout. Add the following lines to the bottom of the middle Shared Style screen. For optimal learning, we’ll keep word readings in &lt;em&gt;kana&lt;/em&gt; as &lt;em&gt;furigana&lt;/em&gt; displayed on touch/hover. This way learners are less likely to use them as a crutch.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;ruby&lt;/span&gt; &lt;span class="nt"&gt;rt&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;visibility&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;hidden&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;ruby&lt;/span&gt; &lt;span class="nt"&gt;rt&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;visibility&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;hidden&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="nt"&gt;ruby&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;hover&lt;/span&gt; &lt;span class="nt"&gt;rt&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;visibility&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;visible&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Next, click the &lt;code&gt;+&lt;/code&gt; button twice to create two more card-templates. Next, rename (by clicking &lt;strong&gt;More&lt;/strong&gt; → &lt;strong&gt;Rename&lt;/strong&gt;) templates &lt;strong&gt;Card 1&lt;/strong&gt;, &lt;strong&gt;Card 2&lt;/strong&gt; and &lt;strong&gt;Card 3&lt;/strong&gt; respectively as &lt;code&gt;Recognition&lt;/code&gt;, &lt;code&gt;Production&lt;/code&gt;, and &lt;code&gt;Audio&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Finally, let’s wrap up our Anki set-up by creating the actual card’s templates. Each card will question you on one field (the Japanese expression, the English translation and the Audio) and show the answer on the backside along with audio and any potential notes, if present. Your card’s templates should look as follows:&lt;/p&gt;
@@ -3904,8 +4019,8 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Front Template&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{{&lt;/span&gt;&lt;span class="n"&gt;furigana&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Expression&lt;/span&gt;&lt;span class="p"&gt;}}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{{&lt;/span&gt;&lt;span class="n"&gt;furigana&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Expression&lt;/span&gt;&lt;span class="p"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Back Template&lt;/strong&gt;&lt;/li&gt;
@@ -3922,7 +4037,7 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;10&lt;/span&gt;
 &lt;span class="normal"&gt;11&lt;/span&gt;
 &lt;span class="normal"&gt;12&lt;/span&gt;
-&lt;span class="normal"&gt;13&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{{FrontSide}}
+&lt;span class="normal"&gt;13&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{{FrontSide}}
 
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;hr&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;answer&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 
@@ -3935,14 +4050,14 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;b&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Notes:&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;b&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{furigana:Notes}}
 {{/Notes}}
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;&lt;strong&gt;Production&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Front Template&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{{&lt;/span&gt;&lt;span class="n"&gt;Meaning&lt;/span&gt;&lt;span class="p"&gt;}}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{{&lt;/span&gt;&lt;span class="n"&gt;Meaning&lt;/span&gt;&lt;span class="p"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Back Template&lt;/strong&gt;&lt;/li&gt;
@@ -3959,7 +4074,7 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;10&lt;/span&gt;
 &lt;span class="normal"&gt;11&lt;/span&gt;
 &lt;span class="normal"&gt;12&lt;/span&gt;
-&lt;span class="normal"&gt;13&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{{FrontSide}}
+&lt;span class="normal"&gt;13&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{{FrontSide}}
 
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;hr&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;answer&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 
@@ -3972,14 +4087,14 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;b&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Notes:&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;b&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{furigana:Notes}}
 {{/Notes}}
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;&lt;strong&gt;Audio&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Front Template&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{{&lt;/span&gt;&lt;span class="n"&gt;Audio&lt;/span&gt;&lt;span class="p"&gt;}}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{{&lt;/span&gt;&lt;span class="n"&gt;Audio&lt;/span&gt;&lt;span class="p"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Back Template&lt;/strong&gt;&lt;/li&gt;
@@ -3996,7 +4111,7 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;10&lt;/span&gt;
 &lt;span class="normal"&gt;11&lt;/span&gt;
 &lt;span class="normal"&gt;12&lt;/span&gt;
-&lt;span class="normal"&gt;13&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{{FrontSide}}
+&lt;span class="normal"&gt;13&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{{FrontSide}}
 
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;hr&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;answer&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 
@@ -4009,7 +4124,7 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;b&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Notes:&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;b&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{furigana:Notes}}
 {{/Notes}}
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;hr/&gt;
 &lt;p&gt;If you added a fifth field &lt;strong&gt;Pitch&lt;/strong&gt;, add &lt;code&gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;{{Pitch}}&lt;/code&gt; to the back templates of those cards.&lt;/p&gt;
@@ -4239,14 +4354,14 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;span class="normal"&gt;4&lt;/span&gt;
 &lt;span class="normal"&gt;5&lt;/span&gt;
 &lt;span class="normal"&gt;6&lt;/span&gt;
-&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    {{FrontSide}}
+&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    {{FrontSide}}
 
     &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;hr&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;answer&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 
     {{Event}}
     &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     {{Detail}}
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;This card will question you on the date: What happened in 1868? That’s right, the Meiji Period. Have some extra information!&lt;/p&gt;
 &lt;p&gt;Now click on the &lt;code&gt;+&lt;/code&gt; button in the upper-right corner to add a new card to generate. Name it &lt;code&gt;Event&lt;/code&gt;. This time you’ll edit the templates of the front and back by switching the &lt;code&gt;{{Event}}&lt;/code&gt; and &lt;code&gt;{{Date}}&lt;/code&gt; variables around; this will question you what happened on the event’s date. Meiji Period? Oh yeah, 1868.&lt;/p&gt;
@@ -4255,9 +4370,9 @@ Speaking of blockchain and DRM, Sony actually filed a patent for in 2018 this as
 &lt;p&gt;If you’re still with me, I’d like to introduce you one last useful feature (for now). This one might be less relevant for those not studying Japanese, but honestly, it’s a neat one to keep in mind when designing your cards (I occasionally use it outside language-learning as well). Remember those Japanese characters up there? They had &lt;em&gt;furigana&lt;/em&gt;&lt;sup&gt;&lt;a class="footnote-ref" href="#fn-6" id="fnref-6" rel="footnote"&gt;7&lt;/a&gt;&lt;/sup&gt; on top. We’d probably want this in our cards as well. Luck goes it setting this up is extremely simple and support comes out-of-the-box: just add &lt;code&gt;furigana&lt;/code&gt;: (all lower-caps) in front of your field variables in the card-note template screen you’re in, eg. &lt;code&gt;{{Detail}}&lt;/code&gt; becomes &lt;code&gt;{{furigana:Detail}}&lt;/code&gt; (you won’t see any visible changes yet as we haven’t added the actual &lt;em&gt;furigana&lt;/em&gt; in our text itself yet).&lt;/p&gt;
 &lt;p&gt;Actually, to accommodate Japanese learners, we’ll take away the crutches of kana-reading aids and let it display only on click/touch. Add the CSS below to the bottom of your note’s style (the one in the middle). This hides all &lt;em&gt;furigana&lt;/em&gt; (or rather, ruby annotations) by default and displays them upon touch or hover.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;ruby&lt;/span&gt; &lt;span class="nt"&gt;rt&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;visibility&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;hidden&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;ruby&lt;/span&gt; &lt;span class="nt"&gt;rt&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;visibility&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;hidden&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="nt"&gt;ruby&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;hover&lt;/span&gt; &lt;span class="nt"&gt;rt&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;visibility&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;visible&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Now, add the actual &lt;em&gt;furigana&lt;/em&gt; (contained in square brackets) next to their respective words: eg. &lt;code&gt;一世一元[いっせいいちげん]&lt;/code&gt;, &lt;code&gt;廃藩置県[はいはんちけん]&lt;/code&gt;, &lt;code&gt;士農工商[しのうこうしょう]&lt;/code&gt;, and &lt;code&gt;富国強兵[ふこくきょうへい]&lt;/code&gt;. When done, let’s wrap things up by clicking &lt;strong&gt;add&lt;/strong&gt;.&lt;/p&gt;
 &lt;hr/&gt;

@@ -100,7 +100,7 @@ $(window).scroll(function()
          * Overlay dropdown menu
          /* ---------------------------------------------- */
 
-         $('#overflow-nav > li.slidedown > a').on('click', function() {
+         $('#overflow-nav > li.slidedown > a').on('hover', function() {
             if ($(this).attr('class') != 'active') {
                 $('#overflow-nav li ul').slideUp({duration: 300, easing: 'easeInOutQuart'});
                 $('#overflow-nav li a').removeClass('active');
@@ -112,6 +112,7 @@ $(window).scroll(function()
             }
             return false;
          });
+
 
 var Footnotes = {
     footnotetimeout: false,
