@@ -523,8 +523,9 @@ strong {
 }
 html{
     /*background: url('../../images/asanoha.jpg') no-repeat center center fixed;
-    background-image: url('../../images/asanoha.svg');*/
-    background: url('../../images/asanoha-dark.jpg') no-repeat center center fixed;
+    background-image: url('../../images/asanoha.svg');
+    background: url('../../images/asanoha-dark.jpg') no-repeat center center fixed;*/
+    background: url('../../images/asanoha-dark.webp') no-repeat center center fixed;
 
     background-size: auto;
 -webkit-background-size: cover;
@@ -818,11 +819,18 @@ h2 {
 
   .datetitle, .banner-index-content a, .post-title, .post-title a{
     color: white;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-top: 30px;
+  }
+
+  .post-title{
+    margin-top: 35px;
     margin-bottom: 10px;
   }
+
+    .home-article-container .post-title{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
 
   .banner-index-content a:hover, .banner-index-content a:focus{  
     color: RGBA(167, 167, 167, 0.5);
@@ -895,6 +903,7 @@ padding-right: 0px;
       font-size: 32px;
       color: #fff;
       font-family: "Poiret One","Noto Sans Japanese","Meiryo",sans-serif !important;
+    margin-top: 50px;
     }
     .header-date {
       margin-top: 15px;

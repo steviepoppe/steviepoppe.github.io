@@ -8,10 +8,6 @@
   </url>
 
   <url>
-    <loc>https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/</loc>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://steviepoppe.net/publication/covid-disinformation/</loc>
     <priority>0.5</priority>
   </url>
@@ -61,6 +57,10 @@
   </url>
   <url>
     <loc>https://steviepoppe.net/blog/2019/05/travels-taiwan/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://steviepoppe.net/blog/2019/04/a-quick-guide-on-using-anki-5-an-efficient-vocab-mining-set-up-with-anki-and-rikaisama-yomichan/</loc>
     <priority>0.5</priority>
   </url>
   <url>
