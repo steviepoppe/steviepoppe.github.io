@@ -820,6 +820,8 @@ h2 {
     color: white;
     margin-top: 0px;
     margin-bottom: 0px;
+    margin-top: 30px;
+    margin-bottom: 10px;
   }
 
   .banner-index-content a:hover, .banner-index-content a:focus{  
