@@ -526,7 +526,7 @@ strong {
 }
 html{
     background-color: #3a3636;
-    background-image: url('../../images/asanoha.svg'
+    background-image: url('../../images/asanoha.svg');
     /*background: url('../../images/asanoha.jpg') no-repeat center center fixed;
     background-image: url('../../images/asanoha.svg');
     background: url('../../images/asanoha-dark.jpg') no-repeat center center fixed;*/
