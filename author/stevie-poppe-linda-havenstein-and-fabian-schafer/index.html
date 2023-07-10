@@ -6,8 +6,9 @@
   <!-- Stylesheets -->
   <link href="https://steviepoppe.net/theme/css/bootstrap.css" rel="stylesheet">
   <link href="https://steviepoppe.net/theme/css/nest.css" rel="stylesheet">
-  <link href="https://steviepoppe.net/theme/css/icons.css" rel="stylesheet">
   <link href="https://steviepoppe.net/theme/css/pygment.css" rel="stylesheet">
+
+  <link href="https://steviepoppe.net/theme/css/icons.css" rel="stylesheet">
   <link href="https://steviepoppe.net/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
 
   <link href="https://steviepoppe.net//theme/css/magnific-popup.css" rel="stylesheet">
@@ -15,6 +16,11 @@
   <link href="https://steviepoppe.net//theme/css/admonition.css" rel="stylesheet">
   <link href="https://steviepoppe.net//theme/css/keys.css" rel="stylesheet">
   <link href="https://steviepoppe.net//theme/css/slick.css" rel="stylesheet">
+  <meta name=color-scheme content="light">
+  <link rel=stylesheet href="https://steviepoppe.net/theme/css/2019b-dark.css"
+  media="screen and (prefers-color-scheme: dark)">
+  <link rel=stylesheet href="https://steviepoppe.net/theme/css/2019b-light.css"
+  media="screen and (prefers-color-scheme: light)">
   <style>
 /*    @import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
     @import 'https://fonts.googleapis.com/css?family=Poiret+One|Quicksand';
@@ -74,9 +80,92 @@
 
  
 
-<meta name="robots" content="index">        </head>
+<meta name="robots" content="index">
+
+
+<!-- The magic works for more than one stylesheet, just needing this
+media attribute; pages needing more than the global stylesheet and
+`currentColor` offer can therefore add their own styles. 
+<style media="screen and (prefers-color-scheme: dark)">…</style>-->
+        </head>
 
         <body>
+
+  <div id=themer style="position: fixed;top: 0;right: 0;z-index: 9999;">
+  <summary style="outline: none;list-style: none;text-align: right;" aria-label="Theme" title="Change theme (light/dark mode)">
+      <b style="display: inline-block;cursor: pointer;filter: grayscale(1);padding: 0.75em 0.75em;border-radius: 0 0 0 0.5em"aria-hidden=true>💡</b>
+  </summary>
+  <div>
+    <script>
+
+const themerDiv = document.querySelector('#themer');
+
+function switcher(prefName, offLabel, onLabel, suffix, defaultValue, apply) {
+  let enabled;
+  const button = document.createElement('button');
+  function sync() {
+    apply(enabled);
+    // Try to persist to storage, iff we’re effecting a deliberate change
+    try {
+      if (localStorage.getItem(prefName) || enabled != defaultValue) {
+        localStorage.setItem(prefName, enabled);
+      }
+    } catch (e) {}
+  }
+
+  themerDiv.addEventListener('click', () => {
+    enabled = +!enabled;
+    sync();
+    if (typeof DISQUS !== "undefined")
+    {
+        DISQUS.reset({ reload: true });
+    }
+  });
+
+  try {
+    enabled = localStorage.getItem(prefName);
+  } catch (e) {}
+  // enabled should now be null, '0' or '1'. Fill in the default value,
+  // coerce what may be something like '0', '1', true or false to 0 or 1,
+  // and act on it.
+  enabled = +(enabled || defaultValue);
+  sync();
+  return sync;
+}
+
+
+let darkModeDefault = 0;
+try {
+  darkModeDefault = matchMedia('(prefers-color-scheme: dark)').matches;
+} catch (e) {}
+
+let stylesheetElements = document.querySelectorAll(
+  '[media="screen and (prefers-color-scheme: dark)"]',
+);
+
+const syncDarkMode = switcher(
+  'dark', 'light', 'dark', ' theme', darkModeDefault, enabled => {
+    document.querySelector('meta[name=color-scheme]').content = enabled ? 'dark' : 'light';
+    stylesheetElements.forEach(element => {
+      element.media = enabled ? 'screen' : 'not all';
+    });
+  });
+
+
+// If anything is in the source after this script, handle it.
+addEventListener('DOMContentLoaded', () => {
+  stylesheetElements = [
+    ...stylesheetElements,
+    ...document.querySelectorAll(
+      '[media="screen and (prefers-color-scheme: dark)"]',
+    ),
+  ];
+  syncDarkMode();
+});
+
+    </script>
+  </div>
+</div>
 
     <!-- OVERLAY MENU -->
     <div id="overlay-menu" class="overlay-menu">
@@ -100,8 +189,7 @@
             </li>
 
 <li >
-                            <a class="link" href="https://steviepoppe.net/resume/"><i class="icon-hashtag icon-menu"></i>Resume</a></li><li >
-                            <a class="link" href="https://steviepoppe.net/resources/"><i class="icon-file2 icon-menu"></i>Resources</a></li>          </ul>
+                            <a class="link" href="https://steviepoppe.net/resume/"><i class="icon-hashtag icon-menu"></i>Resume</a></li>         </ul>
         </nav>
       </div>
 
@@ -155,8 +243,10 @@
 
           <div id="wrapper">
 
-            <div class="master scrollingnav">
-              <div class="head-container">
+            <div class="master scrollingnav"></div>
+
+        <div class="master scrollingnav" style="height:10px;background: none;margin-top: -90px; z-index: 999;box-shadow: none;">
+            <div class="head-container" style="height: 10px; display: flow-root;">
 
                 <header class="page-header">
                   <a href="https://steviepoppe.net" class="avatar-container pull-left show-overlay toggle-menu" title="Menu">
@@ -167,8 +257,16 @@
                   <h1 id="onoreto" title="Stevie Poppe" style="letter-spacing: 1px; font-weight:"><a href="https://steviepoppe.net">Stevie Poppe</a> <small><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">| Onoreto</span></span></small></h1>
                 </header>
 
-                <div id="nav-wrapper">
-                  <nav class="navbar navbar-default scrollingnav" id="nav">
+                
+              </div>
+          </div>
+
+
+
+
+
+<div id="nav-wrapper" class="head-container"style="position: sticky;top: -1px;margin-top: 50px;    z-index: 1;">
+                  <nav class="navbar navbar-default scrollingnav" id="nav" style="margin-left: auto; margin-right: auto;">
 
                     <div class="navbar-collapse" id="steviesmenubar">
                       <div style="float: left;;margin-left: 20px;">
@@ -180,17 +278,33 @@
 </li>
 <li class=" ">
                             <a  href="/"><i class="icon-home icon-menu"></i>Home</a>
+
+
+
+
                             </li><li class=" ">
                             <a  href="/blog/"><i class="icon-book icon-menu"></i>Blog</a>
-                            </li><li class=" dropdown">
+
+
+
+
+                            </li><li class=" menu-item">
                             <a  class="dropdown-toggle" data-target="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="/blog/category/"><i class="icon-folder-close icon-menu"></i>Categories                              <span class="caret"></span>
 </a>
-                              <ul class="dropdown-menu" id="menu1" aria-labelledby="drop4"> 
-                                <li><a href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
-                                <li><a href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li> 
-                                <li><a href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
-                              </ul> 
-                            </li>                          </ul>
+
+
+                                <ul class="drop-menu">
+                                  <li class="drop-menu-item"><a href="https://steviepoppe.net/blog/category/personal/"><i class="icon-headphones icon-menu"></i>Personal</a></li>
+                                  <li class="drop-menu-item"><a href="https://steviepoppe.net/blog/category/studies/"><i class="icon-globe icon-menu"></i>Studies</a></li> 
+                                  <li class="drop-menu-item"><a href="https://steviepoppe.net/blog/category/technical/"><i class="icon-keyboard icon-menu"></i>Technical</a></li>
+                                </ul>
+
+
+                            </li>
+
+
+
+                          </ul>
                         </div>
                         <div class="social">
                           <ul class="socialnav socialonly social-icons-footer collapse">
@@ -235,6 +349,7 @@
                               </a>
                             </li>
                           </ul>
+                          
                           <form id="searchform" class="navbar-form navbar-right collapse" action="https://steviepoppe.net/search.html" >
                             <input type="text" class="search-query form-control search-query" placeholder="Search" required name="q" id="tipue_search_input" style="width: 130px;"></form>
                           </div>
@@ -244,13 +359,14 @@
 
                       </nav>
                     </div>
-                  </div>
-                </div>
+
+
+
 
 
                 <div id="main">
 <div class="home-bio" style="background-color: rgba(56,56,56,0);">
-  <div class="container" style="    background-color: rgb(31 30 30 / 80%); border: solid 1px #5c5b5b;">
+  <div class="bio container content">
     <div class="row home-articles-title">
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" style="text-align: center;">
       <h1></h1>
@@ -285,16 +401,6 @@
   </div>
 </div>
 
-<div class="home-articles" style="padding-bottom: 10px; padding-top: 5px;">
-<div class="container category">
-  <h1 style="text-align: center;">Recent Posts</h1>
-      <hr>
-  <div class="row">
-    <div class="home-articles-title"><h3><a href="https://steviepoppe.net/blog/">>> See all posts</a></h3></div>
-      <hr>
-  </div>
-</div>
-</div>
 
 <div class="home-publications" style="padding-bottom: 10px;padding-top: 5px;">
   <div class="container category">
@@ -313,15 +419,45 @@
   </div>
 </div>
 
-    <div class="home-tags" style="background-color: rgba(36, 35, 35, 0.8);margin-bottom: 30px; padding-top: 5px;padding-bottom: 10px;">
+
+<div class="home-articles" style="padding-bottom: 10px; padding-top: 5px;">
+<div class="container category">
+  <h1 style="text-align: center;">Recent Posts</h1>
+      <hr>
+  <div class="row">
+    <div class="home-articles-title"><h3><a href="https://steviepoppe.net/blog/">>> See all posts</a></h3></div>
+      <hr>
+  </div>
+</div>
+</div>
+
+    <div class="home-tags" style="margin-bottom: 30px; padding-top: 5px;padding-bottom: 10px;">
         <div class="container category" style="text-align: center;">
             <h1>Popular Topics</h1>
               <hr>
             <ul class="tagcloud">
+        <li class="tag-2">
+            <a href="https://steviepoppe.net/blog/tags/anki/">
+            Anki
+                    <span class="badge">8</span>
+            </a>
+        </li>
+        <li class="tag-2">
+            <a href="https://steviepoppe.net/blog/tags/python/">
+            Python
+                    <span class="badge">6</span>
+            </a>
+        </li>
         <li class="tag-4">
-            <a href="https://steviepoppe.net/blog/tags/video/">
-            Video
+            <a href="https://steviepoppe.net/blog/tags/ku-leuven/">
+            KU Leuven
                     <span class="badge">2</span>
+            </a>
+        </li>
+        <li class="tag-3">
+            <a href="https://steviepoppe.net/blog/tags/digital-humanities/">
+            Digital Humanities
+                    <span class="badge">4</span>
             </a>
         </li>
         <li class="tag-3">
@@ -330,22 +466,22 @@
                     <span class="badge">4</span>
             </a>
         </li>
-        <li class="tag-1">
-            <a href="https://steviepoppe.net/blog/tags/japanese/">
-            Japanese
-                    <span class="badge">16</span>
-            </a>
-        </li>
         <li class="tag-4">
-            <a href="https://steviepoppe.net/blog/tags/speech/">
-            Speech
+            <a href="https://steviepoppe.net/blog/tags/markdown/">
+            markdown
                     <span class="badge">2</span>
             </a>
         </li>
-        <li class="tag-1">
-            <a href="https://steviepoppe.net/blog/tags/travels/">
-            Travels
-                    <span class="badge">13</span>
+        <li class="tag-4">
+            <a href="https://steviepoppe.net/blog/tags/belgium/">
+            Belgium
+                    <span class="badge">3</span>
+            </a>
+        </li>
+        <li class="tag-4">
+            <a href="https://steviepoppe.net/blog/tags/history/">
+            History
+                    <span class="badge">2</span>
             </a>
         </li>
         <li class="tag-1">
@@ -360,64 +496,34 @@
                     <span class="badge">9</span>
             </a>
         </li>
-        <li class="tag-3">
-            <a href="https://steviepoppe.net/blog/tags/twitter/">
-            Twitter
-                    <span class="badge">4</span>
-            </a>
-        </li>
-        <li class="tag-4">
-            <a href="https://steviepoppe.net/blog/tags/blog/">
-            Blog
-                    <span class="badge">2</span>
-            </a>
-        </li>
-        <li class="tag-4">
-            <a href="https://steviepoppe.net/blog/tags/ku-leuven/">
-            KU Leuven
-                    <span class="badge">2</span>
-            </a>
-        </li>
         <li class="tag-4">
             <a href="https://steviepoppe.net/blog/tags/rikaisama/">
             Rikaisama
                     <span class="badge">2</span>
             </a>
         </li>
+        <li class="tag-1">
+            <a href="https://steviepoppe.net/blog/tags/japanese/">
+            Japanese
+                    <span class="badge">16</span>
+            </a>
+        </li>
+        <li class="tag-3">
+            <a href="https://steviepoppe.net/blog/tags/twitter/">
+            Twitter
+                    <span class="badge">4</span>
+            </a>
+        </li>
+        <li class="tag-1">
+            <a href="https://steviepoppe.net/blog/tags/travels/">
+            Travels
+                    <span class="badge">13</span>
+            </a>
+        </li>
         <li class="tag-4">
-            <a href="https://steviepoppe.net/blog/tags/belgium/">
-            Belgium
+            <a href="https://steviepoppe.net/blog/tags/pelican/">
+            pelican
                     <span class="badge">3</span>
-            </a>
-        </li>
-        <li class="tag-4">
-            <a href="https://steviepoppe.net/blog/tags/composing/">
-            Composing
-                    <span class="badge">2</span>
-            </a>
-        </li>
-        <li class="tag-2">
-            <a href="https://steviepoppe.net/blog/tags/python/">
-            Python
-                    <span class="badge">6</span>
-            </a>
-        </li>
-        <li class="tag-2">
-            <a href="https://steviepoppe.net/blog/tags/anki/">
-            Anki
-                    <span class="badge">8</span>
-            </a>
-        </li>
-        <li class="tag-4">
-            <a href="https://steviepoppe.net/blog/tags/music/">
-            Music
-                    <span class="badge">2</span>
-            </a>
-        </li>
-        <li class="tag-4">
-            <a href="https://steviepoppe.net/blog/tags/history/">
-            History
-                    <span class="badge">2</span>
             </a>
         </li>
         <li class="tag-2">
@@ -427,20 +533,32 @@
             </a>
         </li>
         <li class="tag-4">
-            <a href="https://steviepoppe.net/blog/tags/pelican/">
-            pelican
-                    <span class="badge">3</span>
-            </a>
-        </li>
-        <li class="tag-3">
-            <a href="https://steviepoppe.net/blog/tags/digital-humanities/">
-            Digital Humanities
-                    <span class="badge">4</span>
+            <a href="https://steviepoppe.net/blog/tags/video/">
+            Video
+                    <span class="badge">2</span>
             </a>
         </li>
         <li class="tag-4">
-            <a href="https://steviepoppe.net/blog/tags/markdown/">
-            markdown
+            <a href="https://steviepoppe.net/blog/tags/composing/">
+            Composing
+                    <span class="badge">2</span>
+            </a>
+        </li>
+        <li class="tag-4">
+            <a href="https://steviepoppe.net/blog/tags/speech/">
+            Speech
+                    <span class="badge">2</span>
+            </a>
+        </li>
+        <li class="tag-4">
+            <a href="https://steviepoppe.net/blog/tags/music/">
+            Music
+                    <span class="badge">2</span>
+            </a>
+        </li>
+        <li class="tag-4">
+            <a href="https://steviepoppe.net/blog/tags/blog/">
+            Blog
                     <span class="badge">2</span>
             </a>
         </li>

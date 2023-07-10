@@ -96,23 +96,6 @@ $(window).scroll(function()
          }
 
 });
-        /* ---------------------------------------------- /*
-         * Overlay dropdown menu
-         /* ---------------------------------------------- */
-
-         $('#overflow-nav > li.slidedown > a').on('hover', function() {
-            if ($(this).attr('class') != 'active') {
-                $('#overflow-nav li ul').slideUp({duration: 300, easing: 'easeInOutQuart'});
-                $('#overflow-nav li a').removeClass('active');
-                $(this).next().slideToggle({duration: 300, easing: 'easeInOutQuart'}).addClass('open');
-                $(this).addClass('active');
-            } else {
-                $('#overflow-nav li ul').slideUp({duration: 300, easing: 'easeInOutQuart'}).removeClass('open');
-                $(this).removeClass('active');
-            }
-            return false;
-         });
-
 
 var Footnotes = {
     footnotetimeout: false,
@@ -233,16 +216,15 @@ $('a[href="#main]').click(function() {
 
 
 
-$(function() {
-    $('#nav-wrapper').height($("#nav").height());
-
-    $('#nav').affix({
-      offset: { top: $('#nav').offset().top }
-  });
-});
-
-
 $(document).ready(function(){
+
+    const el = document.querySelector("#nav-wrapper")
+    const observer = new IntersectionObserver( 
+      ([e]) => e.target.classList.toggle("nav-affix", e.intersectionRatio < 1),
+      { threshold: [1] }
+    );
+
+    observer.observe(el);
 
   var i = 0;
 
@@ -265,17 +247,6 @@ $(document).ready(function(){
 
 });
 
-
- //   $(window).scroll(function(e){ 
- //   var $el = $('.toc-container'); 
- //   var isPositionFixed = ($el.css('position') == 'fixed');
- //   if ($(this).scrollTop() > 500 && !isPositionFixed){ 
- //     $el.css({'position': 'fixed', 'top': '10%', 'left': $('.container').offset().left + $('.container').width() + '50px', 'height': 'auto'}); 
- //   }
- //   if ($(this).scrollTop() < 500 && isPositionFixed){
- //     $el.css({'position': 'static', 'top': '0px'}); 
- //   } 
- // });
 
 $(document).ready(function(){
  $(".slider").slick({
